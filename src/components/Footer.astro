@@ -1,0 +1,268 @@
+---
+const formations = [
+  { href: '/bootcamp', label: 'Bootcamp IA' },
+  { href: '/formations/avocats', label: 'Formations pour avocats' },
+  { href: '/formations/consultants', label: 'Formations pour consultants' },
+  { href: '/formations/dirigeants', label: 'Formations pour dirigeants' },
+  { href: '/formations/rh', label: 'Formations pour RH' },
+  { href: '/formations/medecins', label: 'Formations pour médecins' },
+];
+
+const ressources = [
+  { href: '/newsletter', label: 'Newsletter' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/ressources-ia', label: 'Ressources IA' },
+  { href: '/a-propos', label: 'À propos' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Colonne 1 — Logo + tagline -->
+      <div class="footer-col">
+        <a href="/" class="footer-logo" aria-label="Cercle IA — Accueil">
+          <img
+            src="/images/cercle-ia-logo.svg"
+            alt="Cercle IA"
+            width="130"
+            height="33"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+        <p class="footer-tagline">L'IA entre de bonnes mains. Les vôtres.</p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/cercle-ia" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Cercle IA sur LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/cercleIA" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Cercle IA sur Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/cercle.ia/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Cercle IA sur Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          <a href="tel:+3228087545" class="footer-social-btn" aria-label="Appeler Cercle IA">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 9.09a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6.4h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.72 6.72l1.14-1.14a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Colonne 2 — Formations -->
+      <div class="footer-col">
+        <p class="footer-col-title">Formations</p>
+        <ul class="footer-links" role="list">
+          {formations.map((link) => (
+            <li><a href={link.href}>{link.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Colonne 3 — Ressources -->
+      <div class="footer-col">
+        <p class="footer-col-title">Ressources</p>
+        <ul class="footer-links" role="list">
+          {ressources.map((link) => (
+            <li><a href={link.href}>{link.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Colonne 4 — Newsletter -->
+      <div class="footer-col">
+        <p class="footer-col-title">Newsletter</p>
+        <p class="footer-newsletter-desc">Anticiper les révolutions de l'IA plutôt que de les subir. Tous les 15 jours.</p>
+        <form class="footer-newsletter-form" action="/api/newsletter" method="post" novalidate>
+          <label for="footer-email" class="form-label">Votre adresse email</label>
+          <input
+            type="email"
+            id="footer-email"
+            name="email"
+            placeholder="vous@example.com"
+            class="input-dark"
+            required
+            autocomplete="email"
+          />
+          <button type="submit" class="btn-newsletter" style="margin-top: 10px;">
+            S'abonner
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+      <p class="footer-copyright">©2026. Cercle IA | Antidote SRL | BCE 0773.969.928</p>
+      <nav aria-label="Liens légaux" class="footer-legal">
+        <a href="/politique-ia">Politique IA</a>
+        <a href="/politique-confidentialite">Confidentialité</a>
+        <a href="/conditions-generales">Conditions générales</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background: var(--color-dark-1);
+    border-top: 1px solid var(--color-dark-border);
+    padding: 64px 0 32px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1.4fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 12px;
+  }
+
+  .footer-tagline {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 8px;
+  }
+
+  .footer-social-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(247,171,110,0.15);
+    border: 1px solid rgba(247,171,110,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: background var(--transition), border-color var(--transition);
+  }
+
+  .footer-social-btn:hover {
+    background: rgba(247,171,110,0.25);
+    border-color: var(--color-accent);
+  }
+
+  .footer-col-title {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 14px;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    display: block;
+    padding: 4px 0;
+    transition: color var(--transition);
+  }
+
+  .footer-links a:hover {
+    color: rgba(255,255,255,0.85);
+  }
+
+  .footer-newsletter-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .btn-newsletter {
+    background: var(--color-accent);
+    color: var(--color-dark-1);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 10px 24px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background var(--transition);
+  }
+
+  .btn-newsletter:hover {
+    background: var(--color-accent-hover);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-copyright {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: 20px;
+  }
+
+  .footer-legal a {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+
+  .footer-legal a:hover {
+    color: rgba(255,255,255,0.6);
+  }
+
+  @media (max-width: 1024px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+    .footer-legal { flex-wrap: wrap; gap: 12px; }
+  }
+</style>

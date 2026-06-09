@@ -1,0 +1,490 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { homepageGraph } from '../lib/schema';
+
+const schema = homepageGraph();
+
+const formations = [
+  { href: '/formations/medecins', title: 'IA pour médecins', tag: 'Santé', desc: 'Reprendre le contrôle de l\'IA dans votre pratique médicale, en respectant le secret médical et les exigences réglementaires.' },
+  { href: '/formations/rh', title: 'IA pour les RH', tag: 'Ressources humaines', desc: 'Détectez les bons talents, rédigez vos offres plus rapidement et analysez les CV sans sacrifier le jugement humain.' },
+  { href: '/formations/avocats', title: 'IA pour avocats & juristes', tag: 'Droit', desc: 'Recherche, rédaction, analyse documentaire — en respectant le secret professionnel et les obligations déontologiques.' },
+  { href: '/formations/consultants', title: 'IA pour consultants', tag: 'Conseil', desc: 'Accélérez vos livrables, automatisez la recherche sectorielle et gagnez en productivité sur vos missions.' },
+];
+
+const testimonials = [
+  {
+    pull: 'À recommander d\'urgence !',
+    body: 'Formation professionnelle fluide et accessible à haute valeur ajoutée. Les informations apprises et conseils donnés permettent de donner un nouvel élan (inattendu) à tout un chacun afin de se retrouver dans les méandres de l\'IA.',
+    name: 'Steve Griess',
+    role: 'Partner',
+    org: 'Thales Brussels',
+    initials: 'SG',
+  },
+  {
+    pull: 'Tarik is the go to person for digital strategy in Brussels!',
+    body: '',
+    name: 'Yves Melin',
+    role: 'Avocat Associé',
+    org: 'Cassidy Levy Kent',
+    initials: 'YM',
+  },
+  {
+    pull: 'Highly recommended for anyone willing to get down to the brass tacks of this intriguing technology.',
+    body: 'I recently completed five 2-hour AI training sessions. The program offered a detailed overview of key AI tools and provided very concrete, practice-oriented guidance.',
+    name: 'Prescillia Algrain',
+    role: 'Counsel',
+    org: 'Janson Law Firm',
+    initials: 'PA',
+  },
+  {
+    pull: 'À refaire sans modération.',
+    body: 'J\'ai suivi 3 formations de 2 heures cette année. Merci Tarik & Team !',
+    name: 'Edouard Cambier',
+    role: 'Co-Owner',
+    org: 'Seed Factory',
+    initials: 'EC',
+  },
+  {
+    pull: 'Thank you for the interesting presentation!',
+    body: 'Very recommended for all lawyers and managers. Very nice to have welcomed you at EQUI.',
+    name: 'Marie Michaud-Nerard',
+    role: 'Partner',
+    org: 'EQUI',
+    initials: 'MM',
+  },
+  {
+    pull: 'Je recommande vivement.',
+    body: 'Parmi l\'amas de formations disponibles, en voici une – enfin – concrète, sincère, pragmatique et utile à tous les indépendants (d\'esprit ou de pratique).',
+    name: 'Adam Tricha',
+    role: 'Avocat',
+    org: 'Barreau de Verviers',
+    initials: 'AT',
+  },
+];
+
+const logos = ['UCLouvain', 'EPHEC', 'IHECS', 'AKT CCI Liège', 'Wallonia.be', 'Brussels Study Center'];
+---
+
+<BaseLayout
+  title="Cercle IA — Formations IA pour professionnels"
+  description="Formations IA pour avocats, médecins, dirigeants et consultants. Maîtrisez l'IA avec méthode, discernement et éthique. Bruxelles & en ligne."
+  ogImage="/og/homepage.jpg"
+  ogImageAlt="Cercle IA — Formations IA pour professionnels"
+  schema={schema}
+>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero-gradient grain-bg" style="padding: 96px 0 112px; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: -120px; right: -80px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(247,171,110,0.06) 0%, transparent 70%); pointer-events: none;" aria-hidden="true"></div>
+
+    <div class="container">
+      <div class="hero-inner">
+
+        <!-- Contenu gauche -->
+        <div>
+          <div class="eyebrow-badge" style="margin-bottom: 28px; display: inline-flex;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
+            Formations IA pour professionnels
+          </div>
+
+          <h1 class="hero-title">
+            L'IA entre de<br />bonnes mains.<br />
+            <span style="color: rgba(255,255,255,0.55);">Les vôtres.</span>
+          </h1>
+
+          <p style="font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.75; max-width: 560px; margin-bottom: 36px;">
+            Des formations conçues pour les professionnels dont les erreurs ont un cout. Avocats, médecins, consultants, dirigeants.
+          </p>
+
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+            <a href="/formations" class="btn-primary">Découvrir les formations</a>
+            <a href="/contact" class="btn-outline">Planifier un appel</a>
+          </div>
+        </div>
+
+        <!-- Visuel droit — diagramme flux formation -->
+        <div style="padding-top: 36px;">
+        <div style="position: relative; height: 440px;" aria-hidden="true">
+
+          <!-- Lignes de connexion SVG -->
+          <svg style="position: absolute; inset: 0; width: 100%; height: 100%;" viewBox="0 0 340 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="fGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#F7AB6E" stop-opacity="0.1"/>
+                <stop offset="100%" stop-color="#F7AB6E" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle cx="168" cy="220" r="72" fill="url(#fGlow)"/>
+            <line x1="70" y1="220" x2="136" y2="220" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+            <path d="M200,220 C250,220 250,64 284,64"   stroke="#4B8EF7" stroke-width="5" stroke-opacity="0.1"/>
+            <path d="M200,220 C238,220 238,143 284,143"  stroke="#F7AB6E" stroke-width="5" stroke-opacity="0.1"/>
+            <path d="M200,220 L284,222"                   stroke="#5CB89A" stroke-width="5" stroke-opacity="0.1"/>
+            <path d="M200,220 C238,220 238,301 284,301"  stroke="#22D3EE" stroke-width="5" stroke-opacity="0.1"/>
+            <path d="M200,220 C250,220 250,380 284,380"  stroke="#A78BFA" stroke-width="5" stroke-opacity="0.1"/>
+            <path d="M200,220 C250,220 250,64 284,64"   stroke="#4B8EF7" stroke-width="1.5"/>
+            <path d="M200,220 C238,220 238,143 284,143"  stroke="#F7AB6E" stroke-width="1.5"/>
+            <path d="M200,220 L284,222"                   stroke="#5CB89A" stroke-width="1.5"/>
+            <path d="M200,220 C238,220 238,301 284,301"  stroke="#22D3EE" stroke-width="1.5"/>
+            <path d="M200,220 C250,220 250,380 284,380"  stroke="#A78BFA" stroke-width="1.5"/>
+            <circle cx="200" cy="220" r="3.5" fill="rgba(255,255,255,0.2)"/>
+            <circle cx="284" cy="64"  r="2.5" fill="#4B8EF7" fill-opacity="0.75"/>
+            <circle cx="284" cy="143" r="2.5" fill="#F7AB6E" fill-opacity="0.75"/>
+            <circle cx="284" cy="222" r="2.5" fill="#5CB89A" fill-opacity="0.75"/>
+            <circle cx="284" cy="301" r="2.5" fill="#22D3EE" fill-opacity="0.75"/>
+            <circle cx="284" cy="380" r="2.5" fill="#A78BFA" fill-opacity="0.75"/>
+          </svg>
+
+          <!-- Nœud gauche — Pilule professions -->
+          <div style="position: absolute; left: 0; top: 92px; border-radius: 48px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); display: flex; flex-direction: column; justify-content: space-evenly; align-items: center; padding: 10px 10px; box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.08);">
+            <!-- Avocat -->
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 3px;">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                </svg>
+              </div>
+              <p style="font-size: 8px; font-weight: 500; color: rgba(255,255,255,0.4); font-family: var(--font-body);">Avocat</p>
+            </div>
+            <!-- Médecin -->
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 3px;">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/>
+                  <path d="M12 8v4m0 4h.01"/>
+                </svg>
+              </div>
+              <p style="font-size: 8px; font-weight: 500; color: rgba(255,255,255,0.4); font-family: var(--font-body);">Médecin</p>
+            </div>
+            <!-- Dirigeant -->
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 3px;">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                </svg>
+              </div>
+              <p style="font-size: 8px; font-weight: 500; color: rgba(255,255,255,0.4); font-family: var(--font-body);">Dirigeant</p>
+            </div>
+            <!-- Consultant -->
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 3px;">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10"/>
+                  <line x1="12" y1="20" x2="12" y2="4"/>
+                  <line x1="6" y1="20" x2="6" y2="14"/>
+                </svg>
+              </div>
+              <p style="font-size: 8px; font-weight: 500; color: rgba(255,255,255,0.4); font-family: var(--font-body);">Consultant</p>
+            </div>
+            <!-- RH -->
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 3px;">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <p style="font-size: 8px; font-weight: 500; color: rgba(255,255,255,0.4); font-family: var(--font-body);">RH</p>
+            </div>
+          </div>
+
+          <!-- Nœud central — Formation -->
+          <div style="position: absolute; left: 136px; top: 188px; display: flex; flex-direction: column; align-items: center; gap: 7px;">
+            <div style="width: 64px; height: 64px; border-radius: 16px; background: rgba(247,171,110,0.1); border: 1px solid rgba(247,171,110,0.28); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 8px rgba(247,171,110,0.04), 0 8px 32px rgba(0,0,0,0.3);">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6"/>
+                <path d="M2 10l10-5 10 5-10 5z"/>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+              </svg>
+            </div>
+            <p style="font-size: 9px; font-weight: 600; color: rgba(247,171,110,0.6); font-family: var(--font-body); letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap;">Formation IA</p>
+          </div>
+
+          <!-- Nœud sortie 1 — Outils (bleu) -->
+          <div style="position: absolute; left: 284px; top: 40px; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(75,142,247,0.1); border: 1px solid rgba(75,142,247,0.25); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(75,142,247,0.1);">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#4B8EF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                <polyline points="2 17 12 22 22 17"/>
+                <polyline points="2 12 12 17 22 12"/>
+              </svg>
+            </div>
+            <p style="font-size: 9px; font-weight: 500; color: rgba(255,255,255,0.35); font-family: var(--font-body);">Outils</p>
+          </div>
+
+          <!-- Nœud sortie 2 — Prompts (orange) -->
+          <div style="position: absolute; left: 284px; top: 119px; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(247,171,110,0.1); border: 1px solid rgba(247,171,110,0.25); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(247,171,110,0.1);">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#F7AB6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="4 17 10 11 4 5"/>
+                <line x1="12" y1="19" x2="20" y2="19"/>
+              </svg>
+            </div>
+            <p style="font-size: 9px; font-weight: 500; color: rgba(255,255,255,0.35); font-family: var(--font-body);">Prompts</p>
+          </div>
+
+          <!-- Nœud sortie 3 — Méthodes (vert) -->
+          <div style="position: absolute; left: 284px; top: 198px; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(92,184,154,0.1); border: 1px solid rgba(92,184,154,0.25); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(92,184,154,0.1);">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#5CB89A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1"/>
+                <rect x="14" y="3" width="7" height="7" rx="1"/>
+                <rect x="14" y="14" width="7" height="7" rx="1"/>
+                <rect x="3" y="14" width="7" height="7" rx="1"/>
+              </svg>
+            </div>
+            <p style="font-size: 9px; font-weight: 500; color: rgba(255,255,255,0.35); font-family: var(--font-body);">Méthodes</p>
+          </div>
+
+          <!-- Nœud sortie 4 — Éthique (teal) -->
+          <div style="position: absolute; left: 284px; top: 277px; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(34,211,238,0.1); border: 1px solid rgba(34,211,238,0.25); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(34,211,238,0.08);">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+            <p style="font-size: 9px; font-weight: 500; color: rgba(255,255,255,0.35); font-family: var(--font-body);">Éthique</p>
+          </div>
+
+          <!-- Nœud sortie 5 — Confiance (violet) -->
+          <div style="position: absolute; left: 284px; top: 356px; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.25); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(167,139,250,0.1);">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+              </svg>
+            </div>
+            <p style="font-size: 9px; font-weight: 500; color: rgba(255,255,255,0.35); font-family: var(--font-body);">Confiance</p>
+          </div>
+
+        </div>
+        </div>
+
+      </div>
+
+      <!-- Logos partenaires (pleine largeur sous le grid) -->
+      <div class="hero-logos">
+        <span class="logos-label">Ils nous font confiance</span>
+        <div class="logos-list">
+          {[
+            { src: '/images/logos/uclouvain.png', alt: 'UCLouvain' },
+            { src: '/images/logos/ephec.png', alt: 'EPHEC' },
+            { src: '/images/logos/ihecs.png', alt: 'IHECS' },
+            { src: '/images/logos/akt-cci.png', alt: 'AKT CCI Liège' },
+            { src: '/images/logos/wallonia.png', alt: 'Wallonia.be' },
+            { src: '/images/logos/brussels-study-center.png', alt: 'Brussels Study Center' },
+          ].map((logo) => (
+            <div class="logo-img-wrap">
+              <img src={logo.src} alt={logo.alt} height="32" loading="lazy" decoding="async" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== FEATURES ========== -->
+  <section id="benefices" style="background: var(--color-dark-2); padding: 96px 0;">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="section-eyebrow">Pourquoi se former avec Cercle IA</span>
+          <h2 class="section-title">L'IA générative transformera<br />votre pratique professionnelle.</h2>
+        </div>
+      </div>
+      <div class="grid-3">
+        {[
+          { icon: '◎', title: 'Gagnez en confiance et en maîtrise', desc: 'Acquérez une compréhension solide des fondamentaux de l\'IA générative. Maîtrisez les bonnes pratiques et gagnez en crédibilité face à vos clients et collaborateurs.' },
+          { icon: '◈', title: 'Augmentez vos performances', desc: 'Livrez des résultats supérieurs en moins de temps. Développez des synergies d\'équipe grâce aux outils d\'IA collaborative, sans sacrifier le jugement professionnel.' },
+          { icon: '◇', title: 'Prenez l\'avantage concurrentiel', desc: 'Explorez de nouvelles manières de créer de la valeur pour vos clients. Franchissez le cap vers une pratique professionnelle augmentée par l\'IA.' },
+        ].map((f) => (
+          <div class="glass-card" style="display: flex; flex-direction: column;">
+            <div class="icon-circle-glass" style="margin-bottom: 20px;">
+              <span style="font-size: 18px; color: var(--color-accent);">{f.icon}</span>
+            </div>
+            <h3 class="feature-title">{f.title}</h3>
+            <p class="feature-desc">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FORMATIONS ========== -->
+  <section id="formations" style="background: var(--color-dark-1); padding: 96px 0;">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="section-eyebrow">Nos formations</span>
+          <h2 class="section-title">Des parcours conçus par des<br />professionnels, pour des professionnels.</h2>
+        </div>
+        <a href="/formations" class="btn-text-link" style="white-space: nowrap; flex-shrink: 0;">Toutes les formations &rarr;</a>
+      </div>
+
+      <div class="bootcamp-card glass-card">
+        <div>
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <span class="tag">Bootcamp</span>
+            <span style="font-size: 12px; color: rgba(255,255,255,0.3);">3 sessions · En ligne · Tous niveaux</span>
+          </div>
+          <h3 style="font-family: var(--font-display); font-size: 28px; font-weight: 700; color: #ffffff; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px;">Bootcamp IA Générative</h3>
+          <p style="font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.75; max-width: 520px; margin-bottom: 24px;">Un programme intensif pour comprendre, manipuler et intégrer l'IA dans son quotidien professionnel. Idéal pour tout profil souhaitant passer à l'action, sans prérequis techniques.</p>
+          <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+            <a href="/bootcamp" class="btn-primary btn-sm">S'inscrire sur la liste d'attente</a>
+            <a href="/bootcamp" class="btn-text-link" style="font-size: 14px;">Voir le programme &rarr;</a>
+          </div>
+        </div>
+        <div>
+          <p style="font-size: 11px; color: rgba(255,255,255,0.25); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">Prochaine session</p>
+          <p style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: #ffffff;">Été 2026</p>
+        </div>
+      </div>
+
+      <div class="grid-4">
+        {formations.map((f) => (
+          <a href={f.href} class="glass-card" style="display: flex; flex-direction: column; gap: 10px; text-decoration: none;">
+            <span class="tag-outline" style="align-self: flex-start; margin-bottom: 4px;">{f.tag}</span>
+            <h3 class="formation-title">{f.title}</h3>
+            <p class="formation-desc">{f.desc}</p>
+            <span class="btn-text-link" style="font-size: 13px; margin-top: auto;">Découvrir &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== POURQUOI ========== -->
+  <section id="pourquoi" style="background: var(--color-dark-2); padding: 96px 0;">
+    <div class="container">
+      <span class="section-eyebrow" style="display: block; margin-bottom: 40px;">Ce qui nous différencie</span>
+      <div class="usps-grid">
+        {[
+          { n: '01', title: 'Formateurs experts de terrain', desc: 'Tarik Hennen utilise l\'IA dans des contextes à responsabilité depuis 2021. Pas depuis la tribune de l\'observateur enthousiaste.' },
+          { n: '02', title: 'Cas concrets, outils testés', desc: 'Des exercices issus de vrais contextes professionnels. Des cas d\'usage métier immédiatement actionnables.' },
+          { n: '03', title: 'Éthique & confidentialité', desc: 'Secret professionnel, RGPD, confidentialité clients — vos contraintes réelles intégrées dès le départ.' },
+          { n: '04', title: 'Programme sur mesure', desc: 'Chaque formation s\'adapte à votre secteur, votre niveau et vos objectifs. Aucun programme standard ne convient à tous.' },
+        ].map((u) => (
+          <div class="glass-card" style="display: flex; flex-direction: column;">
+            <span class="usp-number">{u.n}</span>
+            <h3 class="usp-title">{u.title}</h3>
+            <p class="usp-desc">{u.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FORMATEUR ========== -->
+  <section id="formateur" style="background: var(--color-dark-1); padding: 96px 0;">
+    <div class="container">
+      <div class="grid-2" style="gap: 80px; align-items: start;">
+        <div>
+          <span class="section-eyebrow">Votre formateur principal</span>
+          <h2 style="font-family: var(--font-display); font-size: clamp(40px, 5vw, 64px); font-weight: 700; color: #ffffff; line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 24px; margin-top: 4px;">Tarik Hennen.</h2>
+          <div style="width: 36px; height: 2px; background: var(--color-accent); margin-bottom: 24px;"></div>
+          <p style="font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 16px; max-width: 420px;">Ancien avocat, consultant en stratégie digitale, enseignant à l'IHECS, l'EPHEC et l'UCLouvain. Praticien IA depuis 2021 — dans des contextes où l'erreur coûte.</p>
+          <p style="font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; max-width: 420px; margin-bottom: 32px;">"Le point de départ n'est pas l'outil. C'est le travail."</p>
+          <a href="/a-propos" class="btn-text-link">Découvrir le parcours &rarr;</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          {[
+            { number: '2021', label: 'Formateur en IA depuis' },
+            { number: '250+', label: 'Professionnels formés' },
+            { number: '15 ans', label: 'D\'expérience terrain' },
+          ].map((s) => (
+            <div class="glass-card" style="padding: 20px 24px; display: flex; align-items: center; gap: 20px;">
+              <span class="stat-number" style="flex-shrink: 0;">{s.number}</span>
+              <p class="stat-label" style="margin-top: 0;">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TÉMOIGNAGES ========== -->
+  <section id="temoignages" style="background: var(--color-dark-2); padding: 96px 0;">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="section-eyebrow">Ce qu'en disent nos participants</span>
+          <h2 class="section-title">Concret, sincère,<br />pragmatique et utile.</h2>
+        </div>
+      </div>
+      <div class="grid-3" style="gap: 16px; align-items: start;">
+        {testimonials.map((t) => (
+          <div class="glass-card" style="display: flex; flex-direction: column; padding: 28px 28px 24px;">
+            <!-- Guillemet décoratif -->
+            <span style="font-family: var(--font-display); font-size: 48px; line-height: 1; color: var(--color-accent); opacity: 0.7; margin-bottom: 8px; display: block;">&ldquo;</span>
+            <!-- Pull quote -->
+            <p style="font-family: var(--font-display); font-size: 17px; font-weight: 700; color: #ffffff; line-height: 1.4; letter-spacing: -0.01em; margin-bottom: 12px; flex: 1;">{t.pull}</p>
+            <!-- Corps optionnel -->
+            {t.body && (
+              <p style="font-family: var(--font-body); font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 0;">{t.body}</p>
+            )}
+            <!-- Attribution -->
+            <div style="display: flex; align-items: center; gap: 10px; margin-top: 20px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.07);">
+              <div class="testimonial-avatar">{t.initials}</div>
+              <div>
+                <p style="font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.8); line-height: 1.3;">{t.name}</p>
+                <p style="font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 2px;">{t.role}, {t.org}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RESSOURCES ========== -->
+  <section id="ressources" style="background: var(--color-dark-1); padding: 96px 0;">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="section-eyebrow">Ressources exclusives</span>
+          <h2 class="section-title">Approfondissez votre expertise<br />entre les sessions.</h2>
+        </div>
+        <a href="/ressources-ia" class="btn-text-link" style="white-space: nowrap; flex-shrink: 0;">Toutes les ressources &rarr;</a>
+      </div>
+      <div class="grid-3">
+        {[
+          { href: '/blog', title: 'Blog', desc: 'Analyses, décryptages et actualités sur l\'IA générative pour rester à la pointe de votre domaine.', cta: 'Lire le blog' },
+          { href: '/ressources-ia', title: 'Annuaire d\'outils IA', desc: 'Notre sélection d\'outils triés par cas d\'usage, pour identifier ce qui correspond à vos contraintes professionnelles.', cta: 'Explorer l\'annuaire' },
+          { href: '/newsletter', title: 'Newsletter', desc: 'Tous les 15 jours — veille sélective et analyse de fond. Anticiper les révolutions de l\'IA plutôt que de les subir.', cta: 'S\'abonner' },
+        ].map((r) => (
+          <div class="glass-card" style="display: flex; flex-direction: column; gap: 12px; min-height: 200px;">
+            <h3 class="ressource-title">{r.title}</h3>
+            <p class="ressource-desc">{r.desc}</p>
+            <a href={r.href} class="btn-text-link" style="margin-top: auto; font-size: 14px;">{r.cta} &rarr;</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA FINAL ========== -->
+  <section id="contact-cta" class="grain-bg" style="background-color: var(--color-dark-2); padding: 96px 0;">
+    <div class="container" style="text-align: center; max-width: 680px;">
+      <div class="eyebrow-badge" style="margin-bottom: 28px; display: inline-flex;">
+        <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
+        Besoin d'une formule sur mesure ?
+      </div>
+      <h2 style="font-family: var(--font-display); font-size: clamp(28px, 4vw, 44px); font-weight: 500; color: #ffffff; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px;">
+        Parlons de votre organisation et de vos objectifs.
+      </h2>
+      <p style="font-size: 16px; color: rgba(255,255,255,0.4); line-height: 1.7; margin-bottom: 36px;">
+        Formations intra-entreprise, ateliers sur mesure ou accompagnement individuel — nous adaptons chaque programme à votre contexte.
+      </p>
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <a href="/contact" class="btn-primary">Nous contacter</a>
+        <a href="/newsletter" class="btn-outline">S'abonner à la newsletter</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

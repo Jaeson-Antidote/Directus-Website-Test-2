@@ -1,0 +1,269 @@
+---
+interface Props {
+  variant?: 'dark' | 'light';
+}
+
+const { variant = 'dark' } = Astro.props;
+
+const navLinks = [
+  { href: '/bootcamp', label: 'Bootcamp IA' },
+  { href: '/formations', label: 'Formations IA' },
+  { href: '/newsletter', label: 'Newsletter' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/a-propos', label: 'À propos' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const currentPath = Astro.url.pathname;
+const isLight = variant === 'light';
+---
+
+<nav aria-label="Navigation principale" class={isLight ? 'nav-light' : 'nav-dark'}>
+  <div class="nav-inner">
+    <!-- Logo -->
+    <a href="/" class="nav-logo" aria-label="Cercle IA — Accueil">
+      <img
+        src={isLight ? '/images/cercle-ia-logo-dark.svg' : '/images/cercle-ia-logo.svg'}
+        alt="Cercle IA"
+        width="140"
+        height="36"
+        loading="eager"
+        decoding="async"
+      />
+    </a>
+
+    <!-- Liens desktop -->
+    <ul class="nav-links" role="list">
+      {navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            aria-current={currentPath === link.href ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- CTA -->
+    <div class="nav-actions">
+      <a href="https://app.lecercle.ai" class="nav-cta" target="_blank" rel="noopener noreferrer">
+        Plateforme
+      </a>
+
+      <!-- Hamburger mobile -->
+      <button
+        class="nav-hamburger"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        id="hamburger-btn"
+      >
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+          <line x1="3" y1="6" x2="19" y2="6" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="3" y1="11" x2="19" y2="11" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="3" y1="16" x2="19" y2="16" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Menu mobile -->
+  <div class="nav-mobile" id="mobile-menu" hidden>
+    <ul role="list">
+      {navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            aria-current={currentPath === link.href ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a href="https://app.lecercle.ai" class="nav-cta" target="_blank" rel="noopener noreferrer">
+          Plateforme
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('hamburger-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  btn?.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    if (menu) menu.hidden = expanded;
+  });
+</script>
+
+<style>
+  nav {
+    height: var(--nav-height);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  nav.nav-dark {
+    background: var(--color-dark-1);
+    border-bottom: 1px solid var(--color-dark-border);
+  }
+
+  nav.nav-light {
+    background: #F5F4EE;
+    border-bottom: 1px solid rgba(6,23,23,0.08);
+  }
+
+  nav.nav-light .nav-links a {
+    color: rgba(6,23,23,0.55);
+  }
+
+  nav.nav-light .nav-links a:hover,
+  nav.nav-light .nav-links a[aria-current="page"] {
+    color: #061717;
+  }
+
+  nav.nav-light .nav-cta {
+    color: var(--color-accent-hover);
+  }
+
+  nav.nav-light .nav-mobile {
+    background: #F5F4EE;
+    border-top-color: rgba(6,23,23,0.08);
+  }
+
+  nav.nav-light .nav-mobile a {
+    color: rgba(6,23,23,0.6);
+  }
+
+  nav.nav-light .nav-mobile a:hover {
+    color: #061717;
+    background: rgba(6,23,23,0.05);
+  }
+
+  nav.nav-light .nav-hamburger svg line {
+    stroke: #061717;
+  }
+
+  .nav-inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 40px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    flex: 1;
+  }
+
+  .nav-links a {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition);
+    white-space: nowrap;
+  }
+
+  .nav-links a:hover,
+  .nav-links a[aria-current="page"] {
+    color: #ffffff;
+  }
+
+  .nav-links a[aria-current="page"] {
+    font-weight: 500;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+  }
+
+  .nav-cta {
+    color: var(--color-accent);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color var(--transition);
+  }
+
+  .nav-cta:hover {
+    color: var(--color-accent-hover);
+  }
+
+  .nav-hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .nav-mobile {
+    background: var(--color-dark-1);
+    border-top: 1px solid var(--color-dark-border);
+    padding: 16px 20px;
+  }
+
+  .nav-mobile ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .nav-mobile a {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: var(--radius-md);
+    transition: color var(--transition), background var(--transition);
+  }
+
+  .nav-mobile a:hover,
+  .nav-mobile a[aria-current="page"] {
+    color: #ffffff;
+    background: rgba(255,255,255,0.05);
+  }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    nav { height: auto; min-height: var(--nav-height); }
+    .nav-inner { height: var(--nav-height); }
+  }
+
+  @media (max-width: 768px) {
+    .nav-inner { padding: 0 20px; }
+  }
+</style>

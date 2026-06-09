@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { breadcrumb } from '../lib/schema';
+
+const schema = breadcrumb([{ name: 'Contact', href: '/contact' }]);
+---
+
+<BaseLayout
+  title="Contact — Cercle IA"
+  description="Une question sur nos formations, accompagnements ou outils IA ? Contactez Cercle IA — formations IA pour professionnels à Bruxelles et en ligne."
+  ogImage="/og/contact.jpg"
+  ogImageAlt="Contact — Cercle IA"
+  schema={schema}
+>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero-gradient grain-bg" style="padding: 80px 0 72px; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: -120px; right: -80px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(247,171,110,0.06) 0%, transparent 70%); pointer-events: none;" aria-hidden="true"></div>
+
+    <div class="container">
+      <div style="max-width: 640px;">
+        <div class="eyebrow-badge" style="margin-bottom: 24px; display: inline-flex;">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
+          Bruxelles & en ligne
+        </div>
+
+        <h1 style="font-family: var(--font-display); font-size: clamp(36px, 4.5vw, 60px); font-weight: 700; color: #ffffff; line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 20px;">
+          Parlons de votre<br />
+          <span style="color: rgba(255,255,255,0.55);">projet.</span>
+        </h1>
+
+        <p style="font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.75; max-width: 520px;">
+          Formation sur mesure, bootcamp, atelier intra-entreprise ou simple question — nous répondons dans les 24 heures ouvrables.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FORMULAIRE + INFOS ========== -->
+  <section style="background: var(--color-dark-2); padding: 96px 0;">
+    <div class="container">
+      <div class="grid-2" style="gap: 64px; align-items: start;">
+
+        <!-- Formulaire -->
+        <div>
+          <h2 style="font-family: var(--font-display); font-size: clamp(24px, 3vw, 36px); font-weight: 500; color: #ffffff; line-height: 1.2; letter-spacing: -0.015em; margin-bottom: 32px;">Envoyez-nous un message.</h2>
+
+          <form name="contact" method="POST" data-netlify="true" style="display: flex; flex-direction: column; gap: 20px;">
+            <input type="hidden" name="form-name" value="contact" />
+
+            <div class="grid-2" style="gap: 16px;">
+              <div>
+                <label for="prenom" class="form-label">Prénom</label>
+                <input id="prenom" type="text" name="prenom" placeholder="Marie" required class="input-dark" />
+              </div>
+              <div>
+                <label for="nom" class="form-label">Nom</label>
+                <input id="nom" type="text" name="nom" placeholder="Dupont" required class="input-dark" />
+              </div>
+            </div>
+
+            <div>
+              <label for="email" class="form-label">Adresse e-mail</label>
+              <input id="email" type="email" name="email" placeholder="marie@cabinet.be" required class="input-dark" />
+            </div>
+
+            <div>
+              <label for="organisation" class="form-label">Organisation (optionnel)</label>
+              <input id="organisation" type="text" name="organisation" placeholder="Cabinet, entreprise, université…" class="input-dark" />
+            </div>
+
+            <div>
+              <label for="message" class="form-label">Votre message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Décrivez votre contexte, votre équipe, vos objectifs — plus vous êtes précis, mieux nous pourrons vous orienter."
+                required
+                class="input-dark"
+                style="resize: vertical; min-height: 140px;"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" style="align-self: flex-start; cursor: pointer;">
+              Je veux plus d'informations
+            </button>
+          </form>
+        </div>
+
+        <!-- Informations de contact -->
+        <div style="display: flex; flex-direction: column; gap: 20px; padding-top: 8px;">
+
+          <div class="glass-card">
+            <p style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.25); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px;">Adresse</p>
+            <p style="font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.6;">19, Avenue des Volontaires<br />1160 Bruxelles (BE)</p>
+          </div>
+
+          <div class="glass-card">
+            <p style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.25); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px;">Pour qui</p>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              {[
+                'Formation pour votre équipe (intra-entreprise)',
+                'Inscription au Bootcamp IA',
+                'Formation individuelle ou coaching',
+                'Partenariat institutionnel',
+                'Question sur nos programmes',
+              ].map((item) => (
+                <div style="display: flex; gap: 10px; align-items: flex-start;">
+                  <span style="color: var(--color-accent); font-weight: 700; font-size: 13px; flex-shrink: 0; margin-top: 1px;">→</span>
+                  <p style="font-size: 14px; color: rgba(255,255,255,0.5);">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="glass-card">
+            <p style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.25); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px;">Entité légale</p>
+            <p style="font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7;">Antidote SRL<br />BCE 0773.969.928</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RESSOURCES ========== -->
+  <section style="background: var(--color-dark-1); padding: 72px 0;">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="section-eyebrow">Pas encore prêt ?</span>
+          <h2 class="section-title" style="font-size: clamp(22px, 2.8vw, 34px);">Commencez par là.</h2>
+        </div>
+      </div>
+      <div class="grid-3">
+        {[
+          { href: '/bootcamp', title: 'Bootcamp IA', desc: 'Découvrez le programme intensif de 3 sessions pour maîtriser l\'IA générative dans votre pratique.', cta: 'Voir le programme' },
+          { href: '/newsletter', title: 'Newsletter', desc: 'Tous les 15 jours — veille sélective et analyse de fond pour anticiper les transformations de l\'IA.', cta: 'S\'abonner' },
+          { href: '/a-propos', title: 'Notre approche', desc: 'Comprendre qui nous sommes, pourquoi Cercle IA existe et ce qui rend notre méthode différente.', cta: 'En savoir plus' },
+        ].map((r) => (
+          <div class="glass-card" style="display: flex; flex-direction: column; gap: 12px; min-height: 200px;">
+            <h3 class="ressource-title">{r.title}</h3>
+            <p class="ressource-desc">{r.desc}</p>
+            <a href={r.href} class="btn-text-link" style="margin-top: auto; font-size: 14px;">{r.cta} &rarr;</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

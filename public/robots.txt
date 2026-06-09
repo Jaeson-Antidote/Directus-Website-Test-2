@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lecercle.ai/sitemap-index.xml
