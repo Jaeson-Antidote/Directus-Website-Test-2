@@ -1,0 +1,38 @@
+---
+import type { ImageMetadata } from 'astro';
+import { getCollection, render } from 'astro:content';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+
+export async function getStaticPaths() {
+  const editions = await getCollection('newsletter', ({ data }) => !data.draft);
+  return editions.map((edition) => ({
+    params: { slug: edition.id },
+    props: { edition },
+  }));
+}
+
+const newsletterImages = import.meta.glob<{ default: ImageMetadata }>('../../assets/newsletter/*', { eager: true });
+
+const { edition } = Astro.props;
+const { Content, headings } = await render(edition);
+const { title, description, pubDate, updatedDate, category, edition: editionNumber, tags, image, imageAlt } = edition.data;
+
+const imageMetadata = image ? newsletterImages[`../../assets/newsletter/${image}`]?.default : undefined;
+---
+
+<ArticleLayout
+  {title}
+  {description}
+  {pubDate}
+  {updatedDate}
+  category={category ?? 'Newsletter'}
+  edition={editionNumber}
+  {tags}
+  image={imageMetadata}
+  {imageAlt}
+  collection="newsletter"
+  slug={edition.id}
+  {headings}
+>
+  <Content />
+</ArticleLayout>

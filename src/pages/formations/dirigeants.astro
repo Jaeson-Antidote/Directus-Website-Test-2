@@ -1,0 +1,346 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { breadcrumb, courseSchema, faqSchema } from '../../lib/schema';
+
+const bc = breadcrumb([
+  { name: 'Formations IA', href: '/formations' },
+  { name: 'Formation IA pour dirigeants', href: '/formations/dirigeants' },
+]);
+
+const course = courseSchema({
+  name: 'Formation IA pour dirigeants',
+  description: 'Pilotez la transformation IA de votre organisation avec méthode. Stratégie, gouvernance et décision augmentée pour dirigeants et comités de direction.',
+  url: '/formations/dirigeants',
+});
+
+const faq = faqSchema([
+  {
+    question: 'La formation est-elle adaptée aux non-techniciens ?',
+    answer: 'C\'est précisément son objectif. Pas une ligne de code, pas de jargon technique. Uniquement ce dont un dirigeant a besoin pour décider et gouverner.',
+  },
+  {
+    question: 'Peut-on organiser une session pour tout notre comité de direction ?',
+    answer: 'Oui. C\'est le format le plus courant pour cette formation. Nous adaptons les cas pratiques à votre secteur et vos enjeux spécifiques.',
+  },
+  {
+    question: 'Combien de temps faut-il pour voir des résultats ?',
+    answer: 'La plupart des participants mettent en place les premières mesures de gouvernance dans les deux semaines suivant la formation. Les transformations plus structurelles demandent 3 à 6 mois.',
+  },
+  {
+    question: 'La formation couvre-t-elle des outils spécifiques ?',
+    answer: 'Nous couvrons les principales catégories d\'outils pertinents pour votre secteur, sans partis pris commercial. L\'objectif est de vous donner les critères d\'évaluation, pas de vous vendre un outil particulier.',
+  },
+]);
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [course, bc, faq],
+};
+
+const problemSolutionRows = [
+  {
+    problem: 'Vous savez que l\'IA va transformer votre secteur, mais vous ne savez pas par où commencer ni quoi déléguer.',
+    solutionTitle: 'Une vision claire et une feuille de route',
+    solutionDesc: 'Comprenez les forces et les limites réelles de l\'IA pour prendre des décisions informées sur où investir et où ne pas investir.',
+  },
+  {
+    problem: 'Vos équipes utilisent l\'IA de façon disparate, sans cadre commun ni politique claire.',
+    solutionTitle: 'Un cadre de gouvernance opérationnel',
+    solutionDesc: 'Mettez en place des politiques d\'usage, des règles de confidentialité et un cadre de supervision que vos équipes peuvent appliquer.',
+  },
+  {
+    problem: 'Vous ne pouvez pas évaluer les projets IA qui vous sont proposés ni mesurer leur retour réel.',
+    solutionTitle: 'Les bons critères d\'évaluation',
+    solutionDesc: 'Apprenez à évaluer un projet IA, identifier les promesses exagérées et mesurer le retour sur investissement réel de vos initiatives.',
+  },
+];
+
+const modules = [
+  {
+    num: '01',
+    title: 'Comprendre l\'IA pour décider',
+    items: [
+      'Ce que l\'IA peut et ne peut pas faire réellement',
+      'Panorama des cas d\'usage à fort ROI pour votre secteur',
+      'Évaluer une solution IA sans compétence technique',
+      'Les risques réels : biais, hallucinations, dépendance fournisseur',
+    ],
+  },
+  {
+    num: '02',
+    title: 'Gouvernance et politique IA',
+    items: [
+      'Construire une politique d\'usage IA pour vos équipes',
+      'Gérer la confidentialité des données et la conformité RGPD',
+      'Cadre de supervision et de contrôle qualité des outputs',
+      'Communication interne autour de la transformation IA',
+    ],
+  },
+  {
+    num: '03',
+    title: 'Stratégie et transformation organisationnelle',
+    items: [
+      'Identifier les processus à automatiser en priorité',
+      'Construire un plan de transformation IA par étapes',
+      'Accompagner le changement sans résistance interne',
+      'Mesurer le ROI et définir les KPIs pertinents',
+    ],
+  },
+];
+
+const faqs = [
+  {
+    q: 'La formation est-elle adaptée aux non-techniciens ?',
+    a: 'C\'est précisément son objectif. Pas une ligne de code, pas de jargon technique. Uniquement ce dont un dirigeant a besoin pour décider et gouverner.',
+  },
+  {
+    q: 'Peut-on organiser une session pour tout notre comité de direction ?',
+    a: 'Oui. C\'est le format le plus courant pour cette formation. Nous adaptons les cas pratiques à votre secteur et vos enjeux spécifiques.',
+  },
+  {
+    q: 'Combien de temps faut-il pour voir des résultats ?',
+    a: 'La plupart des participants mettent en place les premières mesures de gouvernance dans les deux semaines suivant la formation. Les transformations plus structurelles demandent 3 à 6 mois.',
+  },
+  {
+    q: 'La formation couvre-t-elle des outils spécifiques ?',
+    a: 'Nous couvrons les principales catégories d\'outils pertinents pour votre secteur, sans partis pris commercial. L\'objectif est de vous donner les critères d\'évaluation, pas de vous vendre un outil particulier.',
+  },
+];
+---
+
+<BaseLayout
+  title="Formation IA pour dirigeants — Cercle IA"
+  description="Pilotez la transformation IA de votre organisation avec méthode. Formation pour dirigeants et comités de direction : stratégie, gouvernance, décision augmentée. Sur mesure."
+  ogImage="/og/formations-dirigeants.jpg"
+  ogImageAlt="Formation IA pour dirigeants — Cercle IA"
+  schema={schema}
+>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero-gradient grain-bg" style="padding: 96px 0 112px; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: -120px; right: -80px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(247,171,110,0.06) 0%, transparent 70%); pointer-events: none;" aria-hidden="true"></div>
+
+    <div class="container">
+      <div class="hero-inner">
+
+        <div>
+          <div class="eyebrow-badge" style="margin-bottom: 28px; display: inline-flex;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
+            Formation IA · Management
+          </div>
+
+          <h1 class="hero-title">
+            Pilotez la transformation IA<br />
+            <span style="color: rgba(255,255,255,0.55);">de votre organisation.</span>
+          </h1>
+
+          <p style="font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.75; max-width: 560px; margin-bottom: 36px;">
+            Ni une introduction technique, ni une conférence de tendances. Une formation pour décider : où aller, comment y aller, quoi exiger de vos équipes et de vos fournisseurs.
+          </p>
+
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 32px;">
+            <a href="/contact?sujet=dirigeants" class="btn-primary">Demander un devis &rarr;</a>
+            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">Planifier un appel</a>
+          </div>
+
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+            <span style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.2); letter-spacing: 0.08em; text-transform: uppercase; margin-right: 4px; white-space: nowrap;">Pour</span>
+            {['Dirigeants', 'DG', 'C-Suite', 'Managers de transition'].map((p) => (
+              <span class="tag-outline" style="font-size: 10px; padding: 3px 10px;">{p}</span>
+            ))}
+          </div>
+        </div>
+
+        <div style="padding-top: 36px;">
+          <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius-xl); padding: 36px 32px;">
+            <h2 style="font-family: var(--font-display); font-size: 26px; font-weight: 700; color: #ffffff; line-height: 1.2; letter-spacing: -0.015em; margin-bottom: 28px;">Détails de la formation</h2>
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+              {[
+                {
+                  label: 'Durée adaptée à votre organisation',
+                  icon: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+                },
+                {
+                  label: 'En ligne ou en présentiel',
+                  icon: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
+                },
+                {
+                  label: 'Français',
+                  icon: '<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
+                },
+                {
+                  label: 'Focus décision et gouvernance',
+                  icon: '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>',
+                },
+              ].map((item) => (
+                <div style="display: flex; align-items: center; gap: 16px;">
+                  <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(247,171,110,0.12); border: 1px solid rgba(247,171,110,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={item.icon} />
+                  </div>
+                  <p style="font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.8); font-family: var(--font-body);">{item.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROBLÈME / SOLUTION ========== -->
+  <section style="background: var(--color-dark-2); padding: 96px 0;">
+    <div class="container">
+
+      <div style="max-width: 720px; margin-bottom: 56px;">
+        <span class="section-eyebrow">Pourquoi cette formation</span>
+        <h2 class="section-title">Les défis du dirigeant face à la transformation IA</h2>
+        <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin-top: 20px;">
+          La transformation IA est une décision stratégique, pas technique. Elle exige une vision claire, un cadre de gouvernance et une capacité à évaluer ce qui mérite d'être investi.
+        </p>
+      </div>
+
+      <div style="background: var(--color-light-1); border-radius: calc(var(--radius-lg) + 4px); padding: 4px; box-shadow: 0 4px 32px rgba(0,0,0,0.3);">
+      <div style="border: 1px solid rgba(6,24,23,0.1); border-radius: var(--radius-lg); overflow: hidden; display: grid; grid-template-columns: 1fr 1fr;">
+
+        <div style="padding: 16px 28px; background: rgba(6,24,23,0.04); border-right: 1px solid rgba(6,24,23,0.08); border-bottom: 1px solid rgba(6,24,23,0.08);">
+          <p style="font-size: 11px; font-weight: 600; color: rgba(6,24,23,0.4); letter-spacing: 0.1em; text-transform: uppercase;">Le problème</p>
+        </div>
+        <div style="padding: 16px 28px; background: rgba(247,171,110,0.1); border-bottom: 1px solid rgba(247,171,110,0.15);">
+          <p style="font-size: 11px; font-weight: 600; color: var(--color-accent-hover); letter-spacing: 0.1em; text-transform: uppercase;">Ce que vous allez gagner</p>
+        </div>
+
+        {problemSolutionRows.map((row, i) => (
+          <>
+            <div style={`padding: 28px; background: rgba(6,24,23,0.02); border-right: 1px solid rgba(6,24,23,0.08); display: flex; gap: 14px; align-items: flex-start;${i < problemSolutionRows.length - 1 ? ' border-bottom: 1px solid rgba(6,24,23,0.06);' : ''}`}>
+              <span style="width: 18px; height: 18px; border-radius: 50%; border: 1px solid rgba(6,24,23,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 3px;">
+                <span style="width: 5px; height: 5px; border-radius: 50%; background: rgba(6,24,23,0.3); display: block;"></span>
+              </span>
+              <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">{row.problem}</p>
+            </div>
+            <div style={`padding: 28px; background: rgba(247,171,110,0.05); display: flex; gap: 14px; align-items: flex-start;${i < problemSolutionRows.length - 1 ? ' border-bottom: 1px solid rgba(247,171,110,0.1);' : ''}`}>
+              <span style="width: 18px; height: 18px; border-radius: 50%; background: rgba(247,171,110,0.25); border: 1px solid rgba(247,171,110,0.5); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 3px;">
+                <span style="color: var(--color-accent-hover); font-size: 10px; font-weight: 700; line-height: 1;">✓</span>
+              </span>
+              <div>
+                <p style="font-size: 15px; font-weight: 600; color: var(--color-text-on-light); line-height: 1.4; margin-bottom: 6px;">{row.solutionTitle}</p>
+                <p style="font-size: 13px; color: var(--color-text-subtle); line-height: 1.75;">{row.solutionDesc}</p>
+              </div>
+            </div>
+          </>
+        ))}
+
+      </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== PROGRAMME ========== -->
+  <section style="background: var(--color-dark-1); padding: 96px 0;">
+    <div class="container">
+
+      <div style="max-width: 720px; margin-bottom: 48px;">
+        <span class="section-eyebrow">Contenu de la formation</span>
+        <h2 class="section-title">Ce que couvre la formation</h2>
+      </div>
+
+      <div class="grid-3" style="gap: 20px;">
+        {modules.map((m) => (
+          <div class="glass-card" style="display: flex; flex-direction: column; gap: 16px;">
+            <span class="usp-number">{m.num}</span>
+            <h3 class="usp-title">{m.title}</h3>
+            <div style="display: flex; flex-direction: column; gap: 9px;">
+              {m.items.map((item) => (
+                <div style="display: flex; gap: 10px; align-items: flex-start;">
+                  <span style="color: var(--color-accent); font-size: 12px; flex-shrink: 0; margin-top: 2px;">▸</span>
+                  <p style="font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5;">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== PRIX ========== -->
+  <section id="inscription" style="background: var(--color-light-1); padding: 96px 0;">
+    <div class="container">
+      <div class="grid-2" style="gap: 56px; align-items: start;">
+
+        <div>
+          <span class="section-eyebrow">Format sur mesure</span>
+          <h2 class="section-title" style="color: var(--color-text-on-light);">Adapté à votre organisation</h2>
+          <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.8; margin-top: 16px; margin-bottom: 32px;">
+            Nous adaptons la formation à votre secteur, votre organisation et vos enjeux spécifiques. Session individuelle, comité de direction ou séminaire d'équipe.
+          </p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="/contact?sujet=dirigeants" class="btn-primary">Demander un devis &rarr;</a>
+            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline-dark">Planifier un appel</a>
+          </div>
+        </div>
+
+        <div class="card-white">
+          <p style="font-size: 11px; font-weight: 600; color: rgba(6,24,23,0.35); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">Format</p>
+          <p style="font-family: var(--font-display); font-size: 36px; font-weight: 700; color: var(--color-text-on-light); line-height: 1.1; margin-bottom: 4px;">Sur mesure</p>
+          <p style="font-size: 13px; color: rgba(6,24,23,0.35); margin-bottom: 24px;">Sessions intra · Tarif selon format</p>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            {[
+              'Modules adaptés à votre contexte',
+              'Analyse de vos cas d\'usage',
+              'Cadre de gouvernance personnalisé',
+              'Accès à la bibliothèque de ressources',
+              'Suivi post-formation (1 mois)',
+            ].map((item) => (
+              <div style="display: flex; gap: 10px; align-items: center;">
+                <span style="color: var(--color-accent); font-weight: 700; font-size: 14px; flex-shrink: 0;">✓</span>
+                <p style="font-size: 14px; color: var(--color-text-subtle);">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section style="background: var(--color-dark-2); padding: 96px 0;">
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto;">
+        <span class="section-eyebrow">Questions fréquentes</span>
+        <h2 class="section-title" style="margin-bottom: 48px;">Ce que se demandent les dirigeants avant de s'inscrire</h2>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          {faqs.map((item) => (
+            <div class="glass-card" style="padding: 0;">
+              <details style="display: block;">
+                <summary style="padding: 24px 28px; cursor: pointer; font-size: 15px; font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px;">{item.q}</summary>
+                <div style="padding: 0 28px 24px;">
+                  <p style="font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.75;">{item.a}</p>
+                </div>
+              </details>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA FINAL ========== -->
+  <section style="background: var(--color-dark-1); padding: 96px 0;">
+    <div class="container" style="text-align: center; max-width: 680px;">
+      <span class="section-eyebrow">Une question sur la formation ?</span>
+      <h2 class="section-title">Un échange de 20 minutes pour calibrer votre programme</h2>
+      <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin: 20px 0 32px;">
+        Chaque organisation a des enjeux différents. Parlons-en pour définir le format et le contenu qui correspond à votre situation.
+      </p>
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-primary">Planifier un appel &rarr;</a>
+        <a href="/formations" class="btn-outline">Voir toutes les formations</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

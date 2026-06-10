@@ -91,13 +91,13 @@ const schema = breadcrumb([{ name: 'Contact', href: '/contact' }]);
         <!-- Informations de contact -->
         <div style="display: flex; flex-direction: column; gap: 20px; padding-top: 8px;">
 
-          <div class="glass-card">
-            <p style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.25); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px;">Adresse</p>
-            <p style="font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.6;">19, Avenue des Volontaires<br />1160 Bruxelles (BE)</p>
+          <div class="card-white">
+            <p style="font-size: 11px; font-weight: 600; color: rgba(6,24,23,0.4); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px;">Adresse</p>
+            <p style="font-size: 15px; color: var(--color-text-on-light); line-height: 1.6;">19, Avenue des Volontaires<br />1160 Bruxelles (BE)</p>
           </div>
 
-          <div class="glass-card">
-            <p style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.25); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px;">Pour qui</p>
+          <div class="card-white">
+            <p style="font-size: 11px; font-weight: 600; color: rgba(6,24,23,0.4); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px;">Pour qui</p>
             <div style="display: flex; flex-direction: column; gap: 8px;">
               {[
                 'Formation pour votre équipe (intra-entreprise)',
@@ -107,16 +107,16 @@ const schema = breadcrumb([{ name: 'Contact', href: '/contact' }]);
                 'Question sur nos programmes',
               ].map((item) => (
                 <div style="display: flex; gap: 10px; align-items: flex-start;">
-                  <span style="color: var(--color-accent); font-weight: 700; font-size: 13px; flex-shrink: 0; margin-top: 1px;">→</span>
-                  <p style="font-size: 14px; color: rgba(255,255,255,0.5);">{item}</p>
+                  <span style="color: var(--color-accent-hover); font-weight: 700; font-size: 13px; flex-shrink: 0; margin-top: 1px;">→</span>
+                  <p style="font-size: 14px; color: var(--color-text-subtle);">{item}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div class="glass-card">
-            <p style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.25); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px;">Entité légale</p>
-            <p style="font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7;">Antidote SRL<br />BCE 0773.969.928</p>
+          <div class="card-white">
+            <p style="font-size: 11px; font-weight: 600; color: rgba(6,24,23,0.4); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px;">Entité légale</p>
+            <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.7;">Antidote SRL<br />BCE 0773.969.928</p>
           </div>
 
         </div>

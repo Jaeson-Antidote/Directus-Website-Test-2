@@ -98,7 +98,7 @@ const logos = ['UCLouvain', 'EPHEC', 'IHECS', 'AKT CCI Liège', 'Wallonia.be', '
 
           <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
             <a href="/formations" class="btn-primary">Découvrir les formations</a>
-            <a href="/contact" class="btn-outline">Planifier un appel</a>
+            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">Planifier un appel</a>
           </div>
         </div>
 
@@ -289,12 +289,12 @@ const logos = ['UCLouvain', 'EPHEC', 'IHECS', 'AKT CCI Liège', 'Wallonia.be', '
   </section>
 
   <!-- ========== FEATURES ========== -->
-  <section id="benefices" style="background: var(--color-dark-2); padding: 96px 0;">
+  <section id="benefices" style="background: var(--color-light-1); padding: 96px 0;">
     <div class="container">
       <div class="section-header">
         <div>
           <span class="section-eyebrow">Pourquoi se former avec Cercle IA</span>
-          <h2 class="section-title">L'IA générative transformera<br />votre pratique professionnelle.</h2>
+          <h2 class="section-title" style="color: var(--color-text-on-light);">L'IA générative transformera<br />votre pratique professionnelle.</h2>
         </div>
       </div>
       <div class="grid-3">
@@ -303,7 +303,7 @@ const logos = ['UCLouvain', 'EPHEC', 'IHECS', 'AKT CCI Liège', 'Wallonia.be', '
           { icon: '◈', title: 'Augmentez vos performances', desc: 'Livrez des résultats supérieurs en moins de temps. Développez des synergies d\'équipe grâce aux outils d\'IA collaborative, sans sacrifier le jugement professionnel.' },
           { icon: '◇', title: 'Prenez l\'avantage concurrentiel', desc: 'Explorez de nouvelles manières de créer de la valeur pour vos clients. Franchissez le cap vers une pratique professionnelle augmentée par l\'IA.' },
         ].map((f) => (
-          <div class="glass-card" style="display: flex; flex-direction: column;">
+          <div class="card-white" style="display: flex; flex-direction: column;">
             <div class="icon-circle-glass" style="margin-bottom: 20px;">
               <span style="font-size: 18px; color: var(--color-accent);">{f.icon}</span>
             </div>
@@ -335,7 +335,7 @@ const logos = ['UCLouvain', 'EPHEC', 'IHECS', 'AKT CCI Liège', 'Wallonia.be', '
           <h3 style="font-family: var(--font-display); font-size: 28px; font-weight: 700; color: #ffffff; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px;">Bootcamp IA Générative</h3>
           <p style="font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.75; max-width: 520px; margin-bottom: 24px;">Un programme intensif pour comprendre, manipuler et intégrer l'IA dans son quotidien professionnel. Idéal pour tout profil souhaitant passer à l'action, sans prérequis techniques.</p>
           <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
-            <a href="/bootcamp" class="btn-primary btn-sm">S'inscrire sur la liste d'attente</a>
+            <a href="#" data-open-modal="waitlist" class="btn-primary btn-sm">S'inscrire sur la liste d'attente</a>
             <a href="/bootcamp" class="btn-text-link" style="font-size: 14px;">Voir le programme &rarr;</a>
           </div>
         </div>
@@ -442,12 +442,12 @@ const logos = ['UCLouvain', 'EPHEC', 'IHECS', 'AKT CCI Liège', 'Wallonia.be', '
   </section>
 
   <!-- ========== RESSOURCES ========== -->
-  <section id="ressources" style="background: var(--color-dark-1); padding: 96px 0;">
+  <section id="ressources" style="background: var(--color-light-1); padding: 96px 0;">
     <div class="container">
       <div class="section-header">
         <div>
           <span class="section-eyebrow">Ressources exclusives</span>
-          <h2 class="section-title">Approfondissez votre expertise<br />entre les sessions.</h2>
+          <h2 class="section-title" style="color: var(--color-text-on-light);">Approfondissez votre expertise<br />entre les sessions.</h2>
         </div>
         <a href="/ressources-ia" class="btn-text-link" style="white-space: nowrap; flex-shrink: 0;">Toutes les ressources &rarr;</a>
       </div>
@@ -457,7 +457,7 @@ const logos = ['UCLouvain', 'EPHEC', 'IHECS', 'AKT CCI Liège', 'Wallonia.be', '
           { href: '/ressources-ia', title: 'Annuaire d\'outils IA', desc: 'Notre sélection d\'outils triés par cas d\'usage, pour identifier ce qui correspond à vos contraintes professionnelles.', cta: 'Explorer l\'annuaire' },
           { href: '/newsletter', title: 'Newsletter', desc: 'Tous les 15 jours — veille sélective et analyse de fond. Anticiper les révolutions de l\'IA plutôt que de les subir.', cta: 'S\'abonner' },
         ].map((r) => (
-          <div class="glass-card" style="display: flex; flex-direction: column; gap: 12px; min-height: 200px;">
+          <div class="card-white" style="display: flex; flex-direction: column; gap: 12px; min-height: 200px;">
             <h3 class="ressource-title">{r.title}</h3>
             <p class="ressource-desc">{r.desc}</p>
             <a href={r.href} class="btn-text-link" style="margin-top: auto; font-size: 14px;">{r.cta} &rarr;</a>
@@ -482,7 +482,7 @@ const logos = ['UCLouvain', 'EPHEC', 'IHECS', 'AKT CCI Liège', 'Wallonia.be', '
       </p>
       <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
         <a href="/contact" class="btn-primary">Nous contacter</a>
-        <a href="/newsletter" class="btn-outline">S'abonner à la newsletter</a>
+        <a href="https://www.linkedin.com/newsletters/cercle-ia-7353754146262401025/" target="_blank" rel="noopener noreferrer" class="btn-outline">S'abonner à la newsletter</a>
       </div>
     </div>
   </section>

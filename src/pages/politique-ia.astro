@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { breadcrumb } from '../lib/schema';
+
+const schema = breadcrumb([{ name: 'Politique IA', href: '/politique-ia' }]);
+---
+
+<BaseLayout
+  title="Politique IA — Cercle IA"
+  description="Notre engagement sur l'utilisation responsable de l'IA : transparence, protection des données et principes éthiques. Politique IA de Cercle IA."
+  ogImage="/og/default.jpg"
+  ogImageAlt="Politique IA — Cercle IA"
+  schema={schema}
+  robots="index,follow"
+>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero-gradient grain-bg" style="padding: 64px 0 72px; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: -120px; right: -80px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(247,171,110,0.06) 0%, transparent 70%); pointer-events: none;" aria-hidden="true"></div>
+
+    <div class="container" style="max-width: 720px;">
+      <div class="eyebrow-badge" style="margin-bottom: 24px; display: inline-flex;">
+        <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
+        Charte &amp; engagements
+      </div>
+
+      <h1 class="hero-title">Politique IA</h1>
+
+      <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.75; margin-top: 16px; max-width: 560px;">
+        Dernière mise à jour : juin 2026. Notre approche de l'intelligence artificielle repose sur trois piliers : transparence, responsabilité et protection de vos données.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== CONTENT ========== -->
+  <section style="background: var(--color-light-1); padding: 80px 0;">
+    <div class="container" style="max-width: 720px;">
+
+      <!-- Notre approche de l'IA -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Notre approche de l'IA</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85; margin-bottom: 12px;">
+          Cercle IA utilise l'intelligence artificielle comme outil d'assistance, jamais comme substitut au jugement humain. Nos formateurs restent responsables de tout contenu pédagogique produit ou validé dans le cadre de nos formations.
+        </p>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          Nous formons les professionnels à utiliser l'IA avec discernement : identifier les limites des modèles, vérifier les outputs, maintenir leur responsabilité professionnelle.
+        </p>
+      </div>
+
+      <!-- Outils IA utilisés -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Outils IA utilisés</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85; margin-bottom: 12px;">
+          Dans le cadre de nos activités (formation, création de contenu, support), nous utilisons les outils IA suivants :
+        </p>
+        <ul style="list-style: disc; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; margin-top: 12px; margin-bottom: 16px;">
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">ChatGPT (OpenAI) : rédaction et analyse de contenu pédagogique</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Claude (Anthropic) : recherche, synthèse et révision de contenu</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Perplexity : veille et recherche documentaire</li>
+        </ul>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          Ces outils sont utilisés uniquement par notre équipe interne, sous supervision humaine. Vos données personnelles ne sont jamais traitées par ces outils sans votre consentement explicite.
+        </p>
+      </div>
+
+      <!-- Données personnelles et IA -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Données personnelles et IA</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85; margin-bottom: 12px;">
+          Aucune donnée personnelle vous concernant (nom, email, données d'entreprise) n'est soumise à un traitement IA sans votre consentement explicite.
+        </p>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85; margin-bottom: 12px;">
+          Lors de nos formations, nous enseignons systématiquement des protocoles d'anonymisation pour que vous puissiez utiliser l'IA sans compromettre la confidentialité de vos propres clients.
+        </p>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          Nos systèmes de gestion (CRM, email, facturation) utilisent des automatisations, mais les décisions importantes (accès, contrats, accompagnement) restent prises par des humains.
+        </p>
+      </div>
+
+      <!-- Transparence sur le contenu IA -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Transparence sur le contenu IA</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85; margin-bottom: 12px;">
+          Certains supports pédagogiques (brouillons, exemples, exercices) peuvent être assistés par IA, puis révisés et validés par nos formateurs.
+        </p>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          Nous n'utilisons pas d'IA générative pour rédiger des témoignages, des avis clients ou des données présentées comme factuelles sans vérification.
+        </p>
+      </div>
+
+      <!-- Prise de décision automatisée -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Prise de décision automatisée</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          Aucune décision significative vous concernant (admission, facturation, accès aux formations) n'est prise de façon entièrement automatisée. Un membre de notre équipe est toujours impliqué dans les décisions qui vous affectent.
+        </p>
+      </div>
+
+      <!-- Évolution de cette politique -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Évolution de cette politique</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85; margin-bottom: 12px;">
+          Le domaine de l'IA évolue rapidement. Cette politique est révisée tous les 6 mois ou lors de changements importants dans nos pratiques. La date de mise à jour est indiquée en haut de cette page.
+        </p>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          Pour toute question, contactez-nous à <a href="mailto:hello@lecercle.ai" style="color: var(--color-accent);">hello@lecercle.ai</a>.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== CTA FINAL ========== -->
+  <section style="background: var(--color-dark-1); padding: 80px 0; text-align: center;">
+    <div class="container" style="max-width: 600px;">
+      <span class="section-eyebrow">Des questions ?</span>
+      <h2 class="section-title" style="margin-top: 12px; margin-bottom: 20px;">Contactez-nous</h2>
+      <p style="font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 36px;">
+        Pour toute question relative à notre politique IA, au traitement de vos données ou à nos pratiques, notre équipe vous répond.
+      </p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="/contact" class="btn-primary">Envoyer un message &rarr;</a>
+        <a href="/politique-confidentialite" class="btn-outline">Politique de confidentialité</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

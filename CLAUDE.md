@@ -39,18 +39,26 @@ public/
 
 Référence absolue : `./cercle-ia-design-system.md`
 
-- Direction 3 dark premium glassmorphism — toutes les sections sont sombres sauf Ressources
+- Direction 3 dark premium glassmorphism — sections majoritairement sombres, ~25 % claires
 - Couleur accent : `#F7AB6E` (orange) — CTAs, eyebrow labels, stats, guillemets déco
 - Fonds sombres : `#061717` (dark-1) et `#092727` (dark-2)
-- Fonds clairs : `#FAFAFA` — uniquement section Ressources
+- Fonds clairs : `#F5F3EF` (`--color-light-1`, beige chaud) — Features, Ressources, Session & Prix, Pour qui
+- Cards blanches : `#FDFCFB` (`--color-card-white`) — légèrement teinté, jamais blanc pur
+- Heroes, nav, footer et CTAs finaux : toujours sombres
 - Titres : Playfair Display (serif)
 - Corps/UI : Inter (sans-serif)
-- Cards sur fond sombre : `glass-card` (glassmorphism) — jamais de card blanche sur fond sombre
-- Cards blanches (`card-white`) : uniquement sur fond clair
+- Cards sur fond sombre : `glass-card` (glassmorphism) — règle par défaut
+- Cards sur fond clair : `card-white` — jamais de glass-card sur fond clair
+- **Pattern mixte** : section sombre + `card-white` pour des blocs mis en valeur (ex. infos contact, tableau bootcamp, formations à propos)
+- Sur fond clair : ajouter `style="color: var(--color-text-on-light);"` sur chaque `<h2 class="section-title">`
+- Sur fond clair : texte corps → `var(--color-text-subtle)` (#7B7B7B) ou `var(--color-text-muted)` (#333333)
+- Formulaires sur fond clair : `.input-light` + `.form-label-light` (jamais `.input-dark` sur fond blanc)
 - Boutons CTA : `border-radius: 30px` (pilule) obligatoire
-- Bouton secondaire : `btn-outline` (glassmorphism, backdrop-filter)
+- Bouton secondaire sur fond clair : `.btn-outline-dark` (jamais `.btn-outline` — invisible sur clair)
+- Bouton secondaire sur fond sombre : `.btn-outline` (glassmorphism blanc translucide)
 - Jamais de SVG inline dans un `<a>` — utiliser `&rarr;` pour les flèches
 - Tous les styles dans `global.css` — pas de `<style>` scoped dans les pages (conflit Tailwind v4 preflight)
+- Voir `cercle-ia-design-system.md` section "Alternance des sections" pour la cartographie complète par page
 
 ## Règles SEO
 

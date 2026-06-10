@@ -80,8 +80,8 @@ const schema = {
           </p>
 
           <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 32px;">
-            <a href="#inscription" class="btn-primary">S'inscrire sur la liste d'attente</a>
-            <a href="/contact" class="btn-outline">Planifier un appel</a>
+            <a href="#" data-open-modal="waitlist" class="btn-primary">S'inscrire sur la liste d'attente</a>
+            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">Planifier un appel</a>
           </div>
 
           <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
@@ -141,43 +141,45 @@ const schema = {
       <div style="max-width: 720px; margin-bottom: 56px;">
         <span class="section-eyebrow">Pour qui, et pourquoi</span>
         <h2 class="section-title">Vous utilisez l'IA. Mais pas comme vous le voudriez.</h2>
-        <p style="font-size: 16px; color: rgba(255,255,255,0.45); line-height: 1.85; margin-top: 20px;">
+        <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin-top: 20px;">
           Ce programme est conçu pour les professionnels du conseil — avocats, consultants, professions libérales, dirigeants — qui souhaitent exploiter le potentiel de l'IA pour prendre une longueur d'avance et anticiper la transformation inéluctable de leur métier.
         </p>
       </div>
 
       <!-- Problème → Solution (grille alignée ligne par ligne) -->
-      <div style="border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius-lg); overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 40px;">
+      <div style="background: var(--color-light-1); border-radius: calc(var(--radius-lg) + 4px); padding: 4px; margin-bottom: 40px; box-shadow: 0 4px 32px rgba(0,0,0,0.3);">
+      <div style="border: 1px solid rgba(6,24,23,0.1); border-radius: var(--radius-lg); overflow: hidden; display: grid; grid-template-columns: 1fr 1fr;">
 
         <!-- En-têtes -->
-        <div style="padding: 16px 28px; background: rgba(255,255,255,0.05); border-right: 1px solid rgba(255,255,255,0.07); border-bottom: 1px solid rgba(255,255,255,0.07);">
-          <p style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; text-transform: uppercase;">Le problème</p>
+        <div style="padding: 16px 28px; background: rgba(6,24,23,0.04); border-right: 1px solid rgba(6,24,23,0.08); border-bottom: 1px solid rgba(6,24,23,0.08);">
+          <p style="font-size: 11px; font-weight: 600; color: rgba(6,24,23,0.4); letter-spacing: 0.1em; text-transform: uppercase;">Le problème</p>
         </div>
-        <div style="padding: 16px 28px; background: rgba(247,171,110,0.06); border-bottom: 1px solid rgba(247,171,110,0.1);">
-          <p style="font-size: 11px; font-weight: 600; color: var(--color-accent); letter-spacing: 0.1em; text-transform: uppercase;">Ce que vous allez gagner</p>
+        <div style="padding: 16px 28px; background: rgba(247,171,110,0.1); border-bottom: 1px solid rgba(247,171,110,0.15);">
+          <p style="font-size: 11px; font-weight: 600; color: var(--color-accent-hover); letter-spacing: 0.1em; text-transform: uppercase;">Ce que vous allez gagner</p>
         </div>
 
         <!-- Lignes alignées -->
         {problemSolutionRows.map((row, i) => (
           <>
-            <div style={`padding: 28px; background: rgba(255,255,255,0.03); border-right: 1px solid rgba(255,255,255,0.07); display: flex; gap: 14px; align-items: flex-start;${i < problemSolutionRows.length - 1 ? ' border-bottom: 1px solid rgba(255,255,255,0.06);' : ''}`}>
-              <span style="width: 18px; height: 18px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 3px;">
-                <span style="width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.3); display: block;"></span>
+            <div style={`padding: 28px; background: rgba(6,24,23,0.02); border-right: 1px solid rgba(6,24,23,0.08); display: flex; gap: 14px; align-items: flex-start;${i < problemSolutionRows.length - 1 ? ' border-bottom: 1px solid rgba(6,24,23,0.06);' : ''}`}>
+              <span style="width: 18px; height: 18px; border-radius: 50%; border: 1px solid rgba(6,24,23,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 3px;">
+                <span style="width: 5px; height: 5px; border-radius: 50%; background: rgba(6,24,23,0.3); display: block;"></span>
               </span>
-              <p style="font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.7;">{row.problem}</p>
+              <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">{row.problem}</p>
             </div>
-            <div style={`padding: 28px; background: rgba(247,171,110,0.03); display: flex; gap: 14px; align-items: flex-start;${i < problemSolutionRows.length - 1 ? ' border-bottom: 1px solid rgba(247,171,110,0.07);' : ''}`}>
-              <span style="width: 18px; height: 18px; border-radius: 50%; background: rgba(247,171,110,0.2); border: 1px solid rgba(247,171,110,0.4); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 3px;">
-                <span style="color: var(--color-accent); font-size: 10px; font-weight: 700; line-height: 1;">✓</span>
+            <div style={`padding: 28px; background: rgba(247,171,110,0.05); display: flex; gap: 14px; align-items: flex-start;${i < problemSolutionRows.length - 1 ? ' border-bottom: 1px solid rgba(247,171,110,0.1);' : ''}`}>
+              <span style="width: 18px; height: 18px; border-radius: 50%; background: rgba(247,171,110,0.25); border: 1px solid rgba(247,171,110,0.5); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 3px;">
+                <span style="color: var(--color-accent-hover); font-size: 10px; font-weight: 700; line-height: 1;">✓</span>
               </span>
               <div>
-                <p style="font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.85); line-height: 1.4; margin-bottom: 6px;">{row.solutionTitle}</p>
-                <p style="font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.75;">{row.solutionDesc}</p>
+                <p style="font-size: 15px; font-weight: 600; color: var(--color-text-on-light); line-height: 1.4; margin-bottom: 6px;">{row.solutionTitle}</p>
+                <p style="font-size: 13px; color: var(--color-text-subtle); line-height: 1.75;">{row.solutionDesc}</p>
               </div>
             </div>
           </>
         ))}
 
+      </div>
       </div>
 
 
@@ -337,26 +339,26 @@ const schema = {
   </section>
 
   <!-- ========== SESSION & INVESTISSEMENT ========== -->
-  <section id="inscription" style="background: var(--color-dark-2); padding: 96px 0;">
+  <section id="inscription" style="background: var(--color-light-1); padding: 96px 0;">
     <div class="container">
       <div class="grid-2" style="gap: 56px; align-items: start;">
 
         <div>
           <span class="section-eyebrow">Prochaine session</span>
-          <h2 class="section-title">Été 2026.</h2>
-          <p style="font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; margin-top: 16px; margin-bottom: 32px;">
+          <h2 class="section-title" style="color: var(--color-text-on-light);">Été 2026.</h2>
+          <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.8; margin-top: 16px; margin-bottom: 32px;">
             Les places sont limitées pour garantir la qualité des échanges. Inscrivez-vous sur la liste d'attente pour être notifié en priorité à l'ouverture des inscriptions.
           </p>
           <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="/contact" class="btn-primary">S'inscrire sur la liste d'attente</a>
-            <a href="/contact" class="btn-outline">Planifier un appel</a>
+            <a href="#" data-open-modal="waitlist" class="btn-primary">S'inscrire sur la liste d'attente</a>
+            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline-dark">Planifier un appel</a>
           </div>
         </div>
 
-        <div class="glass-card">
-          <p style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">Investissement</p>
+        <div class="card-white">
+          <p style="font-size: 11px; font-weight: 600; color: rgba(6,24,23,0.35); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">Investissement</p>
           <p style="font-family: var(--font-display); font-size: 52px; font-weight: 700; color: var(--color-accent); line-height: 1; margin-bottom: 4px;">750 €</p>
-          <p style="font-size: 13px; color: rgba(255,255,255,0.3); margin-bottom: 24px;">HTVA · Facturation possible</p>
+          <p style="font-size: 13px; color: rgba(6,24,23,0.35); margin-bottom: 24px;">HTVA · Facturation possible</p>
           <div style="display: flex; flex-direction: column; gap: 10px;">
             {[
               '3 séances masterclass pratiques',
@@ -367,7 +369,7 @@ const schema = {
             ].map((item) => (
               <div style="display: flex; gap: 10px; align-items: center;">
                 <span style="color: var(--color-accent); font-weight: 700; font-size: 14px; flex-shrink: 0;">✓</span>
-                <p style="font-size: 14px; color: rgba(255,255,255,0.55);">{item}</p>
+                <p style="font-size: 14px; color: var(--color-text-subtle);">{item}</p>
               </div>
             ))}
           </div>
@@ -509,8 +511,8 @@ const schema = {
         Inscrivez-vous sur la liste d'attente pour la prochaine session ou planifiez un appel si vous souhaitez discuter d'une formule sur mesure.
       </p>
       <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <a href="/contact" class="btn-primary">S'inscrire sur la liste d'attente</a>
-        <a href="/contact" class="btn-outline">Planifier un appel</a>
+        <a href="#" data-open-modal="waitlist" class="btn-primary">S'inscrire sur la liste d'attente</a>
+        <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">Planifier un appel</a>
       </div>
     </div>
   </section>

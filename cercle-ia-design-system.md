@@ -44,9 +44,9 @@
 
 | Token | Hex | Usage |
 |---|---|---|
-| `--color-light-1` | `#FAFAFA` | Section ressources uniquement |
+| `--color-light-1` | `#F5F3EF` | Sections claires (beige chaud — adoucit le contraste avec les fonds sombres) |
 | `--color-light-2` | `#F5F5F5` | Séparateurs sur fond clair |
-| `--color-card-white` | `#FFFFFF` | Cards blanches sur fond clair |
+| `--color-card-white` | `#FDFCFB` | Cards blanches sur fond clair (légèrement teinté — jamais blanc pur) |
 
 ### Accent
 
@@ -150,8 +150,8 @@ La 3e ligne du H1 hero est volontairement atténuée : `color: rgba(255,255,255,
 
 | Token | Valeur | Usage |
 |---|---|---|
-| `--shadow-card` | `rgba(0,0,0,0.12) 0px 3px 8px` | Cards blanches |
-| `--shadow-card-hover` | `rgba(0,0,0,0.18) 0px 6px 16px` | Cards blanches hover |
+| `--shadow-card` | `0 1px 3px rgba(0,0,0,0.04), 0 6px 20px rgba(0,0,0,0.07)` | Cards blanches (multi-couche) |
+| `--shadow-card-hover` | `0 2px 6px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.11)` | Cards blanches hover |
 | `--shadow-glass` | `0 8px 32px rgba(0,0,0,0.3)` | Glass-cards accentuées |
 
 ---
@@ -164,9 +164,9 @@ La 3e ligne du H1 hero est volontairement atténuée : `color: rgba(255,255,255,
   --color-dark-1:         #061717;
   --color-dark-2:         #092727;
   --color-dark-border:    #1F3A2F;
-  --color-light-1:        #FAFAFA;
+  --color-light-1:        #F5F3EF;
   --color-light-2:        #F5F5F5;
-  --color-card-white:     #FFFFFF;
+  --color-card-white:     #FDFCFB;
   --color-accent:         #F7AB6E;
   --color-accent-hover:   #D98A4A;
   --color-text-on-dark:   #FFFFFF;
@@ -193,8 +193,8 @@ La 3e ligne du H1 hero est volontairement atténuée : `color: rgba(255,255,255,
   --radius-full: 50%;
 
   /* OMBRES */
-  --shadow-card:       rgba(0,0,0,0.12) 0px 3px 8px 0px;
-  --shadow-card-hover: rgba(0,0,0,0.18) 0px 6px 16px 0px;
+  --shadow-card:       0 1px 3px rgba(0,0,0,0.04), 0 6px 20px rgba(0,0,0,0.07);
+  --shadow-card-hover: 0 2px 6px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.11);
   --shadow-glass:      0 8px 32px rgba(0,0,0,0.3);
 
   /* TRANSITIONS */
@@ -288,6 +288,25 @@ Tous les boutons CTA : `border-radius: 30px` (pilule), `font-family: Inter`, `fo
 .btn-outline:hover {
   background: rgba(255,255,255,0.1);
   border-color: rgba(255,255,255,0.25);
+}
+```
+
+### Bouton outline sombre (CTA secondaire sur fond clair)
+
+Utiliser **uniquement** sur fond clair. Sur fond sombre, utiliser `.btn-outline` (glassmorphism).
+
+```css
+.btn-outline-dark {
+  background: transparent;
+  color: var(--color-text-on-light);
+  border: 1.5px solid rgba(6,24,23,0.25);
+  border-radius: var(--radius-pill);
+  padding: 14px 28px;
+  font-size: 15px; font-weight: 500;
+}
+.btn-outline-dark:hover {
+  background: rgba(6,24,23,0.06);
+  border-color: rgba(6,24,23,0.45);
 }
 ```
 
@@ -414,14 +433,17 @@ Composant dominant du site. S'utilise sur **toutes les sections sombres**.
 
 > Le blur n'est visible que si le fond derrière la card a du contenu visuel (gradient, grain). Il apparaît sur le hero et les sections avec `hero-gradient`.
 
-### Card blanche (usage uniquement sur fond clair)
+### Card blanche (fond clair — et pattern mixte sur fond sombre)
+
+S'utilise principalement sur fond clair (`--color-light-1`). Peut aussi s'employer sur fond sombre pour des blocs de contenu mis en valeur (pattern mixte — voir section "Alternance des sections").
 
 ```css
 .card-white {
-  background: #FFFFFF;
+  background: var(--color-card-white);   /* #FDFCFB — légèrement teinté, pas blanc pur */
   border-radius: var(--radius-lg);
   padding: 28px;
-  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(6,24,23,0.09);  /* bordure fine pour définir le contour */
+  box-shadow: var(--shadow-card);        /* multi-couche : diffusion + élévation */
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 .card-white:hover {
@@ -429,6 +451,8 @@ Composant dominant du site. S'utilise sur **toutes les sections sombres**.
   transform: translateY(-2px);
 }
 ```
+
+Le couple fond/card (`#F5F3EF` / `#FDFCFB`) est volontairement peu contrasté — la définition vient de la bordure et de l'ombre, pas de la différence de couleur.
 
 ### Structure glass-card formation
 
@@ -503,6 +527,7 @@ nav.nav-dark {
 ## Formulaires
 
 ```css
+/* Sur fond sombre */
 .input-dark {
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.12);
@@ -517,6 +542,25 @@ nav.nav-dark {
 .form-label {
   font-size: 12px; font-weight: 600;
   color: rgba(255,255,255,0.5);
+  letter-spacing: 0.05em; text-transform: uppercase;
+  display: block; margin-bottom: 8px;
+}
+
+/* Sur fond clair */
+.input-light {
+  background: #FFFFFF;
+  border: 1.5px solid rgba(6,24,23,0.15);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  font-size: 15px; color: var(--color-text-on-light);
+  width: 100%;
+}
+.input-light::placeholder { color: rgba(6,24,23,0.3); }
+.input-light:focus { border-color: rgba(247,171,110,0.6); outline: none; }
+
+.form-label-light {
+  font-size: 12px; font-weight: 600;
+  color: rgba(6,24,23,0.5);
   letter-spacing: 0.05em; text-transform: uppercase;
   display: block; margin-bottom: 8px;
 }
@@ -658,30 +702,128 @@ Fichiers : `/public/images/logos/uclouvain.png`, `ephec.png`, `ihecs.png`, `akt-
 
 ## Alternance des sections
 
-Le site est **majoritairement sombre**. La seule section claire est Ressources.
+Le site alterne **sections sombres** (majoritaires, glassmorphism) et **sections claires** (fond `#F5F3EF`, cards `#FDFCFB`). Environ 25-30 % des sections sont claires. Les heroes, la nav, le footer et les CTAs finaux restent toujours sombres.
 
+### Règle d'attribution fond clair
+
+Utiliser `--color-light-1` (#F5F3EF) pour :
+- Les sections de contenu informatif dense (texte long, sans cards complexes)
+- Les sections de ressources/blog/newsletter
+- Les FAQ (meilleure lisibilité)
+- Les formulaires de contact (plus accessibles et rassurants)
+- Les sections programme (piliers, étapes numérotées)
+
+Garder sombre (`--color-dark-1` ou `--color-dark-2`) pour :
+- Hero (toujours)
+- Sections problème/solution avec tableaux glassmorphism
+- Sections formateur/biographie (ambiance premium)
+- Sections témoignages sur la homepage (rester dans le registre émotionnel sombre)
+- Sections "Pourquoi nous" / USPs
+- CTAs finaux (grain-bg + dark-2)
+- Footer (toujours)
+- Session & investissement / pricing (premium = sombre)
+
+### Cartes sur fond clair
+
+Sur fond clair, utiliser **toujours** `.card-white` — jamais `.glass-card` (le verre est invisible sur blanc).
+
+Le CSS gère automatiquement les couleurs de texte pour les classes nommées :
+```css
+.card-white .feature-title,
+.card-white .usp-title,
+.card-white .ressource-title { color: var(--color-text-on-light); }
+
+.card-white .feature-desc,
+.card-white .usp-desc,
+.card-white .ressource-desc { color: var(--color-text-subtle); }
 ```
-┌─────────────────────────────────────────────────────────────┐
-│ NAV          #061717  sticky · z-index: 100                  │
-├─────────────────────────────────────────────────────────────┤
-│ 1. HERO      hero-gradient + grain-bg · padding: 96px 0 112px│
-├─────────────────────────────────────────────────────────────┤
-│ 2. FEATURES  #092727  3 glass-cards · padding: 96px          │
-├─────────────────────────────────────────────────────────────┤
-│ 3. FORMATIONS #061717 bootcamp vedette + 4 glass-cards       │
-├─────────────────────────────────────────────────────────────┤
-│ 4. POURQUOI  #092727  4 glass-cards USPs numérotées          │
-├─────────────────────────────────────────────────────────────┤
-│ 5. FORMATEUR #061717  grid-2 · texte + stats en colonne      │
-├─────────────────────────────────────────────────────────────┤
-│ 6. TÉMOIGNAGES #092727 6 glass-cards · align-items:start     │
-├─────────────────────────────────────────────────────────────┤
-│ 7. RESSOURCES #FAFAFA  SEULE section claire · 3 card-white   │
-├─────────────────────────────────────────────────────────────┤
-│ 8. CTA FINAL #092727 + grain-bg · eyebrow-badge centré       │
-├─────────────────────────────────────────────────────────────┤
-│ 9. FOOTER    #061717  4 colonnes + newsletter                 │
-└─────────────────────────────────────────────────────────────┘
+
+Pour les textes en inline style, remplacer :
+- `color: #ffffff` → `color: var(--color-text-on-light)` (#061817)
+- `color: rgba(255,255,255,0.45)` → `color: var(--color-text-subtle)` (#7B7B7B)
+- `color: rgba(255,255,255,0.6)` → `color: var(--color-text-muted)` (#333333)
+- `border-top: 1px solid rgba(255,255,255,0.07)` → `border-top: 1px solid rgba(6,24,23,0.08)`
+
+### Titres de section sur fond clair
+
+Ajouter `style="color: var(--color-text-on-light);"` sur la `<h2 class="section-title">` car la classe fixe `color: #ffffff` par défaut.
+
+### Bloc sombre sur fond clair ("featured dark card")
+
+Pour un élément spécial (ex. Cercle GPT bonus) dans une section claire, utiliser :
+```html
+<div style="background: var(--color-dark-1); border: 1px solid rgba(247,171,110,0.22);
+  border-radius: var(--radius-lg); padding: 40px; overflow: hidden;">
+```
+Cela crée un contraste fort et met en valeur l'élément premium.
+
+### Pattern mixte — bloc clair dans section sombre
+
+Pour des blocs de contenu mis en valeur dans une section sombre (ex. tableau comparatif, cards d'informations, liste de formations), envelopper le contenu dans un conteneur à fond clair :
+
+```html
+<!-- Enveloppe légère avec ombre portée sur fond sombre -->
+<div style="background: var(--color-light-1); border-radius: calc(var(--radius-lg) + 4px);
+  padding: 4px; box-shadow: 0 4px 32px rgba(0,0,0,0.3);">
+  <!-- contenu avec border-radius: var(--radius-lg) -->
+</div>
+```
+
+Ou directement en `card-white` (pour des cards individuelles dans une section sombre) :
+```html
+<div class="card-white" style="...">
+  <!-- texte avec couleurs var(--color-text-on-light) et var(--color-text-subtle) -->
+</div>
+```
+
+**Exemples d'application :**
+- Bootcamp — "Pour qui, et pourquoi" : section `dark-2`, tableau `color-light-1` intégré
+- Contact — Formulaire : section `dark-2`, cards infos en `card-white`
+- À propos — Les formations : section `dark-1`, deux grandes `card-white` côte à côte
+
+### Cartographie actuelle par page
+
+**Accueil :**
+```
+HERO          sombre  (hero-gradient)
+FEATURES      clair   (#F5F3EF · card-white)  ←  "Pourquoi se former avec Cercle IA"
+FORMATIONS    sombre  (#061717 · glass-cards)
+POURQUOI      sombre  (#092727 · glass-cards)
+FORMATEUR     sombre  (#061717)
+TÉMOIGNAGES   sombre  (#092727 · glass-cards)
+RESSOURCES    clair   (#F5F3EF · card-white)  ←
+CTA FINAL     sombre  (#092727 + grain-bg)
+```
+
+**Bootcamp :**
+```
+HERO                  sombre  (hero-gradient)
+POUR QUI/POURQUOI     sombre  (#092727) + tableau clair intégré (pattern mixte)  ←
+PROGRAMME             sombre  (#061717 · glass-cards)
+SESSION & PRIX        clair   (#F5F3EF · card-white + btn-outline-dark)  ←
+TÉMOIGNAGES           sombre  (#061717 · glass-cards)
+FORMATEUR             sombre  (#092727)
+FAQ                   sombre  (#061717 · glass-cards)
+CTA FINAL             sombre  (#092727 + grain-bg)
+```
+
+**À propos :**
+```
+HERO                  sombre  (hero-gradient)
+LE PROBLÈME           sombre  (#092727 · texte pur)
+POUR QUI              clair   (#F5F3EF · card-white)  ←  "Professionnels dont les erreurs ont un coût"
+NOTRE APPROCHE        sombre  (#092727 · glass-cards)
+LES FORMATIONS        sombre  (#061717) + 2 card-white (pattern mixte)  ←
+TÉMOIGNAGES           sombre  (#092727 · glass-cards)
+FORMATEUR             sombre  (#061717)
+CTA FINAL             sombre  (#092727 + grain-bg)
+```
+
+**Contact :**
+```
+HERO                  sombre  (hero-gradient)
+FORMULAIRE + INFOS    sombre  (#092727 · input-dark) + cards infos card-white (pattern mixte)  ←
+RESSOURCES            sombre  (#061717 · glass-cards)
 ```
 
 ---
@@ -772,8 +914,9 @@ Structure 4 colonnes. Toujours sur `#061717`.
 
 - **Playfair Display** pour H1, H2, H3, pull quotes, stats chiffrées
 - **Inter** pour le reste : corps, labels, boutons, nav, témoignages corps
-- **Glass-cards** (`glass-card`) sur fond sombre — jamais de card blanche sur fond sombre
-- **Card blanche** uniquement sur fond clair (`#FAFAFA` / `#F5F5F5`)
+- **Glass-cards** (`glass-card`) : usage par défaut sur fond sombre
+- **Card blanche** (`card-white`) : sur fond clair, ou en pattern mixte (bloc clair dans section sombre pour mettre en valeur du contenu)
+- **Jamais** `glass-card` sur fond clair (invisible) — **jamais** `card-white` sur fond sombre sans intention claire (pattern mixte)
 - **Border-radius pilule** (`30px`) sur tous les boutons CTA et badges
 - **Section eyebrow** en orange + uppercase + 11px avant chaque titre de section
 - **Padding vertical** sections : `96px` minimum

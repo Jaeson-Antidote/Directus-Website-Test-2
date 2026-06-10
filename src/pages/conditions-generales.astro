@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { breadcrumb } from '../lib/schema';
+
+const schema = breadcrumb([{ name: 'Conditions générales', href: '/conditions-generales' }]);
+---
+
+<BaseLayout
+  title="Conditions générales — Cercle IA"
+  description="Conditions générales de vente et d'utilisation des formations et services Cercle IA. Contrat applicable à toute inscription."
+  ogImage="/og/default.jpg"
+  ogImageAlt="Conditions générales — Cercle IA"
+  schema={schema}
+  robots="index,follow"
+>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero-gradient grain-bg" style="padding: 64px 0 72px; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: -120px; right: -80px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(247,171,110,0.06) 0%, transparent 70%); pointer-events: none;" aria-hidden="true"></div>
+
+    <div class="container" style="max-width: 720px;">
+      <div class="eyebrow-badge" style="margin-bottom: 24px; display: inline-flex;">
+        <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
+        CGV &amp; CGU
+      </div>
+
+      <h1 class="hero-title">Conditions générales</h1>
+
+      <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.75; margin-top: 16px; max-width: 560px;">
+        Dernière mise à jour : juin 2026. Les présentes conditions s'appliquent à toute inscription à nos formations et à l'utilisation de nos services.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== CONTENT ========== -->
+  <section style="background: var(--color-light-1); padding: 80px 0;">
+    <div class="container" style="max-width: 720px;">
+
+      <!-- Identification du prestataire -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Identification du prestataire</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          Antidote SRL, opérant sous la marque Cercle IA<br />
+          19, Avenue des Volontaires, 1160 Bruxelles, Belgique<br />
+          BCE : 0773.969.928, TVA : BE0773.969.928<br />
+          Email : <a href="mailto:hello@lecercle.ai" style="color: var(--color-accent);">hello@lecercle.ai</a>
+        </p>
+      </div>
+
+      <!-- Objet -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Objet</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          Les présentes conditions générales régissent les relations entre Antidote SRL (ci-après "Cercle IA") et toute personne physique ou morale (ci-après "le Client") souhaitant s'inscrire à nos formations ou utiliser nos services.
+        </p>
+      </div>
+
+      <!-- Formations et services proposés -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Formations et services proposés</h2>
+        <ul style="list-style: disc; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; margin-top: 12px;">
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Formations sectorielles en ligne (droit, conseil, santé, management, RH)</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Bootcamp IA générative</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Sessions intra-entreprise sur mesure</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Accès à la plateforme Cercle GPT</li>
+        </ul>
+      </div>
+
+      <!-- Inscription et confirmation -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Inscription et confirmation</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85; margin-bottom: 12px;">
+          L'inscription est validée à réception du paiement intégral ou d'un acompte convenu. Une confirmation est envoyée par email dans les 24h ouvrables.
+        </p>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          Les places sont limitées. Cercle IA se réserve le droit de refuser une inscription si la formation affichée est complète, auquel cas un remboursement intégral est effectué.
+        </p>
+      </div>
+
+      <!-- Tarifs et paiement -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Tarifs et paiement</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85; margin-bottom: 12px;">
+          Les tarifs sont exprimés en euros hors TVA (HTVA). La TVA belge (21%) s'applique aux transactions avec des particuliers belges.
+        </p>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85; margin-bottom: 12px;">
+          Paiement accepté : virement bancaire, carte de crédit, facturation B2B.
+        </p>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          Pour les formations intra-entreprise, un devis est établi selon le nombre de participants, la durée et les adaptations requises.
+        </p>
+      </div>
+
+      <!-- Annulation et report -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Annulation et report</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85; margin-bottom: 12px;">
+          Annulation par le client : remboursement intégral si l'annulation intervient plus de 14 jours avant la session. Entre 7 et 14 jours : remboursement à 50%. Moins de 7 jours : aucun remboursement, mais possibilité de report sur une prochaine session.
+        </p>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          Annulation par Cercle IA : en cas d'annulation de notre fait (nombre insuffisant de participants, force majeure), les clients inscrits sont remboursés intégralement ou peuvent reporter sur une session ultérieure.
+        </p>
+      </div>
+
+      <!-- Propriété intellectuelle -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Propriété intellectuelle</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85; margin-bottom: 12px;">
+          Tous les supports de formation (présentations, guides, templates, prompts) sont la propriété exclusive de Cercle IA. Ils sont fournis pour un usage personnel et professionnel du participant.
+        </p>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          La reproduction, distribution ou commercialisation de ces supports sans autorisation écrite préalable est interdite.
+        </p>
+      </div>
+
+      <!-- Responsabilité -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Responsabilité</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85; margin-bottom: 12px;">
+          Cercle IA s'engage à fournir des formations de qualité par des formateurs experts. Toutefois, les résultats obtenus par les participants dépendent de leur engagement personnel et de l'application des méthodes enseignées.
+        </p>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          Cercle IA ne peut être tenu responsable des décisions professionnelles prises par les participants sur la base des contenus de formation.
+        </p>
+      </div>
+
+      <!-- Protection des données -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Protection des données</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          Le traitement des données personnelles est régi par notre <a href="/politique-confidentialite" style="color: var(--color-accent);">Politique de confidentialité</a>, disponible sur lecercle.ai/politique-confidentialite.
+        </p>
+      </div>
+
+      <!-- Droit applicable -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Droit applicable</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          Les présentes conditions sont régies par le droit belge. En cas de litige, les parties s'engagent à rechercher une solution amiable avant toute action judiciaire. À défaut, les tribunaux de Bruxelles sont seuls compétents.
+        </p>
+      </div>
+
+      <!-- Contact -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Contact</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          Pour toute question : <a href="mailto:hello@lecercle.ai" style="color: var(--color-accent);">hello@lecercle.ai</a><br />
+          19, Avenue des Volontaires, 1160 Bruxelles, Belgique
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== CTA FINAL ========== -->
+  <section style="background: var(--color-dark-1); padding: 80px 0; text-align: center;">
+    <div class="container" style="max-width: 600px;">
+      <span class="section-eyebrow">Des questions sur nos conditions ?</span>
+      <h2 class="section-title" style="margin-top: 12px; margin-bottom: 20px;">Notre équipe vous répond</h2>
+      <p style="font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 36px;">
+        Pour toute question sur l'inscription, le paiement ou les modalités de nos formations, nous vous répondons dans les 24h ouvrables.
+      </p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="/contact" class="btn-primary">Contacter Cercle IA &rarr;</a>
+        <a href="/formations" class="btn-outline">Voir les formations</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

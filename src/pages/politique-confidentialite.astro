@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { breadcrumb } from '../lib/schema';
+
+const schema = breadcrumb([{ name: 'Politique de confidentialité', href: '/politique-confidentialite' }]);
+---
+
+<BaseLayout
+  title="Politique de confidentialité — Cercle IA"
+  description="Comment nous collectons, utilisons et protégeons vos données personnelles. Politique de confidentialité conforme au RGPD de Cercle IA."
+  ogImage="/og/default.jpg"
+  ogImageAlt="Politique de confidentialité — Cercle IA"
+  schema={schema}
+  robots="index,follow"
+>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero-gradient grain-bg" style="padding: 64px 0 72px; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: -120px; right: -80px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(247,171,110,0.06) 0%, transparent 70%); pointer-events: none;" aria-hidden="true"></div>
+
+    <div class="container" style="max-width: 720px;">
+      <div class="eyebrow-badge" style="margin-bottom: 24px; display: inline-flex;">
+        <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
+        Protection des données
+      </div>
+
+      <h1 class="hero-title">Politique de confidentialité</h1>
+
+      <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.75; margin-top: 16px; max-width: 560px;">
+        Dernière mise à jour : juin 2026. Conformément au Règlement Général sur la Protection des Données (RGPD), voici comment nous traitons vos informations personnelles.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== CONTENT ========== -->
+  <section style="background: var(--color-light-1); padding: 80px 0;">
+    <div class="container" style="max-width: 720px;">
+
+      <!-- Responsable du traitement -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Responsable du traitement</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          Antidote SRL, opérant sous la marque Cercle IA<br />
+          19, Avenue des Volontaires, 1160 Bruxelles, Belgique<br />
+          BCE : 0773.969.928<br />
+          Email : <a href="mailto:hello@lecercle.ai" style="color: var(--color-accent);">hello@lecercle.ai</a>
+        </p>
+      </div>
+
+      <!-- Données collectées -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Données collectées</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85; margin-bottom: 12px;">
+          Nous collectons uniquement les données nécessaires à la fourniture de nos services :
+        </p>
+        <ul style="list-style: disc; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; margin-top: 12px;">
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Données d'identification : nom, prénom, adresse email</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Données professionnelles : entreprise, fonction (si fournis)</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Données de contact : numéro de téléphone (si fourni)</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Données de paiement : traitées par notre prestataire de paiement sécurisé (nous ne stockons pas vos données bancaires)</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Données de navigation : cookies techniques et analytiques (voir section Cookies)</li>
+        </ul>
+      </div>
+
+      <!-- Finalités du traitement -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Finalités du traitement</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85; margin-bottom: 12px;">
+          Vos données sont utilisées pour :
+        </p>
+        <ul style="list-style: disc; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; margin-top: 12px; margin-bottom: 16px;">
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Gérer votre inscription et accès aux formations</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Vous envoyer la newsletter (avec votre consentement)</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Répondre à vos demandes de contact</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Améliorer nos services et adapter nos communications</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Respecter nos obligations légales et fiscales</li>
+        </ul>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          Base légale : exécution du contrat (inscriptions), consentement (newsletter), intérêts légitimes (amélioration des services), obligation légale (comptabilité).
+        </p>
+      </div>
+
+      <!-- Conservation des données -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Conservation des données</h2>
+        <ul style="list-style: disc; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; margin-top: 12px;">
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Données de contact et compte : 3 ans après le dernier contact ou la fin de la relation commerciale</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Données de facturation : 7 ans (obligation légale)</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Données newsletter : jusqu'au désabonnement</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Cookies analytiques : 13 mois maximum</li>
+        </ul>
+      </div>
+
+      <!-- Vos droits -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Vos droits</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85; margin-bottom: 12px;">
+          Conformément au RGPD, vous disposez des droits suivants :
+        </p>
+        <ul style="list-style: disc; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; margin-top: 12px; margin-bottom: 16px;">
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Droit d'accès à vos données</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Droit de rectification</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Droit à l'effacement (droit à l'oubli)</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Droit à la portabilité</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Droit d'opposition au traitement</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Droit de retirer votre consentement à tout moment</li>
+        </ul>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          Pour exercer ces droits, contactez-nous à : <a href="mailto:privacy@lecercle.ai" style="color: var(--color-accent);">privacy@lecercle.ai</a>. Nous répondons dans un délai de 30 jours.
+        </p>
+      </div>
+
+      <!-- Partage des données -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Partage des données</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85; margin-bottom: 12px;">
+          Vos données ne sont jamais vendues à des tiers. Elles peuvent être partagées avec :
+        </p>
+        <ul style="list-style: disc; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; margin-top: 12px; margin-bottom: 16px;">
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Nos prestataires techniques (hébergement, email, paiement), sous contrat de sous-traitance RGPD</li>
+          <li style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">Les autorités compétentes en cas d'obligation légale</li>
+        </ul>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          Tous nos prestataires sont contractuellement tenus de respecter la confidentialité de vos données.
+        </p>
+      </div>
+
+      <!-- Cookies -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Cookies</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85; margin-bottom: 12px;">
+          Nous utilisons des cookies techniques (nécessaires au fonctionnement) et des cookies analytiques (pour comprendre comment le site est utilisé).
+        </p>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          Vous pouvez refuser les cookies analytiques sans impact sur votre utilisation du site. Votre choix est enregistré pour 12 mois.
+        </p>
+      </div>
+
+      <!-- Contact et réclamations -->
+      <div class="card-white" style="margin-bottom: 24px; padding: 32px 36px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 16px;">Contact et réclamations</h2>
+        <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.85;">
+          Pour toute question : <a href="mailto:privacy@lecercle.ai" style="color: var(--color-accent);">privacy@lecercle.ai</a><br />
+          Autorité de contrôle belge : Autorité de Protection des Données (APD)<br />
+          Site : <a href="https://www.autoriteprotectiondonnees.be" target="_blank" rel="noopener noreferrer" style="color: var(--color-accent);">autoriteprotectiondonnees.be</a><br />
+          Rue de la Presse 35, 1000 Bruxelles
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== CTA FINAL ========== -->
+  <section style="background: var(--color-dark-1); padding: 80px 0; text-align: center;">
+    <div class="container" style="max-width: 600px;">
+      <span class="section-eyebrow">Des questions sur vos données ?</span>
+      <h2 class="section-title" style="margin-top: 12px; margin-bottom: 20px;">Contactez notre équipe</h2>
+      <p style="font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 36px;">
+        Pour exercer vos droits ou poser une question sur le traitement de vos données, notre équipe vous répond dans les 48h.
+      </p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="/contact" class="btn-primary">Envoyer un message &rarr;</a>
+        <a href="/politique-ia" class="btn-outline">Politique IA</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

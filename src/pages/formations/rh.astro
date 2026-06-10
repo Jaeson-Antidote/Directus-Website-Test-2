@@ -1,0 +1,347 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { breadcrumb, courseSchema, faqSchema } from '../../lib/schema';
+
+const bc = breadcrumb([
+  { name: 'Formations IA', href: '/formations' },
+  { name: 'Formation IA pour les RH', href: '/formations/rh' },
+]);
+
+const course = courseSchema({
+  name: 'Formation IA pour les RH',
+  description: 'Intégrez l\'IA dans vos processus RH : recrutement, rédaction d\'offres, entretiens et communication interne. Sans sacrifier le jugement humain ni la conformité.',
+  url: '/formations/rh',
+});
+
+const faq = faqSchema([
+  {
+    question: 'L\'IA va-t-elle remplacer les décisions RH ?',
+    answer: 'Non, et ce n\'est pas l\'objectif. La formation vous apprend à utiliser l\'IA pour structurer et accélérer les tâches répétitives, tout en gardant le jugement humain au centre des décisions stratégiques.',
+  },
+  {
+    question: 'La formation couvre-t-elle la conformité RGPD ?',
+    answer: 'Oui. Un module est dédié aux obligations légales liées au traitement des données de candidats et collaborateurs. Nous couvrons les bonnes pratiques pour rester conforme.',
+  },
+  {
+    question: 'Quels outils sont abordés ?',
+    answer: 'Nous couvrons les outils polyvalents (ChatGPT, Claude) ainsi que des outils spécifiques au recrutement. L\'accent est mis sur la méthode, pas sur un outil particulier.',
+  },
+  {
+    question: 'La formation est-elle adaptée aux petites structures ?',
+    answer: 'Absolument. Les PME et startups ont souvent des équipes RH réduites avec beaucoup à faire. La formation est particulièrement pertinente pour maximiser l\'impact d\'une équipe RH de 1 à 3 personnes.',
+  },
+]);
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [course, bc, faq],
+};
+
+const problemSolutionRows = [
+  {
+    problem: 'Trier des centaines de candidatures prend des jours et reste subjectif malgré les efforts.',
+    solutionTitle: 'Screening structuré et cohérent',
+    solutionDesc: 'Construisez des grilles d\'analyse IA pour trier les candidatures plus rapidement, de façon plus cohérente et documentée.',
+  },
+  {
+    problem: 'Rédiger des offres d\'emploi attractives et conformes prend du temps, avec des résultats inégaux.',
+    solutionTitle: 'Offres ciblées et optimisées',
+    solutionDesc: 'Générez des offres adaptées à chaque poste, au bon niveau de langue, avec les bons mots-clés pour attirer les bons profils.',
+  },
+  {
+    problem: 'Les entretiens ne sont pas toujours structurés de façon à permettre une évaluation équitable et comparable.',
+    solutionTitle: 'Grilles d\'entretien adaptées à chaque poste',
+    solutionDesc: 'Construisez des guides d\'entretien comportementaux et des critères d\'évaluation cohérents entre les recruteurs.',
+  },
+];
+
+const modules = [
+  {
+    num: '01',
+    title: 'IA et recrutement',
+    items: [
+      'Construire des grilles d\'analyse de CV avec l\'IA',
+      'Rédiger des offres d\'emploi ciblées et conformes',
+      'Préparer des guides d\'entretien structurés par compétences',
+      'Gérer les biais inconscients avec le support de l\'IA',
+    ],
+  },
+  {
+    num: '02',
+    title: 'Communication et documentation RH',
+    items: [
+      'Rédiger des communications internes claires et efficaces',
+      'Synthétiser des entretiens individuels et annuels',
+      'Produire des politiques RH et documents réglementaires',
+      'Adapter le niveau de communication selon les interlocuteurs',
+    ],
+  },
+  {
+    num: '03',
+    title: 'Analyse RH et amélioration continue',
+    items: [
+      'Analyser les données RH avec des outils IA accessibles',
+      'Identifier des tendances dans l\'engagement et la satisfaction',
+      'Construire des tableaux de bord RH sans compétence technique',
+      'Documenter et améliorer les processus existants',
+    ],
+  },
+];
+
+const faqs = [
+  {
+    q: 'L\'IA va-t-elle remplacer les décisions RH ?',
+    a: 'Non, et ce n\'est pas l\'objectif. La formation vous apprend à utiliser l\'IA pour structurer et accélérer les tâches répétitives, tout en gardant le jugement humain au centre des décisions stratégiques.',
+  },
+  {
+    q: 'La formation couvre-t-elle la conformité RGPD ?',
+    a: 'Oui. Un module est dédié aux obligations légales liées au traitement des données de candidats et collaborateurs. Nous couvrons les bonnes pratiques pour rester conforme.',
+  },
+  {
+    q: 'Quels outils sont abordés ?',
+    a: 'Nous couvrons les outils polyvalents (ChatGPT, Claude) ainsi que des outils spécifiques au recrutement. L\'accent est mis sur la méthode, pas sur un outil particulier.',
+  },
+  {
+    q: 'La formation est-elle adaptée aux petites structures ?',
+    a: 'Absolument. Les PME et startups ont souvent des équipes RH réduites avec beaucoup à faire. La formation est particulièrement pertinente pour maximiser l\'impact d\'une équipe RH de 1 à 3 personnes.',
+  },
+];
+---
+
+<BaseLayout
+  title="Formation IA pour les RH — Cercle IA"
+  description="Intégrez l'IA dans vos processus RH : recrutement, rédaction d'offres, entretiens, communication interne. Formation pratique pour DRH et responsables recrutement."
+  ogImage="/og/formations-rh.jpg"
+  ogImageAlt="Formation IA pour les RH — Cercle IA"
+  schema={schema}
+>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero-gradient grain-bg" style="padding: 96px 0 112px; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: -120px; right: -80px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(247,171,110,0.06) 0%, transparent 70%); pointer-events: none;" aria-hidden="true"></div>
+
+    <div class="container">
+      <div class="hero-inner">
+
+        <div>
+          <div class="eyebrow-badge" style="margin-bottom: 28px; display: inline-flex;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
+            Formation IA · RH
+          </div>
+
+          <h1 class="hero-title">
+            L'IA comme allié<br />
+            <span style="color: rgba(255,255,255,0.55);">de vos processus RH.</span>
+          </h1>
+
+          <p style="font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.75; max-width: 560px; margin-bottom: 36px;">
+            Recrutement, rédaction d'offres, entretiens, communication interne — apprenez à intégrer l'IA dans vos processus RH sans sacrifier le jugement humain ni la conformité.
+          </p>
+
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 32px;">
+            <a href="/contact?sujet=formation-rh" class="btn-primary">Obtenir une formation sur mesure &rarr;</a>
+            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">Planifier un appel</a>
+          </div>
+
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+            <span style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.2); letter-spacing: 0.08em; text-transform: uppercase; margin-right: 4px; white-space: nowrap;">Pour</span>
+            {['DRH', 'Responsables recrutement', 'HR Business Partners', 'Office managers'].map((p) => (
+              <span class="tag-outline" style="font-size: 10px; padding: 3px 10px;">{p}</span>
+            ))}
+          </div>
+        </div>
+
+        <div style="padding-top: 36px;">
+          <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius-xl); padding: 36px 32px;">
+            <h2 style="font-family: var(--font-display); font-size: 26px; font-weight: 700; color: #ffffff; line-height: 1.2; letter-spacing: -0.015em; margin-bottom: 28px;">Détails de la formation</h2>
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+              {[
+                {
+                  label: 'Durée adaptée à vos besoins',
+                  icon: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+                },
+                {
+                  label: 'En ligne',
+                  icon: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
+                },
+                {
+                  label: 'Français',
+                  icon: '<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
+                },
+                {
+                  label: 'Focus recrutement et communication',
+                  icon: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+                },
+              ].map((item) => (
+                <div style="display: flex; align-items: center; gap: 16px;">
+                  <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(247,171,110,0.12); border: 1px solid rgba(247,171,110,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={item.icon} />
+                  </div>
+                  <p style="font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.8); font-family: var(--font-body);">{item.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROBLÈME / SOLUTION ========== -->
+  <section style="background: var(--color-dark-2); padding: 96px 0;">
+    <div class="container">
+
+      <div style="max-width: 720px; margin-bottom: 56px;">
+        <span class="section-eyebrow">Pourquoi cette formation</span>
+        <h2 class="section-title">Les défis RH que l'IA peut résoudre</h2>
+        <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin-top: 20px;">
+          Les équipes RH sont souvent débordées par des tâches répétitives à faible valeur ajoutée. L'IA peut structurer et accélérer ces processus, en laissant plus de place au jugement humain là où il compte.
+        </p>
+      </div>
+
+      <div style="background: var(--color-light-1); border-radius: calc(var(--radius-lg) + 4px); padding: 4px; box-shadow: 0 4px 32px rgba(0,0,0,0.3);">
+      <div style="border: 1px solid rgba(6,24,23,0.1); border-radius: var(--radius-lg); overflow: hidden; display: grid; grid-template-columns: 1fr 1fr;">
+
+        <div style="padding: 16px 28px; background: rgba(6,24,23,0.04); border-right: 1px solid rgba(6,24,23,0.08); border-bottom: 1px solid rgba(6,24,23,0.08);">
+          <p style="font-size: 11px; font-weight: 600; color: rgba(6,24,23,0.4); letter-spacing: 0.1em; text-transform: uppercase;">Le problème</p>
+        </div>
+        <div style="padding: 16px 28px; background: rgba(247,171,110,0.1); border-bottom: 1px solid rgba(247,171,110,0.15);">
+          <p style="font-size: 11px; font-weight: 600; color: var(--color-accent-hover); letter-spacing: 0.1em; text-transform: uppercase;">Ce que vous allez gagner</p>
+        </div>
+
+        {problemSolutionRows.map((row, i) => (
+          <>
+            <div style={`padding: 28px; background: rgba(6,24,23,0.02); border-right: 1px solid rgba(6,24,23,0.08); display: flex; gap: 14px; align-items: flex-start;${i < problemSolutionRows.length - 1 ? ' border-bottom: 1px solid rgba(6,24,23,0.06);' : ''}`}>
+              <span style="width: 18px; height: 18px; border-radius: 50%; border: 1px solid rgba(6,24,23,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 3px;">
+                <span style="width: 5px; height: 5px; border-radius: 50%; background: rgba(6,24,23,0.3); display: block;"></span>
+              </span>
+              <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">{row.problem}</p>
+            </div>
+            <div style={`padding: 28px; background: rgba(247,171,110,0.05); display: flex; gap: 14px; align-items: flex-start;${i < problemSolutionRows.length - 1 ? ' border-bottom: 1px solid rgba(247,171,110,0.1);' : ''}`}>
+              <span style="width: 18px; height: 18px; border-radius: 50%; background: rgba(247,171,110,0.25); border: 1px solid rgba(247,171,110,0.5); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 3px;">
+                <span style="color: var(--color-accent-hover); font-size: 10px; font-weight: 700; line-height: 1;">✓</span>
+              </span>
+              <div>
+                <p style="font-size: 15px; font-weight: 600; color: var(--color-text-on-light); line-height: 1.4; margin-bottom: 6px;">{row.solutionTitle}</p>
+                <p style="font-size: 13px; color: var(--color-text-subtle); line-height: 1.75;">{row.solutionDesc}</p>
+              </div>
+            </div>
+          </>
+        ))}
+
+      </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== PROGRAMME ========== -->
+  <section style="background: var(--color-dark-1); padding: 96px 0;">
+    <div class="container">
+
+      <div style="max-width: 720px; margin-bottom: 48px;">
+        <span class="section-eyebrow">Contenu de la formation</span>
+        <h2 class="section-title">Ce que couvre la formation</h2>
+      </div>
+
+      <div class="grid-3" style="gap: 20px;">
+        {modules.map((m) => (
+          <div class="glass-card" style="display: flex; flex-direction: column; gap: 16px;">
+            <span class="usp-number">{m.num}</span>
+            <h3 class="usp-title">{m.title}</h3>
+            <div style="display: flex; flex-direction: column; gap: 9px;">
+              {m.items.map((item) => (
+                <div style="display: flex; gap: 10px; align-items: flex-start;">
+                  <span style="color: var(--color-accent); font-size: 12px; flex-shrink: 0; margin-top: 2px;">▸</span>
+                  <p style="font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5;">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== PRIX ========== -->
+  <section id="inscription" style="background: var(--color-light-1); padding: 96px 0;">
+    <div class="container">
+      <div class="grid-2" style="gap: 56px; align-items: start;">
+
+        <div>
+          <span class="section-eyebrow">Format &amp; investissement</span>
+          <h2 class="section-title" style="color: var(--color-text-on-light);">Une formation sur mesure pour les RH</h2>
+          <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.8; margin-top: 16px; margin-bottom: 32px;">
+            Nos formations RH s'adaptent à votre organisation, votre secteur et vos enjeux spécifiques. En ligne ou en présentiel, en groupe ou en intra. Contactez-nous pour définir la formule adaptée.
+          </p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="/contact?sujet=formation-rh" class="btn-primary">Obtenir une formation sur mesure</a>
+            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline-dark">Planifier un appel</a>
+          </div>
+        </div>
+
+        <div class="card-white">
+          <p style="font-size: 11px; font-weight: 600; color: rgba(6,24,23,0.35); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">Investissement</p>
+          <p style="font-family: var(--font-display); font-size: 52px; font-weight: 700; color: var(--color-accent); line-height: 1; margin-bottom: 4px;">750 €</p>
+          <p style="font-size: 13px; color: rgba(6,24,23,0.35); margin-bottom: 8px;">HTVA · Facturation possible</p>
+          <p style="font-size: 13px; color: rgba(6,24,23,0.5); margin-bottom: 24px;">Session intra-entreprise : sur devis</p>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            {[
+              'Modules adaptés à votre pratique',
+              'Templates recrutement et communication',
+              'Bibliothèque de prompts RH',
+              'Module conformité et biais IA',
+              'Attestation de formation',
+            ].map((item) => (
+              <div style="display: flex; gap: 10px; align-items: center;">
+                <span style="color: var(--color-accent); font-weight: 700; font-size: 14px; flex-shrink: 0;">✓</span>
+                <p style="font-size: 14px; color: var(--color-text-subtle);">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section style="background: var(--color-dark-2); padding: 96px 0;">
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto;">
+        <span class="section-eyebrow">Questions fréquentes</span>
+        <h2 class="section-title" style="margin-bottom: 48px;">Ce que se demandent les RH avant de s'inscrire</h2>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          {faqs.map((item) => (
+            <div class="glass-card" style="padding: 0;">
+              <details style="display: block;">
+                <summary style="padding: 24px 28px; cursor: pointer; font-size: 15px; font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px;">{item.q}</summary>
+                <div style="padding: 0 28px 24px;">
+                  <p style="font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.75;">{item.a}</p>
+                </div>
+              </details>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA FINAL ========== -->
+  <section style="background: var(--color-dark-1); padding: 96px 0;">
+    <div class="container" style="text-align: center; max-width: 680px;">
+      <span class="section-eyebrow">Prêt à gagner en efficacité ?</span>
+      <h2 class="section-title">Rejoignez les RH qui recrutent mieux et plus vite</h2>
+      <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin: 20px 0 32px;">
+        Formation individuelle ou pour votre service RH. Applicable dès votre prochain recrutement.
+      </p>
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <a href="/contact?sujet=formation-rh" class="btn-primary">Obtenir une formation sur mesure &rarr;</a>
+        <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">Planifier un appel</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
