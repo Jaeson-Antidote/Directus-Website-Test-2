@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { breadcrumb } from '../../lib/schema';
+import { breadcrumb, courseItemListSchema } from '../../lib/schema';
 
 const bc = breadcrumb([{ name: 'Formations IA', href: '/formations' }]);
 
@@ -55,11 +55,6 @@ const testimonials = [
   },
 ];
 
-const schema = {
-  '@context': 'https://schema.org',
-  '@graph': [bc],
-};
-
 const formations = [
   {
     tag: 'Droit',
@@ -102,6 +97,17 @@ const formations = [
     icon: '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>',
   },
 ];
+
+const itemList = courseItemListSchema({
+  name: 'Formations IA sectorielles — Cercle IA',
+  description: 'Formations IA par secteur professionnel : avocats, consultants, dirigeants, RH et médecins.',
+  items: formations.map((f) => ({ name: f.title, description: f.desc, url: f.href })),
+});
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [bc, itemList],
+};
 ---
 
 <BaseLayout
@@ -186,7 +192,7 @@ const formations = [
       <div class="section-header">
         <div>
           <span class="section-eyebrow">Nos formations</span>
-          <h2 class="section-title">Nos formations sur mesure</h2>
+          <h2 class="section-title">Chaque métier a ses contraintes. Chaque formation part de là.</h2>
         </div>
       </div>
 

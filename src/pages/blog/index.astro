@@ -2,10 +2,10 @@
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { breadcrumb } from '../../lib/schema';
+import { breadcrumb, articleItemListSchema } from '../../lib/schema';
 import { getCollection } from 'astro:content';
 
-const schema = breadcrumb([{ name: 'Blog', href: '/blog' }]);
+const bc = breadcrumb([{ name: 'Blog', href: '/blog' }]);
 
 const allArticles = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => {
@@ -15,10 +15,21 @@ const allArticles = (await getCollection('blog', ({ data }) => !data.draft))
   });
 
 const blogImages = import.meta.glob<{ default: ImageMetadata }>('../../assets/blog/*', { eager: true });
+
+const itemList = articleItemListSchema({
+  name: 'Blog IA pour professionnels — Cercle IA',
+  description: 'Analyses, guides et ressources pratiques sur l\'IA professionnelle.',
+  items: allArticles.map((a) => ({ url: `/blog/${a.id}` })),
+});
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [bc, itemList],
+};
 ---
 
 <BaseLayout
-  title="Blog IA — Analyses et ressources — Cercle IA"
+  title="Blog IA pour professionnels — Cercle IA"
   description="Analyses, guides et ressources pratiques sur l'intelligence artificielle pour les professionnels. Par Cercle IA."
   ogImage="/og/blog.jpg"
   ogImageAlt="Blog IA — Analyses et ressources — Cercle IA"
@@ -119,7 +130,7 @@ const blogImages = import.meta.glob<{ default: ImageMetadata }>('../../assets/bl
       <span class="section-eyebrow">Ne ratez aucun article</span>
       <h2 class="section-title">Abonnez-vous à la newsletter</h2>
       <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin: 20px 0 32px;">
-        Chaque nouvelle analyse, guide ou ressource est envoyé aux abonnés de la newsletter. Rejoignez 800+ professionnels.
+        Chaque nouvelle analyse, guide ou ressource est publié en priorité dans la newsletter Cercle IA.
       </p>
       <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
         <a href="https://www.linkedin.com/newsletters/cercle-ia-7353754146262401025/" target="_blank" rel="noopener noreferrer" class="btn-primary">S'abonner à la newsletter &rarr;</a>

@@ -9,6 +9,7 @@ const formations = [
   { href: '/formations/rh', title: 'IA pour les RH', tag: 'Ressources humaines', desc: 'Détectez les bons talents, rédigez vos offres plus rapidement et analysez les CV sans sacrifier le jugement humain.' },
   { href: '/formations/avocats', title: 'IA pour avocats & juristes', tag: 'Droit', desc: 'Recherche, rédaction, analyse documentaire — en respectant le secret professionnel et les obligations déontologiques.' },
   { href: '/formations/consultants', title: 'IA pour consultants', tag: 'Conseil', desc: 'Accélérez vos livrables, automatisez la recherche sectorielle et gagnez en productivité sur vos missions.' },
+  { href: '/formations/dirigeants', title: 'IA pour dirigeants', tag: 'Direction', desc: 'Pilotez la transformation IA de votre organisation avec méthode. Stratégie, gouvernance et décision augmentée.' },
 ];
 
 const testimonials = [
@@ -66,7 +67,7 @@ const logos = ['UCLouvain', 'EPHEC', 'IHECS', 'AKT CCI Liège', 'Wallonia.be', '
 ---
 
 <BaseLayout
-  title="Cercle IA — Formations IA pour professionnels"
+  title="Formations IA pour professionnels — Cercle IA"
   description="Formations IA pour avocats, médecins, dirigeants et consultants. Maîtrisez l'IA avec méthode, discernement et éthique. Bruxelles & en ligne."
   ogImage="/og/homepage.jpg"
   ogImageAlt="Cercle IA — Formations IA pour professionnels"
@@ -93,7 +94,7 @@ const logos = ['UCLouvain', 'EPHEC', 'IHECS', 'AKT CCI Liège', 'Wallonia.be', '
           </h1>
 
           <p style="font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.75; max-width: 560px; margin-bottom: 36px;">
-            Des formations conçues pour les professionnels dont les erreurs ont un cout. Avocats, médecins, consultants, dirigeants.
+            Des formations conçues pour les professionnels dont les erreurs ont un coût. Avocats, médecins, consultants, dirigeants.
           </p>
 
           <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
@@ -279,7 +280,7 @@ const logos = ['UCLouvain', 'EPHEC', 'IHECS', 'AKT CCI Liège', 'Wallonia.be', '
             { src: '/images/logos/brussels-study-center.png', alt: 'Brussels Study Center' },
           ].map((logo) => (
             <div class="logo-img-wrap">
-              <img src={logo.src} alt={logo.alt} height="32" loading="lazy" decoding="async" />
+              <img src={logo.src} alt={logo.alt} width="120" height="32" loading="eager" decoding="async" />
             </div>
           ))}
         </div>
@@ -294,7 +295,7 @@ const logos = ['UCLouvain', 'EPHEC', 'IHECS', 'AKT CCI Liège', 'Wallonia.be', '
       <div class="section-header">
         <div>
           <span class="section-eyebrow">Pourquoi se former avec Cercle IA</span>
-          <h2 class="section-title" style="color: var(--color-text-on-light);">L'IA générative transformera<br />votre pratique professionnelle.</h2>
+          <h2 class="section-title" style="color: var(--color-text-on-light);">Ce que vous apprenez ici est<br />applicable le lundi matin.</h2>
         </div>
       </div>
       <div class="grid-3">
@@ -341,7 +342,7 @@ const logos = ['UCLouvain', 'EPHEC', 'IHECS', 'AKT CCI Liège', 'Wallonia.be', '
         </div>
         <div>
           <p style="font-size: 11px; color: rgba(255,255,255,0.25); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">Prochaine session</p>
-          <p style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: #ffffff;">Été 2026</p>
+          <p style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: #ffffff;">Septembre 2026</p>
         </div>
       </div>
 
@@ -387,13 +388,13 @@ const logos = ['UCLouvain', 'EPHEC', 'IHECS', 'AKT CCI Liège', 'Wallonia.be', '
           <span class="section-eyebrow">Votre formateur principal</span>
           <h2 style="font-family: var(--font-display); font-size: clamp(40px, 5vw, 64px); font-weight: 700; color: #ffffff; line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 24px; margin-top: 4px;">Tarik Hennen.</h2>
           <div style="width: 36px; height: 2px; background: var(--color-accent); margin-bottom: 24px;"></div>
-          <p style="font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 16px; max-width: 420px;">Ancien avocat, consultant en stratégie digitale, enseignant à l'IHECS, l'EPHEC et l'UCLouvain. Praticien IA depuis 2021 — dans des contextes où l'erreur coûte.</p>
+          <p style="font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 16px; max-width: 420px;">Ancien avocat, consultant en stratégie digitale, enseignant à l'IHECS, formateur IA à l'EPHEC et l'UCLouvain. Praticien IA depuis 2021 — dans des contextes où l'erreur coûte.</p>
           <p style="font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; max-width: 420px; margin-bottom: 32px;">"Le point de départ n'est pas l'outil. C'est le travail."</p>
-          <a href="/a-propos" class="btn-text-link">Découvrir le parcours &rarr;</a>
+          <a href="/tarik-hennen" class="btn-text-link">Découvrir le parcours &rarr;</a>
         </div>
         <div style="display: flex; flex-direction: column; gap: 10px;">
           {[
-            { number: '2021', label: 'Formateur en IA depuis' },
+            { number: '2024', label: 'Formateur en IA depuis' },
             { number: '250+', label: 'Professionnels formés' },
             { number: '15 ans', label: 'D\'expérience terrain' },
           ].map((s) => (
@@ -482,7 +483,7 @@ const logos = ['UCLouvain', 'EPHEC', 'IHECS', 'AKT CCI Liège', 'Wallonia.be', '
       </p>
       <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
         <a href="/contact" class="btn-primary">Nous contacter</a>
-        <a href="https://www.linkedin.com/newsletters/cercle-ia-7353754146262401025/" target="_blank" rel="noopener noreferrer" class="btn-outline">S'abonner à la newsletter</a>
+        <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" target="_blank" rel="noopener noreferrer" class="btn-outline">Planifier un appel</a>
       </div>
     </div>
   </section>

@@ -2,11 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { breadcrumb } from '../lib/schema';
 
-const schema = breadcrumb([{ name: 'Contact', href: '/contact' }]);
+const bc = breadcrumb([{ name: 'Contact', href: '/contact' }]);
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [bc],
+};
 ---
 
 <BaseLayout
-  title="Contact — Cercle IA"
+  title="Contact formations IA — Cercle IA"
   description="Une question sur nos formations, accompagnements ou outils IA ? Contactez Cercle IA — formations IA pour professionnels à Bruxelles et en ligne."
   ogImage="/og/contact.jpg"
   ogImageAlt="Contact — Cercle IA"

@@ -1,50 +1,73 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { breadcrumb } from '../lib/schema';
+import { breadcrumb, courseSchema, faqSchema } from '../lib/schema';
 
 const bc = breadcrumb([{ name: 'Bootcamp IA', href: '/bootcamp' }]);
 
 const problemSolutionRows = [
   {
     problem: 'Vous utilisez ChatGPT ou Copilot, mais les résultats ne sont pas toujours fiables.',
-    solutionTitle: 'Prenez l\'avantage concurrentiel',
-    solutionDesc: 'Explorez de nouvelles manières de créer de la valeur pour vos clients. Franchissez le cap vers une pratique professionnelle augmentée par l\'IA.',
+    solutionTitle: 'Des prompts qui produisent des résultats fiables',
+    solutionDesc: 'Apprenez à formuler des instructions précises, adaptées à votre métier. Quand le prompt est juste, l\'output l\'est aussi.',
   },
   {
     problem: 'Vous reformulez, relancez, corrigez. Le gain de temps n\'est pas au rendez-vous.',
-    solutionTitle: 'Augmentez vos performances',
-    solutionDesc: 'Livrez des résultats supérieurs en moins de temps. Créez des synergies d\'équipe grâce aux outils d\'IA collaborative, sans sacrifier le jugement professionnel.',
+    solutionTitle: 'Un flux de travail IA reproductible',
+    solutionDesc: 'Intégrez l\'IA dans vos processus avec une méthode structurée. Chaque session vous donne un protocole applicable le lendemain, pas une liste de fonctionnalités.',
   },
   {
     problem: 'Vous ne savez pas ce que vous pouvez confier à l\'IA sans risquer vos données clients.',
-    solutionTitle: 'Gagnez en confiance et en maîtrise',
-    solutionDesc: 'Acquérez une compréhension solide des fondamentaux de l\'IA générative. Maîtrisez les bonnes pratiques. Gagnez en assurance et en crédibilité face à vos clients et pairs.',
+    solutionTitle: 'Travaillez avec l\'IA en toute sécurité',
+    solutionDesc: 'Identifiez quelles données confier à l\'IA, quels outils respectent vos obligations professionnelles et comment paramétrer un environnement de travail confidentiel.',
   },
 ];
 
+const course = courseSchema({
+  name: 'Bootcamp IA générative',
+  description: 'Programme intensif de 3 sessions pour maîtriser l\'IA générative dans votre pratique professionnelle. Prompts, outils, méthodes et confidentialité.',
+  url: '/bootcamp',
+  offers: { price: '750', priceCurrency: 'EUR' },
+  courseMode: 'Online',
+  startDate: '2026-09-01',
+  timeRequired: 'PT7H',
+});
+
+const faqItems = [
+  {
+    question: 'Ai-je besoin de compétences techniques en IA ?',
+    answer: 'Non. Le bootcamp est conçu pour des professionnels sans bagage technique. Tout est expliqué de façon concrète et orientée métier — aucun jargon technique, aucun prérequis.',
+  },
+  {
+    question: 'Comment se déroulent les sessions masterclass ?',
+    answer: 'Sessions pratiques en ligne, avec exercices et cas d\'usage métier. L\'objectif est que chaque participant reparte avec des méthodes applicables dès le lendemain.',
+  },
+  {
+    question: 'Comment se déroule la session de coaching individuel ?',
+    answer: 'Une session 1-on-1 avec Tarik Hennen pour adapter les apprentissages à votre contexte spécifique : vos outils, vos clients, vos contraintes professionnelles.',
+  },
+  {
+    question: 'Quel est l\'investissement total ?',
+    answer: '750 € HTVA pour l\'ensemble du programme — 3 sessions masterclass, coaching individuel, accès à la bibliothèque de ressources et 3 mois de Cercle GPT offerts. Facturation possible.',
+  },
+  {
+    question: 'Le bootcamp est-il éligible aux aides à la formation ?',
+    answer: 'En Belgique, les formations professionnelles peuvent être éligibles à des aides via les fonds sectoriels. Nous fournissons une attestation de formation et les documents nécessaires. Contactez-nous pour vérifier l\'éligibilité selon votre situation.',
+  },
+  {
+    question: 'Puis-je participer si je suis hors Belgique ?',
+    answer: 'Oui. Le bootcamp se déroule entièrement en ligne et est ouvert aux participants francophones quel que soit leur pays de résidence. Les sessions sont planifiées aux heures ouvrables (CET).',
+  },
+  {
+    question: 'Y a-t-il un suivi après le bootcamp ?',
+    answer: 'Oui. Vous accédez à la communauté Cercle IA pendant 3 mois, et votre abonnement Cercle GPT offert vous donne accès aux ressources mises à jour régulièrement. Les replays des sessions sont également inclus.',
+  },
+];
+
+const faq = faqSchema(faqItems);
+
 const schema = {
   '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'Course',
-      name: 'Bootcamp IA Générative',
-      description: 'Programme intensif de 3 sessions pour maîtriser l\'IA générative dans votre pratique professionnelle. Prompts, outils, méthodes et confidentialité.',
-      url: 'https://lecercle.ai/bootcamp',
-      provider: { '@type': 'Organization', name: 'Cercle IA', sameAs: 'https://lecercle.ai' },
-      inLanguage: 'fr-BE',
-    },
-    bc,
-    {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: [
-        { '@type': 'Question', name: 'Ai-je besoin de compétences techniques en IA ?', acceptedAnswer: { '@type': 'Answer', text: 'Non. Le bootcamp est conçu pour des professionnels sans bagage technique. Tout est expliqué de façon concrète et orientée métier.' } },
-        { '@type': 'Question', name: 'Comment se déroulent les sessions masterclass ?', acceptedAnswer: { '@type': 'Answer', text: 'Sessions pratiques en ligne, avec exercices et cas d\'usage métier directement applicables à votre contexte professionnel.' } },
-        { '@type': 'Question', name: 'Comment se déroule la session de coaching individuel ?', acceptedAnswer: { '@type': 'Answer', text: 'Une session 1-on-1 avec le formateur pour adapter les apprentissages à votre contexte spécifique : vos outils, vos clients, vos contraintes.' } },
-        { '@type': 'Question', name: 'Quel est l\'investissement total ?', acceptedAnswer: { '@type': 'Answer', text: '750 € HTVA pour l\'ensemble du programme — 3 sessions masterclass, coaching individuel, accès aux ressources et 3 mois de Cercle GPT offerts.' } },
-      ],
-    },
-  ],
+  '@graph': [course, bc, faq],
 };
 ---
 
@@ -80,7 +103,7 @@ const schema = {
           </p>
 
           <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 32px;">
-            <a href="#" data-open-modal="waitlist" class="btn-primary">S'inscrire sur la liste d'attente</a>
+            <a href="#" data-open-modal="waitlist" class="btn-primary">Rejoindre la liste prioritaire</a>
             <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">Planifier un appel</a>
           </div>
 
@@ -101,7 +124,7 @@ const schema = {
             <div style="display: flex; flex-direction: column; gap: 20px;">
               {[
                 {
-                  label: 'Été 2026',
+                  label: 'Septembre 2026',
                   icon: '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>',
                 },
                 {
@@ -345,12 +368,12 @@ const schema = {
 
         <div>
           <span class="section-eyebrow">Prochaine session</span>
-          <h2 class="section-title" style="color: var(--color-text-on-light);">Été 2026.</h2>
+          <h2 class="section-title" style="color: var(--color-text-on-light);">Septembre 2026.</h2>
           <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.8; margin-top: 16px; margin-bottom: 32px;">
             Les places sont limitées pour garantir la qualité des échanges. Inscrivez-vous sur la liste d'attente pour être notifié en priorité à l'ouverture des inscriptions.
           </p>
           <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="#" data-open-modal="waitlist" class="btn-primary">S'inscrire sur la liste d'attente</a>
+            <a href="#" data-open-modal="waitlist" class="btn-primary">Rejoindre la liste prioritaire</a>
             <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline-dark">Planifier un appel</a>
           </div>
         </div>
@@ -442,7 +465,7 @@ const schema = {
           <span class="section-eyebrow">Votre formateur</span>
           <h2 style="font-family: var(--font-display); font-size: clamp(40px, 5vw, 64px); font-weight: 700; color: #ffffff; line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 24px; margin-top: 4px;">Tarik Hennen.</h2>
           <div style="width: 36px; height: 2px; background: var(--color-accent); margin-bottom: 24px;"></div>
-          <p style="font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 16px; max-width: 420px;">Ancien avocat, consultant en stratégie digitale, enseignant à l'IHECS, l'EPHEC et l'UCLouvain. Praticien IA depuis 2021 — dans des contextes où l'erreur coûte.</p>
+          <p style="font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 16px; max-width: 420px;">Ancien avocat, consultant en stratégie digitale, enseignant à l'IHECS, formateur IA à l'EPHEC et l'UCLouvain. Praticien IA depuis 2021 — dans des contextes où l'erreur coûte.</p>
           <p style="font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; max-width: 420px; margin-bottom: 32px; font-style: italic;">"Le point de départ n'est pas l'outil. C'est le travail."</p>
           <a href="/a-propos" class="btn-text-link">Découvrir le parcours &rarr;</a>
         </div>
@@ -469,27 +492,10 @@ const schema = {
         <span class="section-eyebrow">Questions fréquentes</span>
         <h2 class="section-title" style="margin-bottom: 48px;">Tout ce que vous voulez savoir<br />avant de vous inscrire.</h2>
         <div style="display: flex; flex-direction: column; gap: 16px;">
-          {[
-            {
-              q: 'Ai-je besoin de compétences techniques en IA ?',
-              a: 'Non. Le bootcamp est conçu pour des professionnels sans bagage technique. Tout est expliqué de façon concrète et orientée métier — aucun jargon technique, aucun prérequis.',
-            },
-            {
-              q: 'Comment se déroulent les sessions masterclass ?',
-              a: 'Sessions pratiques en ligne, avec exercices et cas d\'usage métier. L\'objectif est que chaque participant reparte avec des méthodes applicables dès le lendemain.',
-            },
-            {
-              q: 'Comment se déroule la session de coaching individuel ?',
-              a: 'Une session 1-on-1 avec Tarik Hennen pour adapter les apprentissages à votre contexte spécifique : vos outils, vos clients, vos contraintes professionnelles.',
-            },
-            {
-              q: 'Quel est l\'investissement total ?',
-              a: '750 € HTVA pour l\'ensemble du programme — 3 sessions masterclass, coaching individuel, accès à la bibliothèque de ressources et 3 mois de Cercle GPT offerts. Facturation possible.',
-            },
-          ].map((item) => (
+          {faqItems.map((item) => (
             <div class="glass-card">
-              <h3 style="font-family: var(--font-display); font-size: 17px; font-weight: 700; color: #ffffff; line-height: 1.4; margin-bottom: 10px;">{item.q}</h3>
-              <p style="font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.75;">{item.a}</p>
+              <h3 style="font-family: var(--font-display); font-size: 17px; font-weight: 700; color: #ffffff; line-height: 1.4; margin-bottom: 10px;">{item.question}</h3>
+              <p style="font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.75;">{item.answer}</p>
             </div>
           ))}
         </div>
@@ -502,7 +508,7 @@ const schema = {
     <div class="container" style="text-align: center; max-width: 680px;">
       <div class="eyebrow-badge" style="margin-bottom: 28px; display: inline-flex;">
         <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
-        Places limitées · Été 2026
+        Places limitées · Septembre 2026
       </div>
       <h2 style="font-family: var(--font-display); font-size: clamp(28px, 4vw, 44px); font-weight: 500; color: #ffffff; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px;">
         Prêt à passer à l'action ?
@@ -511,7 +517,7 @@ const schema = {
         Inscrivez-vous sur la liste d'attente pour la prochaine session ou planifiez un appel si vous souhaitez discuter d'une formule sur mesure.
       </p>
       <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <a href="#" data-open-modal="waitlist" class="btn-primary">S'inscrire sur la liste d'attente</a>
+        <a href="#" data-open-modal="waitlist" class="btn-primary">Rejoindre la liste prioritaire</a>
         <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">Planifier un appel</a>
       </div>
     </div>

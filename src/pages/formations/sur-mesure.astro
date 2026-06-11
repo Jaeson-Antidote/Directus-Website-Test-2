@@ -1,0 +1,182 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { breadcrumb } from '../../lib/schema';
+
+const bc = breadcrumb([
+  { name: 'Formations', href: '/formations' },
+  { name: 'Formation sur mesure', href: '/formations/sur-mesure' },
+]);
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [bc],
+};
+
+const metiers = [
+  'Avocat / juriste',
+  'Médecin / professionnel de santé',
+  'Consultant',
+  'RH / DRH',
+  'Dirigeant / C-level',
+  'Manager',
+  'Formateur / enseignant',
+  'Autre',
+];
+
+const tailles = [
+  '1 à 10 employés',
+  '11 à 50 employés',
+  '51 à 200 employés',
+  '201 à 500 employés',
+  'Plus de 500 employés',
+];
+---
+
+<BaseLayout
+  title="Formation IA sur mesure — Cercle IA"
+  description="Décrivez vos objectifs et votre contexte professionnel. Cercle IA conçoit une formation IA adaptée à votre secteur, vos outils et vos équipes."
+  ogImage="/og/contact.jpg"
+  ogImageAlt="Formation IA sur mesure — Cercle IA"
+  schema={schema}
+>
+
+  <section style="background: var(--color-dark-1); min-height: 100vh; padding: 80px 0 96px;">
+    <div class="container" style="max-width: 720px;">
+
+      <!-- En-tête compact -->
+      <div style="text-align: center; margin-bottom: 48px;">
+        <div class="eyebrow-badge" style="display: inline-flex; margin-bottom: 20px;">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
+          Formation sur mesure
+        </div>
+
+        <h1 style="font-family: var(--font-display); font-size: clamp(28px, 3.5vw, 44px); font-weight: 700; color: #ffffff; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 16px;">
+          Vous souhaitez une formation IA<br />
+          <span style="color: var(--color-accent);">sur mesure ?</span>
+        </h1>
+
+        <p style="font-size: 17px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 520px; margin: 0 auto;">
+          Parlez-nous de vos objectifs, votre métier et votre contexte professionnel. Nous vous revenons sous 24 h ouvrables avec une proposition adaptée.
+        </p>
+      </div>
+
+      <!-- Formulaire -->
+      <div class="glass-card" style="padding: 48px; border-radius: 20px;">
+        <form
+          name="formation-sur-mesure"
+          method="POST"
+          data-netlify="true"
+          style="display: flex; flex-direction: column; gap: 20px;"
+        >
+          <input type="hidden" name="form-name" value="formation-sur-mesure" />
+
+          <!-- Prénom / Nom -->
+          <div class="grid-2" style="gap: 16px;">
+            <div>
+              <label for="prenom" class="form-label">Prénom *</label>
+              <input id="prenom" type="text" name="prenom" placeholder="Marie" required class="input-dark" />
+            </div>
+            <div>
+              <label for="nom" class="form-label">Nom</label>
+              <input id="nom" type="text" name="nom" placeholder="Dupont" class="input-dark" />
+            </div>
+          </div>
+
+          <!-- Email / Téléphone -->
+          <div class="grid-2" style="gap: 16px;">
+            <div>
+              <label for="email" class="form-label">Email professionnel *</label>
+              <input id="email" type="email" name="email" placeholder="marie@cabinet.be" required class="input-dark" />
+            </div>
+            <div>
+              <label for="telephone" class="form-label">Téléphone</label>
+              <input id="telephone" type="tel" name="telephone" placeholder="+32 470 00 00 00" class="input-dark" />
+            </div>
+          </div>
+
+          <!-- Métier / Entreprise -->
+          <div class="grid-2" style="gap: 16px;">
+            <div>
+              <label for="metier" class="form-label">Métier *</label>
+              <select id="metier" name="metier" required class="input-dark" style="appearance: none; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 44px;">
+                <option value="" disabled selected>Sélectionner</option>
+                {metiers.map(m => <option value={m}>{m}</option>)}
+              </select>
+            </div>
+            <div>
+              <label for="entreprise" class="form-label">Entreprise</label>
+              <input id="entreprise" type="text" name="entreprise" placeholder="Cabinet, PME, hôpital…" class="input-dark" />
+            </div>
+          </div>
+
+          <!-- Nombre d'employés / Fonction -->
+          <div class="grid-2" style="gap: 16px;">
+            <div>
+              <label for="taille" class="form-label">Nombre d'employés</label>
+              <select id="taille" name="taille" class="input-dark" style="appearance: none; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 44px;">
+                <option value="" disabled selected>Sélectionner</option>
+                {tailles.map(t => <option value={t}>{t}</option>)}
+              </select>
+            </div>
+            <div>
+              <label for="fonction" class="form-label">Fonction</label>
+              <input id="fonction" type="text" name="fonction" placeholder="Associé, DRH, Directeur…" class="input-dark" />
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div>
+            <label for="message" class="form-label">Vos besoins ou questions</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Décrivez votre contexte, vos objectifs, le nombre de participants, les outils utilisés…"
+              rows="5"
+              class="input-dark"
+              style="resize: vertical;"
+            ></textarea>
+          </div>
+
+          <!-- RGPD -->
+          <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer;">
+            <input
+              type="checkbox"
+              name="rgpd"
+              required
+              style="margin-top: 3px; accent-color: var(--color-accent); flex-shrink: 0; width: 16px; height: 16px;"
+            />
+            <span style="font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.6;">
+              En soumettant ce formulaire, vous acceptez le traitement de vos données conformément à notre
+              <a href="/politique-confidentialite" style="color: rgba(255,255,255,0.65); text-decoration: underline;">politique de confidentialité</a>.
+            </span>
+          </label>
+
+          <!-- Submit -->
+          <div style="margin-top: 8px;">
+            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; font-size: 17px; padding: 18px 32px;">
+              Recevoir ma proposition personnalisée &rarr;
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Réassurance -->
+      <div style="display: flex; gap: 32px; justify-content: center; margin-top: 40px; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="color: var(--color-accent); font-size: 18px;">&#10003;</span>
+          <span style="font-size: 14px; color: rgba(255,255,255,0.45);">Réponse sous 24 h ouvrables</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="color: var(--color-accent); font-size: 18px;">&#10003;</span>
+          <span style="font-size: 14px; color: rgba(255,255,255,0.45);">Proposition 100 % sur mesure</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="color: var(--color-accent); font-size: 18px;">&#10003;</span>
+          <span style="font-size: 14px; color: rgba(255,255,255,0.45);">Sans engagement</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>

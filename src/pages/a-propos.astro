@@ -1,13 +1,32 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { personSchema, breadcrumb } from '../lib/schema';
+import { personSchema, breadcrumb, faqSchema } from '../lib/schema';
 
 const bc = breadcrumb([{ name: 'À propos', href: '/a-propos' }]);
 const person = personSchema();
 
+const faq = faqSchema([
+  {
+    question: 'Qui est Tarik Hennen, le fondateur de Cercle IA ?',
+    answer: "Tarik Hennen est un ancien avocat, praticien de l'IA depuis 2021 et fondateur de Cercle IA. Ancien avocat chez Stibbe et Squire Patton Boggs, il enseigne à l'IHECS et intervient comme formateur IA à l'EPHEC et l'UCLouvain. Il forme les professionnels à utiliser l'IA avec méthode dans des contextes à responsabilité : droit, médecine, conseil, management.",
+  },
+  {
+    question: 'Pour quels professionnels les formations Cercle IA sont-elles adaptées ?',
+    answer: "Cercle IA forme les professionnels dont les erreurs ont un coût : avocats et juristes (secret professionnel, déontologie), médecins et soignants (secret médical, RGPD), dirigeants et managers (gouvernance, décision), consultants et analystes (livrables, recherche), responsables RH (recrutement, données personnelles).",
+  },
+  {
+    question: "Quelle est l'approche pédagogique de Cercle IA ?",
+    answer: "La pédagogie de Cercle IA part du travail réel, pas de la technologie. Chaque formation identifie les tâches chronophages du métier, enseigne à formuler des instructions précises, apprend à évaluer les résultats produits par l'IA et construit une méthode durable. Chaque exercice est ancré dans le contexte métier du participant.",
+  },
+  {
+    question: 'Où se déroulent les formations Cercle IA ?',
+    answer: "Les formations Cercle IA se déroulent en ligne, en présentiel à Bruxelles (Belgique) ou en format hybride. Des sessions intra-entreprise peuvent être organisées dans toute la Belgique et en France. Aucun déplacement requis pour les sessions en ligne.",
+  },
+]);
+
 const schema = {
   '@context': 'https://schema.org',
-  '@graph': [person, bc],
+  '@graph': [person, bc, faq],
 };
 
 const testimonials = [
@@ -51,7 +70,7 @@ const approche = [
 ---
 
 <BaseLayout
-  title="À propos — Cercle IA"
+  title="Formation IA — À propos de Cercle IA"
   description="Cercle IA forme les professionnels à utiliser l'IA avec discernement, méthode et éthique. Fondé par Tarik Hennen, praticien IA depuis 2021 dans des contextes à responsabilité."
   ogImage="/og/a-propos.jpg"
   ogImageAlt="À propos — Cercle IA"
@@ -328,7 +347,7 @@ const approche = [
           </p>
 
           <p style="font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.85; margin-bottom: 32px; max-width: 480px;">
-            Il enseigne à l'IHECS, à l'EPHEC et à l'UCLouvain. Il collabore avec des chercheurs de l'Université de Sherbrooke et de l'Université de Lille dans le cadre d'un observatoire international sur les transformations des pratiques professionnelles.
+            Il enseigne à l'IHECS et intervient comme formateur IA à l'EPHEC et à l'UCLouvain. Il collabore avec des chercheurs de l'Université de Sherbrooke et de l'Université de Lille dans le cadre d'un observatoire international sur les transformations des pratiques professionnelles.
           </p>
 
           <div style="padding: 20px 24px; background: var(--glass-bg); border-left: 2px solid var(--color-accent); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; margin-bottom: 32px; max-width: 480px;">
@@ -336,7 +355,10 @@ const approche = [
             <p style="font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 10px;">Marc D. David, Professeur titulaire — Université de Sherbrooke</p>
           </div>
 
-          <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-text-link">Planifier un appel avec Tarik &rarr;</a>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-text-link">Planifier un appel avec Tarik &rarr;</a>
+            <a href="/tarik-hennen" class="btn-text-link">Voir le profil complet &rarr;</a>
+          </div>
         </div>
 
         <div>

@@ -137,7 +137,7 @@ const faqs = [
           </p>
 
           <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 32px;">
-            <a href="/contact?sujet=formation-medecins" class="btn-primary">Obtenir une formation sur mesure &rarr;</a>
+            <a href="/formations/sur-mesure" class="btn-primary">Obtenir une formation sur mesure &rarr;</a>
             <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">Planifier un appel</a>
           </div>
 
@@ -151,34 +151,23 @@ const faqs = [
 
         <div style="padding-top: 36px;">
           <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius-xl); padding: 36px 32px;">
-            <h2 style="font-family: var(--font-display); font-size: 26px; font-weight: 700; color: #ffffff; line-height: 1.2; letter-spacing: -0.015em; margin-bottom: 28px;">Format de la formation</h2>
-            <div style="display: flex; flex-direction: column; gap: 20px;">
-              {[
-                {
-                  label: 'Présentiel, en ligne ou hybride',
-                  icon: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
-                },
-                {
-                  label: 'À partir de 2 heures',
-                  icon: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
-                },
-                {
-                  label: 'Adapté à votre contexte médical',
-                  icon: '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>',
-                },
-                {
-                  label: 'Secret médical et RGPD couverts',
-                  icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-                },
-              ].map((item) => (
-                <div style="display: flex; align-items: center; gap: 16px;">
-                  <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(247,171,110,0.12); border: 1px solid rgba(247,171,110,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={item.icon} />
-                  </div>
-                  <p style="font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.8); font-family: var(--font-body);">{item.label}</p>
-                </div>
-              ))}
-            </div>
+            <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: #ffffff; line-height: 1.2; letter-spacing: -0.015em; margin-bottom: 20px;">En bref</h2>
+            <table style="width: 100%; border-collapse: collapse;">
+              <tbody>
+                {[
+                  { label: 'Pour qui', value: 'Médecins généralistes, spécialistes, internes, chefs de service' },
+                  { label: 'Format', value: 'Présentiel, en ligne ou hybride, à partir de 2h' },
+                  { label: 'Langue', value: 'Français' },
+                  { label: 'Tarif', value: 'Sur devis (formations intra-entreprise)' },
+                  { label: 'Prérequis', value: 'Aucun prérequis technique' },
+                ].map((row, i) => (
+                  <tr style={i < 4 ? 'border-bottom: 1px solid rgba(255,255,255,0.07);' : ''}>
+                    <td style="padding: 12px 0; padding-right: 16px; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.35); letter-spacing: 0.07em; text-transform: uppercase; white-space: nowrap; vertical-align: top;">{row.label}</td>
+                    <td style="padding: 12px 0; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.8); line-height: 1.4;">{row.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
 
@@ -275,7 +264,7 @@ const faqs = [
             Chaque formation est adaptée à votre contexte : votre spécialité, vos contraintes réglementaires, vos outils existants. Nous intervenons en présentiel dans votre établissement ou en ligne, à partir de 2 heures.
           </p>
           <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="/contact?sujet=formation-medecins" class="btn-primary">Obtenir une formation sur mesure</a>
+            <a href="/formations/sur-mesure" class="btn-primary">Obtenir une formation sur mesure</a>
             <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline-dark">Planifier un appel</a>
           </div>
         </div>
@@ -298,7 +287,7 @@ const faqs = [
               </div>
             ))}
           </div>
-          <a href="/contact?sujet=tarifs-medecins" class="btn-primary" style="display: inline-block;">Contactez-nous pour les tarifs</a>
+          <a href="/formations/sur-mesure" class="btn-primary" style="display: inline-block;">Contactez-nous pour les tarifs</a>
         </div>
 
       </div>
@@ -336,7 +325,7 @@ const faqs = [
         Formation individuelle, de cabinet ou d'établissement. Contactez-nous pour une session adaptée à votre contexte.
       </p>
       <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <a href="/contact?sujet=formation-medecins" class="btn-primary">Obtenir une formation sur mesure &rarr;</a>
+        <a href="/formations/sur-mesure" class="btn-primary">Obtenir une formation sur mesure &rarr;</a>
         <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">Planifier un appel</a>
       </div>
     </div>
