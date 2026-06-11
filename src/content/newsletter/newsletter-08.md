@@ -94,7 +94,7 @@ Vouloir sauter directement au niveau 3 sans maîtriser le niveau 2, c'est constr
 
 ## Le Cheat Sheet : utiliser l'IA mieux que 80% des gens
 
-![Cheat Cheet](~/assets/newsletter/sheet-cheet.png)
+![Cheat Cheat](~/assets/newsletter/cheat-sheet.png)
 
 Une méthode simple en quatre étapes :
 

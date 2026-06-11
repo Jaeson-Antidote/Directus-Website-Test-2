@@ -51,7 +51,7 @@ C'est la troisième voie qu'ont choisie Monet, Renoir, Degas et leurs pairs.
 - L'instant fugitif : capturer l'impression d'un moment, pas sa reproduction exacte
 - La matérialité du geste : le coup de pinceau visible, la trace physique de l'artiste
 
-![Impression, Soleil levant de Monet](~/assets/newsletter/impressionnisme.png)
+![Impression, Soleil levant de Monet](~/assets/newsletter/impressionnisme.jpeg)
 
 L'impressionnisme n'était que le début d'une explosion créative. Une fois libérés de l'obligation de « copier le réel », les artistes ont investi des territoires que la lentille du photographe ne pouvait pas atteindre :
 
