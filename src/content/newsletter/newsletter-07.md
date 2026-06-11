@@ -124,7 +124,7 @@ Après avoir lu cette newsletter, vous vous posez probablement la question : « 
 
 Pour vous donner des réponses, j'ai créé **JobsGPT**, un custom GPT accessible gratuitement sur ChatGPT.
 
-![JobsGPT](~/assets/newsletter/jobsgpt.png)
+![JobsGPT](~/assets/newsletter/JobsGPT.png)
 
 JobsGPT s'appuie sur le rapport « Future of Jobs 2025 » du Forum Économique Mondial, qui analyse l'impact de l'IA générative sur les métiers et compétences à l'horizon 2030.
 
