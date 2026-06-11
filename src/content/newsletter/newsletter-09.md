@@ -4,7 +4,7 @@ description: "Les signes qui trahissent votre écriture IA ne sont pas ceux que 
 pubDate: 2026-04-01
 category: "Newsletter"
 edition: 9
-image: "newsletter-09.png"
+image: "~/assets/newsletter/newsletter-09.png"
 ---
 
 Relisez le dernier texte que vous avez rédigé avec l'aide de l'IA.
@@ -51,6 +51,8 @@ Voici cinq signes qui trahissent l'utilisation de l'IA. Isolé, chacun peut pass
 
 L'IA adore les oppositions. « Ce n'est pas une question de technologie, c'est une question de culture. » « Ce n'est pas un outil, c'est un changement de paradigme. »
 
+![Parallélisme Négative](~/assets/newsletter/parallelisme.png)
+
 La structure est séduisante. Elle donne l'impression d'une pensée qui tranche, qui va au fond des choses. Sauf qu'elle ne dit souvent rien. Elle habille une banalité en profondeur.
 
 Wikipedia l'a cataloguée comme l'un des signes les plus fréquents et les plus difficiles à déceler, précisément parce qu'elle imite le raisonnement sans en être un.
@@ -64,6 +66,8 @@ Wikipedia l'a cataloguée comme l'un des signes les plus fréquents et les plus 
 ### 2. La liste au lieu de la pensée
 
 Quand l'IA ne sait pas comment enchaîner des idées, elle les empile. Trois points. Un terme en gras. Sa définition répétée dans la phrase suivante.
+
+![La règle de trois](~/assets/newsletter/regle-de-trois.png)
 
 Le résultat ressemble à une présentation PowerPoint transformée en texte. Chaque idée est isolée, correctement étiquetée, et complètement déconnectée de la suivante.
 
@@ -84,6 +88,8 @@ Si vous relisez vos textes générés et que chaque liste a exactement trois poi
 Crucial. Pivot. Paysage. Levier. Incontournable. Ces mots occupent de l'espace sans rien porter. Ils signalent l'importance sans la démontrer.
 
 Les éditeurs de Wikipedia notent que les LLM y recourent de façon compulsive, particulièrement quand ils écrivent sur des sujets qu'ils ne peuvent pas illustrer concrètement. Le mot valise est un cache-misère : il comble le vide là où un exemple précis aurait dû se trouver.
+
+![Mot valise](~/assets/newsletter/mot-valise.png)
 
 <div class="callout-box">
 
@@ -113,7 +119,7 @@ L'IA évite le verbe être. Pas par élégance. Par réflexe. Elle remplace syst
 
 Le résultat sonne plus sérieux. Mais il dit moins.
 
-Wikipedia l'a catalogué sous deux formes distinctes. D'abord l'évitement de la copule : « représente », « constitue », « agit comme », « s'inscrit dans ». Ensuite les gérondifs de clôture : ces fins de phrase qui ajoutent du mouvement sans ajouter de sens. « Soulignant la portée de l'initiative. » « Mettant en lumière l'importance du sujet. » Supprimez-les. La phrase qui précède se tient seule.
+Wikipedia l'a catalogué sous deux formes distinctes. D'abord l'évitement de la copule : « représente », « constitue », « agit comme », « s'inscrit dans ». Ensuite les gérondifs de clôture : ces fins de phrase qui ajoutent du mouvement sans ajouter de sens. « Soulignant la portée de l'initiative. » Supprimez-les. La phrase qui précède se tient seule.
 
 <div class="callout-box">
 
@@ -131,7 +137,7 @@ C'est la mauvaise question.
 
 D'abord parce que les outils de détection sont peu fiables. Ensuite parce que vos lecteurs, dans leur grande majorité, ne cherchent pas à vous piéger. Ils cherchent à lire quelque chose d'utile, de clair, qui leur ressemble ou qui les aide.
 
-Le vrai problème est ailleurs.
+**Le vrai problème est ailleurs.**
 
 À force de déléguer la formulation à l'IA, on perd quelque chose d'important : le réflexe de chercher ses propres mots. De s'arrêter sur une idée jusqu'à trouver la bonne façon de la dire. De produire une phrase qui ne pouvait venir que de vous, parce qu'elle porte votre expérience ou votre façon de voir.
 
@@ -157,7 +163,7 @@ Cinq essais méritent votre attention :
 - **Putting Ideas into Words (février 2022).** Écrire ne sert pas à transmettre des idées déjà formées. Ça les forme. Environ la moitié des idées finales naissent pendant l'écriture elle-même.
 - **Good Writing (mai 2025).** Le style et le fond sont liés : améliorer le rythme d'un texte oblige à corriger la pensée. Cette connexion disparaît quand vous acceptez la structure d'un modèle.
 - **The Age of the Essay (septembre 2004).** Un vrai texte n'est pas une thèse à défendre. C'est une tentative. L'IA ne fait pas ça. Elle part d'une structure et la remplit. C'est l'inverse.
-- **Writing, Briefly (mars 2005).** 80 % des idées arrivent après avoir commencé à écrire. Rédigez une première version médiocre, vite. Récrivez sans cesse. Lisez à voix haute pour repérer ce qui sonne faux.
+- **Writing, Briefly (mars 2005).** 80% des idées arrivent après avoir commencé à écrire. Rédigez une première version médiocre, vite. Récrivez sans cesse. Lisez à voix haute pour repérer ce qui sonne faux.
 
 Les cinq essais sont courts et disponibles gratuitement sur paulgraham.com.
 
@@ -165,13 +171,15 @@ Les cinq essais sont courts et disponibles gratuitement sur paulgraham.com.
 
 ## L'outil à tester : Wispr Flow
 
+![Wispr Flow](~/assets/newsletter/wispr-flow.png)
+
 Il y a une chose que l'IA ne sait pas vraiment faire à votre place : parler comme vous.
 
 Je ne fais pas référence au « style » au sens littéraire. Je parle de votre voix réelle. Celle qu'on entend quand vous expliquez un dossier à un collaborateur, quand vous résumez une réunion en marchant vers le rendez-vous suivant.
 
 À l'oral, vous ne dites pas « dans un paysage en pleine mutation ». Vous dites ce que vous pensez, avec vos mots, votre cadence, vos raccourcis.
 
-Cette matière, l'IA ne peut pas la deviner. En revanche, vous pouvez la lui donner.
+**Cette matière, l'IA ne peut pas la deviner. En revanche, vous pouvez la lui donner.**
 
 **La méthode :** dictez d'abord, rédigez ensuite. Avant d'ouvrir un outil d'IA, prenez deux minutes pour dire ce que vous voulez vraiment exprimer. Dictez comme vous parleriez à quelqu'un. Ensuite seulement, donnez cette transcription à l'IA avec une consigne simple : « reformule sans changer le fond, sans ajouter d'emphase, en gardant un ton direct. »
 

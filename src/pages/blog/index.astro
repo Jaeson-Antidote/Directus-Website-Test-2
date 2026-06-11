@@ -58,7 +58,8 @@ const blogImages = import.meta.glob<{ default: ImageMetadata }>('../../assets/bl
             const displayDate = article.data.updatedDate ?? article.data.pubDate;
             const dateLabel = article.data.updatedDate ? 'Mis à jour ' : '';
             const date = dateLabel + new Intl.DateTimeFormat('fr-BE', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(displayDate));
-            const imageMetadata = article.data.image ? blogImages[`../../assets/blog/${article.data.image}`]?.default : undefined;
+            const imgFile = article.data.image?.split('/').pop();
+            const imageMetadata = imgFile ? blogImages[`../../assets/blog/${imgFile}`]?.default : undefined;
             return (
               <a href={`/blog/${article.id}`} class="blog-card" style="text-decoration: none; display: flex; flex-direction: column;">
                 {imageMetadata ? (

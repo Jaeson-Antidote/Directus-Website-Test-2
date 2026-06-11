@@ -131,7 +131,8 @@ const newsletterImages = import.meta.glob<{ default: ImageMetadata }>('../assets
             const displayDate = ed.data.updatedDate ?? ed.data.pubDate;
             const dateLabel = ed.data.updatedDate ? 'Mis à jour ' : '';
             const date = dateLabel + new Intl.DateTimeFormat('fr-BE', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(displayDate));
-            const imageMetadata = ed.data.image ? newsletterImages[`../assets/newsletter/${ed.data.image}`]?.default : undefined;
+            const imgFile = ed.data.image?.split('/').pop();
+            const imageMetadata = imgFile ? newsletterImages[`../assets/newsletter/${imgFile}`]?.default : undefined;
             return (
               <a href={`/newsletter/${ed.id}`} class="newsletter-card" style="text-decoration: none; display: flex; flex-direction: column;">
 

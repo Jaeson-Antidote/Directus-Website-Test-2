@@ -4,7 +4,8 @@ description: "Guide complet des formations IA disponibles en Belgique : masters 
 pubDate: 2026-05-21
 updatedDate: 2026-05-21
 category: "IA"
-image: "formations-ia-belgique.png"
+tags: ["formation", "IA", "Belgique", "machine learning"]
+image: "~/assets/blog/formations-ia-belgique.png"
 imageAlt: "Formations en intelligence artificielle en Belgique"
 ---
 

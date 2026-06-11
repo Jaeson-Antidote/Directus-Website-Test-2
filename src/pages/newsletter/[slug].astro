@@ -17,7 +17,8 @@ const { edition } = Astro.props;
 const { Content, headings } = await render(edition);
 const { title, description, pubDate, updatedDate, category, edition: editionNumber, tags, image, imageAlt } = edition.data;
 
-const imageMetadata = image ? newsletterImages[`../../assets/newsletter/${image}`]?.default : undefined;
+const imgFile = image?.split('/').pop();
+const imageMetadata = imgFile ? newsletterImages[`../../assets/newsletter/${imgFile}`]?.default : undefined;
 ---
 
 <ArticleLayout
