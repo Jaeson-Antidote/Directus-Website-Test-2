@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "title": "Newsletter IA — Cercle IA",
+    "description": "Analyses, tendances et ressources pratiques sur l'IA professionnelle. Tous les 15 jours, pour les professionnels qui veulent garder une longueur d'avance.",
+    "ogImage": "/og/newsletter.jpg",
+    "ogImageAlt": "Newsletter IA — Cercle IA"
+  },
+  "hero": {
+    "eyebrow": "Newsletter Cercle IA",
+    "title": "L'IA entre de bonnes mains. Les vôtres.",
+    "description": "Tous les 15 jours, une analyse actionnable : tendances filtrées, outils testés, cas d'usage concrets. Pour les professionnels qui veulent comprendre avant d'adopter.",
+    "stats": [
+      { "value": "1000+", "label": "Abonnés" },
+      { "value": "2×", "label": "Par mois" },
+      { "value": "100%", "label": "Gratuit" }
+    ],
+    "cta": {
+      "label": "S'abonner sur LinkedIn",
+      "href": "https://www.linkedin.com/newsletters/le-cercle-ia-7179830167535878144/"
+    },
+    "card": {
+      "description": "Une newsletter pour anticiper les révolutions de l'IA plutôt que de les subir. Analyses, études de cas et outils."
+    }
+  },
+  "archives": {
+    "eyebrow": "Toutes les éditions",
+    "title": "Archives de la newsletter",
+    "description": "Chaque édition est disponible en lecture libre.",
+    "emptyState": {
+      "text": "Les premières éditions seront publiées très prochainement. Abonnez-vous pour être notifié.",
+      "cta": "S'abonner sur LinkedIn"
+    }
+  },
+  "ctaFinal": {
+    "title": "Rejoignez 1000+ professionnels",
+    "description": "La newsletter Cercle IA est publiée sur LinkedIn tous les 15 jours.",
+    "cta": "S'abonner gratuitement",
+    "ctaHref": "https://www.linkedin.com/newsletters/le-cercle-ia-7179830167535878144/"
+  }
+}

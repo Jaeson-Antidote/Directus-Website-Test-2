@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { breadcrumb, courseSchema, faqSchema } from '../../lib/schema';
+import content from '../../content/pages/fr/formations-avocats.json';
 
 const bc = breadcrumb([
   { name: 'Formations IA', href: '/formations' },
@@ -8,111 +9,28 @@ const bc = breadcrumb([
 ]);
 
 const course = courseSchema({
-  name: 'Formation IA pour avocats et juristes',
-  description: 'Apprenez à utiliser l\'IA dans votre pratique juridique quotidienne : recherche jurisprudentielle, rédaction d\'actes et analyse documentaire, en respectant le secret professionnel.',
-  url: '/formations/avocats',
+  name: content.schema.course.name,
+  description: content.schema.course.description,
+  url: content.schema.course.url,
 });
 
-const faq = faqSchema([
-  {
-    question: 'Le secret professionnel est-il respecté ?',
-    answer: 'Oui. Nous consacrons un module entier à l\'anonymisation des données et au choix des outils compatibles avec vos obligations déontologiques. Aucune donnée client n\'est traitée sur des serveurs tiers non sécurisés.',
-  },
-  {
-    question: 'Ai-je besoin de compétences techniques ?',
-    answer: 'Non. La formation est conçue pour des juristes, pas pour des informaticiens. Tout est expliqué en termes métier, avec des cas concrets tirés de la pratique juridique.',
-  },
-  {
-    question: 'Comment se déroulent les sessions ?',
-    answer: 'Sessions en ligne ou en présentiel, en petit groupe ou en intra-entreprise. Chaque session inclut des exercices pratiques sur des cas métier réels.',
-  },
-  {
-    question: 'La formation est-elle reconnue ?',
-    answer: 'Oui. Une attestation de formation est remise à l\'issue du programme. Renseignez-vous auprès de votre Ordre pour la prise en compte dans votre formation continue.',
-  },
-]);
+const faq = faqSchema(
+  content.faq.items.map((item) => ({ question: item.question, answer: item.answer }))
+);
 
 const schema = {
   '@context': 'https://schema.org',
   '@graph': [course, bc, faq],
 };
 
-const problemSolutionRows = [
-  {
-    problem: 'La recherche jurisprudentielle prend des heures, même pour des questions connues.',
-    solutionTitle: 'Sources vérifiées en quelques minutes',
-    solutionDesc: 'Formulez des requêtes précises et obtenez des synthèses de jurisprudence exploitables, avec les sources pour vérification.',
-  },
-  {
-    problem: 'La rédaction d\'actes et de conclusions est chronophage, même quand le fond est maîtrisé.',
-    solutionTitle: 'Premiers drafts de qualité instantanément',
-    solutionDesc: 'Utilisez l\'IA pour produire un premier jet structuré que vous finalisez avec votre expertise, sans partir d\'une page blanche.',
-  },
-  {
-    problem: 'Analyser des contrats volumineux ou des dossiers complexes prend un temps disproportionné.',
-    solutionTitle: 'Synthèses fidèles avec références',
-    solutionDesc: 'Identifiez les clauses clés, les risques et les points de vigilance en quelques minutes, sans perdre le fil du document.',
-  },
-];
-
-const modules = [
-  {
-    num: '01',
-    title: 'Fondamentaux de l\'IA pour le droit',
-    items: [
-      'Comprendre les modèles de langage sans jargon technique',
-      'Identifier les risques et les limites pour la pratique juridique',
-      'Choisir les bons outils selon vos contraintes déontologiques',
-      'Paramétrer un environnement de travail sécurisé',
-    ],
-  },
-  {
-    num: '02',
-    title: 'Rédaction augmentée par l\'IA',
-    items: [
-      'Techniques de prompt pour la rédaction juridique',
-      'Conclusions, notes de synthèse et courriers en 30% du temps',
-      'Révision et contrôle qualité des outputs IA',
-      'Bibliothèque de prompts juridiques prêts à l\'emploi',
-    ],
-  },
-  {
-    num: '03',
-    title: 'Analyse documentaire et confidentialité',
-    items: [
-      'Analyser des contrats et dossiers volumineux',
-      'Anonymisation des données clients avant tout traitement IA',
-      'Extraction structurée d\'informations clés',
-      'Intégration dans votre flux de travail existant',
-    ],
-  },
-];
-
-const faqs = [
-  {
-    q: 'Le secret professionnel est-il respecté ?',
-    a: 'Oui. Nous consacrons un module entier à l\'anonymisation des données et au choix des outils compatibles avec vos obligations déontologiques. Aucune donnée client n\'est traitée sur des serveurs tiers non sécurisés.',
-  },
-  {
-    q: 'Ai-je besoin de compétences techniques ?',
-    a: 'Non. La formation est conçue pour des juristes, pas pour des informaticiens. Tout est expliqué en termes métier, avec des cas concrets tirés de la pratique juridique.',
-  },
-  {
-    q: 'Comment se déroulent les sessions ?',
-    a: 'Sessions en ligne ou en présentiel, en petit groupe ou en intra-entreprise. Chaque session inclut des exercices pratiques sur des cas métier réels.',
-  },
-  {
-    q: 'La formation est-elle reconnue ?',
-    a: 'Oui. Une attestation de formation est remise à l\'issue du programme. Renseignez-vous auprès de votre Ordre pour la prise en compte dans votre formation continue.',
-  },
-];
+const { hero, problemSolution, modules, pricing, ctaFinal } = content;
 ---
 
 <BaseLayout
-  title="Formation IA pour avocats et juristes — Cercle IA"
-  description="Apprenez à utiliser l'IA dans votre pratique juridique : recherche, rédaction d'actes, analyse documentaire. Secret professionnel et déontologie inclus. Formation sur mesure."
-  ogImage="/og/formations-avocats.jpg"
-  ogImageAlt="Formation IA pour avocats et juristes — Cercle IA"
+  title={content.meta.title}
+  description={content.meta.description}
+  ogImage={content.meta.ogImage}
+  ogImageAlt={content.meta.ogImageAlt}
   schema={schema}
 >
 
@@ -127,26 +45,26 @@ const faqs = [
         <div>
           <div class="eyebrow-badge" style="margin-bottom: 28px; display: inline-flex;">
             <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
-            Formation IA · Droit
+            {hero.eyebrow}
           </div>
 
           <h1 class="hero-title">
-            L'IA au service<br />
-            <span style="color: rgba(255,255,255,0.55);">de la pratique juridique.</span>
+            {hero.title}<br />
+            <span style="color: rgba(255,255,255,0.55);">{hero.titleMuted}</span>
           </h1>
 
           <p style="font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.75; max-width: 560px; margin-bottom: 36px;">
-            Recherche, rédaction, analyse documentaire — apprenez à utiliser l'IA dans votre pratique quotidienne, en respectant le secret professionnel et vos obligations déontologiques.
+            {hero.description}
           </p>
 
           <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 32px;">
-            <a href="/formations/sur-mesure" class="btn-primary">Obtenir une formation sur mesure &rarr;</a>
-            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">Planifier un appel</a>
+            <a href="/formations/sur-mesure" class="btn-primary">{hero.ctaPrimary} &rarr;</a>
+            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">{hero.ctaSecondary}</a>
           </div>
 
           <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
             <span style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.2); letter-spacing: 0.08em; text-transform: uppercase; margin-right: 4px; white-space: nowrap;">Pour</span>
-            {['Avocats', 'Juristes d\'entreprise', 'Notaires', 'Huissiers'].map((p) => (
+            {hero.audienceTags.map((p) => (
               <span class="tag-outline" style="font-size: 10px; padding: 3px 10px;">{p}</span>
             ))}
           </div>
@@ -158,14 +76,8 @@ const faqs = [
             <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: #ffffff; line-height: 1.2; letter-spacing: -0.015em; margin-bottom: 20px;">En bref</h2>
             <table style="width: 100%; border-collapse: collapse;">
               <tbody>
-                {[
-                  { label: 'Pour qui', value: 'Avocats, juristes, notaires, huissiers' },
-                  { label: 'Format', value: "En ligne ou présentiel, à partir d'une demi-journée" },
-                  { label: 'Langue', value: 'Français' },
-                  { label: 'Tarif', value: 'Sur devis (formations intra-entreprise)' },
-                  { label: 'Prérequis', value: 'Aucun prérequis technique' },
-                ].map((row, i) => (
-                  <tr style={i < 4 ? 'border-bottom: 1px solid rgba(255,255,255,0.07);' : ''}>
+                {hero.infoBox.rows.map((row, i) => (
+                  <tr style={i < hero.infoBox.rows.length - 1 ? 'border-bottom: 1px solid rgba(255,255,255,0.07);' : ''}>
                     <td style="padding: 12px 0; padding-right: 16px; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.35); letter-spacing: 0.07em; text-transform: uppercase; white-space: nowrap; vertical-align: top;">{row.label}</td>
                     <td style="padding: 12px 0; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.8); line-height: 1.4;">{row.value}</td>
                   </tr>
@@ -184,10 +96,10 @@ const faqs = [
     <div class="container">
 
       <div style="max-width: 720px; margin-bottom: 56px;">
-        <span class="section-eyebrow">Pourquoi cette formation</span>
-        <h2 class="section-title">Les défis quotidiens du juriste face à l'IA</h2>
+        <span class="section-eyebrow">{problemSolution.eyebrow}</span>
+        <h2 class="section-title">{problemSolution.title}</h2>
         <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin-top: 20px;">
-          La pratique juridique est exigeante en temps et en précision. L'IA peut alléger la charge — à condition de savoir l'utiliser correctement et en toute sécurité.
+          {problemSolution.intro}
         </p>
       </div>
 
@@ -195,23 +107,23 @@ const faqs = [
       <div style="border: 1px solid rgba(6,24,23,0.1); border-radius: var(--radius-lg); overflow: hidden; display: grid; grid-template-columns: 1fr 1fr;">
 
         <div style="padding: 16px 28px; background: rgba(6,24,23,0.04); border-right: 1px solid rgba(6,24,23,0.08); border-bottom: 1px solid rgba(6,24,23,0.08);">
-          <p style="font-size: 11px; font-weight: 600; color: rgba(6,24,23,0.4); letter-spacing: 0.1em; text-transform: uppercase;">Le problème</p>
+          <p style="font-size: 11px; font-weight: 600; color: rgba(6,24,23,0.4); letter-spacing: 0.1em; text-transform: uppercase;">{problemSolution.headerProblem}</p>
         </div>
         <div style="padding: 16px 28px; background: rgba(247,171,110,0.1); border-bottom: 1px solid rgba(247,171,110,0.15);">
-          <p style="font-size: 11px; font-weight: 600; color: var(--color-accent-hover); letter-spacing: 0.1em; text-transform: uppercase;">Ce que vous allez gagner</p>
+          <p style="font-size: 11px; font-weight: 600; color: var(--color-accent-hover); letter-spacing: 0.1em; text-transform: uppercase;">{problemSolution.headerSolution}</p>
         </div>
 
-        {problemSolutionRows.map((row, i) => (
+        {problemSolution.rows.map((row, i) => (
           <>
-            <div style={`padding: 28px; background: rgba(6,24,23,0.02); border-right: 1px solid rgba(6,24,23,0.08); display: flex; gap: 14px; align-items: flex-start;${i < problemSolutionRows.length - 1 ? ' border-bottom: 1px solid rgba(6,24,23,0.06);' : ''}`}>
+            <div style={`padding: 28px; background: rgba(6,24,23,0.02); border-right: 1px solid rgba(6,24,23,0.08); display: flex; gap: 14px; align-items: flex-start;${i < problemSolution.rows.length - 1 ? ' border-bottom: 1px solid rgba(6,24,23,0.06);' : ''}`}>
               <span style="width: 18px; height: 18px; border-radius: 50%; border: 1px solid rgba(6,24,23,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 3px;">
                 <span style="width: 5px; height: 5px; border-radius: 50%; background: rgba(6,24,23,0.3); display: block;"></span>
               </span>
               <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">{row.problem}</p>
             </div>
-            <div style={`padding: 28px; background: rgba(247,171,110,0.05); display: flex; gap: 14px; align-items: flex-start;${i < problemSolutionRows.length - 1 ? ' border-bottom: 1px solid rgba(247,171,110,0.1);' : ''}`}>
+            <div style={`padding: 28px; background: rgba(247,171,110,0.05); display: flex; gap: 14px; align-items: flex-start;${i < problemSolution.rows.length - 1 ? ' border-bottom: 1px solid rgba(247,171,110,0.1);' : ''}`}>
               <span style="width: 18px; height: 18px; border-radius: 50%; background: rgba(247,171,110,0.25); border: 1px solid rgba(247,171,110,0.5); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 3px;">
-                <span style="color: var(--color-accent-hover); font-size: 10px; font-weight: 700; line-height: 1;">✓</span>
+                <span style="color: var(--color-accent-hover); font-size: 10px; font-weight: 700; line-height: 1;">&#x2713;</span>
               </span>
               <div>
                 <p style="font-size: 15px; font-weight: 600; color: var(--color-text-on-light); line-height: 1.4; margin-bottom: 6px;">{row.solutionTitle}</p>
@@ -232,19 +144,19 @@ const faqs = [
     <div class="container">
 
       <div style="max-width: 720px; margin-bottom: 48px;">
-        <span class="section-eyebrow">Contenu de la formation</span>
-        <h2 class="section-title">Ce que couvre la formation</h2>
+        <span class="section-eyebrow">{modules.eyebrow}</span>
+        <h2 class="section-title">{modules.title}</h2>
       </div>
 
       <div class="grid-3" style="gap: 20px;">
-        {modules.map((m) => (
+        {modules.items.map((m) => (
           <div class="glass-card" style="display: flex; flex-direction: column; gap: 16px;">
             <span class="usp-number">{m.num}</span>
             <h3 class="usp-title">{m.title}</h3>
             <div style="display: flex; flex-direction: column; gap: 9px;">
               {m.items.map((item) => (
                 <div style="display: flex; gap: 10px; align-items: flex-start;">
-                  <span style="color: var(--color-accent); font-size: 12px; flex-shrink: 0; margin-top: 2px;">▸</span>
+                  <span style="color: var(--color-accent); font-size: 12px; flex-shrink: 0; margin-top: 2px;">&#9658;</span>
                   <p style="font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5;">{item}</p>
                 </div>
               ))}
@@ -262,31 +174,25 @@ const faqs = [
       <div class="grid-2" style="gap: 56px; align-items: start;">
 
         <div>
-          <span class="section-eyebrow">Format &amp; investissement</span>
-          <h2 class="section-title" style="color: var(--color-text-on-light);">Tarification sur mesure</h2>
+          <span class="section-eyebrow">{pricing.eyebrow}</span>
+          <h2 class="section-title" style="color: var(--color-text-on-light);">{pricing.title}</h2>
           <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.8; margin-top: 16px; margin-bottom: 32px;">
-            Les tarifs sont adaptés selon la durée, le nombre de participants et vos besoins spécifiques. Nous vous aidons à choisir la formule adaptée à votre cabinet ou votre organisation.
+            {pricing.description}
           </p>
           <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="/formations/sur-mesure" class="btn-primary">Obtenir une formation sur mesure</a>
-            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline-dark">Planifier un appel</a>
+            <a href="/formations/sur-mesure" class="btn-primary">{pricing.ctaPrimary}</a>
+            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline-dark">{pricing.ctaSecondary}</a>
           </div>
         </div>
 
         <div class="card-white">
-          <p style="font-size: 11px; font-weight: 600; color: rgba(6,24,23,0.35); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">Tarification sur mesure</p>
-          <p style="font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--color-text-on-light); line-height: 1.2; margin-bottom: 8px;">Adaptée à votre organisation</p>
-          <p style="font-size: 13px; color: rgba(6,24,23,0.45); margin-bottom: 24px;">Tarifs selon la durée, le nombre de participants et le format choisi.</p>
+          <p style="font-size: 11px; font-weight: 600; color: rgba(6,24,23,0.35); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">{pricing.card.label}</p>
+          <p style="font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--color-text-on-light); line-height: 1.2; margin-bottom: 8px;">{pricing.card.heading}</p>
+          <p style="font-size: 13px; color: rgba(6,24,23,0.45); margin-bottom: 24px;">{pricing.card.subtitle}</p>
           <div style="display: flex; flex-direction: column; gap: 10px;">
-            {[
-              'Modules adaptés à votre pratique',
-              'Bibliothèque de prompts juridiques',
-              'Module confidentialité et anonymisation',
-              'Support formateur inclus',
-              'Attestation de formation',
-            ].map((item) => (
+            {pricing.card.includes.map((item) => (
               <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: var(--color-accent); font-weight: 700; font-size: 14px; flex-shrink: 0;">✓</span>
+                <span style="color: var(--color-accent); font-weight: 700; font-size: 14px; flex-shrink: 0;">&#x2713;</span>
                 <p style="font-size: 14px; color: var(--color-text-subtle);">{item}</p>
               </div>
             ))}
@@ -301,15 +207,15 @@ const faqs = [
   <section style="background: var(--color-dark-2); padding: 96px 0;">
     <div class="container">
       <div style="max-width: 760px; margin: 0 auto;">
-        <span class="section-eyebrow">Questions fréquentes</span>
-        <h2 class="section-title" style="margin-bottom: 48px;">Ce que se demandent les juristes avant de s'inscrire</h2>
+        <span class="section-eyebrow">{content.faq.eyebrow}</span>
+        <h2 class="section-title" style="margin-bottom: 48px;">{content.faq.title}</h2>
         <div style="display: flex; flex-direction: column; gap: 16px;">
-          {faqs.map((item) => (
+          {content.faq.items.map((item) => (
             <div class="glass-card" style="padding: 0;">
               <details style="display: block;">
-                <summary style="padding: 24px 28px; cursor: pointer; font-size: 15px; font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px;">{item.q}</summary>
+                <summary style="padding: 24px 28px; cursor: pointer; font-size: 15px; font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px;">{item.question}</summary>
                 <div style="padding: 0 28px 24px;">
-                  <p style="font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.75;">{item.a}</p>
+                  <p style="font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.75;">{item.answer}</p>
                 </div>
               </details>
             </div>
@@ -322,14 +228,14 @@ const faqs = [
   <!-- ========== CTA FINAL ========== -->
   <section style="background: var(--color-dark-1); padding: 96px 0;">
     <div class="container" style="text-align: center; max-width: 680px;">
-      <span class="section-eyebrow">Prêt à passer à la pratique ?</span>
-      <h2 class="section-title">Rejoignez les professionnels du droit qui utilisent l'IA avec méthode</h2>
+      <span class="section-eyebrow">{ctaFinal.eyebrow}</span>
+      <h2 class="section-title">{ctaFinal.title}</h2>
       <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin: 20px 0 32px;">
-        Formation individuelle ou pour votre cabinet. Contactez-nous pour une session adaptée à votre contexte.
+        {ctaFinal.description}
       </p>
       <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <a href="/formations/sur-mesure" class="btn-primary">Obtenir une formation sur mesure &rarr;</a>
-        <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">Planifier un appel</a>
+        <a href="/formations/sur-mesure" class="btn-primary">{ctaFinal.ctaPrimary} &rarr;</a>
+        <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">{ctaFinal.ctaSecondary}</a>
       </div>
     </div>
   </section>

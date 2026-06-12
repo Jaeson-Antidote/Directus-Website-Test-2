@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "title": "AInonym — Document anonymisation | Cercle IA",
+    "description": "Anonymise your sensitive documents before using them in AI. Intelligent detection of personal data, processing on EU servers, GDPR-compliant. Free in beta.",
+    "ogImage": "/og/default.jpg",
+    "ogImageAlt": "AInonym — Document anonymisation tool by Cercle IA",
+    "robots": "index,follow"
+  },
+  "hero": {
+    "eyebrow": "Free tool · Beta",
+    "title": "Document anonymisation before AI use",
+    "description": "Protect your sensitive and confidential data before sharing it or using it in AI tools. Automatic detection, preview of changes, one-click export.",
+    "ctaPrimary": "Try the tool for free",
+    "ctaSecondary": "See the features"
+  },
+  "stats": [
+    { "value": "100%", "label": "Free in beta phase" },
+    { "value": "EU", "label": "Servers hosted in Europe" },
+    { "value": "0", "label": "Files retained after processing" }
+  ],
+  "outil": {
+    "eyebrow": "Free beta — reasonable use",
+    "title": "Try AInonym now",
+    "description": "Paste your text or upload a PDF/TXT file. The tool detects sensitive data and shows you the proposed changes before applying them.",
+    "iframeUrl": "https://anonymization.lecercle.ai",
+    "iframeHeight": "950px"
+  },
+  "features": {
+    "eyebrow": "Features",
+    "title": "What AInonym does for you",
+    "description": "A hybrid workflow combining AI automation and manual validation to guarantee quality.",
+    "items": [
+      { "title": "Intelligent detection", "desc": "Automatic identification of personal data: names, emails, phone numbers, addresses, identifiers." },
+      { "title": "Security and GDPR compliance", "desc": "Processing on servers hosted in Europe. No data retained after processing." },
+      { "title": "Preview before validation", "desc": "View all proposed changes before applying them. You stay in control." },
+      { "title": "Fast processing", "desc": "Results in seconds, even for long documents." },
+      { "title": "Text input or file import", "desc": "Paste text directly or import a PDF or TXT file up to 5 MB." },
+      { "title": "Easy export", "desc": "Download the anonymised document in one click, ready to use in your AI tool." }
+    ]
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Everything you need to know about AInonym",
+    "items": [
+      {
+        "question": "What is this anonymisation module?",
+        "answer": "This module allows you to automatically remove or replace personal information in a text or file, in order to protect privacy and comply with applicable regulations (e.g. GDPR)."
+      },
+      {
+        "question": "What types of data are detected?",
+        "answer": "The tool recognises identity data (first names, surnames, full names), contact details (phone numbers, postal addresses, email addresses, domain names), identifiers (identity card numbers, passport numbers, banking data) and other sensitive information (dates, financial amounts, custom text defined by the user)."
+      },
+      {
+        "question": "How do I use the tool?",
+        "answer": "Two methods are available: manual input by typing or pasting text directly, or file upload by selecting a PDF or TXT file (maximum 5 MB). The tool detects sensitive data, shows you a preview of the changes, and you can then confirm the anonymisation and download the processed document."
+      },
+      {
+        "question": "What are the use cases?",
+        "answer": "Regulatory compliance (GDPR, HIPAA, etc.), sharing data with partners without disclosing personal information, publishing anonymised internal documents, and creating datasets for analysis or AI."
+      },
+      {
+        "question": "Are files retained?",
+        "answer": "No. Texts and files processed by the tool are not retained after anonymisation. Processing takes place only temporarily to carry out the operation."
+      },
+      {
+        "question": "What formats and limits are accepted?",
+        "answer": "Supported formats: PDF and TXT. Maximum size: 5 MB per file."
+      }
+    ]
+  },
+  "ctaFinal": {
+    "eyebrow": "Free in beta",
+    "title": "Protect your data before using AI",
+    "description": "AInonym fits into your workflow in seconds. No installation, no account required.",
+    "ctaPrimary": "Use AInonym for free",
+    "ctaSecondary": "Contact the team",
+    "ctaSecondaryHref": "/en/contact"
+  }
+}

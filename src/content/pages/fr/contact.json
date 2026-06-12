@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "title": "Contact formations IA — Cercle IA",
+    "description": "Une question sur nos formations, accompagnements ou outils IA ? Contactez Cercle IA — formations IA pour professionnels à Bruxelles et en ligne.",
+    "ogImage": "/og/contact.jpg",
+    "ogImageAlt": "Contact — Cercle IA"
+  },
+  "hero": {
+    "eyebrow": "Bruxelles & en ligne",
+    "title": "Parlons de votre projet.",
+    "description": "Formation sur mesure, bootcamp, atelier intra-entreprise ou simple question — nous répondons dans les 24 heures ouvrables."
+  },
+  "form": {
+    "title": "Envoyez-nous un message.",
+    "fields": {
+      "prenom": { "label": "Prénom", "placeholder": "Marie" },
+      "nom": { "label": "Nom", "placeholder": "Dupont" },
+      "email": { "label": "Adresse e-mail", "placeholder": "marie@cabinet.be" },
+      "organisation": { "label": "Organisation (optionnel)", "placeholder": "Cabinet, entreprise, institution…" },
+      "message": { "label": "Votre message", "placeholder": "Décrivez votre besoin ou posez votre question…" }
+    },
+    "submitLabel": "Je veux plus d'informations"
+  },
+  "infos": {
+    "adresse": {
+      "label": "Adresse",
+      "value": "19, Avenue des Volontaires, 1160 Bruxelles (BE)"
+    },
+    "pourQui": {
+      "label": "Pour qui",
+      "items": [
+        "Formation pour votre équipe",
+        "Inscription au Bootcamp IA",
+        "Formation individuelle ou coaching",
+        "Partenariat institutionnel",
+        "Question sur nos programmes"
+      ]
+    },
+    "legal": {
+      "label": "Entité légale",
+      "value": "Antidote SRL, BCE 0773.969.928"
+    }
+  },
+  "pasEncorePret": {
+    "title": "Commencez par là.",
+    "cards": [
+      { "title": "Bootcamp IA", "href": "/formations/bootcamp" },
+      { "title": "Newsletter", "href": "/newsletter" },
+      { "title": "Notre approche", "href": "/a-propos" }
+    ]
+  }
+}

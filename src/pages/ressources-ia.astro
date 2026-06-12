@@ -1,102 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { breadcrumb } from '../lib/schema';
+import content from '../content/pages/fr/ressources-ia.json';
 
 const schema = breadcrumb([{ name: 'Ressources IA', href: '/ressources-ia' }]);
-
-const guides = [
-  {
-    tag: 'Guide · PDF',
-    title: 'Guide de démarrage avec ChatGPT',
-    desc: 'Les fondamentaux pour utiliser ChatGPT efficacement dans un contexte professionnel. Paramètres, bonnes pratiques et cas d\'usage.',
-    href: '#',
-  },
-  {
-    tag: 'Guide · PDF',
-    title: 'Anonymiser vos données avant d\'utiliser l\'IA',
-    desc: 'Protocole pratique pour traiter des données sensibles avec l\'IA, sans compromettre la confidentialité de vos clients.',
-    href: '#',
-  },
-  {
-    tag: 'Guide · PDF',
-    title: 'Choisir son outil IA selon la tâche',
-    desc: 'Comparatif des principaux outils IA (ChatGPT, Claude, Gemini, Perplexity) pour chaque type de mission professionnelle.',
-    href: '#',
-  },
-];
-
-const promptTemplates = [
-  {
-    tag: 'Droit',
-    title: 'Prompts pour avocats et juristes',
-    desc: '15 prompts testés pour la recherche jurisprudentielle, la rédaction d\'actes et l\'analyse contractuelle.',
-    href: '#',
-  },
-  {
-    tag: 'Conseil',
-    title: 'Prompts pour consultants',
-    desc: '12 prompts pour la recherche sectorielle, la synthèse de livrables et la rédaction de rapports.',
-    href: '#',
-  },
-  {
-    tag: 'Management',
-    title: 'Prompts pour dirigeants',
-    desc: '10 prompts pour l\'analyse stratégique, la communication interne et la prise de décision.',
-    href: '#',
-  },
-  {
-    tag: 'RH',
-    title: 'Prompts pour les RH',
-    desc: '14 prompts pour le recrutement, la rédaction d\'offres, les entretiens et la communication RH.',
-    href: '#',
-  },
-];
-
-const tools = [
-  {
-    name: 'ChatGPT',
-    category: 'IA généraliste',
-    desc: 'Le modèle le plus polyvalent pour la rédaction, l\'analyse et la recherche. Incontournable pour commencer.',
-    pricing: 'Freemium',
-  },
-  {
-    name: 'Claude',
-    category: 'IA généraliste',
-    desc: 'Excellent pour les textes longs, la nuance et le raisonnement. Particulièrement adapté aux tâches analytiques complexes.',
-    pricing: 'Freemium',
-  },
-  {
-    name: 'Perplexity',
-    category: 'Recherche IA',
-    desc: 'Moteur de recherche augmenté par l\'IA. Idéal pour la veille, la recherche de sources et les synthèses documentaires.',
-    pricing: 'Freemium',
-  },
-  {
-    name: 'Gemini',
-    category: 'IA généraliste',
-    desc: 'Le modèle de Google, intégré à l\'écosystème Workspace. Pertinent si vous utilisez Gmail, Docs et Sheets.',
-    pricing: 'Freemium',
-  },
-  {
-    name: 'Cercle GPT',
-    category: 'IA multi-modèles',
-    desc: 'Notre plateforme : accédez à tous les modèles IA depuis une interface unique, sécurisée et pensée pour les professionnels.',
-    pricing: 'Payant',
-  },
-  {
-    name: 'Otter.ai',
-    category: 'Transcription',
-    desc: 'Transcription et résumé automatique de réunions et entretiens. Gain de temps immédiat sur la prise de notes.',
-    pricing: 'Freemium',
-  },
-];
 ---
 
 <BaseLayout
-  title="Ressources IA pour professionnels — Cercle IA"
-  description="Guides, templates et ressources pratiques pour utiliser l'IA dans votre métier. Sélectionnés et testés par Cercle IA pour les professionnels."
-  ogImage="/og/ressources.jpg"
-  ogImageAlt="Ressources IA pour professionnels — Cercle IA"
+  title={content.meta.title}
+  description={content.meta.description}
+  ogImage={content.meta.ogImage}
+  ogImageAlt={content.meta.ogImageAlt}
   schema={schema}
 >
 
@@ -111,38 +25,29 @@ const tools = [
         <div>
           <div class="eyebrow-badge" style="margin-bottom: 28px; display: inline-flex;">
             <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
-            Ressources Cercle IA
+            {content.hero.eyebrow}
           </div>
 
           <h1 class="hero-title">
-            Des ressources pratiques<br />
-            <span style="color: rgba(255,255,255,0.55);">pour passer à l'action.</span>
+            {content.hero.title}
           </h1>
 
           <p style="font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.75; max-width: 560px; margin-bottom: 36px;">
-            Guides, templates de prompts, comparatifs d'outils et modules de formation. Sélectionnés et testés pour les professionnels du droit, du conseil, de la santé et du management.
+            {content.hero.description}
           </p>
 
           <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-            <a href="#ressources" class="btn-primary">Explorer les ressources &rarr;</a>
-            <a href="https://www.linkedin.com/newsletters/cercle-ia-7353754146262401025/" target="_blank" rel="noopener noreferrer" class="btn-outline">S'abonner à la newsletter</a>
+            <a href="#ressources" class="btn-primary">{content.hero.ctaPrimary} &rarr;</a>
+            <a href="https://www.linkedin.com/newsletters/cercle-ia-7353754146262401025/" target="_blank" rel="noopener noreferrer" class="btn-outline">{content.hero.ctaSecondary}</a>
           </div>
         </div>
 
         <!-- Carte droite -->
         <div style="padding-top: 36px;">
           <div class="glass-card" style="border-radius: 20px; padding: 36px 32px;">
-            <p style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">Accès gratuit</p>
-            <h2 style="font-family: var(--font-display); font-size: 26px; font-weight: 700; color: #ffffff; margin-bottom: 16px;">Tout est gratuit</h2>
-            <p style="font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 24px; line-height: 1.65;">
-              L'ensemble des ressources listées est accessible gratuitement. Certaines ressources premium sont réservées aux participants de nos formations.
-            </p>
-            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
-              {[
-                'Guides PDF téléchargeables',
-                'Templates de prompts prêts à l\'emploi',
-                'Comparatifs d\'outils IA par métier',
-              ].map((item) => (
+            <p style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">{content.hero.card.label}</p>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; margin-top: 16px;">
+              {content.hero.card.items.map((item) => (
                 <li style="display: flex; gap: 10px; align-items: flex-start;">
                   <span style="color: var(--color-accent); font-size: 13px; flex-shrink: 0; margin-top: 1px;">&#9658;</span>
                   <p style="font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; margin: 0;">{item}</p>
@@ -161,19 +66,19 @@ const tools = [
     <div class="container">
       <div class="section-header">
         <div>
-          <span class="section-eyebrow">Guides pratiques</span>
-          <h2 class="section-title">Commencez par ces guides</h2>
+          <span class="section-eyebrow">{content.guides.eyebrow}</span>
+          <h2 class="section-title">{content.guides.title}</h2>
         </div>
         <a href="https://www.linkedin.com/newsletters/cercle-ia-7353754146262401025/" target="_blank" rel="noopener noreferrer" class="btn-primary" style="white-space: nowrap; flex-shrink: 0;">S'abonner pour les nouveautés &rarr;</a>
       </div>
 
       <div class="grid-3" style="margin-top: 40px;">
-        {guides.map((g) => (
+        {content.guides.items.map((g) => (
           <div class="glass-card" style="display: flex; flex-direction: column; gap: 12px;">
             <span class="tag" style="align-self: flex-start;">{g.tag}</span>
             <h3 class="usp-title">{g.title}</h3>
             <p style="font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.65; flex: 1;">{g.desc}</p>
-            <a href={g.href} style="font-size: 14px; font-weight: 600; color: var(--color-accent); text-decoration: none; margin-top: 4px; display: block;">Télécharger le guide &rarr;</a>
+            <a href={g.href} style="font-size: 14px; font-weight: 600; color: var(--color-accent); text-decoration: none; margin-top: 4px; display: block;">{content.guides.ctaLabel} &rarr;</a>
           </div>
         ))}
       </div>
@@ -185,19 +90,19 @@ const tools = [
     <div class="container">
       <div class="section-header">
         <div>
-          <span class="section-eyebrow">Templates de prompts</span>
-          <h2 class="section-title">Prêt à copier-coller</h2>
+          <span class="section-eyebrow">{content.prompts.eyebrow}</span>
+          <h2 class="section-title">{content.prompts.title}</h2>
         </div>
         <a href="https://www.linkedin.com/newsletters/cercle-ia-7353754146262401025/" target="_blank" rel="noopener noreferrer" class="btn-primary" style="white-space: nowrap; flex-shrink: 0;">Tous les templates &rarr;</a>
       </div>
 
       <div class="grid-2" style="margin-top: 40px;">
-        {promptTemplates.map((p) => (
+        {content.prompts.items.map((p) => (
           <div class="glass-card" style="display: flex; flex-direction: column; gap: 12px;">
             <span class="tag-outline" style="align-self: flex-start;">{p.tag}</span>
             <h3 class="usp-title">{p.title}</h3>
             <p style="font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.65; flex: 1;">{p.desc}</p>
-            <a href={p.href} style="font-size: 13px; font-weight: 600; color: var(--color-accent); text-decoration: none; margin-top: 12px; display: block;">Accéder au template &rarr;</a>
+            <a href={p.href} style="font-size: 13px; font-weight: 600; color: var(--color-accent); text-decoration: none; margin-top: 12px; display: block;">{content.prompts.ctaLabel} &rarr;</a>
           </div>
         ))}
       </div>
@@ -207,14 +112,14 @@ const tools = [
   <!-- ========== OUTILS RECOMMANDÉS ========== -->
   <section style="background: var(--color-light-1); padding: 96px 0;">
     <div class="container">
-      <span class="section-eyebrow">Outils recommandés</span>
-      <h2 class="section-title" style="color: var(--color-text-on-light);">Les outils que nous utilisons et recommandons</h2>
+      <span class="section-eyebrow">{content.tools.eyebrow}</span>
+      <h2 class="section-title" style="color: var(--color-text-on-light);">{content.tools.title}</h2>
       <p style="font-size: 16px; color: var(--color-text-subtle); line-height: 1.7; margin-top: 12px; margin-bottom: 40px;">
-        Sélectionnés et testés par nos formateurs. Mis à jour régulièrement.
+        {content.tools.description}
       </p>
 
       <div class="grid-3">
-        {tools.map((t) => (
+        {content.tools.items.map((t) => (
           <div class="card-white" style="display: flex; flex-direction: column; gap: 8px;">
             <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 4px;">
               <h3 style="font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--color-text-on-light); margin: 0;">{t.name}</h3>
@@ -235,12 +140,12 @@ const tools = [
 
         <!-- Gauche -->
         <div>
-          <span class="section-eyebrow">Restez à jour</span>
-          <h2 class="section-title">Nouvelles ressources toutes les 2 semaines</h2>
+          <span class="section-eyebrow">{content.newsletter.eyebrow}</span>
+          <h2 class="section-title">{content.newsletter.title}</h2>
           <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin-top: 16px; margin-bottom: 32px;">
             Chaque édition de la newsletter contient au moins une ressource nouvelle : prompt, guide ou comparatif. Abonnez-vous pour ne rien rater.
           </p>
-          <a href="https://www.linkedin.com/newsletters/cercle-ia-7353754146262401025/" target="_blank" rel="noopener noreferrer" class="btn-primary">S'abonner gratuitement &rarr;</a>
+          <a href={content.newsletter.ctaHref} target="_blank" rel="noopener noreferrer" class="btn-primary">{content.newsletter.ctaLabel} &rarr;</a>
         </div>
 
         <!-- Droite -->
@@ -248,12 +153,7 @@ const tools = [
           <div class="glass-card" style="padding: 40px 36px;">
             <p style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px;">Ce que vous recevrez</p>
             <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
-              {[
-                'Un guide ou template nouveau',
-                'L\'outil IA de la quinzaine',
-                'Un cas d\'usage métier concret',
-                'L\'analyse d\'une tendance IA',
-              ].map((item) => (
+              {content.newsletter.preview.map((item) => (
                 <li style="display: flex; gap: 10px; align-items: flex-start;">
                   <span style="color: var(--color-accent); font-size: 14px; flex-shrink: 0; margin-top: 1px;">&#9658;</span>
                   <p style="font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.6; margin: 0;">{item}</p>
@@ -270,14 +170,14 @@ const tools = [
   <!-- ========== CTA FINAL ========== -->
   <section style="background: var(--color-dark-1); padding: 96px 0;">
     <div class="container" style="text-align: center; max-width: 680px;">
-      <span class="section-eyebrow">Aller plus loin</span>
-      <h2 class="section-title">Passez de la ressource à la maîtrise</h2>
+      <span class="section-eyebrow">{content.ctaFinal.eyebrow}</span>
+      <h2 class="section-title">{content.ctaFinal.title}</h2>
       <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin: 20px 0 32px;">
         Les ressources donnent les bases. Les formations vous donnent la méthode, les cas d'usage et le suivi pour vraiment intégrer l'IA dans votre pratique.
       </p>
       <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <a href="/formations" class="btn-primary">Voir les formations &rarr;</a>
-        <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">Planifier un appel</a>
+        <a href={content.ctaFinal.ctaPrimaryHref} class="btn-primary">{content.ctaFinal.ctaPrimary} &rarr;</a>
+        <a href={content.ctaFinal.ctaSecondaryHref} class="btn-outline">{content.ctaFinal.ctaSecondary}</a>
       </div>
     </div>
   </section>

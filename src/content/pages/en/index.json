@@ -1,0 +1,219 @@
+{
+  "meta": {
+    "title": "AI training for professionals — Cercle IA",
+    "description": "AI training for lawyers, doctors, executives and consultants. Master AI with method, discernment and ethics. Brussels & online.",
+    "ogImage": "/og/homepage.jpg",
+    "ogImageAlt": "Cercle IA — AI training for professionals"
+  },
+  "hero": {
+    "eyebrow": "AI training for professionals",
+    "title": "AI in good hands.",
+    "titleMuted": "Yours.",
+    "description": "Training designed for professionals whose mistakes have a cost. Lawyers, doctors, consultants, executives.",
+    "ctaPrimary": "Explore the training programmes",
+    "ctaPrimaryHref": "/en/formations",
+    "ctaSecondary": "Schedule a call",
+    "logosLabel": "They trust us",
+    "diagram": {
+      "centralLabel": "AI training",
+      "professions": ["Lawyer", "Doctor", "Executive", "Consultant", "HR"],
+      "outputs": ["Tools", "Prompts", "Methods", "Ethics", "Confidence"]
+    }
+  },
+  "features": {
+    "eyebrow": "Why train with Cercle IA",
+    "title": "What you learn here is applicable on Monday morning.",
+    "cards": [
+      {
+        "icon": "◎",
+        "title": "Gain confidence and mastery",
+        "desc": "Acquire a solid understanding of generative AI fundamentals. Master best practices and gain credibility with your clients and colleagues."
+      },
+      {
+        "icon": "◈",
+        "title": "Boost your performance",
+        "desc": "Deliver superior results in less time. Develop team synergies through collaborative AI tools, without sacrificing professional judgement."
+      },
+      {
+        "icon": "◇",
+        "title": "Take the competitive edge",
+        "desc": "Explore new ways to create value for your clients. Make the leap to an AI-augmented professional practice."
+      }
+    ]
+  },
+  "formationsSection": {
+    "eyebrow": "Our programmes",
+    "title": "Curricula designed by professionals, for professionals.",
+    "ctaAllFormations": "All training programmes",
+    "bootcamp": {
+      "tag": "Bootcamp",
+      "meta": "3 sessions · Online · All levels",
+      "title": "Generative AI bootcamp",
+      "desc": "An intensive programme to understand, use and integrate AI into your daily professional life. Ideal for any profile looking to take action, with no technical prerequisites.",
+      "ctaWaitlist": "Join the waitlist",
+      "ctaSeeProgram": "See the programme",
+      "nextSession": {
+        "label": "Next session",
+        "date": "Septembre 2026"
+      }
+    },
+    "formations": [
+      {
+        "href": "/en/formations/medecins",
+        "title": "AI for doctors",
+        "tag": "Healthcare",
+        "desc": "Regain control of AI in your medical practice, while respecting medical confidentiality and regulatory requirements."
+      },
+      {
+        "href": "/en/formations/rh",
+        "title": "AI for HR",
+        "tag": "Human resources",
+        "desc": "Identify the right talent, write job postings faster and analyse CVs without sacrificing human judgement."
+      },
+      {
+        "href": "/en/formations/avocats",
+        "title": "AI for lawyers and legal professionals",
+        "tag": "Law",
+        "desc": "Research, drafting, document analysis — while respecting professional secrecy and ethical obligations."
+      },
+      {
+        "href": "/en/formations/consultants",
+        "title": "AI for consultants",
+        "tag": "Consulting",
+        "desc": "Accelerate your deliverables, automate sector research and increase productivity on your assignments."
+      },
+      {
+        "href": "/en/formations/dirigeants",
+        "title": "AI for executives",
+        "tag": "Leadership",
+        "desc": "Drive your organisation's AI transformation with method. Strategy, governance and augmented decision-making."
+      }
+    ]
+  },
+  "usps": {
+    "eyebrow": "What sets us apart",
+    "items": [
+      {
+        "n": "01",
+        "title": "Trainers with real-world expertise",
+        "desc": "Tarik Hennen has been using AI in high-stakes contexts since 2021. Not from the sidelines of an enthusiastic observer."
+      },
+      {
+        "n": "02",
+        "title": "Concrete cases, tested tools",
+        "desc": "Exercises drawn from real professional contexts. Immediately actionable business use cases."
+      },
+      {
+        "n": "03",
+        "title": "Ethics and confidentiality",
+        "desc": "Professional secrecy, GDPR, client confidentiality — your real constraints built in from day one."
+      },
+      {
+        "n": "04",
+        "title": "Tailored programme",
+        "desc": "Every training adapts to your sector, your level and your objectives. No standard programme fits everyone."
+      }
+    ]
+  },
+  "trainer": {
+    "eyebrow": "Your lead trainer",
+    "name": "Tarik Hennen.",
+    "bio": "Former lawyer, digital strategy consultant, lecturer at IHECS, AI trainer at EPHEC and UCLouvain. AI practitioner since 2021 — in contexts where mistakes have a cost.",
+    "quote": "\"The starting point is not the tool. It's the work.\"",
+    "cta": "Discover his background",
+    "ctaHref": "/en/tarik-hennen",
+    "stats": [
+      { "number": "2024", "label": "AI trainer since" },
+      { "number": "250+", "label": "Professionals trained" },
+      { "number": "15 years", "label": "Of field experience" }
+    ]
+  },
+  "testimonials": {
+    "eyebrow": "What our participants say",
+    "title": "Concrete, sincere, pragmatic and useful.",
+    "items": [
+      {
+        "pull": "À recommander d'urgence !",
+        "body": "Formation professionnelle fluide et accessible à haute valeur ajoutée. Les informations apprises et conseils donnés permettent de donner un nouvel élan (inattendu) à tout un chacun afin de se retrouver dans les méandres de l'IA.",
+        "name": "Steve Griess",
+        "role": "Partner",
+        "org": "Thales Brussels",
+        "initials": "SG"
+      },
+      {
+        "pull": "Tarik is the go to person for digital strategy in Brussels!",
+        "body": "",
+        "name": "Yves Melin",
+        "role": "Avocat Associé",
+        "org": "Cassidy Levy Kent",
+        "initials": "YM"
+      },
+      {
+        "pull": "Highly recommended for anyone willing to get down to the brass tacks of this intriguing technology.",
+        "body": "I recently completed five 2-hour AI training sessions. The program offered a detailed overview of key AI tools and provided very concrete, practice-oriented guidance.",
+        "name": "Prescillia Algrain",
+        "role": "Counsel",
+        "org": "Janson Law Firm",
+        "initials": "PA"
+      },
+      {
+        "pull": "À refaire sans modération.",
+        "body": "J'ai suivi 3 formations de 2 heures cette année. Merci Tarik & Team !",
+        "name": "Edouard Cambier",
+        "role": "Co-Owner",
+        "org": "Seed Factory",
+        "initials": "EC"
+      },
+      {
+        "pull": "Thank you for the interesting presentation!",
+        "body": "Very recommended for all lawyers and managers. Very nice to have welcomed you at EQUI.",
+        "name": "Marie Michaud-Nerard",
+        "role": "Partner",
+        "org": "EQUI",
+        "initials": "MM"
+      },
+      {
+        "pull": "Je recommande vivement.",
+        "body": "Parmi l'amas de formations disponibles, en voici une – enfin – concrète, sincère, pragmatique et utile à tous les indépendants (d'esprit ou de pratique).",
+        "name": "Adam Tricha",
+        "role": "Avocat",
+        "org": "Barreau de Verviers",
+        "initials": "AT"
+      }
+    ]
+  },
+  "resources": {
+    "eyebrow": "Exclusive resources",
+    "title": "Deepen your expertise between sessions.",
+    "ctaAll": "All resources",
+    "ctaAllHref": "/en/ressources-ia",
+    "items": [
+      {
+        "href": "/en/blog",
+        "title": "Blog",
+        "desc": "Analysis, insights and news on generative AI to stay at the cutting edge of your field.",
+        "cta": "Read the blog"
+      },
+      {
+        "href": "/en/ressources-ia",
+        "title": "AI tools directory",
+        "desc": "Our curated selection of tools organised by use case, to identify what fits your professional constraints.",
+        "cta": "Explore the directory"
+      },
+      {
+        "href": "/en/newsletter",
+        "title": "Newsletter",
+        "desc": "Every two weeks — selective monitoring and in-depth analysis. Stay ahead of AI developments rather than being caught off guard.",
+        "cta": "Subscribe"
+      }
+    ]
+  },
+  "ctaFinal": {
+    "badge": "Need a tailored solution?",
+    "title": "Let's talk about your organisation and your goals.",
+    "description": "In-house training, bespoke workshops or individual coaching — we adapt every programme to your context.",
+    "ctaPrimary": "Contact us",
+    "ctaPrimaryHref": "/en/contact",
+    "ctaSecondary": "Schedule a call"
+  }
+}

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { breadcrumb, courseSchema, faqSchema } from '../../lib/schema';
+import content from '../../content/pages/fr/formations-consultants.json';
 
 const bc = breadcrumb([
   { name: 'Formations IA', href: '/formations' },
@@ -8,111 +9,28 @@ const bc = breadcrumb([
 ]);
 
 const course = courseSchema({
-  name: 'Formation IA pour consultants',
-  description: 'Accélérez vos livrables et automatisez la recherche sectorielle avec l\'IA. Formation pratique pour consultants, chefs de projet et analystes.',
-  url: '/formations/consultants',
+  name: content.schema.course.name,
+  description: content.schema.course.description,
+  url: content.schema.course.url,
 });
 
-const faq = faqSchema([
-  {
-    question: 'La formation est-elle adaptée à mon secteur spécifique ?',
-    answer: 'La formation couvre les méthodes transverses au conseil. Les exercices pratiques sont adaptés à votre secteur lors de la session. Nous organisons régulièrement des sessions dédiées à des secteurs spécifiques.',
-  },
-  {
-    question: 'Ai-je besoin de compétences techniques ?',
-    answer: 'Non. La formation s\'adresse aux consultants et analystes, pas aux développeurs. Tout est orienté usage métier avec des cas concrets de conseil.',
-  },
-  {
-    question: 'Comment se déroulent les sessions ?',
-    answer: 'Sessions en ligne ou en présentiel, en intra-cabinet ou en petit groupe. Exercices pratiques sur des cas réels de conseil tout au long de la formation.',
-  },
-  {
-    question: 'Quelle est la différence avec le bootcamp IA ?',
-    answer: 'Le bootcamp est généraliste (tous secteurs). La formation consultants est spécifiquement calibrée sur les tâches et livrables du conseil : recherche, analyse, rédaction de rapports et présentations.',
-  },
-]);
+const faq = faqSchema(
+  content.faq.items.map((item) => ({ question: item.question, answer: item.answer }))
+);
 
 const schema = {
   '@context': 'https://schema.org',
   '@graph': [course, bc, faq],
 };
 
-const problemSolutionRows = [
-  {
-    problem: 'La recherche sectorielle et documentaire prend un temps disproportionné par rapport à la valeur créée.',
-    solutionTitle: 'Synthèses sectorielles en quelques minutes',
-    solutionDesc: 'Structurez votre recherche avec des prompts adaptés et obtenez des synthèses exploitables que vous validez avec votre expertise.',
-  },
-  {
-    problem: 'Produire un premier livrable structuré prend des heures, même quand le fond est clair.',
-    solutionTitle: 'Premiers drafts de qualité en 20 minutes',
-    solutionDesc: 'Passez de la note de cadrage au rapport client avec l\'IA comme assistant de rédaction, en gardant le contrôle éditorial.',
-  },
-  {
-    problem: 'Les benchmarks et analyses concurrentielles sont longs à construire manuellement.',
-    solutionTitle: 'Analyses structurées et reproductibles',
-    solutionDesc: 'Automatisez la collecte et la structuration de l\'information pour produire des analyses concurrentielles plus rapidement et plus systématiquement.',
-  },
-];
-
-const modules = [
-  {
-    num: '01',
-    title: 'Outils et méthodes pour le conseil',
-    items: [
-      'Panorama des outils IA pertinents pour les consultants',
-      'Choisir le bon modèle selon la tâche',
-      'Construire un environnement de travail IA efficace',
-      'Gérer la confidentialité des données client',
-    ],
-  },
-  {
-    num: '02',
-    title: 'Recherche et analyse sectorielle',
-    items: [
-      'Structurer une recherche documentaire avec l\'IA',
-      'Synthétiser des rapports et études en quelques minutes',
-      'Construire des benchmarks concurrentiels automatisés',
-      'Veille sectorielle assistée et résumés personnalisés',
-    ],
-  },
-  {
-    num: '03',
-    title: 'Rédaction de livrables et présentations',
-    items: [
-      'De la note de cadrage au rapport client avec l\'IA',
-      'Structurer et rédiger des slides de présentation',
-      'Templates de livrables adaptés à votre pratique',
-      'Révision et contrôle qualité des outputs',
-    ],
-  },
-];
-
-const faqs = [
-  {
-    q: 'La formation est-elle adaptée à mon secteur spécifique ?',
-    a: 'La formation couvre les méthodes transverses au conseil. Les exercices pratiques sont adaptés à votre secteur lors de la session. Nous organisons régulièrement des sessions dédiées à des secteurs spécifiques.',
-  },
-  {
-    q: 'Ai-je besoin de compétences techniques ?',
-    a: 'Non. La formation s\'adresse aux consultants et analystes, pas aux développeurs. Tout est orienté usage métier avec des cas concrets de conseil.',
-  },
-  {
-    q: 'Comment se déroulent les sessions ?',
-    a: 'Sessions en ligne ou en présentiel, en intra-cabinet ou en petit groupe. Exercices pratiques sur des cas réels de conseil tout au long de la formation.',
-  },
-  {
-    q: 'Quelle est la différence avec le bootcamp IA ?',
-    a: 'Le bootcamp est généraliste (tous secteurs). La formation consultants est spécifiquement calibrée sur les tâches et livrables du conseil : recherche, analyse, rédaction de rapports et présentations.',
-  },
-];
+const { hero, problemSolution, modules, pricing, ctaFinal } = content;
 ---
 
 <BaseLayout
-  title="Formation IA pour consultants — Cercle IA"
-  description="Accélérez vos livrables et automatisez la recherche sectorielle avec l'IA. Formation pratique pour consultants et analystes, applicable dès la première mission."
-  ogImage="/og/formations-consultants.jpg"
-  ogImageAlt="Formation IA pour consultants — Cercle IA"
+  title={content.meta.title}
+  description={content.meta.description}
+  ogImage={content.meta.ogImage}
+  ogImageAlt={content.meta.ogImageAlt}
   schema={schema}
 >
 
@@ -126,26 +44,26 @@ const faqs = [
         <div>
           <div class="eyebrow-badge" style="margin-bottom: 28px; display: inline-flex;">
             <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
-            Formation IA · Conseil
+            {hero.eyebrow}
           </div>
 
           <h1 class="hero-title">
-            Accélérez vos livrables<br />
-            <span style="color: rgba(255,255,255,0.55);">sans sacrifier votre expertise.</span>
+            {hero.title}<br />
+            <span style="color: rgba(255,255,255,0.55);">{hero.titleMuted}</span>
           </h1>
 
           <p style="font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.75; max-width: 560px; margin-bottom: 36px;">
-            Recherche, analyse, rédaction de livrables — apprenez à utiliser l'IA pour aller plus vite sur les tâches à faible valeur ajoutée et vous concentrer sur ce qui fait votre différence.
+            {hero.description}
           </p>
 
           <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 32px;">
-            <a href="/formations/sur-mesure" class="btn-primary">Obtenir une formation sur mesure &rarr;</a>
-            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">Planifier un appel</a>
+            <a href="/formations/sur-mesure" class="btn-primary">{hero.ctaPrimary} &rarr;</a>
+            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">{hero.ctaSecondary}</a>
           </div>
 
           <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
             <span style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.2); letter-spacing: 0.08em; text-transform: uppercase; margin-right: 4px; white-space: nowrap;">Pour</span>
-            {['Consultants', 'Chefs de projet', 'Analystes', 'Freelances'].map((p) => (
+            {hero.audienceTags.map((p) => (
               <span class="tag-outline" style="font-size: 10px; padding: 3px 10px;">{p}</span>
             ))}
           </div>
@@ -156,14 +74,8 @@ const faqs = [
             <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: #ffffff; line-height: 1.2; letter-spacing: -0.015em; margin-bottom: 20px;">En bref</h2>
             <table style="width: 100%; border-collapse: collapse;">
               <tbody>
-                {[
-                  { label: 'Pour qui', value: 'Consultants, chefs de projet, analystes, freelances' },
-                  { label: 'Format', value: "En ligne ou présentiel, à partir d'une demi-journée" },
-                  { label: 'Langue', value: 'Français' },
-                  { label: 'Tarif', value: 'Sur devis (formations intra-entreprise)' },
-                  { label: 'Prérequis', value: 'Aucun prérequis technique' },
-                ].map((row, i) => (
-                  <tr style={i < 4 ? 'border-bottom: 1px solid rgba(255,255,255,0.07);' : ''}>
+                {hero.infoBox.rows.map((row, i) => (
+                  <tr style={i < hero.infoBox.rows.length - 1 ? 'border-bottom: 1px solid rgba(255,255,255,0.07);' : ''}>
                     <td style="padding: 12px 0; padding-right: 16px; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.35); letter-spacing: 0.07em; text-transform: uppercase; white-space: nowrap; vertical-align: top;">{row.label}</td>
                     <td style="padding: 12px 0; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.8); line-height: 1.4;">{row.value}</td>
                   </tr>
@@ -182,10 +94,10 @@ const faqs = [
     <div class="container">
 
       <div style="max-width: 720px; margin-bottom: 56px;">
-        <span class="section-eyebrow">Pourquoi cette formation</span>
-        <h2 class="section-title">Les frictions du consultant face à l'IA</h2>
+        <span class="section-eyebrow">{problemSolution.eyebrow}</span>
+        <h2 class="section-title">{problemSolution.title}</h2>
         <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin-top: 20px;">
-          Le conseil est un métier de synthèse et de livraison. L'IA peut transformer votre productivité — à condition de maîtriser les bonnes méthodes pour chaque type de tâche.
+          {problemSolution.intro}
         </p>
       </div>
 
@@ -193,23 +105,23 @@ const faqs = [
       <div style="border: 1px solid rgba(6,24,23,0.1); border-radius: var(--radius-lg); overflow: hidden; display: grid; grid-template-columns: 1fr 1fr;">
 
         <div style="padding: 16px 28px; background: rgba(6,24,23,0.04); border-right: 1px solid rgba(6,24,23,0.08); border-bottom: 1px solid rgba(6,24,23,0.08);">
-          <p style="font-size: 11px; font-weight: 600; color: rgba(6,24,23,0.4); letter-spacing: 0.1em; text-transform: uppercase;">Le problème</p>
+          <p style="font-size: 11px; font-weight: 600; color: rgba(6,24,23,0.4); letter-spacing: 0.1em; text-transform: uppercase;">{problemSolution.headerProblem}</p>
         </div>
         <div style="padding: 16px 28px; background: rgba(247,171,110,0.1); border-bottom: 1px solid rgba(247,171,110,0.15);">
-          <p style="font-size: 11px; font-weight: 600; color: var(--color-accent-hover); letter-spacing: 0.1em; text-transform: uppercase;">Ce que vous allez gagner</p>
+          <p style="font-size: 11px; font-weight: 600; color: var(--color-accent-hover); letter-spacing: 0.1em; text-transform: uppercase;">{problemSolution.headerSolution}</p>
         </div>
 
-        {problemSolutionRows.map((row, i) => (
+        {problemSolution.rows.map((row, i) => (
           <>
-            <div style={`padding: 28px; background: rgba(6,24,23,0.02); border-right: 1px solid rgba(6,24,23,0.08); display: flex; gap: 14px; align-items: flex-start;${i < problemSolutionRows.length - 1 ? ' border-bottom: 1px solid rgba(6,24,23,0.06);' : ''}`}>
+            <div style={`padding: 28px; background: rgba(6,24,23,0.02); border-right: 1px solid rgba(6,24,23,0.08); display: flex; gap: 14px; align-items: flex-start;${i < problemSolution.rows.length - 1 ? ' border-bottom: 1px solid rgba(6,24,23,0.06);' : ''}`}>
               <span style="width: 18px; height: 18px; border-radius: 50%; border: 1px solid rgba(6,24,23,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 3px;">
                 <span style="width: 5px; height: 5px; border-radius: 50%; background: rgba(6,24,23,0.3); display: block;"></span>
               </span>
               <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.7;">{row.problem}</p>
             </div>
-            <div style={`padding: 28px; background: rgba(247,171,110,0.05); display: flex; gap: 14px; align-items: flex-start;${i < problemSolutionRows.length - 1 ? ' border-bottom: 1px solid rgba(247,171,110,0.1);' : ''}`}>
+            <div style={`padding: 28px; background: rgba(247,171,110,0.05); display: flex; gap: 14px; align-items: flex-start;${i < problemSolution.rows.length - 1 ? ' border-bottom: 1px solid rgba(247,171,110,0.1);' : ''}`}>
               <span style="width: 18px; height: 18px; border-radius: 50%; background: rgba(247,171,110,0.25); border: 1px solid rgba(247,171,110,0.5); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 3px;">
-                <span style="color: var(--color-accent-hover); font-size: 10px; font-weight: 700; line-height: 1;">✓</span>
+                <span style="color: var(--color-accent-hover); font-size: 10px; font-weight: 700; line-height: 1;">&#x2713;</span>
               </span>
               <div>
                 <p style="font-size: 15px; font-weight: 600; color: var(--color-text-on-light); line-height: 1.4; margin-bottom: 6px;">{row.solutionTitle}</p>
@@ -230,19 +142,19 @@ const faqs = [
     <div class="container">
 
       <div style="max-width: 720px; margin-bottom: 48px;">
-        <span class="section-eyebrow">Contenu de la formation</span>
-        <h2 class="section-title">Ce que couvre la formation</h2>
+        <span class="section-eyebrow">{modules.eyebrow}</span>
+        <h2 class="section-title">{modules.title}</h2>
       </div>
 
       <div class="grid-3" style="gap: 20px;">
-        {modules.map((m) => (
+        {modules.items.map((m) => (
           <div class="glass-card" style="display: flex; flex-direction: column; gap: 16px;">
             <span class="usp-number">{m.num}</span>
             <h3 class="usp-title">{m.title}</h3>
             <div style="display: flex; flex-direction: column; gap: 9px;">
               {m.items.map((item) => (
                 <div style="display: flex; gap: 10px; align-items: flex-start;">
-                  <span style="color: var(--color-accent); font-size: 12px; flex-shrink: 0; margin-top: 2px;">▸</span>
+                  <span style="color: var(--color-accent); font-size: 12px; flex-shrink: 0; margin-top: 2px;">&#9658;</span>
                   <p style="font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5;">{item}</p>
                 </div>
               ))}
@@ -260,31 +172,25 @@ const faqs = [
       <div class="grid-2" style="gap: 56px; align-items: start;">
 
         <div>
-          <span class="section-eyebrow">Format &amp; investissement</span>
-          <h2 class="section-title" style="color: var(--color-text-on-light);">Tarification sur mesure</h2>
+          <span class="section-eyebrow">{pricing.eyebrow}</span>
+          <h2 class="section-title" style="color: var(--color-text-on-light);">{pricing.title}</h2>
           <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.8; margin-top: 16px; margin-bottom: 32px;">
-            Les tarifs sont adaptés selon la durée, le nombre de participants et vos besoins spécifiques. Nous vous aidons à choisir la formule adaptée à votre cabinet ou votre structure.
+            {pricing.description}
           </p>
           <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="/formations/sur-mesure" class="btn-primary">Obtenir une formation sur mesure</a>
-            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline-dark">Planifier un appel</a>
+            <a href="/formations/sur-mesure" class="btn-primary">{pricing.ctaPrimary}</a>
+            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline-dark">{pricing.ctaSecondary}</a>
           </div>
         </div>
 
         <div class="card-white">
-          <p style="font-size: 11px; font-weight: 600; color: rgba(6,24,23,0.35); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">Tarification sur mesure</p>
-          <p style="font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--color-text-on-light); line-height: 1.2; margin-bottom: 8px;">Adaptée à votre organisation</p>
-          <p style="font-size: 13px; color: rgba(6,24,23,0.45); margin-bottom: 24px;">Tarifs selon la durée, le nombre de participants et le format choisi.</p>
+          <p style="font-size: 11px; font-weight: 600; color: rgba(6,24,23,0.35); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">{pricing.card.label}</p>
+          <p style="font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--color-text-on-light); line-height: 1.2; margin-bottom: 8px;">{pricing.card.heading}</p>
+          <p style="font-size: 13px; color: rgba(6,24,23,0.45); margin-bottom: 24px;">{pricing.card.subtitle}</p>
           <div style="display: flex; flex-direction: column; gap: 10px;">
-            {[
-              'Modules adaptés à votre pratique',
-              'Templates de livrables consultants',
-              'Bibliothèque de prompts métier',
-              'Module confidentialité données client',
-              'Attestation de formation',
-            ].map((item) => (
+            {pricing.card.includes.map((item) => (
               <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: var(--color-accent); font-weight: 700; font-size: 14px; flex-shrink: 0;">✓</span>
+                <span style="color: var(--color-accent); font-weight: 700; font-size: 14px; flex-shrink: 0;">&#x2713;</span>
                 <p style="font-size: 14px; color: var(--color-text-subtle);">{item}</p>
               </div>
             ))}
@@ -299,15 +205,15 @@ const faqs = [
   <section style="background: var(--color-dark-2); padding: 96px 0;">
     <div class="container">
       <div style="max-width: 760px; margin: 0 auto;">
-        <span class="section-eyebrow">Questions fréquentes</span>
-        <h2 class="section-title" style="margin-bottom: 48px;">Ce que se demandent les consultants avant de s'inscrire</h2>
+        <span class="section-eyebrow">{content.faq.eyebrow}</span>
+        <h2 class="section-title" style="margin-bottom: 48px;">{content.faq.title}</h2>
         <div style="display: flex; flex-direction: column; gap: 16px;">
-          {faqs.map((item) => (
+          {content.faq.items.map((item) => (
             <div class="glass-card" style="padding: 0;">
               <details style="display: block;">
-                <summary style="padding: 24px 28px; cursor: pointer; font-size: 15px; font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px;">{item.q}</summary>
+                <summary style="padding: 24px 28px; cursor: pointer; font-size: 15px; font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px;">{item.question}</summary>
                 <div style="padding: 0 28px 24px;">
-                  <p style="font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.75;">{item.a}</p>
+                  <p style="font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.75;">{item.answer}</p>
                 </div>
               </details>
             </div>
@@ -320,14 +226,14 @@ const faqs = [
   <!-- ========== CTA FINAL ========== -->
   <section style="background: var(--color-dark-1); padding: 96px 0;">
     <div class="container" style="text-align: center; max-width: 680px;">
-      <span class="section-eyebrow">Prêt à passer à la vitesse supérieure ?</span>
-      <h2 class="section-title">Rejoignez les consultants qui livrent plus vite avec l'IA</h2>
+      <span class="section-eyebrow">{ctaFinal.eyebrow}</span>
+      <h2 class="section-title">{ctaFinal.title}</h2>
       <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin: 20px 0 32px;">
-        Formation individuelle ou pour votre cabinet de conseil. Dès la première session, vous avez des méthodes applicables.
+        {ctaFinal.description}
       </p>
       <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <a href="/formations/sur-mesure" class="btn-primary">Obtenir une formation sur mesure &rarr;</a>
-        <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">Planifier un appel</a>
+        <a href="/formations/sur-mesure" class="btn-primary">{ctaFinal.ctaPrimary} &rarr;</a>
+        <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">{ctaFinal.ctaSecondary}</a>
       </div>
     </div>
   </section>

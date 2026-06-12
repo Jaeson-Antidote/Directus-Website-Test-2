@@ -1,0 +1,219 @@
+{
+  "meta": {
+    "title": "Formations IA pour professionnels — Cercle IA",
+    "description": "Formations IA pour avocats, médecins, dirigeants et consultants. Maîtrisez l'IA avec méthode, discernement et éthique. Bruxelles & en ligne.",
+    "ogImage": "/og/homepage.jpg",
+    "ogImageAlt": "Cercle IA — Formations IA pour professionnels"
+  },
+  "hero": {
+    "eyebrow": "Formations IA pour professionnels",
+    "title": "L'IA entre de bonnes mains.",
+    "titleMuted": "Les vôtres.",
+    "description": "Des formations conçues pour les professionnels dont les erreurs ont un coût. Avocats, médecins, consultants, dirigeants.",
+    "ctaPrimary": "Découvrir les formations",
+    "ctaPrimaryHref": "/formations",
+    "ctaSecondary": "Planifier un appel",
+    "logosLabel": "Ils nous font confiance",
+    "diagram": {
+      "centralLabel": "Formation IA",
+      "professions": ["Avocat", "Médecin", "Dirigeant", "Consultant", "RH"],
+      "outputs": ["Outils", "Prompts", "Méthodes", "Éthique", "Confiance"]
+    }
+  },
+  "features": {
+    "eyebrow": "Pourquoi se former avec Cercle IA",
+    "title": "Ce que vous apprenez ici est applicable le lundi matin.",
+    "cards": [
+      {
+        "icon": "◎",
+        "title": "Gagnez en confiance et en maîtrise",
+        "desc": "Acquérez une compréhension solide des fondamentaux de l'IA générative. Maîtrisez les bonnes pratiques et gagnez en crédibilité face à vos clients et collaborateurs."
+      },
+      {
+        "icon": "◈",
+        "title": "Augmentez vos performances",
+        "desc": "Livrez des résultats supérieurs en moins de temps. Développez des synergies d'équipe grâce aux outils d'IA collaborative, sans sacrifier le jugement professionnel."
+      },
+      {
+        "icon": "◇",
+        "title": "Prenez l'avantage concurrentiel",
+        "desc": "Explorez de nouvelles manières de créer de la valeur pour vos clients. Franchissez le cap vers une pratique professionnelle augmentée par l'IA."
+      }
+    ]
+  },
+  "formationsSection": {
+    "eyebrow": "Nos formations",
+    "title": "Des parcours conçus par des professionnels, pour des professionnels.",
+    "ctaAllFormations": "Toutes les formations",
+    "bootcamp": {
+      "tag": "Bootcamp",
+      "meta": "3 sessions · En ligne · Tous niveaux",
+      "title": "Bootcamp IA Générative",
+      "desc": "Un programme intensif pour comprendre, manipuler et intégrer l'IA dans son quotidien professionnel. Idéal pour tout profil souhaitant passer à l'action, sans prérequis techniques.",
+      "ctaWaitlist": "S'inscrire sur la liste d'attente",
+      "ctaSeeProgram": "Voir le programme",
+      "nextSession": {
+        "label": "Prochaine session",
+        "date": "Septembre 2026"
+      }
+    },
+    "formations": [
+      {
+        "href": "/formations/medecins",
+        "title": "IA pour médecins",
+        "tag": "Santé",
+        "desc": "Reprendre le contrôle de l'IA dans votre pratique médicale, en respectant le secret médical et les exigences réglementaires."
+      },
+      {
+        "href": "/formations/rh",
+        "title": "IA pour les RH",
+        "tag": "Ressources humaines",
+        "desc": "Détectez les bons talents, rédigez vos offres plus rapidement et analysez les CV sans sacrifier le jugement humain."
+      },
+      {
+        "href": "/formations/avocats",
+        "title": "IA pour avocats & juristes",
+        "tag": "Droit",
+        "desc": "Recherche, rédaction, analyse documentaire — en respectant le secret professionnel et les obligations déontologiques."
+      },
+      {
+        "href": "/formations/consultants",
+        "title": "IA pour consultants",
+        "tag": "Conseil",
+        "desc": "Accélérez vos livrables, automatisez la recherche sectorielle et gagnez en productivité sur vos missions."
+      },
+      {
+        "href": "/formations/dirigeants",
+        "title": "IA pour dirigeants",
+        "tag": "Direction",
+        "desc": "Pilotez la transformation IA de votre organisation avec méthode. Stratégie, gouvernance et décision augmentée."
+      }
+    ]
+  },
+  "usps": {
+    "eyebrow": "Ce qui nous différencie",
+    "items": [
+      {
+        "n": "01",
+        "title": "Formateurs experts de terrain",
+        "desc": "Tarik Hennen utilise l'IA dans des contextes à responsabilité depuis 2021. Pas depuis la tribune de l'observateur enthousiaste."
+      },
+      {
+        "n": "02",
+        "title": "Cas concrets, outils testés",
+        "desc": "Des exercices issus de vrais contextes professionnels. Des cas d'usage métier immédiatement actionnables."
+      },
+      {
+        "n": "03",
+        "title": "Éthique & confidentialité",
+        "desc": "Secret professionnel, RGPD, confidentialité clients — vos contraintes réelles intégrées dès le départ."
+      },
+      {
+        "n": "04",
+        "title": "Programme sur mesure",
+        "desc": "Chaque formation s'adapte à votre secteur, votre niveau et vos objectifs. Aucun programme standard ne convient à tous."
+      }
+    ]
+  },
+  "trainer": {
+    "eyebrow": "Votre formateur principal",
+    "name": "Tarik Hennen.",
+    "bio": "Ancien avocat, consultant en stratégie digitale, enseignant à l'IHECS, formateur IA à l'EPHEC et l'UCLouvain. Praticien IA depuis 2021 — dans des contextes où l'erreur coûte.",
+    "quote": "\"Le point de départ n'est pas l'outil. C'est le travail.\"",
+    "cta": "Découvrir le parcours",
+    "ctaHref": "/tarik-hennen",
+    "stats": [
+      { "number": "2024", "label": "Formateur en IA depuis" },
+      { "number": "250+", "label": "Professionnels formés" },
+      { "number": "15 ans", "label": "D'expérience terrain" }
+    ]
+  },
+  "testimonials": {
+    "eyebrow": "Ce qu'en disent nos participants",
+    "title": "Concret, sincère, pragmatique et utile.",
+    "items": [
+      {
+        "pull": "À recommander d'urgence !",
+        "body": "Formation professionnelle fluide et accessible à haute valeur ajoutée. Les informations apprises et conseils donnés permettent de donner un nouvel élan (inattendu) à tout un chacun afin de se retrouver dans les méandres de l'IA.",
+        "name": "Steve Griess",
+        "role": "Partner",
+        "org": "Thales Brussels",
+        "initials": "SG"
+      },
+      {
+        "pull": "Tarik is the go to person for digital strategy in Brussels!",
+        "body": "",
+        "name": "Yves Melin",
+        "role": "Avocat Associé",
+        "org": "Cassidy Levy Kent",
+        "initials": "YM"
+      },
+      {
+        "pull": "Highly recommended for anyone willing to get down to the brass tacks of this intriguing technology.",
+        "body": "I recently completed five 2-hour AI training sessions. The program offered a detailed overview of key AI tools and provided very concrete, practice-oriented guidance.",
+        "name": "Prescillia Algrain",
+        "role": "Counsel",
+        "org": "Janson Law Firm",
+        "initials": "PA"
+      },
+      {
+        "pull": "À refaire sans modération.",
+        "body": "J'ai suivi 3 formations de 2 heures cette année. Merci Tarik & Team !",
+        "name": "Edouard Cambier",
+        "role": "Co-Owner",
+        "org": "Seed Factory",
+        "initials": "EC"
+      },
+      {
+        "pull": "Thank you for the interesting presentation!",
+        "body": "Very recommended for all lawyers and managers. Very nice to have welcomed you at EQUI.",
+        "name": "Marie Michaud-Nerard",
+        "role": "Partner",
+        "org": "EQUI",
+        "initials": "MM"
+      },
+      {
+        "pull": "Je recommande vivement.",
+        "body": "Parmi l'amas de formations disponibles, en voici une – enfin – concrète, sincère, pragmatique et utile à tous les indépendants (d'esprit ou de pratique).",
+        "name": "Adam Tricha",
+        "role": "Avocat",
+        "org": "Barreau de Verviers",
+        "initials": "AT"
+      }
+    ]
+  },
+  "resources": {
+    "eyebrow": "Ressources exclusives",
+    "title": "Approfondissez votre expertise entre les sessions.",
+    "ctaAll": "Toutes les ressources",
+    "ctaAllHref": "/ressources-ia",
+    "items": [
+      {
+        "href": "/blog",
+        "title": "Blog",
+        "desc": "Analyses, décryptages et actualités sur l'IA générative pour rester à la pointe de votre domaine.",
+        "cta": "Lire le blog"
+      },
+      {
+        "href": "/ressources-ia",
+        "title": "Annuaire d'outils IA",
+        "desc": "Notre sélection d'outils triés par cas d'usage, pour identifier ce qui correspond à vos contraintes professionnelles.",
+        "cta": "Explorer l'annuaire"
+      },
+      {
+        "href": "/newsletter",
+        "title": "Newsletter",
+        "desc": "Tous les 15 jours — veille sélective et analyse de fond. Anticiper les révolutions de l'IA plutôt que de les subir.",
+        "cta": "S'abonner"
+      }
+    ]
+  },
+  "ctaFinal": {
+    "badge": "Besoin d'une formule sur mesure ?",
+    "title": "Parlons de votre organisation et de vos objectifs.",
+    "description": "Formations intra-entreprise, ateliers sur mesure ou accompagnement individuel — nous adaptons chaque programme à votre contexte.",
+    "ctaPrimary": "Nous contacter",
+    "ctaPrimaryHref": "/contact",
+    "ctaSecondary": "Planifier un appel"
+  }
+}

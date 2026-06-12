@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "title": "Formation IA pour consultants — Cercle IA",
+    "description": "Accélérez vos livrables et automatisez la recherche sectorielle avec l'IA. Formation pratique pour consultants et analystes, applicable dès la première mission.",
+    "ogImage": "/og/formations-consultants.jpg",
+    "ogImageAlt": "Formation IA pour consultants — Cercle IA"
+  },
+  "schema": {
+    "course": {
+      "name": "Formation IA pour consultants",
+      "description": "Accélérez vos livrables et automatisez la recherche sectorielle avec l'IA. Formation pratique pour consultants, chefs de projet et analystes.",
+      "url": "/formations/consultants"
+    }
+  },
+  "hero": {
+    "eyebrow": "Formation IA · Conseil",
+    "title": "Accélérez vos livrables",
+    "titleMuted": "sans sacrifier votre expertise.",
+    "description": "Recherche, analyse, rédaction de livrables — apprenez à utiliser l'IA pour aller plus vite sur les tâches à faible valeur ajoutée et vous concentrer sur ce qui fait votre différence.",
+    "ctaPrimary": "Obtenir une formation sur mesure",
+    "ctaSecondary": "Planifier un appel",
+    "audienceTags": ["Consultants", "Chefs de projet", "Analystes", "Freelances"],
+    "infoBox": {
+      "rows": [
+        { "label": "Pour qui", "value": "Consultants, chefs de projet, analystes, freelances" },
+        { "label": "Format", "value": "En ligne ou présentiel, à partir d'une demi-journée" },
+        { "label": "Langue", "value": "Français" },
+        { "label": "Tarif", "value": "Sur devis (formations intra-entreprise)" },
+        { "label": "Prérequis", "value": "Aucun prérequis technique" }
+      ]
+    }
+  },
+  "problemSolution": {
+    "eyebrow": "Pourquoi cette formation",
+    "title": "Les frictions du consultant face à l'IA",
+    "intro": "Le conseil est un métier de synthèse et de livraison. L'IA peut transformer votre productivité — à condition de maîtriser les bonnes méthodes pour chaque type de tâche.",
+    "headerProblem": "Le problème",
+    "headerSolution": "Ce que vous allez gagner",
+    "rows": [
+      {
+        "problem": "La recherche sectorielle et documentaire prend un temps disproportionné par rapport à la valeur créée.",
+        "solutionTitle": "Synthèses sectorielles en quelques minutes",
+        "solutionDesc": "Structurez votre recherche avec des prompts adaptés et obtenez des synthèses exploitables que vous validez avec votre expertise."
+      },
+      {
+        "problem": "Produire un premier livrable structuré prend des heures, même quand le fond est clair.",
+        "solutionTitle": "Premiers drafts de qualité en 20 minutes",
+        "solutionDesc": "Passez de la note de cadrage au rapport client avec l'IA comme assistant de rédaction, en gardant le contrôle éditorial."
+      },
+      {
+        "problem": "Les benchmarks et analyses concurrentielles sont longs à construire manuellement.",
+        "solutionTitle": "Analyses structurées et reproductibles",
+        "solutionDesc": "Automatisez la collecte et la structuration de l'information pour produire des analyses concurrentielles plus rapidement et plus systématiquement."
+      }
+    ]
+  },
+  "modules": {
+    "eyebrow": "Contenu de la formation",
+    "title": "Ce que couvre la formation",
+    "items": [
+      {
+        "num": "01",
+        "title": "Outils et méthodes pour le conseil",
+        "items": [
+          "Panorama des outils IA pertinents pour les consultants",
+          "Choisir le bon modèle selon la tâche",
+          "Construire un environnement de travail IA efficace",
+          "Gérer la confidentialité des données client"
+        ]
+      },
+      {
+        "num": "02",
+        "title": "Recherche et analyse sectorielle",
+        "items": [
+          "Structurer une recherche documentaire avec l'IA",
+          "Synthétiser des rapports et études en quelques minutes",
+          "Construire des benchmarks concurrentiels automatisés",
+          "Veille sectorielle assistée et résumés personnalisés"
+        ]
+      },
+      {
+        "num": "03",
+        "title": "Rédaction de livrables et présentations",
+        "items": [
+          "De la note de cadrage au rapport client avec l'IA",
+          "Structurer et rédiger des slides de présentation",
+          "Templates de livrables adaptés à votre pratique",
+          "Révision et contrôle qualité des outputs"
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Format & investissement",
+    "title": "Tarification sur mesure",
+    "description": "Les tarifs sont adaptés selon la durée, le nombre de participants et vos besoins spécifiques. Nous vous aidons à choisir la formule adaptée à votre cabinet ou votre structure.",
+    "ctaPrimary": "Obtenir une formation sur mesure",
+    "ctaSecondary": "Planifier un appel",
+    "card": {
+      "label": "Tarification sur mesure",
+      "heading": "Adaptée à votre organisation",
+      "subtitle": "Tarifs selon la durée, le nombre de participants et le format choisi.",
+      "includes": [
+        "Modules adaptés à votre pratique",
+        "Templates de livrables consultants",
+        "Bibliothèque de prompts métier",
+        "Module confidentialité données client",
+        "Attestation de formation"
+      ]
+    }
+  },
+  "faq": {
+    "eyebrow": "Questions fréquentes",
+    "title": "Ce que se demandent les consultants avant de s'inscrire",
+    "items": [
+      {
+        "question": "La formation est-elle adaptée à mon secteur spécifique ?",
+        "answer": "La formation couvre les méthodes transverses au conseil. Les exercices pratiques sont adaptés à votre secteur lors de la session. Nous organisons régulièrement des sessions dédiées à des secteurs spécifiques."
+      },
+      {
+        "question": "Ai-je besoin de compétences techniques ?",
+        "answer": "Non. La formation s'adresse aux consultants et analystes, pas aux développeurs. Tout est orienté usage métier avec des cas concrets de conseil."
+      },
+      {
+        "question": "Comment se déroulent les sessions ?",
+        "answer": "Sessions en ligne ou en présentiel, en intra-cabinet ou en petit groupe. Exercices pratiques sur des cas réels de conseil tout au long de la formation."
+      },
+      {
+        "question": "Quelle est la différence avec le bootcamp IA ?",
+        "answer": "Le bootcamp est généraliste (tous secteurs). La formation consultants est spécifiquement calibrée sur les tâches et livrables du conseil : recherche, analyse, rédaction de rapports et présentations."
+      }
+    ]
+  },
+  "ctaFinal": {
+    "eyebrow": "Prêt à passer à la vitesse supérieure ?",
+    "title": "Rejoignez les consultants qui livrent plus vite avec l'IA",
+    "description": "Formation individuelle ou pour votre cabinet de conseil. Dès la première session, vous avez des méthodes applicables.",
+    "ctaPrimary": "Obtenir une formation sur mesure",
+    "ctaSecondary": "Planifier un appel"
+  }
+}

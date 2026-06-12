@@ -15,7 +15,7 @@ interface Props {
   tags?: string[] | undefined;
   image?: ImageMetadata | undefined;
   imageAlt?: string | undefined;
-  collection: 'blog' | 'newsletter';
+  collection: 'blog' | 'newsletter' | 'blogEn' | 'newsletterEn';
   slug: string;
   headings: { depth: number; slug: string; text: string }[];
 }
@@ -35,21 +35,34 @@ const {
   headings,
 } = Astro.props;
 
-const isNewsletter = collection === 'newsletter';
-const basePath = isNewsletter ? '/newsletter' : '/blog';
+const isEn = collection === 'blogEn' || collection === 'newsletterEn';
+const isNewsletter = collection === 'newsletter' || collection === 'newsletterEn';
+const basePath = isNewsletter ? (isEn ? '/en/newsletter' : '/newsletter') : (isEn ? '/en/blog' : '/blog');
 const baseLabel = isNewsletter ? 'Newsletter' : 'Blog';
+const homeLabel = isEn ? 'Home' : 'Accueil';
+const homeHref = isEn ? '/en' : '/';
+const tocLabel = isEn ? 'In this article' : 'Dans cet article';
+const breadcrumbAriaLabel = isEn ? 'Breadcrumb' : 'Fil d\'Ariane';
+const authorLabel = isEn ? 'About the author' : 'À propos de l\'auteur';
+const authorBio = isEn
+  ? 'Former lawyer turned entrepreneur, consultant in digital strategy and marketing. Founder of Cercle IA, he supports legal, advisory, and healthcare professionals in building their AI competencies.'
+  : 'Ancien avocat devenu entrepreneur, consultant en stratégie et marketing numérique. Fondateur du Cercle IA, il accompagne les professionnels du droit, du conseil et de la santé dans leur montée en compétence IA.';
+const authorProfileLabel = isEn ? 'View profile →' : 'Voir le profil →';
+const authorProfileHref = isEn ? '/en/tarik-hennen' : '/tarik-hennen';
+const editionLabel = isEn ? 'Issue' : 'Édition';
 const categoryLabel = category ?? baseLabel;
 
 const imgWidth = isNewsletter ? 960 : 748;
 const imgHeight = isNewsletter ? 540 : 420;
 
 const displayDate = updatedDate ?? pubDate;
-const formattedDate = new Intl.DateTimeFormat('fr-BE', {
+const dateLocale = isEn ? 'en-GB' : 'fr-BE';
+const formattedDate = new Intl.DateTimeFormat(dateLocale, {
   day: 'numeric',
   month: 'long',
   year: 'numeric',
 }).format(new Date(displayDate));
-const datePrefix = updatedDate ? 'Mise à jour : ' : 'Publié le ';
+const datePrefix = updatedDate ? (isEn ? 'Updated: ' : 'Mise à jour : ') : (isEn ? 'Published ' : 'Publié le ');
 
 const tocItems = headings.filter((h) => h.depth === 2 || h.depth === 3);
 
@@ -86,8 +99,8 @@ const schemas = [
     <div class="container">
 
       <!-- Breadcrumb -->
-      <nav aria-label="Fil d'Ariane" style="margin-bottom: 32px; display: flex; align-items: center; gap: 8px; font-size: 13px; flex-wrap: wrap;">
-        <a href="/" class="breadcrumb-link">Accueil</a>
+      <nav aria-label={breadcrumbAriaLabel} style="margin-bottom: 32px; display: flex; align-items: center; gap: 8px; font-size: 13px; flex-wrap: wrap;">
+        <a href={homeHref} class="breadcrumb-link">{homeLabel}</a>
         <span style="color: rgba(255,255,255,0.2);" aria-hidden="true">/</span>
         <a href={basePath} class="breadcrumb-link">{baseLabel}</a>
         <span style="color: rgba(255,255,255,0.2);" aria-hidden="true">/</span>
@@ -101,7 +114,7 @@ const schemas = [
           <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 24px; flex-wrap: wrap;">
             <span class="tag">{categoryLabel}</span>
             {isNewsletter && edition && (
-              <span class="tag-outline">Édition #{edition}</span>
+              <span class="tag-outline">{editionLabel} #{edition}</span>
             )}
           </div>
 
@@ -167,9 +180,9 @@ const schemas = [
 
         <!-- Sidebar table des matières -->
         {tocItems.length >= 3 && (
-          <aside class="article-toc" aria-label="Table des matières">
+          <aside class="article-toc" aria-label={tocLabel}>
             <div class="toc-inner">
-              <p style="font-size: 11px; font-weight: 600; color: rgba(6,24,23,0.4); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px;">Dans cet article</p>
+              <p style="font-size: 11px; font-weight: 600; color: rgba(6,24,23,0.4); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px;">{tocLabel}</p>
               <nav>
                 <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 2px;">
                   {tocItems.map((item) => (
@@ -223,12 +236,12 @@ const schemas = [
           style="border-radius: 50%; border: 2px solid rgba(247,171,110,0.3); object-fit: cover; flex-shrink: 0;"
         />
         <div>
-          <p style="font-size: 11px; font-weight: 600; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">À propos de l'auteur</p>
+          <p style="font-size: 11px; font-weight: 600; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">{authorLabel}</p>
           <p style="font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--color-text-on-light); margin-bottom: 10px;">Tarik Hennen</p>
           <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.75; margin-bottom: 18px;">
-            Ancien avocat devenu entrepreneur, consultant en stratégie et marketing numérique. Fondateur du Cercle IA, il accompagne les professionnels du droit, du conseil et de la santé dans leur montée en compétence IA.
+            {authorBio}
           </p>
-          <a href="/tarik-hennen" class="btn-outline-dark btn-sm">Voir le profil &rarr;</a>
+          <a href={authorProfileHref} class="btn-outline-dark btn-sm">{authorProfileLabel}</a>
         </div>
       </div>
     </div>
@@ -240,26 +253,56 @@ const schemas = [
       {isNewsletter ? (
         <>
           <span class="section-eyebrow">Newsletter Cercle IA</span>
-          <h2 class="section-title" style="margin-bottom: 16px;">Ne ratez pas la prochaine édition</h2>
-          <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin-bottom: 32px;">
-            Chaque édition décrypte un sujet IA concret pour les professionnels qui veulent garder une longueur d'avance.
-          </p>
-          <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-            <a href="https://www.linkedin.com/newsletters/cercle-ia-7353754146262401025/" target="_blank" rel="noopener noreferrer" class="btn-primary">S'abonner à la newsletter &rarr;</a>
-            <a href="/formations" class="btn-outline">Découvrir les formations</a>
-          </div>
+          {isEn ? (
+            <>
+              <h2 class="section-title" style="margin-bottom: 16px;">Don't miss the next issue</h2>
+              <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin-bottom: 32px;">
+                Each issue unpacks a concrete AI topic for professionals who want to stay ahead.
+              </p>
+              <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://www.linkedin.com/newsletters/cercle-ia-7353754146262401025/" target="_blank" rel="noopener noreferrer" class="btn-primary">Subscribe to the newsletter &rarr;</a>
+                <a href="/en/formations" class="btn-outline">Explore training programmes</a>
+              </div>
+            </>
+          ) : (
+            <>
+              <h2 class="section-title" style="margin-bottom: 16px;">Ne ratez pas la prochaine édition</h2>
+              <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin-bottom: 32px;">
+                Chaque édition décrypte un sujet IA concret pour les professionnels qui veulent garder une longueur d'avance.
+              </p>
+              <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://www.linkedin.com/newsletters/cercle-ia-7353754146262401025/" target="_blank" rel="noopener noreferrer" class="btn-primary">S'abonner à la newsletter &rarr;</a>
+                <a href="/formations" class="btn-outline">Découvrir les formations</a>
+              </div>
+            </>
+          )}
         </>
       ) : (
         <>
           <span class="section-eyebrow">Cercle IA</span>
-          <h2 class="section-title" style="margin-bottom: 16px;">Vous souhaitez vous former en IA ?</h2>
-          <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin-bottom: 32px;">
-            Des programmes conçus pour les professionnels qui veulent maîtriser l'IA générative dans leur pratique quotidienne.
-          </p>
-          <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-            <a href="/formations" class="btn-primary">Découvrir les formations &rarr;</a>
-            <a href="/blog" class="btn-outline">Retour au blog</a>
-          </div>
+          {isEn ? (
+            <>
+              <h2 class="section-title" style="margin-bottom: 16px;">Want to build your AI skills?</h2>
+              <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin-bottom: 32px;">
+                Programmes designed for professionals who want to master generative AI in their daily practice.
+              </p>
+              <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <a href="/en/formations" class="btn-primary">Explore training programmes &rarr;</a>
+                <a href="/en/blog" class="btn-outline">Back to blog</a>
+              </div>
+            </>
+          ) : (
+            <>
+              <h2 class="section-title" style="margin-bottom: 16px;">Vous souhaitez vous former en IA ?</h2>
+              <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin-bottom: 32px;">
+                Des programmes conçus pour les professionnels qui veulent maîtriser l'IA générative dans leur pratique quotidienne.
+              </p>
+              <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <a href="/formations" class="btn-primary">Découvrir les formations &rarr;</a>
+                <a href="/blog" class="btn-outline">Retour au blog</a>
+              </div>
+            </>
+          )}
         </>
       )}
     </div>

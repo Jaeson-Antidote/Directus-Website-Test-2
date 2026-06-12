@@ -1,0 +1,191 @@
+{
+  "meta": {
+    "title": "Formations IA sectorielles — Cercle IA",
+    "description": "Formations IA par secteur professionnel : avocats, consultants, dirigeants, RH et médecins. Sur mesure, applicables dès le lendemain.",
+    "ogImage": "/og/formations.jpg",
+    "ogImageAlt": "Formations IA sectorielles — Cercle IA"
+  },
+  "hero": {
+    "eyebrow": "Formations Cercle IA",
+    "title": "L'IA adaptée",
+    "titleMuted": "à votre métier.",
+    "description": "Chaque métier a ses outils, ses contraintes et ses enjeux. Nos formations sectorielles partent de votre réalité professionnelle pour vous donner une méthode applicable dès le lendemain.",
+    "ctaPrimary": "Trouver ma formation",
+    "ctaSecondary": "Planifier un appel",
+    "infoBox": {
+      "title": "Nos formations sectorielles",
+      "items": [
+        "En ligne, présentiel ou hybride",
+        "À partir d'une demi-journée",
+        "Tous niveaux",
+        "Français et Anglais"
+      ]
+    }
+  },
+  "formationsGrid": {
+    "eyebrow": "Nos formations",
+    "title": "Chaque métier a ses contraintes. Chaque formation part de là.",
+    "formations": [
+      {
+        "tag": "Droit",
+        "title": "IA pour avocats et juristes",
+        "desc": "Recherche jurisprudentielle, rédaction d'actes, analyse documentaire — en respectant le secret professionnel et les obligations déontologiques.",
+        "href": "/formations/avocats",
+        "cta": "Formation pour avocats, juristes",
+        "iconKey": "shield"
+      },
+      {
+        "tag": "Conseil",
+        "title": "IA pour consultants",
+        "desc": "Accélérez vos livrables, automatisez la recherche sectorielle et gagnez en productivité sur vos missions de conseil.",
+        "href": "/formations/consultants",
+        "cta": "Formation pour consultants",
+        "iconKey": "chart"
+      },
+      {
+        "tag": "Management",
+        "title": "IA pour dirigeants",
+        "desc": "Pilotez la transformation IA de votre organisation avec méthode. Stratégie, gouvernance et décision augmentée.",
+        "href": "/formations/dirigeants",
+        "cta": "Formation pour dirigeants",
+        "iconKey": "users"
+      },
+      {
+        "tag": "Ressources humaines",
+        "title": "IA pour les RH",
+        "desc": "Recrutement, rédaction d'offres, entretiens et analyse RH — sans sacrifier le jugement humain.",
+        "href": "/formations/rh",
+        "cta": "Formation pour les RH",
+        "iconKey": "hr"
+      },
+      {
+        "tag": "Santé",
+        "title": "IA pour médecins",
+        "desc": "Documentation clinique, recherche bibliographique et communication patient — en respectant le secret médical et la réglementation.",
+        "href": "/formations/medecins",
+        "cta": "Formation pour médecins",
+        "iconKey": "pulse"
+      }
+    ]
+  },
+  "bootcamp": {
+    "eyebrow": "Vous préférez un programme clé en main ?",
+    "title": "Le Bootcamp IA : programme fixe, dates définies",
+    "description": "Contrairement aux formations sectorielles sur mesure, le Bootcamp IA est un programme structuré avec un contenu, un format et un tarif définis. Idéal pour démarrer rapidement.",
+    "card": {
+      "tag": "Bootcamp IA",
+      "title": "Maîtrisez l'IA générative dans votre métier",
+      "description": "3 sessions masterclass + coaching individuel 1-on-1 + Cercle GPT offert. Un programme complet, applicable dès la première session. Ouvert à tous les professionnels.",
+      "ctaWaitlist": "S'inscrire sur la liste d'attente",
+      "ctaDetail": "Voir en détail",
+      "ctaDetailHref": "/bootcamp",
+      "details": [
+        "3 sessions masterclass en ligne",
+        "1 coaching individuel 1-on-1",
+        "En ligne"
+      ]
+    }
+  },
+  "surMesure": {
+    "eyebrow": "Sur mesure",
+    "title": "Une formation adaptée à vos contraintes",
+    "description": "Chaque formation peut être organisée en intra-entreprise pour vos équipes, adaptée à votre secteur spécifique, votre réglementation et vos outils.",
+    "cta": "Organiser une session pour mon équipe",
+    "ctaHref": "/contact",
+    "points": [
+      {
+        "title": "Adapté à votre secteur",
+        "desc": "Cas d'usage, outils et contraintes spécifiques à votre métier."
+      },
+      {
+        "title": "Applicable dès le lendemain",
+        "desc": "Des méthodes concrètes, pas de la théorie."
+      },
+      {
+        "title": "Aucun prérequis technique",
+        "desc": "Votre expertise métier suffit."
+      }
+    ]
+  },
+  "pourQui": {
+    "eyebrow": "Profils concernés",
+    "title": "Vous avez de l'expérience dans votre domaine. Pas en IA.",
+    "profiles": [
+      {
+        "title": "Le pragmatique",
+        "desc": "Vous voulez des résultats concrets, pas de la théorie. Vous cherchez ce que l'IA peut faire pour vous aujourd'hui."
+      },
+      {
+        "title": "Le sceptique éclairé",
+        "desc": "Vous avez essayé ChatGPT, les résultats vous ont déçus. Vous voulez comprendre pourquoi et comment faire mieux."
+      },
+      {
+        "title": "Le décideur",
+        "desc": "Vous devez former vos équipes ou prendre des décisions sur l'IA. Vous avez besoin d'une vision claire et opérationnelle."
+      }
+    ],
+    "footnote": "Aucune compétence technique requise. Juste votre métier et votre exigence."
+  },
+  "testimonials": {
+    "eyebrow": "Ce qu'en disent nos participants",
+    "title": "Concret, sincère, pragmatique et utile.",
+    "items": [
+      {
+        "pull": "À recommander d'urgence !",
+        "body": "Formation professionnelle fluide et accessible à haute valeur ajoutée. Les informations apprises et conseils donnés permettent de donner un nouvel élan (inattendu) à tout un chacun afin de se retrouver dans les méandres de l'IA.",
+        "name": "Steve Griess",
+        "role": "Partner",
+        "org": "Thales Brussels",
+        "initials": "SG"
+      },
+      {
+        "pull": "Tarik is the go to person for digital strategy in Brussels!",
+        "body": "",
+        "name": "Yves Melin",
+        "role": "Avocat Associé",
+        "org": "Cassidy Levy Kent",
+        "initials": "YM"
+      },
+      {
+        "pull": "Highly recommended for anyone willing to get down to the brass tacks of this intriguing technology.",
+        "body": "I recently completed five 2-hour AI training sessions. The program offered a detailed overview of key AI tools and provided very concrete, practice-oriented guidance.",
+        "name": "Prescillia Algrain",
+        "role": "Counsel",
+        "org": "Janson Law Firm",
+        "initials": "PA"
+      },
+      {
+        "pull": "À refaire sans modération.",
+        "body": "J'ai suivi 3 formations de 2 heures cette année. Merci Tarik & Team !",
+        "name": "Edouard Cambier",
+        "role": "Co-Owner",
+        "org": "Seed Factory",
+        "initials": "EC"
+      },
+      {
+        "pull": "Thank you for the interesting presentation!",
+        "body": "Very recommended for all lawyers and managers. Very nice to have welcomed you at EQUI.",
+        "name": "Marie Michaud-Nerard",
+        "role": "Partner",
+        "org": "EQUI",
+        "initials": "MM"
+      },
+      {
+        "pull": "Je recommande vivement.",
+        "body": "Parmi l'amas de formations disponibles, en voici une – enfin – concrète, sincère, pragmatique et utile à tous les indépendants (d'esprit ou de pratique).",
+        "name": "Adam Tricha",
+        "role": "Avocat",
+        "org": "Barreau de Verviers",
+        "initials": "AT"
+      }
+    ]
+  },
+  "ctaFinal": {
+    "eyebrow": "Pas sûr de la bonne formation ?",
+    "title": "Parlons-en en 15 minutes",
+    "description": "Un échange rapide suffit pour identifier la formation la plus adaptée à votre contexte : votre métier, vos outils, vos objectifs.",
+    "ctaPrimary": "Planifier un appel",
+    "ctaSecondary": "Voir le bootcamp IA",
+    "ctaSecondaryHref": "/bootcamp"
+  }
+}

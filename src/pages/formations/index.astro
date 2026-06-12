@@ -1,107 +1,33 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { breadcrumb, courseItemListSchema } from '../../lib/schema';
+import content from '../../content/pages/fr/formations-index.json';
+
+const { meta, hero, formationsGrid, bootcamp, surMesure, pourQui, testimonials, ctaFinal } = content;
+
+// Mapping iconKey → SVG path (les paths restent dans le template)
+const iconPaths: Record<string, string> = {
+  shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+  chart: '<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>',
+  users: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+  hr: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><line x1="12" y1="11" x2="12" y2="21"/>',
+  pulse: '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>',
+};
+
+// Mapping iconKey → SVG path pour la info box du hero
+const infoBoxIconPaths: string[] = [
+  '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
+  '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+  '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>',
+  '<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
+];
 
 const bc = breadcrumb([{ name: 'Formations IA', href: '/formations' }]);
 
-const testimonials = [
-  {
-    pull: 'À recommander d\'urgence !',
-    body: 'Formation professionnelle fluide et accessible à haute valeur ajoutée. Les informations apprises et conseils donnés permettent de donner un nouvel élan (inattendu) à tout un chacun afin de se retrouver dans les méandres de l\'IA.',
-    name: 'Steve Griess',
-    role: 'Partner',
-    org: 'Thales Brussels',
-    initials: 'SG',
-  },
-  {
-    pull: 'Tarik is the go to person for digital strategy in Brussels!',
-    body: '',
-    name: 'Yves Melin',
-    role: 'Avocat Associé',
-    org: 'Cassidy Levy Kent',
-    initials: 'YM',
-  },
-  {
-    pull: 'Highly recommended for anyone willing to get down to the brass tacks of this intriguing technology.',
-    body: 'I recently completed five 2-hour AI training sessions. The program offered a detailed overview of key AI tools and provided very concrete, practice-oriented guidance.',
-    name: 'Prescillia Algrain',
-    role: 'Counsel',
-    org: 'Janson Law Firm',
-    initials: 'PA',
-  },
-  {
-    pull: 'À refaire sans modération.',
-    body: 'J\'ai suivi 3 formations de 2 heures cette année. Merci Tarik & Team !',
-    name: 'Edouard Cambier',
-    role: 'Co-Owner',
-    org: 'Seed Factory',
-    initials: 'EC',
-  },
-  {
-    pull: 'Thank you for the interesting presentation!',
-    body: 'Very recommended for all lawyers and managers. Very nice to have welcomed you at EQUI.',
-    name: 'Marie Michaud-Nerard',
-    role: 'Partner',
-    org: 'EQUI',
-    initials: 'MM',
-  },
-  {
-    pull: 'Je recommande vivement.',
-    body: 'Parmi l\'amas de formations disponibles, en voici une – enfin – concrète, sincère, pragmatique et utile à tous les indépendants (d\'esprit ou de pratique).',
-    name: 'Adam Tricha',
-    role: 'Avocat',
-    org: 'Barreau de Verviers',
-    initials: 'AT',
-  },
-];
-
-const formations = [
-  {
-    tag: 'Droit',
-    title: 'IA pour avocats et juristes',
-    desc: 'Recherche jurisprudentielle, rédaction d\'actes, analyse documentaire — en respectant le secret professionnel et les obligations déontologiques.',
-    href: '/formations/avocats',
-    cta: 'Formation pour avocats, juristes',
-    icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-  },
-  {
-    tag: 'Conseil',
-    title: 'IA pour consultants',
-    desc: 'Accélérez vos livrables, automatisez la recherche sectorielle et gagnez en productivité sur vos missions de conseil.',
-    href: '/formations/consultants',
-    cta: 'Formation pour consultants',
-    icon: '<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>',
-  },
-  {
-    tag: 'Management',
-    title: 'IA pour dirigeants',
-    desc: 'Pilotez la transformation IA de votre organisation avec méthode. Stratégie, gouvernance et décision augmentée.',
-    href: '/formations/dirigeants',
-    cta: 'Formation pour dirigeants',
-    icon: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
-  },
-  {
-    tag: 'Ressources humaines',
-    title: 'IA pour les RH',
-    desc: 'Recrutement, rédaction d\'offres, entretiens et analyse RH — sans sacrifier le jugement humain.',
-    href: '/formations/rh',
-    cta: 'Formation pour les RH',
-    icon: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><line x1="12" y1="11" x2="12" y2="21"/>',
-  },
-  {
-    tag: 'Santé',
-    title: 'IA pour médecins',
-    desc: 'Documentation clinique, recherche bibliographique et communication patient — en respectant le secret médical et la réglementation.',
-    href: '/formations/medecins',
-    cta: 'Formation pour médecins',
-    icon: '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>',
-  },
-];
-
 const itemList = courseItemListSchema({
-  name: 'Formations IA sectorielles — Cercle IA',
-  description: 'Formations IA par secteur professionnel : avocats, consultants, dirigeants, RH et médecins.',
-  items: formations.map((f) => ({ name: f.title, description: f.desc, url: f.href })),
+  name: meta.title,
+  description: meta.description,
+  items: formationsGrid.formations.map((f) => ({ name: f.title, description: f.desc, url: f.href })),
 });
 
 const schema = {
@@ -111,10 +37,10 @@ const schema = {
 ---
 
 <BaseLayout
-  title="Formations IA sectorielles — Cercle IA"
-  description="Formations IA par secteur professionnel : avocats, consultants, dirigeants, RH et médecins. Sur mesure, applicables dès le lendemain."
-  ogImage="/og/formations.jpg"
-  ogImageAlt="Formations IA sectorielles — Cercle IA"
+  title={meta.title}
+  description={meta.description}
+  ogImage={meta.ogImage}
+  ogImageAlt={meta.ogImageAlt}
   schema={schema}
 >
 
@@ -129,52 +55,35 @@ const schema = {
         <div>
           <div class="eyebrow-badge" style="margin-bottom: 28px; display: inline-flex;">
             <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
-            Formations Cercle IA
+            {hero.eyebrow}
           </div>
 
           <h1 class="hero-title">
-            L'IA adaptée<br />
-            <span style="color: rgba(255,255,255,0.55);">à votre métier.</span>
+            {hero.title}<br />
+            <span style="color: rgba(255,255,255,0.55);">{hero.titleMuted}</span>
           </h1>
 
           <p style="font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.75; max-width: 560px; margin-bottom: 36px;">
-            Chaque métier a ses outils, ses contraintes et ses enjeux. Nos formations sectorielles partent de votre réalité professionnelle pour vous donner une méthode applicable dès le lendemain.
+            {hero.description}
           </p>
 
           <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 32px;">
-            <a href="#formations" class="btn-primary">Trouver ma formation &rarr;</a>
-            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">Planifier un appel</a>
+            <a href="#formations" class="btn-primary">{hero.ctaPrimary} &rarr;</a>
+            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">{hero.ctaSecondary}</a>
           </div>
         </div>
 
         <!-- Box info à droite -->
         <div style="padding-top: 36px;">
           <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius-xl); padding: 36px 32px;">
-            <h2 style="font-family: var(--font-display); font-size: 26px; font-weight: 700; color: #ffffff; line-height: 1.2; letter-spacing: -0.015em; margin-bottom: 28px;">Nos formations sectorielles</h2>
+            <h2 style="font-family: var(--font-display); font-size: 26px; font-weight: 700; color: #ffffff; line-height: 1.2; letter-spacing: -0.015em; margin-bottom: 28px;">{hero.infoBox.title}</h2>
             <div style="display: flex; flex-direction: column; gap: 20px;">
-              {[
-                {
-                  label: 'En ligne, présentiel ou hybride',
-                  icon: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
-                },
-                {
-                  label: 'À partir d\'une demi-journée',
-                  icon: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
-                },
-                {
-                  label: 'Tous niveaux',
-                  icon: '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>',
-                },
-                {
-                  label: 'Français et Anglais',
-                  icon: '<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
-                },
-              ].map((item) => (
+              {hero.infoBox.items.map((label, i) => (
                 <div style="display: flex; align-items: center; gap: 16px;">
                   <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(247,171,110,0.12); border: 1px solid rgba(247,171,110,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={item.icon} />
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={infoBoxIconPaths[i]} />
                   </div>
-                  <p style="font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.8); font-family: var(--font-body);">{item.label}</p>
+                  <p style="font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.8); font-family: var(--font-body);">{label}</p>
                 </div>
               ))}
             </div>
@@ -191,18 +100,18 @@ const schema = {
 
       <div class="section-header">
         <div>
-          <span class="section-eyebrow">Nos formations</span>
-          <h2 class="section-title">Chaque métier a ses contraintes. Chaque formation part de là.</h2>
+          <span class="section-eyebrow">{formationsGrid.eyebrow}</span>
+          <h2 class="section-title">{formationsGrid.title}</h2>
         </div>
       </div>
 
       <div class="grid-3" style="gap: 20px;">
-        {formations.map((f) => (
+        {formationsGrid.formations.map((f) => (
           <div class="glass-card" style="display: flex; flex-direction: column; gap: 20px;">
             <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;">
               <span class="tag" style="flex-shrink: 0;">{f.tag}</span>
               <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(247,171,110,0.1); border: 1px solid rgba(247,171,110,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={f.icon} />
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={iconPaths[f.iconKey]} />
               </div>
             </div>
             <div style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
@@ -224,10 +133,10 @@ const schema = {
     <div class="container">
 
       <div style="max-width: 680px; margin-bottom: 48px;">
-        <span class="section-eyebrow">Vous préférez un programme clé en main ?</span>
-        <h2 class="section-title">Le Bootcamp IA : programme fixe, dates définies</h2>
+        <span class="section-eyebrow">{bootcamp.eyebrow}</span>
+        <h2 class="section-title">{bootcamp.title}</h2>
         <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin-top: 16px;">
-          Contrairement aux formations sectorielles sur mesure, le Bootcamp IA est un programme structuré avec un contenu, un format et un tarif définis. Idéal pour démarrer rapidement.
+          {bootcamp.description}
         </p>
       </div>
 
@@ -235,25 +144,21 @@ const schema = {
         <div style="display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: center;">
 
           <div>
-            <span class="tag" style="margin-bottom: 20px; display: inline-block;">Bootcamp IA</span>
-            <h3 style="font-family: var(--font-display); font-size: 26px; font-weight: 700; color: #ffffff; line-height: 1.2; margin-bottom: 12px;">Maîtrisez l'IA générative dans votre métier</h3>
+            <span class="tag" style="margin-bottom: 20px; display: inline-block;">{bootcamp.card.tag}</span>
+            <h3 style="font-family: var(--font-display); font-size: 26px; font-weight: 700; color: #ffffff; line-height: 1.2; margin-bottom: 12px;">{bootcamp.card.title}</h3>
             <p style="font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.75; margin-bottom: 28px;">
-              3 sessions masterclass + coaching individuel 1-on-1 + Cercle GPT offert. Un programme complet, applicable dès la première session. Ouvert à tous les professionnels.
+              {bootcamp.card.description}
             </p>
             <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-              <a href="#" data-open-modal="waitlist" class="btn-primary">S'inscrire sur la liste d'attente &rarr;</a>
-              <a href="/bootcamp" class="btn-outline">Voir en détail</a>
+              <a href="#" data-open-modal="waitlist" class="btn-primary">{bootcamp.card.ctaWaitlist} &rarr;</a>
+              <a href={bootcamp.card.ctaDetailHref} class="btn-outline">{bootcamp.card.ctaDetail}</a>
             </div>
           </div>
 
           <div style="display: flex; flex-direction: column; gap: 14px;">
-            {[
-              '3 sessions masterclass en ligne',
-              '1 coaching individuel 1-on-1',
-              'En ligne',
-            ].map((item) => (
+            {bootcamp.card.details.map((item) => (
               <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: var(--color-accent); font-weight: 700; font-size: 12px; flex-shrink: 0;">▸</span>
+                <span style="color: var(--color-accent); font-weight: 700; font-size: 12px; flex-shrink: 0;">&#9658;</span>
                 <p style="font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.4;">{item}</p>
               </div>
             ))}
@@ -273,23 +178,19 @@ const schema = {
 
         <!-- Texte gauche -->
         <div>
-          <span class="section-eyebrow">Sur mesure</span>
-          <h2 class="section-title">Une formation adaptée à vos contraintes</h2>
+          <span class="section-eyebrow">{surMesure.eyebrow}</span>
+          <h2 class="section-title">{surMesure.title}</h2>
           <p style="font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.85; margin-top: 20px; margin-bottom: 32px;">
-            Chaque formation peut être organisée en intra-entreprise pour vos équipes, adaptée à votre secteur spécifique, votre réglementation et vos outils.
+            {surMesure.description}
           </p>
-          <a href="/contact" class="btn-primary">Organiser une session pour mon équipe &rarr;</a>
+          <a href={surMesure.ctaHref} class="btn-primary">{surMesure.cta} &rarr;</a>
         </div>
 
         <!-- Points clés droite -->
         <div style="display: flex; flex-direction: column; gap: 12px;">
-          {[
-            { title: 'Adapté à votre secteur', desc: 'Cas d\'usage, outils et contraintes spécifiques à votre métier.' },
-            { title: 'Applicable dès le lendemain', desc: 'Des méthodes concrètes, pas de la théorie.' },
-            { title: 'Aucun prérequis technique', desc: 'Votre expertise métier suffit.' },
-          ].map((s) => (
+          {surMesure.points.map((s) => (
             <div class="glass-card" style="padding: 20px 24px; display: flex; align-items: flex-start; gap: 16px;">
-              <span style="color: var(--color-accent); font-size: 18px; flex-shrink: 0; margin-top: 2px;">◈</span>
+              <span style="color: var(--color-accent); font-size: 18px; flex-shrink: 0; margin-top: 2px;">&#9672;</span>
               <div>
                 <p style="font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.85); line-height: 1.3;">{s.title}</p>
                 <p style="font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 4px; line-height: 1.5;">{s.desc}</p>
@@ -307,25 +208,12 @@ const schema = {
     <div class="container">
 
       <div style="max-width: 680px; margin-bottom: 56px;">
-        <span class="section-eyebrow">Profils concernés</span>
-        <h2 class="section-title" style="color: var(--color-text-on-light);">Vous avez de l'expérience dans votre domaine. Pas en IA.</h2>
+        <span class="section-eyebrow">{pourQui.eyebrow}</span>
+        <h2 class="section-title" style="color: var(--color-text-on-light);">{pourQui.title}</h2>
       </div>
 
       <div class="grid-3" style="gap: 24px; margin-bottom: 48px;">
-        {[
-          {
-            title: 'Le pragmatique',
-            desc: 'Vous voulez des résultats concrets, pas de la théorie. Vous cherchez ce que l\'IA peut faire pour vous aujourd\'hui.',
-          },
-          {
-            title: 'Le sceptique éclairé',
-            desc: 'Vous avez essayé ChatGPT, les résultats vous ont déçus. Vous voulez comprendre pourquoi et comment faire mieux.',
-          },
-          {
-            title: 'Le décideur',
-            desc: 'Vous devez former vos équipes ou prendre des décisions sur l\'IA. Vous avez besoin d\'une vision claire et opérationnelle.',
-          },
-        ].map((p) => (
+        {pourQui.profiles.map((p) => (
           <div class="card-white">
             <h3 style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--color-text-on-light); margin-bottom: 12px;">{p.title}</h3>
             <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.75;">{p.desc}</p>
@@ -333,7 +221,7 @@ const schema = {
         ))}
       </div>
 
-      <p style="text-align: center; font-size: 15px; color: var(--color-text-subtle); font-style: italic;">Aucune compétence technique requise. Juste votre métier et votre exigence.</p>
+      <p style="text-align: center; font-size: 15px; color: var(--color-text-subtle); font-style: italic;">{pourQui.footnote}</p>
 
     </div>
   </section>
@@ -343,12 +231,12 @@ const schema = {
     <div class="container">
       <div class="section-header">
         <div>
-          <span class="section-eyebrow">Ce qu'en disent nos participants</span>
-          <h2 class="section-title">Concret, sincère,<br />pragmatique et utile.</h2>
+          <span class="section-eyebrow">{testimonials.eyebrow}</span>
+          <h2 class="section-title">{testimonials.title}</h2>
         </div>
       </div>
       <div class="grid-3" style="gap: 16px; align-items: start;">
-        {testimonials.map((t) => (
+        {testimonials.items.map((t) => (
           <div class="glass-card" style="display: flex; flex-direction: column; padding: 28px 28px 24px;">
             <span style="font-family: var(--font-display); font-size: 48px; line-height: 1; color: var(--color-accent); opacity: 0.7; margin-bottom: 8px; display: block;">&ldquo;</span>
             <p style="font-family: var(--font-display); font-size: 17px; font-weight: 700; color: #ffffff; line-height: 1.4; letter-spacing: -0.01em; margin-bottom: 12px; flex: 1;">{t.pull}</p>
@@ -371,14 +259,14 @@ const schema = {
   <!-- ========== CTA FINAL ========== -->
   <section style="background: var(--color-dark-1); padding: 96px 0;">
     <div class="container" style="text-align: center; max-width: 680px;">
-      <span class="section-eyebrow">Pas sûr de la bonne formation ?</span>
-      <h2 class="section-title">Parlons-en en 15 minutes</h2>
+      <span class="section-eyebrow">{ctaFinal.eyebrow}</span>
+      <h2 class="section-title">{ctaFinal.title}</h2>
       <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin: 20px 0 32px;">
-        Un échange rapide suffit pour identifier la formation la plus adaptée à votre contexte : votre métier, vos outils, vos objectifs.
+        {ctaFinal.description}
       </p>
       <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-primary">Planifier un appel &rarr;</a>
-        <a href="/bootcamp" class="btn-outline">Voir le bootcamp IA</a>
+        <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-primary">{ctaFinal.ctaPrimary} &rarr;</a>
+        <a href={ctaFinal.ctaSecondaryHref} class="btn-outline">{ctaFinal.ctaSecondary}</a>
       </div>
     </div>
   </section>

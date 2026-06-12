@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { breadcrumb, courseSchema, faqSchema } from '../../lib/schema';
+import content from '../../content/pages/fr/formations-medecins.json';
 
 const bc = breadcrumb([
   { name: 'Formations IA', href: '/formations' },
@@ -13,104 +14,21 @@ const course = courseSchema({
   url: '/formations/medecins',
 });
 
-const faq = faqSchema([
-  {
-    question: 'Le secret médical est-il respecté ?',
-    answer: 'Oui. C\'est notre priorité absolue. Nous enseignons des protocoles d\'anonymisation rigoureux et la sélection d\'outils conformes aux exigences médicales et RGPD. Aucune donnée patient n\'est traitée sur des serveurs non sécurisés.',
-  },
-  {
-    question: 'L\'IA peut-elle se tromper en médecine ?',
-    answer: 'Oui, et c\'est précisément ce que la formation couvre en profondeur. Vous apprendrez à identifier les limites de l\'IA, à vérifier les outputs cliniques et à maintenir votre responsabilité médicale.',
-  },
-  {
-    question: 'Ai-je besoin de compétences techniques ?',
-    answer: 'Non. La formation est conçue pour des médecins, pas des informaticiens. Chaque exercice est ancré dans la réalité clinique quotidienne, sans jargon technique.',
-  },
-  {
-    question: 'La formation donne-t-elle droit à des crédits de formation continue ?',
-    answer: 'Une attestation de formation est remise. Renseignez-vous auprès de votre ordre médical pour la validation en formation médicale continue (FMC).',
-  },
-]);
+const faq = faqSchema(
+  content.faq.items.map((item) => ({ question: item.q, answer: item.a }))
+);
 
 const schema = {
   '@context': 'https://schema.org',
   '@graph': [course, bc, faq],
 };
-
-const situations = [
-  { text: 'Vous entendez parler d\'IA partout, mais vous ne savez pas par où commencer ni ce qui est vraiment fiable.' },
-  { text: '"Docteur, j\'ai vérifié sur ChatGPT..." : ces consultations deviennent inconfortables et vous cherchez comment gérer ces interactions.' },
-  { text: 'Entre les consultations, la paperasse et la veille scientifique, vous manquez de temps et on vous parle d\'IA comme d\'une solution miracle.' },
-  { text: 'Trop d\'outils, aucune certitude : ChatGPT, Claude, Perplexity... lequel est fiable ? Lequel respecte vraiment la confidentialité de vos patients ?' },
-  { text: 'Vous voulez comprendre, pas subir : l\'IA va transformer la médecine, mais vous refusez de suivre aveuglément la tendance.' },
-  { text: 'On compte sur vous pour guider les autres : internes, collègues, étudiants... ils attendent que vous montriez la voie.' },
-];
-
-const pillars = [
-  { num: '01', title: 'IA sans jargon', desc: 'Découvrez concrètement ce que l\'IA peut et ne peut pas faire en médecine, sans discours marketing ni catastrophisme.' },
-  { num: '02', title: 'Usages adaptés à votre pratique', desc: 'Documentation, veille, communication patient, gestion du cabinet : des cas d\'usage calibrés sur votre réalité de terrain.' },
-  { num: '03', title: 'Responsabilité et éthique médicale', desc: 'Comprendre quand faire confiance à l\'IA, quand la remettre en question, et toujours maintenir votre responsabilité clinique.' },
-  { num: '04', title: 'Autonomie immédiate', desc: 'Repartez avec des méthodes éprouvées, pas une liste de fonctionnalités. Une posture de jugement que vous pouvez faire évoluer seul.' },
-];
-
-const modules = [
-  {
-    num: '01',
-    title: 'IA médicale : fondamentaux et sécurité',
-    items: [
-      'Comprendre les modèles IA utilisés en santé',
-      'Identifier les risques spécifiques à la pratique médicale',
-      'Choisir des outils compatibles avec le secret médical',
-      'Anonymisation des données avant traitement IA',
-    ],
-  },
-  {
-    num: '02',
-    title: 'Documentation clinique augmentée',
-    items: [
-      'Rédiger des comptes rendus avec assistance IA',
-      'Structurer des ordonnances et lettres de consultation',
-      'Utiliser la dictée intelligente dans votre flux de travail',
-      'Réviser et valider les outputs médicaux',
-    ],
-  },
-  {
-    num: '03',
-    title: 'Recherche médicale et communication',
-    items: [
-      'Recherche bibliographique structurée avec l\'IA',
-      'Synthétiser des études et recommandations cliniques',
-      'Rédiger des résumés patients et lettres confrères',
-      'Veille médicale personnalisée et alertes automatisées',
-    ],
-  },
-];
-
-const faqs = [
-  {
-    q: 'Le secret médical est-il respecté ?',
-    a: 'Oui. C\'est notre priorité absolue. Nous enseignons des protocoles d\'anonymisation rigoureux et la sélection d\'outils conformes aux exigences médicales et RGPD. Aucune donnée patient n\'est traitée sur des serveurs non sécurisés.',
-  },
-  {
-    q: 'L\'IA peut-elle se tromper en médecine ?',
-    a: 'Oui, et c\'est précisément ce que la formation couvre en profondeur. Vous apprendrez à identifier les limites de l\'IA, à vérifier les outputs cliniques et à maintenir votre responsabilité médicale.',
-  },
-  {
-    q: 'Ai-je besoin de compétences techniques ?',
-    a: 'Non. La formation est conçue pour des médecins, pas des informaticiens. Chaque exercice est ancré dans la réalité clinique quotidienne, sans jargon technique.',
-  },
-  {
-    q: 'La formation donne-t-elle droit à des crédits de formation continue ?',
-    a: 'Une attestation de formation est remise. Renseignez-vous auprès de votre ordre médical pour la validation en formation médicale continue (FMC).',
-  },
-];
 ---
 
 <BaseLayout
-  title="Formation IA pour médecins — Cercle IA"
-  description="Formation IA pour médecins : documentation clinique, veille scientifique, communication patient. Approche transversale, secret médical et RGPD couverts. Sur mesure."
-  ogImage="/og/formations-medecins.jpg"
-  ogImageAlt="Formation IA pour médecins — Cercle IA"
+  title={content.meta.title}
+  description={content.meta.description}
+  ogImage={content.meta.ogImage}
+  ogImageAlt={content.meta.ogImageAlt}
   schema={schema}
 >
 
@@ -124,26 +42,26 @@ const faqs = [
         <div>
           <div class="eyebrow-badge" style="margin-bottom: 28px; display: inline-flex;">
             <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
-            Formation IA · Santé
+            {content.hero.eyebrow}
           </div>
 
           <h1 class="hero-title">
-            Formation IA<br />
-            <span style="color: rgba(255,255,255,0.55);">pour médecins.</span>
+            {content.hero.title}<br />
+            <span style="color: rgba(255,255,255,0.55);">{content.hero.titleMuted}</span>
           </h1>
 
           <p style="font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.75; max-width: 560px; margin-bottom: 36px;">
-            Au-delà de l'outil médical : une approche concrète et transversale pour les médecins à l'ère de l'IA. Comprendre ce que l'IA fait vraiment, ce qu'elle ne fait pas, et comment l'utiliser avec discernement.
+            {content.hero.description}
           </p>
 
           <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 32px;">
-            <a href="/formations/sur-mesure" class="btn-primary">Obtenir une formation sur mesure &rarr;</a>
-            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">Planifier un appel</a>
+            <a href="/formations/sur-mesure" class="btn-primary">{content.hero.ctaPrimary} &rarr;</a>
+            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">{content.hero.ctaSecondary}</a>
           </div>
 
           <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
             <span style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.2); letter-spacing: 0.08em; text-transform: uppercase; margin-right: 4px; white-space: nowrap;">Pour</span>
-            {['Médecins généralistes', 'Spécialistes', 'Internes', 'Chefs de service'].map((p) => (
+            {content.hero.audienceTags.map((p) => (
               <span class="tag-outline" style="font-size: 10px; padding: 3px 10px;">{p}</span>
             ))}
           </div>
@@ -151,17 +69,11 @@ const faqs = [
 
         <div style="padding-top: 36px;">
           <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius-xl); padding: 36px 32px;">
-            <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: #ffffff; line-height: 1.2; letter-spacing: -0.015em; margin-bottom: 20px;">En bref</h2>
+            <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: #ffffff; line-height: 1.2; letter-spacing: -0.015em; margin-bottom: 20px;">{content.hero.infoBox.heading}</h2>
             <table style="width: 100%; border-collapse: collapse;">
               <tbody>
-                {[
-                  { label: 'Pour qui', value: 'Médecins généralistes, spécialistes, internes, chefs de service' },
-                  { label: 'Format', value: 'Présentiel, en ligne ou hybride, à partir de 2h' },
-                  { label: 'Langue', value: 'Français' },
-                  { label: 'Tarif', value: 'Sur devis (formations intra-entreprise)' },
-                  { label: 'Prérequis', value: 'Aucun prérequis technique' },
-                ].map((row, i) => (
-                  <tr style={i < 4 ? 'border-bottom: 1px solid rgba(255,255,255,0.07);' : ''}>
+                {content.hero.infoBox.rows.map((row, i) => (
+                  <tr style={i < content.hero.infoBox.rows.length - 1 ? 'border-bottom: 1px solid rgba(255,255,255,0.07);' : ''}>
                     <td style="padding: 12px 0; padding-right: 16px; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.35); letter-spacing: 0.07em; text-transform: uppercase; white-space: nowrap; vertical-align: top;">{row.label}</td>
                     <td style="padding: 12px 0; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.8); line-height: 1.4;">{row.value}</td>
                   </tr>
@@ -180,17 +92,17 @@ const faqs = [
     <div class="container">
 
       <div style="max-width: 720px; margin-bottom: 56px;">
-        <span class="section-eyebrow">Pour qui</span>
-        <h2 class="section-title">Vous êtes médecin et vous vous reconnaissez dans une de ces situations</h2>
+        <span class="section-eyebrow">{content.situations.eyebrow}</span>
+        <h2 class="section-title">{content.situations.title}</h2>
       </div>
 
       <div class="grid-2" style="gap: 20px;">
-        {situations.map((s) => (
+        {content.situations.items.map((text) => (
           <div class="glass-card" style="display: flex; gap: 14px; align-items: flex-start;">
             <span style="width: 20px; height: 20px; border-radius: 50%; background: rgba(247,171,110,0.15); border: 1px solid rgba(247,171,110,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
-              <span style="color: var(--color-accent); font-size: 10px; font-weight: 700; line-height: 1;">✓</span>
+              <span style="color: var(--color-accent); font-size: 10px; font-weight: 700; line-height: 1;">&#10003;</span>
             </span>
-            <p style="font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.75;">{s.text}</p>
+            <p style="font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.75;">{text}</p>
           </div>
         ))}
       </div>
@@ -203,15 +115,15 @@ const faqs = [
     <div class="container">
 
       <div style="max-width: 760px; margin: 0 auto 56px; text-align: center;">
-        <span class="section-eyebrow">Notre approche</span>
-        <h2 class="section-title">Cette formation ne vous apprend pas à faire confiance à l'IA</h2>
+        <span class="section-eyebrow">{content.pillars.eyebrow}</span>
+        <h2 class="section-title">{content.pillars.title}</h2>
         <p style="font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.85; margin-top: 20px;">
-          Elle vous apprend à comprendre ce qu'elle fait, ce qu'elle ne fait pas, et comment l'utiliser concrètement dans votre pratique médicale, votre organisation, votre développement professionnel.
+          {content.pillars.subtitle}
         </p>
       </div>
 
       <div class="grid-2" style="gap: 20px;">
-        {pillars.map((p) => (
+        {content.pillars.items.map((p) => (
           <div class="glass-card" style="display: flex; flex-direction: column; gap: 14px;">
             <span class="usp-number">{p.num}</span>
             <h3 class="usp-title">{p.title}</h3>
@@ -228,19 +140,19 @@ const faqs = [
     <div class="container">
 
       <div style="max-width: 720px; margin-bottom: 48px;">
-        <span class="section-eyebrow">Cas d'usage abordés</span>
-        <h2 class="section-title">Ce que couvre la formation</h2>
+        <span class="section-eyebrow">{content.modules.eyebrow}</span>
+        <h2 class="section-title">{content.modules.title}</h2>
       </div>
 
       <div class="grid-3" style="gap: 20px;">
-        {modules.map((m) => (
+        {content.modules.items.map((m) => (
           <div class="glass-card" style="display: flex; flex-direction: column; gap: 16px;">
             <span class="usp-number">{m.num}</span>
             <h3 class="usp-title">{m.title}</h3>
             <div style="display: flex; flex-direction: column; gap: 9px;">
               {m.items.map((item) => (
                 <div style="display: flex; gap: 10px; align-items: flex-start;">
-                  <span style="color: var(--color-accent); font-size: 12px; flex-shrink: 0; margin-top: 2px;">▸</span>
+                  <span style="color: var(--color-accent); font-size: 12px; flex-shrink: 0; margin-top: 2px;">&#9658;</span>
                   <p style="font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5;">{item}</p>
                 </div>
               ))}
@@ -258,36 +170,30 @@ const faqs = [
       <div class="grid-2" style="gap: 56px; align-items: start;">
 
         <div>
-          <span class="section-eyebrow">Format &amp; investissement</span>
-          <h2 class="section-title" style="color: var(--color-text-on-light);">Une formation sur mesure</h2>
+          <span class="section-eyebrow">{content.pricing.eyebrow}</span>
+          <h2 class="section-title" style="color: var(--color-text-on-light);">{content.pricing.title}</h2>
           <p style="font-size: 15px; color: var(--color-text-subtle); line-height: 1.8; margin-top: 16px; margin-bottom: 32px;">
-            Chaque formation est adaptée à votre contexte : votre spécialité, vos contraintes réglementaires, vos outils existants. Nous intervenons en présentiel dans votre établissement ou en ligne, à partir de 2 heures.
+            {content.pricing.description}
           </p>
           <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="/formations/sur-mesure" class="btn-primary">Obtenir une formation sur mesure</a>
-            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline-dark">Planifier un appel</a>
+            <a href="/formations/sur-mesure" class="btn-primary">{content.pricing.ctaPrimary}</a>
+            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline-dark">{content.pricing.ctaSecondary}</a>
           </div>
         </div>
 
         <div class="card-white">
-          <p style="font-size: 11px; font-weight: 600; color: rgba(6,24,23,0.35); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">Tarification sur mesure</p>
-          <p style="font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--color-text-on-light); line-height: 1.2; margin-bottom: 8px;">Adaptée à votre organisation</p>
-          <p style="font-size: 13px; color: rgba(6,24,23,0.45); margin-bottom: 24px;">Tarifs selon la durée, le nombre de participants et le format choisi.</p>
+          <p style="font-size: 11px; font-weight: 600; color: rgba(6,24,23,0.35); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">{content.pricing.card.label}</p>
+          <p style="font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--color-text-on-light); line-height: 1.2; margin-bottom: 8px;">{content.pricing.card.heading}</p>
+          <p style="font-size: 13px; color: rgba(6,24,23,0.45); margin-bottom: 24px;">{content.pricing.card.subtitle}</p>
           <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px;">
-            {[
-              'Modules adaptés à votre spécialité',
-              'Protocoles d\'anonymisation inclus',
-              'Module secret médical et RGPD',
-              'Ressources et bibliothèque de prompts médicaux',
-              'Attestation de formation',
-            ].map((item) => (
+            {content.pricing.card.includes.map((item) => (
               <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: var(--color-accent); font-weight: 700; font-size: 14px; flex-shrink: 0;">✓</span>
+                <span style="color: var(--color-accent); font-weight: 700; font-size: 14px; flex-shrink: 0;">&#10003;</span>
                 <p style="font-size: 14px; color: var(--color-text-subtle);">{item}</p>
               </div>
             ))}
           </div>
-          <a href="/formations/sur-mesure" class="btn-primary" style="display: inline-block;">Contactez-nous pour les tarifs</a>
+          <a href={content.pricing.card.ctaCardHref} class="btn-primary" style="display: inline-block;">{content.pricing.card.ctaCard}</a>
         </div>
 
       </div>
@@ -298,10 +204,10 @@ const faqs = [
   <section style="background: var(--color-dark-2); padding: 96px 0;">
     <div class="container">
       <div style="max-width: 760px; margin: 0 auto;">
-        <span class="section-eyebrow">Questions fréquentes</span>
-        <h2 class="section-title" style="margin-bottom: 48px;">Ce que se demandent les médecins avant de se former</h2>
+        <span class="section-eyebrow">{content.faq.eyebrow}</span>
+        <h2 class="section-title" style="margin-bottom: 48px;">{content.faq.title}</h2>
         <div style="display: flex; flex-direction: column; gap: 16px;">
-          {faqs.map((item) => (
+          {content.faq.items.map((item) => (
             <div class="glass-card" style="padding: 0;">
               <details style="display: block;">
                 <summary style="padding: 24px 28px; cursor: pointer; font-size: 15px; font-weight: 600; color: #ffffff; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px;">{item.q}</summary>
@@ -319,14 +225,14 @@ const faqs = [
   <!-- ========== CTA FINAL ========== -->
   <section style="background: var(--color-dark-1); padding: 96px 0;">
     <div class="container" style="text-align: center; max-width: 680px;">
-      <span class="section-eyebrow">Reprenez le contrôle de votre pratique</span>
-      <h2 class="section-title">Une formation IA conçue pour les médecins</h2>
+      <span class="section-eyebrow">{content.ctaFinal.eyebrow}</span>
+      <h2 class="section-title">{content.ctaFinal.title}</h2>
       <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin: 20px 0 32px;">
-        Formation individuelle, de cabinet ou d'établissement. Contactez-nous pour une session adaptée à votre contexte.
+        {content.ctaFinal.description}
       </p>
       <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <a href="/formations/sur-mesure" class="btn-primary">Obtenir une formation sur mesure &rarr;</a>
-        <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">Planifier un appel</a>
+        <a href="/formations/sur-mesure" class="btn-primary">{content.ctaFinal.ctaPrimary} &rarr;</a>
+        <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">{content.ctaFinal.ctaSecondary}</a>
       </div>
     </div>
   </section>

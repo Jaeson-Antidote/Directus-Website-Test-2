@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { personSchema, breadcrumb } from '../lib/schema';
+import content from '../content/pages/fr/tarik-hennen.json';
 
 const person = personSchema();
 const bc = breadcrumb([{ name: 'Tarik Hennen', href: '/tarik-hennen' }]);
@@ -9,31 +10,13 @@ const schema = {
   '@context': 'https://schema.org',
   '@graph': [person, bc],
 };
-
-const teachings = [
-  { name: 'IHECS', desc: 'Institut des Hautes Études des Communications Sociales — Bruxelles' },
-  { name: 'EPHEC', desc: 'Haute École de Formation, Éducation et Communication — Bruxelles' },
-  { name: 'UCLouvain', desc: 'Université catholique de Louvain' },
-];
-
-const research = [
-  { name: 'Université de Sherbrooke', desc: 'Observatoire international des transformations des pratiques professionnelles à l\'ère de l\'IA' },
-  { name: 'Université de Lille', desc: 'Collaborations de recherche sur les usages professionnels de l\'IA' },
-];
-
-const experience = [
-  { role: 'Fondateur', org: 'Cercle IA', period: '2024 — présent', desc: 'Formations IA pour professionnels à responsabilité engagée : juristes, médecins, dirigeants, consultants.' },
-  { role: 'Fondateur', org: 'Antidote Digital', period: '2015 — présent', desc: 'Conseil en stratégie digitale et marketing numérique pour organisations complexes.' },
-  { role: 'Avocat', org: 'Squire Patton Boggs', period: '', desc: 'Cabinet international d\'avocats.' },
-  { role: 'Avocat', org: 'Stibbe', period: '', desc: 'Cabinet d\'avocats Benelux.' },
-];
 ---
 
 <BaseLayout
-  title="Tarik Hennen — Formateur IA, fondateur de Cercle IA"
-  description="Tarik Hennen, ancien avocat, praticien IA depuis 2021. Fondateur de Cercle IA. Il enseigne à l'IHECS, intervient comme formateur IA à l'EPHEC et l'UCLouvain, et forme 250+ professionnels à utiliser l'IA avec méthode."
-  ogImage="/og/a-propos.jpg"
-  ogImageAlt="Tarik Hennen — Cercle IA"
+  title={content.meta.title}
+  description={content.meta.description}
+  ogImage={content.meta.ogImage}
+  ogImageAlt={content.meta.ogImageAlt}
   schema={schema}
 >
 
@@ -53,39 +36,29 @@ const experience = [
         <div>
           <div class="eyebrow-badge" style="margin-bottom: 28px; display: inline-flex;">
             <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
-            Formateur IA &middot; Fondateur de Cercle IA
+            {content.hero.eyebrow}
           </div>
 
           <h1 class="hero-title" style="font-size: clamp(36px, 4.5vw, 60px) !important; line-height: 1.05; margin-bottom: 20px;">
-            Tarik Hennen
+            {content.hero.title}
           </h1>
 
-          <p style="font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.8; max-width: 560px; margin-bottom: 12px;">
-            Ancien avocat chez Stibbe et Squire Patton Boggs. Praticien IA depuis 2021 dans des contextes où les erreurs ont un coût. Fondateur de Cercle IA.
-          </p>
-
           <p style="font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.8; max-width: 560px; margin-bottom: 36px;">
-            Il enseigne à l'IHECS, intervient comme formateur IA à l'EPHEC et l'UCLouvain, et collabore avec des chercheurs de l'Université de Sherbrooke et de l'Université de Lille dans le cadre d'un observatoire international sur les transformations des pratiques professionnelles.
+            {content.hero.description}
           </p>
 
           <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 48px;">
-            <a href="/contact" class="btn-primary">Planifier un appel &rarr;</a>
-            <a href="https://www.linkedin.com/in/tarikhennen" target="_blank" rel="noopener noreferrer" class="btn-outline">LinkedIn</a>
+            <a href={content.hero.ctaPrimaryHref} class="btn-primary">{content.hero.ctaPrimary} &rarr;</a>
+            <a href={content.hero.ctaSecondaryHref} target="_blank" rel="noopener noreferrer" class="btn-outline">{content.hero.ctaSecondary}</a>
           </div>
 
           <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.06);">
-            <div>
-              <span class="stat-number">2021</span>
-              <p class="stat-label">Praticien IA depuis</p>
-            </div>
-            <div>
-              <span class="stat-number">250+</span>
-              <p class="stat-label">Professionnels formés</p>
-            </div>
-            <div>
-              <span class="stat-number">3</span>
-              <p class="stat-label">Institutions d'enseignement</p>
-            </div>
+            {content.hero.stats.map((s) => (
+              <div>
+                <span class="stat-number">{s.value}</span>
+                <p class="stat-label">{s.label}</p>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -110,41 +83,39 @@ const experience = [
     </div>
   </section>
 
-  <!-- ========== FORMATION ACADÉMIQUE ========== -->
+  <!-- ========== FORMATION ACADÉMIQUE & PARCOURS ========== -->
   <section style="background: var(--color-dark-2); padding: 96px 0;">
     <div class="container">
       <div class="grid-2" style="gap: 80px; align-items: start;">
 
         <div>
-          <span class="section-eyebrow">Formation académique</span>
-          <h2 class="section-title">Un juriste devenu praticien IA.</h2>
+          <span class="section-eyebrow">{content.academique.eyebrow}</span>
+          <h2 class="section-title">{content.academique.title}</h2>
           <div style="width: 36px; height: 2px; background: var(--color-accent); margin-top: 24px; margin-bottom: 28px;"></div>
 
           <div class="glass-card" style="margin-bottom: 16px;">
             <p style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.25); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px;">Diplômes</p>
             <div style="display: flex; flex-direction: column; gap: 14px;">
-              <div>
-                <p style="font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 3px;">DEA en droit</p>
-                <p style="font-size: 13px; color: rgba(255,255,255,0.4);">Université de Liège</p>
-              </div>
-              <div>
-                <p style="font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 3px;">LL.M. (Master of Laws)</p>
-                <p style="font-size: 13px; color: rgba(255,255,255,0.4);">King's College London</p>
-              </div>
+              {content.academique.diplomes.map((d) => (
+                <div>
+                  <p style="font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 3px;">{d.degree}</p>
+                  <p style="font-size: 13px; color: rgba(255,255,255,0.4);">{d.institution}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
         <div>
-          <span class="section-eyebrow">Parcours professionnel</span>
-          <h2 class="section-title">Du cabinet international à la formation IA.</h2>
+          <span class="section-eyebrow">{content.experience.eyebrow}</span>
+          <h2 class="section-title">{content.experience.title}</h2>
           <div style="width: 36px; height: 2px; background: var(--color-accent); margin-top: 24px; margin-bottom: 28px;"></div>
 
           <div style="display: flex; flex-direction: column; gap: 12px;">
-            {experience.map((exp) => (
+            {content.experience.items.map((exp) => (
               <div class="glass-card" style="padding: 20px 24px;">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 6px;">
-                  <p style="font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.85); line-height: 1.3;">{exp.role} &mdash; {exp.org}</p>
+                  <p style="font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.85); line-height: 1.3;">{exp.role} — {exp.org}</p>
                   {exp.period && <span style="font-size: 11px; color: rgba(255,255,255,0.3); white-space: nowrap; padding-top: 2px;">{exp.period}</span>}
                 </div>
                 <p style="font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.7;">{exp.desc}</p>
@@ -161,11 +132,11 @@ const experience = [
   <section style="background: var(--color-light-1); padding: 96px 0;">
     <div class="container">
       <div style="margin-bottom: 48px;">
-        <span class="section-eyebrow">Enseignement</span>
-        <h2 class="section-title" style="color: var(--color-text-on-light); max-width: 560px;">Cours dispensés dans trois institutions.</h2>
+        <span class="section-eyebrow">{content.enseignement.eyebrow}</span>
+        <h2 class="section-title" style="color: var(--color-text-on-light); max-width: 560px;">{content.enseignement.title}</h2>
       </div>
       <div class="grid-3" style="gap: 20px; margin-bottom: 64px;">
-        {teachings.map((t) => (
+        {content.enseignement.institutions.map((t) => (
           <div class="card-white">
             <h3 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--color-text-on-light); margin-bottom: 10px;">{t.name}</h3>
             <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.75;">{t.desc}</p>
@@ -175,10 +146,10 @@ const experience = [
 
       <div style="margin-bottom: 48px;">
         <span class="section-eyebrow">Recherche</span>
-        <h2 class="section-title" style="color: var(--color-text-on-light); max-width: 560px;">Collaborations universitaires internationales.</h2>
+        <h2 class="section-title" style="color: var(--color-text-on-light); max-width: 560px;">{content.enseignement.rechercheTitle}</h2>
       </div>
       <div class="grid-2" style="gap: 20px;">
-        {research.map((r) => (
+        {content.enseignement.recherche.map((r) => (
           <div class="card-white">
             <h3 style="font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--color-text-on-light); margin-bottom: 10px;">{r.name}</h3>
             <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.75;">{r.desc}</p>
@@ -194,9 +165,9 @@ const experience = [
       <div class="glass-card" style="padding: 40px 48px;">
         <span style="font-family: var(--font-display); font-size: 48px; line-height: 1; color: var(--color-accent); opacity: 0.7; margin-bottom: 16px; display: block;">&ldquo;</span>
         <p style="font-family: var(--font-display); font-size: 21px; font-weight: 700; color: #ffffff; line-height: 1.45; letter-spacing: -0.01em; margin-bottom: 24px; max-width: 680px;">
-          Sa connaissance fine des forces, des limites et des usages des différentes plateformes est déterminante pour faire progresser notre équipe internationale.
+          {content.citation.quote}
         </p>
-        <p style="font-size: 13px; color: rgba(255,255,255,0.3);">Marc D. David, Professeur titulaire &mdash; Université de Sherbrooke</p>
+        <p style="font-size: 13px; color: rgba(255,255,255,0.3);">{content.citation.name}, {content.citation.role} — {content.citation.org}</p>
       </div>
     </div>
   </section>
@@ -205,30 +176,30 @@ const experience = [
   <section style="background: var(--color-dark-1); padding: 96px 0;">
     <div class="container">
       <div style="margin-bottom: 48px;">
-        <span class="section-eyebrow">Publications</span>
-        <h2 class="section-title">Articles et analyses récents.</h2>
+        <span class="section-eyebrow">{content.publications.eyebrow}</span>
+        <h2 class="section-title">{content.publications.title}</h2>
       </div>
       <div style="display: flex; flex-direction: column; gap: 2px; margin-bottom: 40px; max-width: 760px;">
-        <a href="/blog" class="glass-card" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; text-decoration: none; transition: opacity 0.15s;">
-          <p style="font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.75); line-height: 1.4;">Voir tous les articles du blog Cercle IA</p>
+        <a href={content.publications.ctaBlogHref} class="glass-card" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; text-decoration: none; transition: opacity 0.15s;">
+          <p style="font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.75); line-height: 1.4;">{content.publications.ctaBlog}</p>
           <span style="color: var(--color-accent); flex-shrink: 0;">&rarr;</span>
         </a>
       </div>
-      <a href="/contact" class="btn-primary">Inviter Tarik à intervenir &rarr;</a>
+      <a href={content.publications.ctaInviteHref} class="btn-primary">{content.publications.ctaInvite} &rarr;</a>
     </div>
   </section>
 
   <!-- ========== À PROPOS DE CERCLE IA ========== -->
   <section class="grain-bg" style="background-color: var(--color-dark-2); padding: 96px 0;">
     <div class="container" style="max-width: 800px; text-align: center;">
-      <span class="section-eyebrow">Cercle IA</span>
-      <h2 class="section-title" style="margin-bottom: 16px;">L'organisation qu'il a fondée.</h2>
+      <span class="section-eyebrow">{content.cercleIA.eyebrow}</span>
+      <h2 class="section-title" style="margin-bottom: 16px;">{content.cercleIA.title}</h2>
       <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">
-        Cercle IA est un organisme de formation spécialisé dans l'usage de l'IA pour les professionnels à responsabilité engagée. Juristes, médecins, dirigeants, consultants &mdash; des formations conçues à partir de contraintes réelles, pas de démos.
+        Cercle IA est un organisme de formation spécialisé dans l'usage de l'IA pour les professionnels à responsabilité engagée. Juristes, médecins, dirigeants, consultants — des formations conçues à partir de contraintes réelles, pas de démos.
       </p>
       <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;">
-        <a href="/formations" class="btn-primary">Découvrir les formations &rarr;</a>
-        <a href="/a-propos" class="btn-outline">À propos de Cercle IA</a>
+        <a href={content.cercleIA.ctaFormationsHref} class="btn-primary">{content.cercleIA.ctaFormations} &rarr;</a>
+        <a href={content.cercleIA.ctaAProposHref} class="btn-outline">{content.cercleIA.ctaAPropos}</a>
       </div>
     </div>
   </section>

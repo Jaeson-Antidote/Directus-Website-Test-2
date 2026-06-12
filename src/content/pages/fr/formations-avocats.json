@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "title": "Formation IA pour avocats et juristes — Cercle IA",
+    "description": "Apprenez à utiliser l'IA dans votre pratique juridique : recherche, rédaction d'actes, analyse documentaire. Secret professionnel et déontologie inclus. Formation sur mesure.",
+    "ogImage": "/og/formations-avocats.jpg",
+    "ogImageAlt": "Formation IA pour avocats et juristes — Cercle IA"
+  },
+  "schema": {
+    "course": {
+      "name": "Formation IA pour avocats et juristes",
+      "description": "Apprenez à utiliser l'IA dans votre pratique juridique quotidienne : recherche jurisprudentielle, rédaction d'actes et analyse documentaire, en respectant le secret professionnel.",
+      "url": "/formations/avocats"
+    }
+  },
+  "hero": {
+    "eyebrow": "Formation IA · Droit",
+    "title": "L'IA au service",
+    "titleMuted": "de la pratique juridique.",
+    "description": "Recherche, rédaction, analyse documentaire — apprenez à utiliser l'IA dans votre pratique quotidienne, en respectant le secret professionnel et vos obligations déontologiques.",
+    "ctaPrimary": "Obtenir une formation sur mesure",
+    "ctaSecondary": "Planifier un appel",
+    "audienceTags": ["Avocats", "Juristes d'entreprise", "Notaires", "Huissiers"],
+    "infoBox": {
+      "rows": [
+        { "label": "Pour qui", "value": "Avocats, juristes, notaires, huissiers" },
+        { "label": "Format", "value": "En ligne ou présentiel, à partir d'une demi-journée" },
+        { "label": "Langue", "value": "Français" },
+        { "label": "Tarif", "value": "Sur devis (formations intra-entreprise)" },
+        { "label": "Prérequis", "value": "Aucun prérequis technique" }
+      ]
+    }
+  },
+  "problemSolution": {
+    "eyebrow": "Pourquoi cette formation",
+    "title": "Les défis quotidiens du juriste face à l'IA",
+    "intro": "La pratique juridique est exigeante en temps et en précision. L'IA peut alléger la charge — à condition de savoir l'utiliser correctement et en toute sécurité.",
+    "headerProblem": "Le problème",
+    "headerSolution": "Ce que vous allez gagner",
+    "rows": [
+      {
+        "problem": "La recherche jurisprudentielle prend des heures, même pour des questions connues.",
+        "solutionTitle": "Sources vérifiées en quelques minutes",
+        "solutionDesc": "Formulez des requêtes précises et obtenez des synthèses de jurisprudence exploitables, avec les sources pour vérification."
+      },
+      {
+        "problem": "La rédaction d'actes et de conclusions est chronophage, même quand le fond est maîtrisé.",
+        "solutionTitle": "Premiers drafts de qualité instantanément",
+        "solutionDesc": "Utilisez l'IA pour produire un premier jet structuré que vous finalisez avec votre expertise, sans partir d'une page blanche."
+      },
+      {
+        "problem": "Analyser des contrats volumineux ou des dossiers complexes prend un temps disproportionné.",
+        "solutionTitle": "Synthèses fidèles avec références",
+        "solutionDesc": "Identifiez les clauses clés, les risques et les points de vigilance en quelques minutes, sans perdre le fil du document."
+      }
+    ]
+  },
+  "modules": {
+    "eyebrow": "Contenu de la formation",
+    "title": "Ce que couvre la formation",
+    "items": [
+      {
+        "num": "01",
+        "title": "Fondamentaux de l'IA pour le droit",
+        "items": [
+          "Comprendre les modèles de langage sans jargon technique",
+          "Identifier les risques et les limites pour la pratique juridique",
+          "Choisir les bons outils selon vos contraintes déontologiques",
+          "Paramétrer un environnement de travail sécurisé"
+        ]
+      },
+      {
+        "num": "02",
+        "title": "Rédaction augmentée par l'IA",
+        "items": [
+          "Techniques de prompt pour la rédaction juridique",
+          "Conclusions, notes de synthèse et courriers en 30% du temps",
+          "Révision et contrôle qualité des outputs IA",
+          "Bibliothèque de prompts juridiques prêts à l'emploi"
+        ]
+      },
+      {
+        "num": "03",
+        "title": "Analyse documentaire et confidentialité",
+        "items": [
+          "Analyser des contrats et dossiers volumineux",
+          "Anonymisation des données clients avant tout traitement IA",
+          "Extraction structurée d'informations clés",
+          "Intégration dans votre flux de travail existant"
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Format & investissement",
+    "title": "Tarification sur mesure",
+    "description": "Les tarifs sont adaptés selon la durée, le nombre de participants et vos besoins spécifiques. Nous vous aidons à choisir la formule adaptée à votre cabinet ou votre organisation.",
+    "ctaPrimary": "Obtenir une formation sur mesure",
+    "ctaSecondary": "Planifier un appel",
+    "card": {
+      "label": "Tarification sur mesure",
+      "heading": "Adaptée à votre organisation",
+      "subtitle": "Tarifs selon la durée, le nombre de participants et le format choisi.",
+      "includes": [
+        "Modules adaptés à votre pratique",
+        "Bibliothèque de prompts juridiques",
+        "Module confidentialité et anonymisation",
+        "Support formateur inclus",
+        "Attestation de formation"
+      ]
+    }
+  },
+  "faq": {
+    "eyebrow": "Questions fréquentes",
+    "title": "Ce que se demandent les juristes avant de s'inscrire",
+    "items": [
+      {
+        "question": "Le secret professionnel est-il respecté ?",
+        "answer": "Oui. Nous consacrons un module entier à l'anonymisation des données et au choix des outils compatibles avec vos obligations déontologiques. Aucune donnée client n'est traitée sur des serveurs tiers non sécurisés."
+      },
+      {
+        "question": "Ai-je besoin de compétences techniques ?",
+        "answer": "Non. La formation est conçue pour des juristes, pas pour des informaticiens. Tout est expliqué en termes métier, avec des cas concrets tirés de la pratique juridique."
+      },
+      {
+        "question": "Comment se déroulent les sessions ?",
+        "answer": "Sessions en ligne ou en présentiel, en petit groupe ou en intra-entreprise. Chaque session inclut des exercices pratiques sur des cas métier réels."
+      },
+      {
+        "question": "La formation est-elle reconnue ?",
+        "answer": "Oui. Une attestation de formation est remise à l'issue du programme. Renseignez-vous auprès de votre Ordre pour la prise en compte dans votre formation continue."
+      }
+    ]
+  },
+  "ctaFinal": {
+    "eyebrow": "Prêt à passer à la pratique ?",
+    "title": "Rejoignez les professionnels du droit qui utilisent l'IA avec méthode",
+    "description": "Formation individuelle ou pour votre cabinet. Contactez-nous pour une session adaptée à votre contexte.",
+    "ctaPrimary": "Obtenir une formation sur mesure",
+    "ctaSecondary": "Planifier un appel"
+  }
+}

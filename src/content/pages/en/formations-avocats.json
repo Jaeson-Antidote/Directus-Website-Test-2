@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "title": "AI training for lawyers and legal professionals — Cercle IA",
+    "description": "Learn to use AI in your legal practice: research, document drafting, document analysis. Professional secrecy and ethics included. Tailored training.",
+    "ogImage": "/og/formations-avocats.jpg",
+    "ogImageAlt": "AI training for lawyers and legal professionals — Cercle IA"
+  },
+  "schema": {
+    "course": {
+      "name": "AI training for lawyers and legal professionals",
+      "description": "Learn to use AI in your daily legal practice: case law research, document drafting and document analysis, while respecting professional secrecy.",
+      "url": "/en/formations/avocats"
+    }
+  },
+  "hero": {
+    "eyebrow": "AI training · Law",
+    "title": "AI in the service",
+    "titleMuted": "of legal practice.",
+    "description": "Research, drafting, document analysis — learn to use AI in your daily practice while respecting professional secrecy and your ethical obligations.",
+    "ctaPrimary": "Get tailored training",
+    "ctaSecondary": "Schedule a call",
+    "audienceTags": ["Lawyers", "In-house counsel", "Notaries", "Bailiffs"],
+    "infoBox": {
+      "rows": [
+        { "label": "Who it's for", "value": "Lawyers, in-house counsel, notaries, bailiffs" },
+        { "label": "Format", "value": "Online or in person, from half a day" },
+        { "label": "Language", "value": "French" },
+        { "label": "Pricing", "value": "On request (in-house training)" },
+        { "label": "Prerequisites", "value": "No technical prerequisites" }
+      ]
+    }
+  },
+  "problemSolution": {
+    "eyebrow": "Why this training",
+    "title": "The daily challenges of legal professionals facing AI",
+    "intro": "Legal practice is demanding in terms of time and precision. AI can ease the burden — provided you know how to use it correctly and safely.",
+    "headerProblem": "The problem",
+    "headerSolution": "What you will gain",
+    "rows": [
+      {
+        "problem": "Case law research takes hours, even for familiar questions.",
+        "solutionTitle": "Verified sources in minutes",
+        "solutionDesc": "Write precise queries and get usable case law summaries, with sources for verification."
+      },
+      {
+        "problem": "Drafting documents and submissions is time-consuming, even when the substance is clear.",
+        "solutionTitle": "Quality first drafts instantly",
+        "solutionDesc": "Use AI to produce a structured first draft that you finalise with your expertise, without starting from a blank page."
+      },
+      {
+        "problem": "Analysing large contracts or complex files takes a disproportionate amount of time.",
+        "solutionTitle": "Accurate summaries with references",
+        "solutionDesc": "Identify key clauses, risks and points of attention in minutes, without losing track of the document."
+      }
+    ]
+  },
+  "modules": {
+    "eyebrow": "Training content",
+    "title": "What the training covers",
+    "items": [
+      {
+        "num": "01",
+        "title": "AI fundamentals for law",
+        "items": [
+          "Understanding language models without technical jargon",
+          "Identifying risks and limitations for legal practice",
+          "Choosing the right tools given your ethical constraints",
+          "Setting up a secure working environment"
+        ]
+      },
+      {
+        "num": "02",
+        "title": "AI-augmented drafting",
+        "items": [
+          "Prompt techniques for legal drafting",
+          "Submissions, briefing notes and correspondence in 30% of the time",
+          "Reviewing and quality-checking AI outputs",
+          "Library of ready-to-use legal prompts"
+        ]
+      },
+      {
+        "num": "03",
+        "title": "Document analysis and confidentiality",
+        "items": [
+          "Analysing large contracts and files",
+          "Anonymising client data before any AI processing",
+          "Structured extraction of key information",
+          "Integration into your existing workflow"
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Format and investment",
+    "title": "Tailored pricing",
+    "description": "Pricing is adapted according to duration, number of participants and your specific needs. We help you choose the right option for your firm or organisation.",
+    "ctaPrimary": "Get tailored training",
+    "ctaSecondary": "Schedule a call",
+    "card": {
+      "label": "Tailored pricing",
+      "heading": "Adapted to your organisation",
+      "subtitle": "Pricing based on duration, number of participants and chosen format.",
+      "includes": [
+        "Modules adapted to your practice",
+        "Library of legal prompts",
+        "Confidentiality and anonymisation module",
+        "Trainer support included",
+        "Training certificate"
+      ]
+    }
+  },
+  "faq": {
+    "eyebrow": "Frequently asked questions",
+    "title": "What legal professionals ask before signing up",
+    "items": [
+      {
+        "question": "Is professional secrecy respected?",
+        "answer": "Yes. We dedicate an entire module to data anonymisation and to choosing tools compatible with your ethical obligations. No client data is processed on unsecured third-party servers."
+      },
+      {
+        "question": "Do I need technical skills?",
+        "answer": "No. The training is designed for legal professionals, not IT specialists. Everything is explained in business terms, with concrete cases drawn from legal practice."
+      },
+      {
+        "question": "How do the sessions work?",
+        "answer": "Sessions online or in person, in small groups or in-house. Each session includes practical exercises on real legal cases."
+      },
+      {
+        "question": "Is the training accredited?",
+        "answer": "Yes. A training certificate is issued at the end of the programme. Check with your Bar Association regarding recognition for continuing professional development."
+      }
+    ]
+  },
+  "ctaFinal": {
+    "eyebrow": "Ready to put it into practice?",
+    "title": "Join the legal professionals using AI with method",
+    "description": "Individual training or for your firm. Contact us for a session tailored to your context.",
+    "ctaPrimary": "Get tailored training",
+    "ctaSecondary": "Schedule a call"
+  }
+}

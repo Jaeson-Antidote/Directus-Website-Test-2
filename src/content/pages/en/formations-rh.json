@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "title": "AI training for HR professionals — Cercle IA",
+    "description": "Integrate AI into your HR processes: recruitment, job posting writing, interviews, internal communications. Practical training for HR directors and recruitment managers.",
+    "ogImage": "/og/formations-rh.jpg",
+    "ogImageAlt": "AI training for HR professionals — Cercle IA"
+  },
+  "schema": {
+    "course": {
+      "name": "AI training for HR professionals",
+      "description": "Integrate AI into your HR processes: recruitment, job posting writing, interviews and internal communications. Without sacrificing human judgement or compliance.",
+      "url": "/en/formations/rh"
+    }
+  },
+  "hero": {
+    "eyebrow": "AI training · HR",
+    "title": "AI as an ally",
+    "titleMuted": "for your HR processes.",
+    "description": "Recruitment, job posting writing, interviews, internal communications — learn to integrate AI into your HR processes without sacrificing human judgement or compliance.",
+    "ctaPrimary": "Get tailored training",
+    "ctaSecondary": "Schedule a call",
+    "audienceTags": ["HR directors", "Recruitment managers", "HR business partners", "Office managers"],
+    "infoBox": {
+      "rows": [
+        { "label": "Who it's for", "value": "HR directors, recruitment managers, HR business partners" },
+        { "label": "Format", "value": "Online or in person, from half a day" },
+        { "label": "Language", "value": "French" },
+        { "label": "Pricing", "value": "On request (in-house training)" },
+        { "label": "Prerequisites", "value": "No technical prerequisites" }
+      ]
+    }
+  },
+  "problemSolution": {
+    "eyebrow": "Why this training",
+    "title": "The HR challenges AI can solve",
+    "intro": "HR teams are often overwhelmed by repetitive, low-value tasks. AI can structure and accelerate these processes, leaving more room for human judgement where it matters.",
+    "headerProblem": "The problem",
+    "headerSolution": "What you will gain",
+    "rows": [
+      {
+        "problem": "Sorting through hundreds of applications takes days and remains subjective despite the effort.",
+        "solutionTitle": "Structured and consistent screening",
+        "solutionDesc": "Build AI analysis grids to sort applications faster, more consistently and with better documentation."
+      },
+      {
+        "problem": "Writing attractive and compliant job postings takes time, with uneven results.",
+        "solutionTitle": "Targeted and optimised job postings",
+        "solutionDesc": "Generate postings adapted to each role, at the right language level, with the right keywords to attract the right profiles."
+      },
+      {
+        "problem": "Interviews are not always structured to allow fair and comparable evaluation.",
+        "solutionTitle": "Interview guides adapted to each role",
+        "solutionDesc": "Build behavioural interview guides and consistent evaluation criteria across recruiters."
+      }
+    ]
+  },
+  "modules": {
+    "eyebrow": "Training content",
+    "title": "What the training covers",
+    "items": [
+      {
+        "num": "01",
+        "title": "AI and recruitment",
+        "items": [
+          "Building CV analysis grids with AI",
+          "Writing targeted and compliant job postings",
+          "Preparing competency-based structured interview guides",
+          "Managing unconscious bias with AI support"
+        ]
+      },
+      {
+        "num": "02",
+        "title": "HR communications and documentation",
+        "items": [
+          "Writing clear and effective internal communications",
+          "Summarising individual and annual reviews",
+          "Producing HR policies and regulatory documents",
+          "Adapting communication style to different audiences"
+        ]
+      },
+      {
+        "num": "03",
+        "title": "HR analytics and continuous improvement",
+        "items": [
+          "Analysing HR data with accessible AI tools",
+          "Identifying trends in engagement and satisfaction",
+          "Building HR dashboards without technical skills",
+          "Documenting and improving existing processes"
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Format and investment",
+    "title": "Tailored training for HR professionals",
+    "description": "Our HR training adapts to your organisation, your sector and your specific challenges. Online or in person, in a group or in-house. Contact us to define the right solution.",
+    "ctaPrimary": "Get tailored training",
+    "ctaSecondary": "Schedule a call",
+    "card": {
+      "label": "Investment",
+      "price": "750 €",
+      "subtitle": "Excl. VAT · Invoicing available",
+      "subtitleExtra": "In-house session: on request",
+      "includes": [
+        "Modules adapted to your practice",
+        "Recruitment and communications templates",
+        "HR prompt library",
+        "AI compliance and bias module",
+        "Training certificate"
+      ]
+    }
+  },
+  "faq": {
+    "eyebrow": "Frequently asked questions",
+    "title": "What HR professionals ask before signing up",
+    "items": [
+      {
+        "question": "Will AI replace HR decisions?",
+        "answer": "No, and that is not the objective. The training teaches you to use AI to structure and accelerate repetitive tasks, while keeping human judgement at the centre of strategic decisions."
+      },
+      {
+        "question": "Does the training cover GDPR compliance?",
+        "answer": "Yes. A module is dedicated to legal obligations relating to the processing of candidate and employee data. We cover best practices for staying compliant."
+      },
+      {
+        "question": "Which tools are covered?",
+        "answer": "We cover versatile tools (ChatGPT, Claude) as well as recruitment-specific tools. The emphasis is on method, not on any particular tool."
+      },
+      {
+        "question": "Is the training suitable for small organisations?",
+        "answer": "Absolutely. SMEs and start-ups often have small HR teams with a lot to do. The training is particularly relevant for maximising the impact of an HR team of 1 to 3 people."
+      }
+    ]
+  },
+  "ctaFinal": {
+    "eyebrow": "Ready to gain efficiency?",
+    "title": "Join the HR professionals who recruit better and faster",
+    "description": "Individual training or for your HR department. Applicable from your next recruitment.",
+    "ctaPrimary": "Get tailored training",
+    "ctaSecondary": "Schedule a call"
+  }
+}

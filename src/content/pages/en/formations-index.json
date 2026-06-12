@@ -1,0 +1,191 @@
+{
+  "meta": {
+    "title": "Sector-specific AI training — Cercle IA",
+    "description": "AI training by professional sector: lawyers, consultants, executives, HR and doctors. Tailored and applicable from day one.",
+    "ogImage": "/og/formations.jpg",
+    "ogImageAlt": "Sector-specific AI training — Cercle IA"
+  },
+  "hero": {
+    "eyebrow": "Cercle IA training",
+    "title": "AI adapted",
+    "titleMuted": "to your profession.",
+    "description": "Every profession has its tools, constraints and challenges. Our sector-specific training starts from your professional reality to give you a method you can apply from the very next day.",
+    "ctaPrimary": "Find my training",
+    "ctaSecondary": "Schedule a call",
+    "infoBox": {
+      "title": "Our sector training",
+      "items": [
+        "Online, in person or hybrid",
+        "From half a day",
+        "All levels",
+        "French and English"
+      ]
+    }
+  },
+  "formationsGrid": {
+    "eyebrow": "Our programmes",
+    "title": "Every profession has its constraints. Every programme starts there.",
+    "formations": [
+      {
+        "tag": "Law",
+        "title": "AI for lawyers and legal professionals",
+        "desc": "Case law research, document drafting, document analysis — while respecting professional secrecy and ethical obligations.",
+        "href": "/en/formations/avocats",
+        "cta": "Training for lawyers and legal professionals",
+        "iconKey": "shield"
+      },
+      {
+        "tag": "Consulting",
+        "title": "AI for consultants",
+        "desc": "Accelerate your deliverables, automate sector research and gain productivity on your consulting assignments.",
+        "href": "/en/formations/consultants",
+        "cta": "Training for consultants",
+        "iconKey": "chart"
+      },
+      {
+        "tag": "Management",
+        "title": "AI for executives",
+        "desc": "Drive your organisation's AI transformation with method. Strategy, governance and augmented decision-making.",
+        "href": "/en/formations/dirigeants",
+        "cta": "Training for executives",
+        "iconKey": "users"
+      },
+      {
+        "tag": "Human resources",
+        "title": "AI for HR professionals",
+        "desc": "Recruitment, job posting writing, interviews and HR analysis — without sacrificing human judgement.",
+        "href": "/en/formations/rh",
+        "cta": "Training for HR professionals",
+        "iconKey": "hr"
+      },
+      {
+        "tag": "Healthcare",
+        "title": "AI for doctors",
+        "desc": "Clinical documentation, bibliographic research and patient communication — while respecting medical confidentiality and regulations.",
+        "href": "/en/formations/medecins",
+        "cta": "Training for doctors",
+        "iconKey": "pulse"
+      }
+    ]
+  },
+  "bootcamp": {
+    "eyebrow": "Looking for a ready-made programme?",
+    "title": "The AI bootcamp: fixed programme, set dates",
+    "description": "Unlike the tailored sector training, the AI bootcamp is a structured programme with defined content, format and pricing. Ideal for getting started quickly.",
+    "card": {
+      "tag": "AI bootcamp",
+      "title": "Master generative AI in your profession",
+      "description": "3 masterclass sessions + individual 1-on-1 coaching + Cercle GPT included. A complete programme, applicable from the first session. Open to all professionals.",
+      "ctaWaitlist": "Join the waitlist",
+      "ctaDetail": "See in detail",
+      "ctaDetailHref": "/en/bootcamp",
+      "details": [
+        "3 online masterclass sessions",
+        "1 individual 1-on-1 coaching session",
+        "Online"
+      ]
+    }
+  },
+  "surMesure": {
+    "eyebrow": "Tailored",
+    "title": "Training adapted to your constraints",
+    "description": "Every programme can be organised in-house for your teams, adapted to your specific sector, your regulations and your tools.",
+    "cta": "Organise a session for my team",
+    "ctaHref": "/en/contact",
+    "points": [
+      {
+        "title": "Adapted to your sector",
+        "desc": "Use cases, tools and constraints specific to your profession."
+      },
+      {
+        "title": "Applicable from the next day",
+        "desc": "Concrete methods, not theory."
+      },
+      {
+        "title": "No technical prerequisites",
+        "desc": "Your professional expertise is enough."
+      }
+    ]
+  },
+  "pourQui": {
+    "eyebrow": "Who it's for",
+    "title": "You have expertise in your field. Not in AI.",
+    "profiles": [
+      {
+        "title": "The pragmatist",
+        "desc": "You want concrete results, not theory. You're looking for what AI can do for you today."
+      },
+      {
+        "title": "The informed sceptic",
+        "desc": "You've tried ChatGPT and the results disappointed you. You want to understand why and how to do better."
+      },
+      {
+        "title": "The decision-maker",
+        "desc": "You need to train your teams or make decisions about AI. You need a clear, operational vision."
+      }
+    ],
+    "footnote": "No technical skills required. Just your profession and your standards."
+  },
+  "testimonials": {
+    "eyebrow": "What our participants say",
+    "title": "Concrete, sincere, pragmatic and useful.",
+    "items": [
+      {
+        "pull": "À recommander d'urgence !",
+        "body": "Formation professionnelle fluide et accessible à haute valeur ajoutée. Les informations apprises et conseils donnés permettent de donner un nouvel élan (inattendu) à tout un chacun afin de se retrouver dans les méandres de l'IA.",
+        "name": "Steve Griess",
+        "role": "Partner",
+        "org": "Thales Brussels",
+        "initials": "SG"
+      },
+      {
+        "pull": "Tarik is the go to person for digital strategy in Brussels!",
+        "body": "",
+        "name": "Yves Melin",
+        "role": "Avocat Associé",
+        "org": "Cassidy Levy Kent",
+        "initials": "YM"
+      },
+      {
+        "pull": "Highly recommended for anyone willing to get down to the brass tacks of this intriguing technology.",
+        "body": "I recently completed five 2-hour AI training sessions. The program offered a detailed overview of key AI tools and provided very concrete, practice-oriented guidance.",
+        "name": "Prescillia Algrain",
+        "role": "Counsel",
+        "org": "Janson Law Firm",
+        "initials": "PA"
+      },
+      {
+        "pull": "À refaire sans modération.",
+        "body": "J'ai suivi 3 formations de 2 heures cette année. Merci Tarik & Team !",
+        "name": "Edouard Cambier",
+        "role": "Co-Owner",
+        "org": "Seed Factory",
+        "initials": "EC"
+      },
+      {
+        "pull": "Thank you for the interesting presentation!",
+        "body": "Very recommended for all lawyers and managers. Very nice to have welcomed you at EQUI.",
+        "name": "Marie Michaud-Nerard",
+        "role": "Partner",
+        "org": "EQUI",
+        "initials": "MM"
+      },
+      {
+        "pull": "Je recommande vivement.",
+        "body": "Parmi l'amas de formations disponibles, en voici une – enfin – concrète, sincère, pragmatique et utile à tous les indépendants (d'esprit ou de pratique).",
+        "name": "Adam Tricha",
+        "role": "Avocat",
+        "org": "Barreau de Verviers",
+        "initials": "AT"
+      }
+    ]
+  },
+  "ctaFinal": {
+    "eyebrow": "Not sure which programme is right?",
+    "title": "Let's discuss it in 15 minutes",
+    "description": "A quick conversation is enough to identify the most suitable training for your context: your profession, your tools, your objectives.",
+    "ctaPrimary": "Schedule a call",
+    "ctaSecondary": "See the AI bootcamp",
+    "ctaSecondaryHref": "/en/bootcamp"
+  }
+}

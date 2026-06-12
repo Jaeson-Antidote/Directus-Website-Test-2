@@ -1,47 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { breadcrumb, faqSchema } from '../lib/schema';
-
-const faqItems = [
-  {
-    question: "Qu'est-ce que ce module d'anonymisation ?",
-    answer: "Ce module vous permet de supprimer ou remplacer automatiquement les informations personnelles dans un texte ou un fichier, afin de protéger la vie privée et de respecter les réglementations en vigueur (ex. RGPD).",
-  },
-  {
-    question: "Quels types de données sont détectés ?",
-    answer: "L'outil reconnaît les données d'identité (prénoms, noms de famille, noms complets), les coordonnées (numéros de téléphone, adresses postales, adresses email, noms de domaine), les identifiants (numéros de carte d'identité, passeport, données bancaires) et d'autres informations sensibles (dates, montants financiers, textes personnalisés définis par l'utilisateur).",
-  },
-  {
-    question: "Comment utiliser l'outil ?",
-    answer: "Deux méthodes sont disponibles : la saisie manuelle en tapant ou collant du texte directement, ou le dépôt de fichier en sélectionnant un PDF ou TXT (maximum 5 Mo). L'outil détecte les données sensibles, vous propose un aperçu des modifications, puis vous pouvez valider l'anonymisation et télécharger le document traité.",
-  },
-  {
-    question: "Quels sont les cas d'usage ?",
-    answer: "Conformité réglementaire (RGPD, HIPAA, etc.), partage de données avec des partenaires sans divulguer d'informations personnelles, publication de documents internes anonymisés, et création de jeux de données pour l'analyse ou l'IA.",
-  },
-  {
-    question: "Les fichiers sont-ils conservés ?",
-    answer: "Non. Les textes et fichiers traités par l'outil ne sont pas conservés après anonymisation. Le traitement s'effectue uniquement de manière temporaire pour réaliser l'opération.",
-  },
-  {
-    question: "Quels formats et limites sont acceptés ?",
-    answer: "Formats supportés : PDF et TXT. Taille maximale : 5 Mo par fichier.",
-  },
-];
+import content from '../content/pages/fr/ainonym.json';
 
 const schemas = [
   breadcrumb([{ name: 'AInonym', href: '/ainonym' }]),
-  faqSchema(faqItems),
+  faqSchema(
+    content.faq.items.map((item) => ({ question: item.question, answer: item.answer }))
+  ),
 ];
 ---
 
 <BaseLayout
-  title="AInonym — Anonymisation de documents | Cercle IA"
-  description="Anonymisez vos documents sensibles avant de les utiliser dans l'IA. Détection intelligente des données personnelles, traitement sur serveurs UE, conforme RGPD. Gratuit en bêta."
-  ogImage="/og/default.jpg"
-  ogImageAlt="AInonym — Outil d'anonymisation de documents par Cercle IA"
+  title={content.meta.title}
+  description={content.meta.description}
+  ogImage={content.meta.ogImage}
+  ogImageAlt={content.meta.ogImageAlt}
   schema={schemas}
-  robots="index,follow"
+  robots={content.meta.robots}
 >
 
   <!-- ========== HERO ========== -->
@@ -52,21 +28,21 @@ const schemas = [
     <div class="container" style="max-width: 760px;">
       <div class="eyebrow-badge" style="margin-bottom: 24px; display: inline-flex;">
         <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
-        Outil gratuit &bull; Bêta
+        {content.hero.eyebrow}
       </div>
 
-      <h1 class="hero-title" style="max-width: 680px;">Anonymisation de documents avant utilisation IA</h1>
+      <h1 class="hero-title" style="max-width: 680px;">{content.hero.title}</h1>
 
       <p style="font-size: 18px; color: rgba(255,255,255,0.65); line-height: 1.75; margin-top: 20px; max-width: 580px;">
-        Protégez vos données sensibles et confidentielles avant de les partager ou de les utiliser dans des outils IA. Détection automatique, aperçu des modifications, export en un clic.
+        {content.hero.description}
       </p>
 
       <div style="margin-top: 36px; display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
         <a href="#outil" class="btn-primary" style="border-radius: 30px;">
-          Tester l'outil gratuitement &rarr;
+          {content.hero.ctaPrimary} &rarr;
         </a>
         <a href="#fonctionnalites" class="btn-outline" style="border-radius: 30px;">
-          Voir les fonctionnalités
+          {content.hero.ctaSecondary}
         </a>
       </div>
     </div>
@@ -76,22 +52,12 @@ const schemas = [
   <section style="background: var(--color-dark-2); padding: 56px 0; border-top: 1px solid rgba(255,255,255,0.06);">
     <div class="container">
       <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 760px; margin: 0 auto; text-align: center;">
-
-        <div>
-          <div style="font-family: var(--font-display); font-size: 42px; font-weight: 700; color: var(--color-accent); line-height: 1;">100%</div>
-          <div style="font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 8px; line-height: 1.5;">Gratuit en phase bêta</div>
-        </div>
-
-        <div>
-          <div style="font-family: var(--font-display); font-size: 42px; font-weight: 700; color: var(--color-accent); line-height: 1;">UE</div>
-          <div style="font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 8px; line-height: 1.5;">Serveurs hébergés en Europe</div>
-        </div>
-
-        <div>
-          <div style="font-family: var(--font-display); font-size: 42px; font-weight: 700; color: var(--color-accent); line-height: 1;">0</div>
-          <div style="font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 8px; line-height: 1.5;">Fichier conservé après traitement</div>
-        </div>
-
+        {content.stats.map((s) => (
+          <div>
+            <div style="font-family: var(--font-display); font-size: 42px; font-weight: 700; color: var(--color-accent); line-height: 1;">{s.value}</div>
+            <div style="font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 8px; line-height: 1.5;">{s.label}</div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -103,18 +69,18 @@ const schemas = [
       <div style="text-align: center; margin-bottom: 48px; max-width: 600px; margin-left: auto; margin-right: auto;">
         <div class="eyebrow-badge" style="margin-bottom: 16px; display: inline-flex;">
           <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
-          Bêta gratuite — utilisation raisonnable
+          {content.outil.eyebrow}
         </div>
-        <h2 class="section-title">Tester AInonym maintenant</h2>
+        <h2 class="section-title">{content.outil.title}</h2>
         <p style="font-size: 16px; color: rgba(255,255,255,0.55); margin-top: 16px; line-height: 1.7;">
-          Collez votre texte ou déposez un fichier PDF/TXT. L'outil détecte les données sensibles et vous propose les modifications avant de les appliquer.
+          {content.outil.description}
         </p>
       </div>
 
       <div class="glass-card" style="padding: 8px; overflow: hidden; border-radius: 16px;">
         <iframe
-          src="https://anonymization.lecercle.ai"
-          style="width: 100%; height: 950px; border: none; border-radius: 10px; display: block;"
+          src={content.outil.iframeUrl}
+          style={`width: 100%; height: ${content.outil.iframeHeight}; border: none; border-radius: 10px; display: block;`}
           loading="lazy"
           allowfullscreen
           title="AInonym — outil d'anonymisation de documents"
@@ -129,49 +95,18 @@ const schemas = [
     <div class="container">
 
       <div style="text-align: center; margin-bottom: 56px; max-width: 600px; margin-left: auto; margin-right: auto;">
-        <div class="eyebrow-label" style="margin-bottom: 16px;">Fonctionnalités</div>
-        <h2 class="section-title" style="color: var(--color-text-on-light);">Ce que fait AInonym pour vous</h2>
-        <p style="font-size: 16px; color: var(--color-text-subtle); margin-top: 16px; line-height: 1.7;">Un workflow hybride qui combine l'automatisation IA et la validation manuelle pour garantir la qualité.</p>
+        <div class="eyebrow-label" style="margin-bottom: 16px;">{content.features.eyebrow}</div>
+        <h2 class="section-title" style="color: var(--color-text-on-light);">{content.features.title}</h2>
+        <p style="font-size: 16px; color: var(--color-text-subtle); margin-top: 16px; line-height: 1.7;">{content.features.description}</p>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto;">
-
-        <div class="card-white" style="padding: 28px 32px;">
-          <div style="font-size: 28px; margin-bottom: 16px;">&#128270;</div>
-          <h3 style="font-size: 17px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 10px;">Détection intelligente</h3>
-          <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.7;">Reconnaissance avancée des noms, adresses, numéros de téléphone, emails et autres données sensibles — sans configuration préalable.</p>
-        </div>
-
-        <div class="card-white" style="padding: 28px 32px;">
-          <div style="font-size: 28px; margin-bottom: 16px;">&#128274;</div>
-          <h3 style="font-size: 17px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 10px;">Sécurité et conformité RGPD</h3>
-          <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.7;">Les données sont traitées sur des serveurs sécurisés hébergés en UE. Elles ne sont jamais partagées avec une IA tierce ou un tiers.</p>
-        </div>
-
-        <div class="card-white" style="padding: 28px 32px;">
-          <div style="font-size: 28px; margin-bottom: 16px;">&#128065;</div>
-          <h3 style="font-size: 17px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 10px;">Aperçu avant validation</h3>
-          <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.7;">Visualisez les modifications et contrôlez chaque remplacement avant de confirmer l'anonymisation finale.</p>
-        </div>
-
-        <div class="card-white" style="padding: 28px 32px;">
-          <div style="font-size: 28px; margin-bottom: 16px;">&#9889;</div>
-          <h3 style="font-size: 17px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 10px;">Traitement rapide</h3>
-          <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.7;">Documents analysés et anonymisés en quelques minutes, quelle que soit la longueur du texte.</p>
-        </div>
-
-        <div class="card-white" style="padding: 28px 32px;">
-          <div style="font-size: 28px; margin-bottom: 16px;">&#128196;</div>
-          <h3 style="font-size: 17px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 10px;">Saisie ou import de fichier</h3>
-          <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.7;">Collez un texte directement ou déposez un fichier PDF ou TXT (max 5 Mo). Deux modes d'utilisation adaptés à vos habitudes.</p>
-        </div>
-
-        <div class="card-white" style="padding: 28px 32px;">
-          <div style="font-size: 28px; margin-bottom: 16px;">&#128229;</div>
-          <h3 style="font-size: 17px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 10px;">Export facile</h3>
-          <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.7;">Téléchargez le document anonymisé en un clic, prêt à être utilisé dans n'importe quel outil IA.</p>
-        </div>
-
+        {content.features.items.map((f) => (
+          <div class="card-white" style="padding: 28px 32px;">
+            <h3 style="font-size: 17px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 10px;">{f.title}</h3>
+            <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.7;">{f.desc}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -181,19 +116,17 @@ const schemas = [
     <div class="container" style="max-width: 760px;">
 
       <div style="text-align: center; margin-bottom: 56px;">
-        <div class="eyebrow-label" style="margin-bottom: 16px;">Questions fréquentes</div>
-        <h2 class="section-title" style="color: var(--color-text-on-light);">Tout ce qu'il faut savoir sur AInonym</h2>
+        <div class="eyebrow-label" style="margin-bottom: 16px;">{content.faq.eyebrow}</div>
+        <h2 class="section-title" style="color: var(--color-text-on-light);">{content.faq.title}</h2>
       </div>
 
       <div style="display: flex; flex-direction: column; gap: 16px;">
-
-        {faqItems.map((item) => (
+        {content.faq.items.map((item) => (
           <div class="card-white" style="padding: 28px 32px;">
             <h3 style="font-size: 16px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 10px;">{item.question}</h3>
             <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.75;">{item.answer}</p>
           </div>
         ))}
-
       </div>
     </div>
   </section>
@@ -205,20 +138,20 @@ const schemas = [
     <div class="container" style="text-align: center; max-width: 620px; position: relative;">
       <div class="eyebrow-badge" style="margin-bottom: 24px; display: inline-flex;">
         <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
-        Gratuit en bêta
+        {content.ctaFinal.eyebrow}
       </div>
 
-      <h2 class="section-title" style="font-size: clamp(28px, 4vw, 40px);">Protégez vos données avant d'utiliser l'IA</h2>
+      <h2 class="section-title" style="font-size: clamp(28px, 4vw, 40px);">{content.ctaFinal.title}</h2>
       <p style="font-size: 17px; color: rgba(255,255,255,0.55); margin-top: 16px; line-height: 1.7;">
-        AInonym s'intègre dans votre flux de travail en quelques secondes. Aucune installation, aucun compte requis.
+        {content.ctaFinal.description}
       </p>
 
       <div style="margin-top: 36px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
         <a href="#outil" class="btn-primary" style="border-radius: 30px;">
-          Utiliser AInonym gratuitement &rarr;
+          {content.ctaFinal.ctaPrimary} &rarr;
         </a>
-        <a href="/contact" class="btn-outline" style="border-radius: 30px;">
-          Contacter l'équipe
+        <a href={content.ctaFinal.ctaSecondaryHref} class="btn-outline" style="border-radius: 30px;">
+          {content.ctaFinal.ctaSecondary}
         </a>
       </div>
     </div>

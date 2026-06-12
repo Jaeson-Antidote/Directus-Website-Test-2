@@ -1,0 +1,53 @@
+# Cercle IA
+
+> Plateforme belge de formation à l'IA pour les professionnels et les entreprises.
+> Fondée par Tarik Hennen. Formations en ligne, en live et sur mesure B2B.
+> Cible : professions non-techniques (avocats, médecins, consultants, dirigeants, RH).
+
+Cercle IA propose des programmes de montée en compétences IA pensés pour des métiers
+où l'IA s'applique à des contraintes réelles : secret professionnel, réglementation,
+responsabilité et contextes décisionnels complexes. Les formations sont applicables
+dès le lendemain, sans prérequis technique.
+
+## Formations
+
+- [Catalogue des formations](https://lecercle.ai/formations): Vue d'ensemble de tous les programmes disponibles, par secteur professionnel.
+- [IA pour avocats et juristes](https://lecercle.ai/formations/avocats): Recherche jurisprudentielle, rédaction d'actes, analyse documentaire — dans le respect du secret professionnel et des obligations déontologiques.
+- [IA pour consultants](https://lecercle.ai/formations/consultants): Livrables accélérés, automatisation de la recherche sectorielle et gains de productivité en mission de conseil.
+- [IA pour dirigeants](https://lecercle.ai/formations/dirigeants): Stratégie, gouvernance et décision augmentée pour piloter la transformation IA d'une organisation.
+- [IA pour les RH](https://lecercle.ai/formations/rh): Recrutement, rédaction d'offres, entretiens et analyse RH sans sacrifier le jugement humain.
+- [IA pour médecins](https://lecercle.ai/formations/medecins): Documentation clinique, recherche bibliographique et communication patient — dans le respect du secret médical et de la réglementation.
+- [Formations sur mesure B2B](https://lecercle.ai/formations/sur-mesure): Programmes personnalisés conçus pour les équipes et les organisations.
+
+## Programme intensif
+
+- [Bootcamp IA générative](https://lecercle.ai/bootcamp): Programme intensif pour passer de zéro à opérationnel sur les outils d'IA générative.
+
+## Ressources et contenus
+
+- [Blog](https://lecercle.ai/blog): Articles pratiques sur l'IA appliquée aux métiers professionnels.
+- [Newsletter IA](https://lecercle.ai/newsletter): Veille IA hebdomadaire destinée aux professionnels belges et francophones.
+- [Ressources IA pour professionnels](https://lecercle.ai/ressources-ia): Sélection d'outils, de guides et de références utiles.
+
+### Articles récents
+
+- [Les meilleures formations en IA en Belgique](https://lecercle.ai/blog/meilleures-formations-ia-belgique): Panorama des formations disponibles en Belgique francophone.
+- [L'IA en Belgique : statistiques et tendances 2026](https://lecercle.ai/blog/statistiques-tendances-ia-belgique): Chiffres clés sur l'adoption de l'IA dans les entreprises belges.
+- [Lignes directrices IA pour avocats (Avocats.be et OVB)](https://lecercle.ai/blog/lignes-directrices-ia-avocats): Analyse des recommandations déontologiques belges sur l'usage de l'IA en cabinet.
+- [Au-delà de ChatGPT : transformer son travail avec l'IA](https://lecercle.ai/blog/transformer-votre-travail-avec-l-ia): Méthode pratique pour intégrer l'IA dans ses habitudes professionnelles.
+- [Les meilleures formations IA pour médecins (2026)](https://lecercle.ai/blog/meilleures-formations-ia-medecins): Panorama des programmes IA adaptés aux professionnels de santé.
+- [3 livres sur l'IA pour les avocats](https://lecercle.ai/blog/livres-ia-pour-avocats): Sélection de lectures pour comprendre l'IA appliquée au droit.
+- [4 livres sur l'IA à lire pour ne pas subir l'IA](https://lecercle.ai/blog/selection-livres-ia): Sélection de lectures accessibles pour les non-techniciens.
+
+## À propos
+
+- [À propos de Cercle IA](https://lecercle.ai/a-propos): Contexte, mission et approche pédagogique de Cercle IA.
+- [Tarik Hennen — fondateur et formateur](https://lecercle.ai/tarik-hennen): Parcours, expertise et positionnement de Tarik Hennen.
+- [AInonym](https://lecercle.ai/ainonym): Outil d'anonymisation de documents propulsé par Cercle IA.
+
+## Informations légales
+
+- [Contact](https://lecercle.ai/contact)
+- [Politique de confidentialité](https://lecercle.ai/politique-confidentialite)
+- [Politique IA](https://lecercle.ai/politique-ia)
+- [Conditions générales](https://lecercle.ai/conditions-generales)

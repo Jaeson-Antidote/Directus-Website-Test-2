@@ -1,0 +1,112 @@
+{
+  "meta": {
+    "title": "Ressources IA pour professionnels — Cercle IA",
+    "description": "Guides, templates et ressources pratiques pour utiliser l'IA dans votre métier. Sélectionnés et testés par Cercle IA pour les professionnels.",
+    "ogImage": "/og/ressources.jpg",
+    "ogImageAlt": "Ressources IA pour professionnels — Cercle IA"
+  },
+  "hero": {
+    "eyebrow": "Ressources Cercle IA",
+    "title": "Des ressources pratiques pour passer à l'action.",
+    "description": "Guides, templates de prompts, comparatifs d'outils et modules de formation. Sélectionnés et testés pour les professionnels du droit, du conseil, de la santé et du management.",
+    "ctaPrimary": "Explorer les ressources",
+    "ctaSecondary": "S'abonner à la newsletter",
+    "card": {
+      "label": "Accès gratuit — Tout est gratuit",
+      "items": [
+        "Guides PDF téléchargeables",
+        "Templates de prompts prêts à l'emploi",
+        "Comparatifs d'outils IA par métier"
+      ]
+    }
+  },
+  "guides": {
+    "eyebrow": "Guides pratiques",
+    "title": "Commencez par ces guides",
+    "ctaLabel": "Télécharger le guide",
+    "items": [
+      {
+        "tag": "Guide · PDF",
+        "title": "Guide de démarrage avec ChatGPT",
+        "desc": "Les fondamentaux pour utiliser ChatGPT efficacement dans un contexte professionnel. Paramètres, bonnes pratiques et cas d'usage.",
+        "href": "#"
+      },
+      {
+        "tag": "Guide · PDF",
+        "title": "Anonymiser vos données avant d'utiliser l'IA",
+        "desc": "Protocole pratique pour traiter des données sensibles avec l'IA, sans compromettre la confidentialité de vos clients.",
+        "href": "#"
+      },
+      {
+        "tag": "Guide · PDF",
+        "title": "Choisir son outil IA selon la tâche",
+        "desc": "Comparatif des principaux outils IA (ChatGPT, Claude, Gemini, Perplexity) pour chaque type de mission professionnelle.",
+        "href": "#"
+      }
+    ]
+  },
+  "prompts": {
+    "eyebrow": "Templates de prompts",
+    "title": "Prêt à copier-coller",
+    "ctaLabel": "Accéder au template",
+    "items": [
+      {
+        "tag": "Droit",
+        "title": "Prompts pour avocats et juristes",
+        "desc": "15 prompts testés pour la recherche jurisprudentielle, la rédaction d'actes et l'analyse contractuelle.",
+        "href": "#"
+      },
+      {
+        "tag": "Conseil",
+        "title": "Prompts pour consultants",
+        "desc": "12 prompts pour la recherche sectorielle, la synthèse de livrables et la rédaction de rapports.",
+        "href": "#"
+      },
+      {
+        "tag": "Management",
+        "title": "Prompts pour dirigeants",
+        "desc": "10 prompts pour l'analyse stratégique, la communication interne et la prise de décision.",
+        "href": "#"
+      },
+      {
+        "tag": "RH",
+        "title": "Prompts pour les RH",
+        "desc": "14 prompts pour le recrutement, la rédaction d'offres, les entretiens et la communication RH.",
+        "href": "#"
+      }
+    ]
+  },
+  "tools": {
+    "eyebrow": "Outils recommandés",
+    "title": "Les outils que nous utilisons et recommandons",
+    "description": "Sélectionnés et testés par nos formateurs. Mis à jour régulièrement.",
+    "items": [
+      { "name": "ChatGPT", "category": "IA généraliste", "desc": "Le modèle le plus polyvalent pour la rédaction, l'analyse et la recherche. Incontournable pour commencer.", "pricing": "Freemium" },
+      { "name": "Claude", "category": "IA généraliste", "desc": "Excellent pour les textes longs, la nuance et le raisonnement. Particulièrement adapté aux tâches analytiques complexes.", "pricing": "Freemium" },
+      { "name": "Perplexity", "category": "Recherche IA", "desc": "Moteur de recherche augmenté par l'IA. Idéal pour la veille, la recherche de sources et les synthèses documentaires.", "pricing": "Freemium" },
+      { "name": "Gemini", "category": "IA généraliste", "desc": "Le modèle de Google, intégré à l'écosystème Workspace. Pertinent si vous utilisez Gmail, Docs et Sheets.", "pricing": "Freemium" },
+      { "name": "Cercle GPT", "category": "IA multi-modèles", "desc": "Notre plateforme : accédez à tous les modèles IA depuis une interface unique, sécurisée et pensée pour les professionnels.", "pricing": "Payant" },
+      { "name": "Otter.ai", "category": "Transcription", "desc": "Transcription et résumé automatique de réunions et entretiens. Gain de temps immédiat sur la prise de notes.", "pricing": "Freemium" }
+    ]
+  },
+  "newsletter": {
+    "eyebrow": "Restez à jour",
+    "title": "Nouvelles ressources toutes les 2 semaines",
+    "ctaLabel": "S'abonner gratuitement",
+    "ctaHref": "https://www.linkedin.com/newsletters/le-cercle-ia-7179830167535878144/",
+    "preview": [
+      "Un guide ou template nouveau",
+      "L'outil IA de la quinzaine",
+      "Un cas d'usage métier concret",
+      "L'analyse d'une tendance IA"
+    ]
+  },
+  "ctaFinal": {
+    "eyebrow": "Aller plus loin",
+    "title": "Passez de la ressource à la maîtrise",
+    "ctaPrimary": "Voir les formations",
+    "ctaPrimaryHref": "/formations",
+    "ctaSecondary": "Planifier un appel",
+    "ctaSecondaryHref": "https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia"
+  }
+}

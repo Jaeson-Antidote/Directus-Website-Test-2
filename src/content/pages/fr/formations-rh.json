@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "title": "Formation IA pour les RH — Cercle IA",
+    "description": "Intégrez l'IA dans vos processus RH : recrutement, rédaction d'offres, entretiens, communication interne. Formation pratique pour DRH et responsables recrutement.",
+    "ogImage": "/og/formations-rh.jpg",
+    "ogImageAlt": "Formation IA pour les RH — Cercle IA"
+  },
+  "schema": {
+    "course": {
+      "name": "Formation IA pour les RH",
+      "description": "Intégrez l'IA dans vos processus RH : recrutement, rédaction d'offres, entretiens et communication interne. Sans sacrifier le jugement humain ni la conformité.",
+      "url": "/formations/rh"
+    }
+  },
+  "hero": {
+    "eyebrow": "Formation IA · RH",
+    "title": "L'IA comme allié",
+    "titleMuted": "de vos processus RH.",
+    "description": "Recrutement, rédaction d'offres, entretiens, communication interne — apprenez à intégrer l'IA dans vos processus RH sans sacrifier le jugement humain ni la conformité.",
+    "ctaPrimary": "Obtenir une formation sur mesure",
+    "ctaSecondary": "Planifier un appel",
+    "audienceTags": ["DRH", "Responsables recrutement", "HR Business Partners", "Office managers"],
+    "infoBox": {
+      "rows": [
+        { "label": "Pour qui", "value": "DRH, responsables recrutement, HR Business Partners" },
+        { "label": "Format", "value": "En ligne ou présentiel, à partir d'une demi-journée" },
+        { "label": "Langue", "value": "Français" },
+        { "label": "Tarif", "value": "Sur devis (formations intra-entreprise)" },
+        { "label": "Prérequis", "value": "Aucun prérequis technique" }
+      ]
+    }
+  },
+  "problemSolution": {
+    "eyebrow": "Pourquoi cette formation",
+    "title": "Les défis RH que l'IA peut résoudre",
+    "intro": "Les équipes RH sont souvent débordées par des tâches répétitives à faible valeur ajoutée. L'IA peut structurer et accélérer ces processus, en laissant plus de place au jugement humain là où il compte.",
+    "headerProblem": "Le problème",
+    "headerSolution": "Ce que vous allez gagner",
+    "rows": [
+      {
+        "problem": "Trier des centaines de candidatures prend des jours et reste subjectif malgré les efforts.",
+        "solutionTitle": "Screening structuré et cohérent",
+        "solutionDesc": "Construisez des grilles d'analyse IA pour trier les candidatures plus rapidement, de façon plus cohérente et documentée."
+      },
+      {
+        "problem": "Rédiger des offres d'emploi attractives et conformes prend du temps, avec des résultats inégaux.",
+        "solutionTitle": "Offres ciblées et optimisées",
+        "solutionDesc": "Générez des offres adaptées à chaque poste, au bon niveau de langue, avec les bons mots-clés pour attirer les bons profils."
+      },
+      {
+        "problem": "Les entretiens ne sont pas toujours structurés de façon à permettre une évaluation équitable et comparable.",
+        "solutionTitle": "Grilles d'entretien adaptées à chaque poste",
+        "solutionDesc": "Construisez des guides d'entretien comportementaux et des critères d'évaluation cohérents entre les recruteurs."
+      }
+    ]
+  },
+  "modules": {
+    "eyebrow": "Contenu de la formation",
+    "title": "Ce que couvre la formation",
+    "items": [
+      {
+        "num": "01",
+        "title": "IA et recrutement",
+        "items": [
+          "Construire des grilles d'analyse de CV avec l'IA",
+          "Rédiger des offres d'emploi ciblées et conformes",
+          "Préparer des guides d'entretien structurés par compétences",
+          "Gérer les biais inconscients avec le support de l'IA"
+        ]
+      },
+      {
+        "num": "02",
+        "title": "Communication et documentation RH",
+        "items": [
+          "Rédiger des communications internes claires et efficaces",
+          "Synthétiser des entretiens individuels et annuels",
+          "Produire des politiques RH et documents réglementaires",
+          "Adapter le niveau de communication selon les interlocuteurs"
+        ]
+      },
+      {
+        "num": "03",
+        "title": "Analyse RH et amélioration continue",
+        "items": [
+          "Analyser les données RH avec des outils IA accessibles",
+          "Identifier des tendances dans l'engagement et la satisfaction",
+          "Construire des tableaux de bord RH sans compétence technique",
+          "Documenter et améliorer les processus existants"
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Format & investissement",
+    "title": "Une formation sur mesure pour les RH",
+    "description": "Nos formations RH s'adaptent à votre organisation, votre secteur et vos enjeux spécifiques. En ligne ou en présentiel, en groupe ou en intra. Contactez-nous pour définir la formule adaptée.",
+    "ctaPrimary": "Obtenir une formation sur mesure",
+    "ctaSecondary": "Planifier un appel",
+    "card": {
+      "label": "Investissement",
+      "price": "750 €",
+      "subtitle": "HTVA · Facturation possible",
+      "subtitleExtra": "Session intra-entreprise : sur devis",
+      "includes": [
+        "Modules adaptés à votre pratique",
+        "Templates recrutement et communication",
+        "Bibliothèque de prompts RH",
+        "Module conformité et biais IA",
+        "Attestation de formation"
+      ]
+    }
+  },
+  "faq": {
+    "eyebrow": "Questions fréquentes",
+    "title": "Ce que se demandent les RH avant de s'inscrire",
+    "items": [
+      {
+        "question": "L'IA va-t-elle remplacer les décisions RH ?",
+        "answer": "Non, et ce n'est pas l'objectif. La formation vous apprend à utiliser l'IA pour structurer et accélérer les tâches répétitives, tout en gardant le jugement humain au centre des décisions stratégiques."
+      },
+      {
+        "question": "La formation couvre-t-elle la conformité RGPD ?",
+        "answer": "Oui. Un module est dédié aux obligations légales liées au traitement des données de candidats et collaborateurs. Nous couvrons les bonnes pratiques pour rester conforme."
+      },
+      {
+        "question": "Quels outils sont abordés ?",
+        "answer": "Nous couvrons les outils polyvalents (ChatGPT, Claude) ainsi que des outils spécifiques au recrutement. L'accent est mis sur la méthode, pas sur un outil particulier."
+      },
+      {
+        "question": "La formation est-elle adaptée aux petites structures ?",
+        "answer": "Absolument. Les PME et startups ont souvent des équipes RH réduites avec beaucoup à faire. La formation est particulièrement pertinente pour maximiser l'impact d'une équipe RH de 1 à 3 personnes."
+      }
+    ]
+  },
+  "ctaFinal": {
+    "eyebrow": "Prêt à gagner en efficacité ?",
+    "title": "Rejoignez les RH qui recrutent mieux et plus vite",
+    "description": "Formation individuelle ou pour votre service RH. Applicable dès votre prochain recrutement.",
+    "ctaPrimary": "Obtenir une formation sur mesure",
+    "ctaSecondary": "Planifier un appel"
+  }
+}

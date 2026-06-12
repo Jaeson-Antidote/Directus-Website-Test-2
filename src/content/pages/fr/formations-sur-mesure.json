@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "title": "Formation IA sur mesure — Cercle IA",
+    "description": "Décrivez vos objectifs et votre contexte professionnel. Cercle IA conçoit une formation IA adaptée à votre secteur, vos outils et vos équipes.",
+    "ogImage": "/og/contact.jpg",
+    "ogImageAlt": "Formation IA sur mesure — Cercle IA"
+  },
+  "header": {
+    "eyebrow": "Formation sur mesure",
+    "title": "Vous souhaitez une formation IA",
+    "titleAccent": "sur mesure ?",
+    "description": "Parlez-nous de vos objectifs, votre métier et votre contexte professionnel. Nous vous revenons sous 24 h ouvrables avec une proposition adaptée."
+  },
+  "form": {
+    "fields": {
+      "prenom": { "label": "Prénom *", "placeholder": "Marie" },
+      "nom": { "label": "Nom", "placeholder": "Dupont" },
+      "email": { "label": "Email professionnel *", "placeholder": "marie@cabinet.be" },
+      "telephone": { "label": "Téléphone", "placeholder": "+32 470 00 00 00" },
+      "metier": { "label": "Métier *" },
+      "entreprise": { "label": "Entreprise", "placeholder": "Cabinet, PME, hôpital…" },
+      "taille": { "label": "Nombre d'employés" },
+      "fonction": { "label": "Fonction", "placeholder": "Associé, DRH, Directeur…" },
+      "message": { "label": "Vos besoins ou questions", "placeholder": "Décrivez votre contexte, vos objectifs, le nombre de participants, les outils utilisés…" }
+    },
+    "metierOptions": [
+      "Avocat / juriste",
+      "Médecin / professionnel de santé",
+      "Consultant",
+      "RH / DRH",
+      "Dirigeant / C-level",
+      "Manager",
+      "Formateur / enseignant",
+      "Autre"
+    ],
+    "tailleOptions": [
+      "1 à 10 employés",
+      "11 à 50 employés",
+      "51 à 200 employés",
+      "201 à 500 employés",
+      "Plus de 500 employés"
+    ],
+    "rgpdText": "En soumettant ce formulaire, vous acceptez le traitement de vos données conformément à notre",
+    "rgpdLinkText": "politique de confidentialité",
+    "submitLabel": "Recevoir ma proposition personnalisée"
+  },
+  "reassurances": [
+    "Réponse sous 24 h ouvrables",
+    "Proposition 100 % sur mesure",
+    "Sans engagement"
+  ]
+}

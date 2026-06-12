@@ -3,11 +3,7 @@ import { glob } from 'astro/loaders';
 
 const pages = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/pages' }),
-  schema: z.object({
-    type: z.string().optional(),
-    title: z.string(),
-    description: z.string(),
-  }),
+  schema: z.record(z.unknown()),
 });
 
 const articleSchema = z.object({
@@ -23,15 +19,27 @@ const articleSchema = z.object({
 });
 
 const blog = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
+  loader: glob({ pattern: '*.md', base: './src/content/blog' }),
+  schema: articleSchema,
+});
+
+const blogEn = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/blog/en' }),
   schema: articleSchema,
 });
 
 const newsletter = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/newsletter' }),
+  loader: glob({ pattern: '*.md', base: './src/content/newsletter' }),
   schema: articleSchema.extend({
     edition: z.number().optional(),
   }),
 });
 
-export const collections = { pages, blog, newsletter };
+const newsletterEn = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/newsletter/en' }),
+  schema: articleSchema.extend({
+    edition: z.number().optional(),
+  }),
+});
+
+export const collections = { pages, blog, blogEn, newsletter, newsletterEn };

@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "title": "AInonym — Anonymisation de documents | Cercle IA",
+    "description": "Anonymisez vos documents sensibles avant de les utiliser dans l'IA. Détection intelligente des données personnelles, traitement sur serveurs UE, conforme RGPD. Gratuit en bêta.",
+    "ogImage": "/og/default.jpg",
+    "ogImageAlt": "AInonym — Outil d'anonymisation de documents par Cercle IA",
+    "robots": "index,follow"
+  },
+  "hero": {
+    "eyebrow": "Outil gratuit • Bêta",
+    "title": "Anonymisation de documents avant utilisation IA",
+    "description": "Protégez vos données sensibles et confidentielles avant de les partager ou de les utiliser dans des outils IA. Détection automatique, aperçu des modifications, export en un clic.",
+    "ctaPrimary": "Tester l'outil gratuitement",
+    "ctaSecondary": "Voir les fonctionnalités"
+  },
+  "stats": [
+    { "value": "100%", "label": "Gratuit en phase bêta" },
+    { "value": "UE", "label": "Serveurs hébergés en Europe" },
+    { "value": "0", "label": "Fichier conservé après traitement" }
+  ],
+  "outil": {
+    "eyebrow": "Bêta gratuite — utilisation raisonnable",
+    "title": "Tester AInonym maintenant",
+    "description": "Collez votre texte ou déposez un fichier PDF/TXT. L'outil détecte les données sensibles et vous propose les modifications avant de les appliquer.",
+    "iframeUrl": "https://anonymization.lecercle.ai",
+    "iframeHeight": "950px"
+  },
+  "features": {
+    "eyebrow": "Fonctionnalités",
+    "title": "Ce que fait AInonym pour vous",
+    "description": "Un workflow hybride qui combine l'automatisation IA et la validation manuelle pour garantir la qualité.",
+    "items": [
+      { "title": "Détection intelligente", "desc": "Identification automatique des données personnelles : noms, emails, numéros de téléphone, adresses, identifiants." },
+      { "title": "Sécurité et conformité RGPD", "desc": "Traitement sur serveurs hébergés en Europe. Aucune donnée conservée après traitement." },
+      { "title": "Aperçu avant validation", "desc": "Visualisez toutes les modifications proposées avant de les appliquer. Vous gardez le contrôle." },
+      { "title": "Traitement rapide", "desc": "Résultats en quelques secondes, même pour des documents longs." },
+      { "title": "Saisie ou import de fichier", "desc": "Collez du texte directement ou importez un fichier PDF ou TXT jusqu'à 5 Mo." },
+      { "title": "Export facile", "desc": "Téléchargez le document anonymisé en un clic, prêt à utiliser dans votre outil IA." }
+    ]
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Tout ce qu'il faut savoir sur AInonym",
+    "items": [
+      {
+        "question": "Qu'est-ce que ce module d'anonymisation ?",
+        "answer": "Ce module vous permet de supprimer ou remplacer automatiquement les informations personnelles dans un texte ou un fichier, afin de protéger la vie privée et de respecter les réglementations en vigueur (ex. RGPD)."
+      },
+      {
+        "question": "Quels types de données sont détectés ?",
+        "answer": "L'outil reconnaît les données d'identité (prénoms, noms de famille, noms complets), les coordonnées (numéros de téléphone, adresses postales, adresses email, noms de domaine), les identifiants (numéros de carte d'identité, passeport, données bancaires) et d'autres informations sensibles (dates, montants financiers, textes personnalisés définis par l'utilisateur)."
+      },
+      {
+        "question": "Comment utiliser l'outil ?",
+        "answer": "Deux méthodes sont disponibles : la saisie manuelle en tapant ou collant du texte directement, ou le dépôt de fichier en sélectionnant un PDF ou TXT (maximum 5 Mo). L'outil détecte les données sensibles, vous propose un aperçu des modifications, puis vous pouvez valider l'anonymisation et télécharger le document traité."
+      },
+      {
+        "question": "Quels sont les cas d'usage ?",
+        "answer": "Conformité réglementaire (RGPD, HIPAA, etc.), partage de données avec des partenaires sans divulguer d'informations personnelles, publication de documents internes anonymisés, et création de jeux de données pour l'analyse ou l'IA."
+      },
+      {
+        "question": "Les fichiers sont-ils conservés ?",
+        "answer": "Non. Les textes et fichiers traités par l'outil ne sont pas conservés après anonymisation. Le traitement s'effectue uniquement de manière temporaire pour réaliser l'opération."
+      },
+      {
+        "question": "Quels formats et limites sont acceptés ?",
+        "answer": "Formats supportés : PDF et TXT. Taille maximale : 5 Mo par fichier."
+      }
+    ]
+  },
+  "ctaFinal": {
+    "eyebrow": "Gratuit en bêta",
+    "title": "Protégez vos données avant d'utiliser l'IA",
+    "description": "AInonym s'intègre dans votre flux de travail en quelques secondes. Aucune installation, aucun compte requis.",
+    "ctaPrimary": "Utiliser AInonym gratuitement",
+    "ctaSecondary": "Contacter l'équipe",
+    "ctaSecondaryHref": "/contact"
+  }
+}
