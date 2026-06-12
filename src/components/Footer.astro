@@ -1,4 +1,16 @@
 ---
+const currentPath = Astro.url.pathname;
+const isEnglish = currentPath === '/en' || currentPath.startsWith('/en/');
+const noEnEquivalent = ['/conditions-generales', '/politique-confidentialite', '/politique-ia'];
+const frPath = isEnglish ? (currentPath === '/en' ? '/' : currentPath.slice(3)) : currentPath;
+const enPath = isEnglish
+  ? currentPath
+  : noEnEquivalent.includes(currentPath)
+    ? '/en'
+    : currentPath === '/'
+      ? '/en'
+      : '/en' + currentPath;
+
 const formations = [
   { href: '/bootcamp', label: 'Bootcamp IA' },
   { href: '/formations/avocats', label: 'Formations pour avocats' },
@@ -103,11 +115,18 @@ const ressources = [
     <!-- Bottom bar -->
     <div class="footer-bottom">
       <p class="footer-copyright">©2026. Cercle IA | Antidote SRL | BCE 0773.969.928</p>
-      <nav aria-label="Liens légaux" class="footer-legal">
-        <a href="/politique-ia">Politique IA</a>
-        <a href="/politique-confidentialite">Confidentialité</a>
-        <a href="/conditions-generales">Conditions générales</a>
-      </nav>
+      <div class="footer-bottom-right">
+        <div class="lang-switcher" aria-label="Langue">
+          <a href={frPath} aria-current={!isEnglish ? 'true' : undefined} class="lang-btn">FR</a>
+          <span aria-hidden="true">|</span>
+          <a href={enPath} aria-current={isEnglish ? 'true' : undefined} class="lang-btn">EN</a>
+        </div>
+        <nav aria-label="Liens légaux" class="footer-legal">
+          <a href="/politique-ia">Politique IA</a>
+          <a href="/politique-confidentialite">Confidentialité</a>
+          <a href="/conditions-generales">Conditions générales</a>
+        </nav>
+      </div>
     </div>
   </div>
 </footer>
@@ -232,6 +251,41 @@ const ressources = [
     gap: 12px;
   }
 
+  .footer-bottom-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .lang-switcher span {
+    color: rgba(255,255,255,0.15);
+  }
+
+  .lang-btn {
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+
+  .lang-btn:hover {
+    color: rgba(255,255,255,0.7);
+  }
+
+  .lang-btn[aria-current="true"] {
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
   .footer-copyright {
     font-size: 12px;
     color: rgba(255,255,255,0.3);
@@ -260,6 +314,7 @@ const ressources = [
   @media (max-width: 768px) {
     .footer-grid { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; align-items: flex-start; }
+    .footer-bottom-right { flex-direction: column; align-items: flex-start; gap: 12px; }
     .footer-legal { flex-wrap: wrap; gap: 12px; }
   }
 </style>
