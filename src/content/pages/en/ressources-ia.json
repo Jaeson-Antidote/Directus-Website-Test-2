@@ -1,22 +1,22 @@
 {
   "meta": {
-    "title": "AI resources for professionals — Cercle IA",
+    "title": "AI tools directory for professionals — Cercle IA",
     "description": "Guides, templates and practical resources for using AI in your profession. Selected and tested by Cercle IA for professionals.",
     "ogImage": "/og/ressources.jpg",
-    "ogImageAlt": "AI resources for professionals — Cercle IA"
+    "ogImageAlt": "AI tools directory for professionals — Cercle IA"
   },
   "hero": {
-    "eyebrow": "Cercle IA resources",
-    "title": "Practical resources to take action.",
-    "description": "Guides, prompt templates, tool comparisons and training modules. Selected and tested for professionals in law, consulting, healthcare and management.",
-    "ctaPrimary": "Explore the resources",
+    "eyebrow": "AI tools directory",
+    "title": "The best AI tools for your profession.",
+    "description": "A curated directory of AI tools tested and sorted by professional use case. Find the right tool for your practice in seconds.",
+    "ctaPrimary": "Browse the directory",
     "ctaSecondary": "Subscribe to the newsletter",
     "card": {
-      "label": "Free access — Everything is free",
+      "label": "Updated regularly",
       "items": [
-        "Downloadable PDF guides",
-        "Ready-to-use prompt templates",
-        "AI tool comparisons by profession"
+        "Tools sorted by profession and use case",
+        "Selected and tested by our trainers",
+        "Free access, no sign-up required"
       ]
     }
   },

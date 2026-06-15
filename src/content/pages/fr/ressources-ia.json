@@ -1,22 +1,22 @@
 {
   "meta": {
-    "title": "Ressources IA pour professionnels — Cercle IA",
+    "title": "Annuaire d'outils IA pour professionnels — Cercle IA",
     "description": "Guides, templates et ressources pratiques pour utiliser l'IA dans votre métier. Sélectionnés et testés par Cercle IA pour les professionnels.",
     "ogImage": "/og/ressources.jpg",
-    "ogImageAlt": "Ressources IA pour professionnels — Cercle IA"
+    "ogImageAlt": "Annuaire d'outils IA pour professionnels — Cercle IA"
   },
   "hero": {
-    "eyebrow": "Ressources Cercle IA",
-    "title": "Des ressources pratiques pour passer à l'action.",
-    "description": "Guides, templates de prompts, comparatifs d'outils et modules de formation. Sélectionnés et testés pour les professionnels du droit, du conseil, de la santé et du management.",
-    "ctaPrimary": "Explorer les ressources",
+    "eyebrow": "Annuaire d'outils IA",
+    "title": "Les meilleurs outils IA pour votre métier.",
+    "description": "Un annuaire sélectionné d'outils IA testés et classés par usage professionnel. Trouvez l'outil adapté à votre pratique en quelques secondes.",
+    "ctaPrimary": "Parcourir l'annuaire",
     "ctaSecondary": "S'abonner à la newsletter",
     "card": {
-      "label": "Accès gratuit — Tout est gratuit",
+      "label": "Mis à jour régulièrement",
       "items": [
-        "Guides PDF téléchargeables",
-        "Templates de prompts prêts à l'emploi",
-        "Comparatifs d'outils IA par métier"
+        "Outils triés par métier et par usage",
+        "Sélectionnés et testés par nos formateurs",
+        "Accès gratuit, sans inscription"
       ]
     }
   },

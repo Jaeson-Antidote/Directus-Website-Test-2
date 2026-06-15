@@ -185,8 +185,6 @@
   "resources": {
     "eyebrow": "Ressources exclusives",
     "title": "Approfondissez votre expertise entre les sessions.",
-    "ctaAll": "Toutes les ressources",
-    "ctaAllHref": "/ressources-ia",
     "items": [
       {
         "href": "/blog",
