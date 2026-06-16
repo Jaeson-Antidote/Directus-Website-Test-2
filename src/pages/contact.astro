@@ -44,13 +44,23 @@ const schema = {
         <div>
           <h2 style="font-family: var(--font-display); font-size: 28px; font-weight: 700; color: #ffffff; margin-bottom: 32px;">{content.form.title}</h2>
           <div class="glass-card" style="padding: 40px;">
+            <!-- État succès -->
+            <div id="contact-success" hidden style="display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 40px 0; text-align: center;">
+              <span style="width: 56px; height: 56px; border-radius: 50%; background: rgba(247,171,110,0.15); border: 1px solid rgba(247,171,110,0.3); display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--color-accent);">&#10003;</span>
+              <h3 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: #ffffff; margin: 0;">Message envoyé !</h3>
+              <p style="font-size: 15px; color: rgba(255,255,255,0.55); margin: 0;">Nous vous répondrons dans les plus brefs délais.</p>
+            </div>
+
             <form
+              id="contact-form"
               name="contact"
               method="POST"
               data-netlify="true"
+              netlify-honeypot="bot-field"
               style="display: flex; flex-direction: column; gap: 20px;"
             >
               <input type="hidden" name="form-name" value="contact" />
+              <input type="hidden" name="bot-field" />
 
               <div class="grid-2" style="gap: 16px;">
                 <div>
@@ -86,8 +96,10 @@ const schema = {
                 ></textarea>
               </div>
 
+              <p id="contact-error" hidden style="font-size: 13px; color: #f87171; text-align: center; margin: 0;">Une erreur est survenue. Veuillez réessayer.</p>
+
               <div style="margin-top: 8px;">
-                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; font-size: 17px; padding: 18px 32px;">
+                <button type="submit" id="contact-submit" class="btn-primary" style="width: 100%; justify-content: center; font-size: 17px; padding: 18px 32px;">
                   {content.form.submitLabel} &rarr;
                 </button>
               </div>
@@ -141,3 +153,43 @@ const schema = {
   </section>
 
 </BaseLayout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('contact-submit') as HTMLButtonElement | null;
+  const errorMsg = document.getElementById('contact-error');
+  const successState = document.getElementById('contact-success');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    if (submitBtn) {
+      submitBtn.textContent = 'Envoi en cours…';
+      submitBtn.disabled = true;
+    }
+    errorMsg?.setAttribute('hidden', '');
+
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form) as unknown as Record<string, string>).toString(),
+      });
+      if (res.ok) {
+        form.setAttribute('hidden', '');
+        successState?.removeAttribute('hidden');
+      } else {
+        throw new Error('Erreur réseau');
+      }
+    } catch {
+      errorMsg?.removeAttribute('hidden');
+      if (submitBtn) {
+        submitBtn.textContent = 'Envoyer &rarr;';
+        submitBtn.disabled = false;
+      }
+    }
+  });
+</script>
