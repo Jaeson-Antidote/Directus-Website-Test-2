@@ -11,6 +11,10 @@ if (!token || token !== import.meta.env.PREVIEW_SECRET) {
   return new Response('Unauthorized', { status: 401 });
 }
 
+// Allow Directus to embed this page in its preview iframe
+Astro.response.headers.set('X-Frame-Options', 'ALLOWALL');
+Astro.response.headers.set('Content-Security-Policy', "frame-ancestors *");
+
 const article = await getDraftBySlug(slug, import.meta.env.DIRECTUS_TOKEN ?? '');
 
 if (!article) {
