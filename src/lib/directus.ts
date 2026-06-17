@@ -21,11 +21,19 @@ const ARTICLE_FIELDS =
 
 async function directusFetch(path: string, token: string = DIRECTUS_TOKEN): Promise<any> {
   if (!DIRECTUS_URL) return { data: [] };
-  const res = await fetch(`${DIRECTUS_URL}${path}`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  if (!res.ok) throw new Error(`Directus ${res.status}: ${path}`);
-  return res.json();
+  try {
+    const res = await fetch(`${DIRECTUS_URL}${path}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    if (!res.ok) {
+      console.warn(`Directus ${res.status} on ${path} — returning empty`);
+      return { data: [] };
+    }
+    return res.json();
+  } catch (err) {
+    console.warn(`Directus fetch error on ${path}:`, err);
+    return { data: [] };
+  }
 }
 
 export async function getArticles(): Promise<DirectusArticle[]> {
