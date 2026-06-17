@@ -10,8 +10,8 @@
     "title": "L'IA entre de bonnes mains.",
     "titleMuted": "Les vôtres.",
     "description": "Des formations conçues pour les professionnels dont les erreurs ont un coût. Avocats, médecins, consultants, dirigeants.",
-    "ctaPrimary": "Découvrir les formations",
-    "ctaPrimaryHref": "/formations",
+    "ctaPrimary": "Nous contacter",
+    "ctaPrimaryHref": "/contact",
     "ctaSecondary": "Planifier un appel",
     "logosLabel": "Ils nous font confiance",
     "diagram": {
@@ -121,7 +121,7 @@
     "bio": "Ancien avocat, consultant en stratégie digitale, enseignant à l'IHECS, formateur IA à l'EPHEC et l'UCLouvain. Praticien IA depuis 2021 — dans des contextes où l'erreur coûte.",
     "quote": "\"Le point de départ n'est pas l'outil. C'est le travail.\"",
     "cta": "Découvrir le parcours",
-    "ctaHref": "/tarik-hennen",
+    "ctaHref": "/a-propos",
     "stats": [
       { "number": "2024", "label": "Formateur en IA depuis" },
       { "number": "250+", "label": "Professionnels formés" },
@@ -183,26 +183,14 @@
     ]
   },
   "resources": {
-    "eyebrow": "Ressources exclusives",
-    "title": "Approfondissez votre expertise entre les sessions.",
+    "eyebrow": "Ressources",
+    "title": "Approfondissez votre expertise.",
     "items": [
       {
         "href": "/blog",
         "title": "Blog",
         "desc": "Analyses, décryptages et actualités sur l'IA générative pour rester à la pointe de votre domaine.",
         "cta": "Lire le blog"
-      },
-      {
-        "href": "/ressources-ia",
-        "title": "Annuaire d'outils IA",
-        "desc": "Notre sélection d'outils triés par cas d'usage, pour identifier ce qui correspond à vos contraintes professionnelles.",
-        "cta": "Explorer l'annuaire"
-      },
-      {
-        "href": "/newsletter",
-        "title": "Newsletter",
-        "desc": "Tous les 15 jours — veille sélective et analyse de fond. Anticiper les révolutions de l'IA plutôt que de les subir.",
-        "cta": "S'abonner"
       }
     ]
   },

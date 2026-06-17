@@ -5,7 +5,7 @@ import content from '../content/pages/fr/index.json';
 
 const schema = homepageGraph();
 
-const { meta, hero, features, formationsSection, usps, trainer, testimonials, resources, ctaFinal } = content;
+const { meta, hero, features, usps, trainer, testimonials, resources, ctaFinal } = content;
 
 const partnerLogos = [
   { src: '/images/logos/uclouvain.png', alt: 'UCLouvain' },
@@ -314,49 +314,6 @@ const partnerLogos = [
             <h3 class="feature-title">{f.title}</h3>
             <p class="feature-desc">{f.desc}</p>
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== FORMATIONS ========== -->
-  <section id="formations" style="background: var(--color-dark-1); padding: 96px 0;">
-    <div class="container">
-      <div class="section-header">
-        <div>
-          <span class="section-eyebrow">{formationsSection.eyebrow}</span>
-          <h2 class="section-title">{formationsSection.title}</h2>
-        </div>
-        <a href="/formations" class="btn-text-link" style="white-space: nowrap; flex-shrink: 0;">{formationsSection.ctaAllFormations} &rarr;</a>
-      </div>
-
-      <div class="bootcamp-card glass-card">
-        <div>
-          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-            <span class="tag">{formationsSection.bootcamp.tag}</span>
-            <span style="font-size: 12px; color: rgba(255,255,255,0.3);">{formationsSection.bootcamp.meta}</span>
-          </div>
-          <h3 style="font-family: var(--font-display); font-size: 28px; font-weight: 700; color: #ffffff; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px;">{formationsSection.bootcamp.title}</h3>
-          <p style="font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.75; max-width: 520px; margin-bottom: 24px;">{formationsSection.bootcamp.desc}</p>
-          <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
-            <a href="#" data-open-modal="waitlist" class="btn-primary btn-sm">{formationsSection.bootcamp.ctaWaitlist}</a>
-            <a href="/bootcamp" class="btn-text-link" style="font-size: 14px;">{formationsSection.bootcamp.ctaSeeProgram} &rarr;</a>
-          </div>
-        </div>
-        <div>
-          <p style="font-size: 11px; color: rgba(255,255,255,0.25); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">{formationsSection.bootcamp.nextSession.label}</p>
-          <p style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: #ffffff;">{formationsSection.bootcamp.nextSession.date}</p>
-        </div>
-      </div>
-
-      <div class="grid-4">
-        {formationsSection.formations.map((f) => (
-          <a href={f.href} class="glass-card" style="display: flex; flex-direction: column; gap: 10px; text-decoration: none;">
-            <span class="tag-outline" style="align-self: flex-start; margin-bottom: 4px;">{f.tag}</span>
-            <h3 class="formation-title">{f.title}</h3>
-            <p class="formation-desc">{f.desc}</p>
-            <span class="btn-text-link" style="font-size: 13px; margin-top: auto;">Découvrir &rarr;</span>
-          </a>
         ))}
       </div>
     </div>

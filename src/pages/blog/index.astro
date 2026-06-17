@@ -1,25 +1,16 @@
 ---
-import { Image } from 'astro:assets';
-import type { ImageMetadata } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { breadcrumb, articleItemListSchema } from '../../lib/schema';
-import { getCollection } from 'astro:content';
+import { getArticles, articleImageUrl } from '~/lib/directus';
 
 const bc = breadcrumb([{ name: 'Blog', href: '/blog' }]);
 
-const allArticles = (await getCollection('blog', ({ data }) => !data.draft))
-  .sort((a, b) => {
-    const dateA = new Date(a.data.updatedDate ?? a.data.pubDate).getTime();
-    const dateB = new Date(b.data.updatedDate ?? b.data.pubDate).getTime();
-    return dateB - dateA;
-  });
-
-const blogImages = import.meta.glob<{ default: ImageMetadata }>('../../assets/blog/*', { eager: true });
+const allArticles = await getArticles();
 
 const itemList = articleItemListSchema({
   name: 'Blog IA pour professionnels — Cercle IA',
-  description: 'Analyses, guides et ressources pratiques sur l\'IA professionnelle.',
-  items: allArticles.map((a) => ({ url: `/blog/${a.id}` })),
+  description: "Analyses, guides et ressources pratiques sur l'IA professionnelle.",
+  items: allArticles.map((a) => ({ url: `/blog/${a.slug}` })),
 });
 
 const schema = {
@@ -66,20 +57,20 @@ const schema = {
       {allArticles.length > 0 ? (
         <div class="blog-grid">
           {allArticles.map((article) => {
-            const displayDate = article.data.updatedDate ?? article.data.pubDate;
-            const dateLabel = article.data.updatedDate ? 'Mis à jour ' : '';
+            const displayDate = article.updated_date ?? article.pub_date;
+            const dateLabel = article.updated_date ? 'Mis à jour ' : '';
             const date = dateLabel + new Intl.DateTimeFormat('fr-BE', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(displayDate));
-            const imgFile = article.data.image?.split('/').pop();
-            const imageMetadata = imgFile ? blogImages[`../../assets/blog/${imgFile}`]?.default : undefined;
+            const imageUrl = articleImageUrl(article);
             return (
-              <a href={`/blog/${article.id}`} class="blog-card" style="text-decoration: none; display: flex; flex-direction: column;">
-                {imageMetadata ? (
+              <a href={`/blog/${article.slug}`} class="blog-card" style="text-decoration: none; display: flex; flex-direction: column;">
+                {imageUrl ? (
                   <div class="blog-card-img">
-                    <Image
-                      src={imageMetadata}
-                      alt={article.data.imageAlt ?? article.data.title}
+                    <img
+                      src={imageUrl}
+                      alt={article.image_alt ?? article.title}
                       width={748}
                       height={420}
+                      loading="lazy"
                       style="width: 100%; height: 100%; object-fit: cover; display: block;"
                     />
                   </div>
@@ -89,13 +80,13 @@ const schema = {
 
                 <div class="blog-card-body">
                   <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap;">
-                    {article.data.category && (
-                      <span class="tag" style="font-size: 10px; padding: 3px 10px;">{article.data.category}</span>
+                    {article.category && (
+                      <span class="tag" style="font-size: 10px; padding: 3px 10px;">{article.category}</span>
                     )}
                     <span style="font-size: 12px; color: rgba(255,255,255,0.3);">{date}</span>
                   </div>
 
-                  <h2 style="font-family: var(--font-display); font-size: 19px; font-weight: 700; color: #ffffff; line-height: 1.35; margin-bottom: 16px; flex: 1;">{article.data.title}</h2>
+                  <h2 style="font-family: var(--font-display); font-size: 19px; font-weight: 700; color: #ffffff; line-height: 1.35; margin-bottom: 16px; flex: 1;">{article.title}</h2>
 
                   <div style="display: flex; justify-content: flex-end;">
                     <span style="font-size: 13px; font-weight: 600; color: var(--color-accent); white-space: nowrap;">Lire &rarr;</span>
@@ -115,9 +106,8 @@ const schema = {
           </div>
           <h3 style="font-family: var(--font-display); font-size: 24px; font-weight: 700; color: #ffffff; margin-bottom: 12px;">Les premiers articles arrivent</h3>
           <p style="font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.75; margin-bottom: 28px;">
-            En attendant, la newsletter couvre les sujets IA les plus importants tous les 15 jours.
+            Le contenu est en cours de migration.
           </p>
-          <a href="https://www.linkedin.com/newsletters/cercle-ia-7353754146262401025/" target="_blank" rel="noopener noreferrer" class="btn-primary">S'abonner à la newsletter &rarr;</a>
         </div>
       )}
 
@@ -127,15 +117,12 @@ const schema = {
   <!-- ========== CTA FINAL ========== -->
   <section style="background: var(--color-dark-1); padding: 80px 0; border-top: 1px solid rgba(255,255,255,0.05);">
     <div class="container" style="text-align: center; max-width: 680px;">
-      <span class="section-eyebrow">Ne ratez aucun article</span>
-      <h2 class="section-title">Abonnez-vous à la newsletter</h2>
+      <span class="section-eyebrow">Cercle IA</span>
+      <h2 class="section-title">Vous avez une question ?</h2>
       <p style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.85; margin: 20px 0 32px;">
-        Chaque nouvelle analyse, guide ou ressource est publié en priorité dans la newsletter Cercle IA.
+        Contactez-nous directement — nous répondons à toutes les demandes.
       </p>
-      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <a href="https://www.linkedin.com/newsletters/cercle-ia-7353754146262401025/" target="_blank" rel="noopener noreferrer" class="btn-primary">S'abonner à la newsletter &rarr;</a>
-        <a href="/formations" class="btn-outline">Découvrir les formations</a>
-      </div>
+      <a href="/contact" class="btn-primary">Nous contacter &rarr;</a>
     </div>
   </section>
 

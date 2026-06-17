@@ -8,108 +8,17 @@ const { variant = 'dark' } = Astro.props;
 const currentPath = Astro.url.pathname;
 const isLight = variant === 'light';
 
-const isEnglish = currentPath === '/en' || currentPath.startsWith('/en/');
-const noEnEquivalent: string[] = [];
-const legalFrToEn: Record<string, string> = {
-  '/conditions-generales': '/en/terms-and-conditions',
-  '/politique-confidentialite': '/en/privacy-policy',
-  '/politique-ia': '/en/ai-policy',
-};
-const legalEnToFr: Record<string, string> = {
-  '/en/terms-and-conditions': '/conditions-generales',
-  '/en/privacy-policy': '/politique-confidentialite',
-  '/en/ai-policy': '/politique-ia',
-};
-const frPath = isEnglish
-  ? (legalEnToFr[currentPath] ?? (currentPath === '/en' ? '/' : currentPath.slice(3)))
-  : currentPath;
-const enPath = isEnglish
-  ? currentPath
-  : (legalFrToEn[currentPath] ?? (currentPath === '/' ? '/en' : '/en' + currentPath));
-
-const base = isEnglish ? '/en' : '';
-
-const formationLinks = [
-  {
-    href: `${base}/formations/avocats`,
-    label: isEnglish ? 'Lawyers and legal professionals' : 'Avocats et juristes',
-    icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-  },
-  {
-    href: `${base}/formations/consultants`,
-    label: 'Consultants',
-    icon: '<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>',
-  },
-  {
-    href: `${base}/formations/dirigeants`,
-    label: isEnglish ? 'Executives and managers' : 'Dirigeants et managers',
-    icon: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
-  },
-  {
-    href: `${base}/formations/rh`,
-    label: isEnglish ? 'HR professionals' : 'Ressources humaines',
-    icon: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
-  },
-  {
-    href: `${base}/formations/medecins`,
-    label: isEnglish ? 'Doctors' : 'Médecins',
-    icon: '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>',
-  },
+const navLinks = [
+  { href: '/blog', label: 'Blog' },
+  { href: '/a-propos', label: 'À propos' },
+  { href: '/contact', label: 'Contact' },
 ];
-
-const simpleNavLinks = [
-  { href: `${base}/bootcamp`, label: isEnglish ? 'AI Bootcamp' : 'Bootcamp IA' },
-  { href: `${base}/newsletter`, label: 'Newsletter' },
-  { href: `${base}/blog`, label: 'Blog' },
-  { href: `${base}/a-propos`, label: isEnglish ? 'About' : 'À propos' },
-  { href: `${base}/contact`, label: 'Contact' },
-];
-
-const logoHref = isEnglish ? '/en' : '/';
 ---
-
-{!isEnglish && (
-<>
-<div id="atelier-banner" class="atelier-banner">
-  <div class="banner-inner">
-    <div class="banner-body">
-      <span class="banner-dot" aria-hidden="true"></span>
-      <strong class="banner-title">Atelier IA</strong>
-      <span class="banner-sep" aria-hidden="true">&middot;</span>
-      <span class="banner-desc">Chaque mardi à midi en ligne &middot; 1h pour poser vos questions et choisir les bons outils.</span>
-      <a href="/atelier-ia" class="banner-cta">Participer à la prochaine session gratuite &rarr;</a>
-    </div>
-    <button type="button" id="banner-close" class="banner-close-btn" aria-label="Fermer le bandeau">&times;</button>
-  </div>
-</div>
-
-<div id="atelier-bottom-sheet" class="atelier-bottom-sheet" role="complementary" aria-label="Atelier IA">
-  <button type="button" id="bottom-sheet-close" class="bottom-sheet-close" aria-label="Fermer">&times;</button>
-  <div class="bottom-sheet-header">
-    <span class="bottom-sheet-dot" aria-hidden="true"></span>
-    <span class="bottom-sheet-title">Atelier IA</span>
-  </div>
-  <p class="bottom-sheet-desc">Chaque mardi à midi en ligne &middot; 1h pour poser vos questions et choisir les bons outils IA.</p>
-  <a href="/atelier-ia" class="bottom-sheet-cta">Participer à la prochaine session &rarr;</a>
-</div>
-</>
-)}
-<script is:inline>
-(function(){
-  try{
-    var d=localStorage.getItem('atelier_banner_dismissed');
-    var dismissed=d&&(Date.now()-+d)/864e5<7;
-    var b=document.getElementById('atelier-banner');
-    var s=document.getElementById('atelier-bottom-sheet');
-    if(dismissed){if(b)b.style.display='none';if(s)s.style.display='none';}
-  }catch(e){}
-})();
-</script>
 
 <nav aria-label="Navigation principale" class={isLight ? 'nav-light' : 'nav-dark'}>
   <div class="nav-inner">
     <!-- Logo -->
-    <a href={logoHref} class="nav-logo" aria-label="Cercle IA — Accueil">
+    <a href="/" class="nav-logo" aria-label="Cercle IA — Accueil">
       <img
         src={isLight ? '/images/cercle-ia-logo-dark.svg' : '/images/cercle-ia-logo.svg'}
         alt="Cercle IA"
@@ -122,95 +31,11 @@ const logoHref = isEnglish ? '/en' : '/';
 
     <!-- Liens desktop -->
     <ul class="nav-links" role="list">
-      <!-- Bootcamp -->
-      <li>
-        <a href={`${base}/bootcamp`} aria-current={currentPath === `${base}/bootcamp` ? 'page' : undefined}>
-          {isEnglish ? 'AI Bootcamp' : 'Bootcamp IA'}
-        </a>
-      </li>
-
-      <!-- Formations IA avec dropdown -->
-      <li class="has-dropdown">
-        <a
-          href={`${base}/formations`}
-          class="dropdown-trigger"
-          aria-haspopup="true"
-          aria-current={currentPath.startsWith(`${base}/formations`) ? 'page' : undefined}
-        >
-          {isEnglish ? 'AI Training' : 'Formations IA'}
-          <svg class="chevron" width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
-            <path d="M2 3.5l3.5 3.5 3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-
-        <div class="dropdown-panel" role="region" aria-label="Formations IA">
-          <div class="dropdown-inner">
-
-            <!-- Colonne gauche : Bootcamp -->
-            <div class="dropdown-bootcamp">
-              <div class="dropdown-bootcamp-tag">{isEnglish ? 'AI Bootcamp' : 'Bootcamp IA'}</div>
-              <h3 class="dropdown-bootcamp-title">{isEnglish ? 'Master generative AI in your job' : "Maîtrisez l'IA générative dans votre métier"}</h3>
-              <p class="dropdown-bootcamp-session">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-                </svg>
-                {isEnglish ? 'Next session: September 2026' : 'Prochaine session : Septembre 2026'}
-              </p>
-              <p class="dropdown-bootcamp-desc">
-                {isEnglish ? '3 sessions to integrate AI into your practice, no technical background required.' : "3 sessions pour intégrer l'IA dans votre pratique, sans prérequis techniques."}
-              </p>
-              <div class="dropdown-bootcamp-actions">
-                <a href="#" data-open-modal="waitlist" class="dropdown-btn-primary">{isEnglish ? 'Join the priority list' : 'Rejoindre la liste prioritaire'}</a>
-                <a href={`${base}/bootcamp`} class="dropdown-text-link">{isEnglish ? 'View the programme' : 'Voir le programme'} &rarr;</a>
-              </div>
-            </div>
-
-
-
-            <!-- Colonne droite : Formations par métier -->
-            <div class="dropdown-formations">
-              <p class="dropdown-section-title">{isEnglish ? 'AI training by profession' : 'Formations IA par métier'}</p>
-              <ul role="list" class="dropdown-formation-list">
-                {formationLinks.map((f) => (
-                  <li>
-                    <a
-                      href={f.href}
-                      class="dropdown-formation-link"
-                      aria-current={currentPath === f.href ? 'page' : undefined}
-                    >
-                      <span class="dropdown-formation-icon" aria-hidden="true">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={f.icon} />
-                      </span>
-                      {f.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <div class="dropdown-contact-block">
-                <p>{isEnglish ? 'Looking for a customised training?' : 'Vous souhaitez une formation personnalisée ?'}</p>
-                <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="dropdown-text-link">
-                  {isEnglish ? 'Contact us' : 'Contactez-nous'} &rarr;
-                </a>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Footer du dropdown -->
-          <div class="dropdown-footer">
-            <a href={`${base}/formations`} class="dropdown-footer-link">{isEnglish ? 'View all training' : 'Voir toutes les formations'} &rarr;</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Autres liens -->
-      {simpleNavLinks.slice(1).map((link) => (
+      {navLinks.map((link) => (
         <li>
           <a
             href={link.href}
-            aria-current={!link.external && currentPath === link.href ? 'page' : undefined}
-            target={link.external ? '_blank' : undefined}
-            rel={link.external ? 'noopener noreferrer' : undefined}
+            aria-current={currentPath === link.href ? 'page' : undefined}
           >
             {link.label}
           </a>
@@ -218,14 +43,8 @@ const logoHref = isEnglish ? '/en' : '/';
       ))}
     </ul>
 
-    <!-- CTA + hamburger -->
+    <!-- Hamburger -->
     <div class="nav-actions">
-      <div class="lang-switcher" aria-label="Langue">
-        <a href={frPath} aria-current={!isEnglish ? 'true' : undefined} class="lang-btn">FR</a>
-        <span aria-hidden="true">|</span>
-        <a href={enPath} aria-current={isEnglish ? 'true' : undefined} class="lang-btn">EN</a>
-      </div>
-
       <button
         class="nav-hamburger"
         aria-label="Ouvrir le menu"
@@ -245,50 +64,16 @@ const logoHref = isEnglish ? '/en' : '/';
   <!-- Menu mobile -->
   <div class="nav-mobile" id="mobile-menu" hidden>
     <ul role="list">
-      <li>
-        <a href={`${base}/bootcamp`} aria-current={currentPath === `${base}/bootcamp` ? 'page' : undefined}>
-          {isEnglish ? 'AI Bootcamp' : 'Bootcamp IA'}
-        </a>
-      </li>
-      <li>
-        <span class="mobile-section-label">{isEnglish ? 'AI Training' : 'Formations IA'}</span>
-        <ul class="mobile-sub-list" role="list">
-          {formationLinks.map((f) => (
-            <li>
-              <a href={f.href} aria-current={currentPath === f.href ? 'page' : undefined}>
-                {f.label}
-              </a>
-            </li>
-          ))}
-          <li>
-            <a href={`${base}/formations`}>{isEnglish ? 'View all training' : 'Voir toutes les formations'} &rarr;</a>
-          </li>
-        </ul>
-      </li>
-      {simpleNavLinks.slice(1).map((link) => (
+      {navLinks.map((link) => (
         <li>
           <a
             href={link.href}
-            aria-current={!link.external && currentPath === link.href ? 'page' : undefined}
-            target={link.external ? '_blank' : undefined}
-            rel={link.external ? 'noopener noreferrer' : undefined}
+            aria-current={currentPath === link.href ? 'page' : undefined}
           >
             {link.label}
           </a>
         </li>
       ))}
-      <li>
-        <a href="https://app.lecercle.ai" class="nav-cta" target="_blank" rel="noopener noreferrer">
-          Plateforme
-        </a>
-      </li>
-      <li class="mobile-lang-item">
-        <div class="lang-switcher" aria-label="Langue">
-          <a href={frPath} aria-current={!isEnglish ? 'true' : undefined} class="lang-btn">FR</a>
-          <span aria-hidden="true">|</span>
-          <a href={enPath} aria-current={isEnglish ? 'true' : undefined} class="lang-btn">EN</a>
-        </div>
-      </li>
     </ul>
   </div>
 </nav>
@@ -302,231 +87,9 @@ const logoHref = isEnglish ? '/en' : '/';
     btn.setAttribute('aria-expanded', String(!expanded));
     if (menu) menu.hidden = expanded;
   });
-
-  function dismissAtelier() {
-    localStorage.setItem('atelier_banner_dismissed', String(Date.now()));
-    const banner = document.getElementById('atelier-banner');
-    if (banner) banner.style.display = 'none';
-    const sheet = document.getElementById('atelier-bottom-sheet');
-    if (sheet) {
-      sheet.classList.add('bottom-sheet-hiding');
-      sheet.addEventListener('animationend', () => { sheet.style.display = 'none'; }, { once: true });
-    }
-  }
-
-  document.getElementById('banner-close')?.addEventListener('click', dismissAtelier);
-  document.getElementById('bottom-sheet-close')?.addEventListener('click', dismissAtelier);
 </script>
 
 <style>
-  /* ===== ATELIER BANNER ===== */
-  .atelier-banner {
-    background: var(--color-dark-2);
-    border-bottom: 1px solid rgba(247,171,110,0.18);
-  }
-
-  .banner-inner {
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 10px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-
-  .banner-body {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .banner-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--color-accent);
-    flex-shrink: 0;
-    animation: banner-pulse 2.5s ease-in-out infinite;
-  }
-
-  @keyframes banner-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-
-  .banner-title {
-    font-family: var(--font-body);
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--color-accent);
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-  }
-
-  .banner-sep {
-    color: rgba(255,255,255,0.2);
-    font-size: 14px;
-  }
-
-  .banner-desc {
-    font-size: 13px;
-    color: rgba(255,255,255,0.5);
-    white-space: nowrap;
-  }
-
-  .banner-cta {
-    font-family: var(--font-body);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--color-accent);
-    text-decoration: none;
-    white-space: nowrap;
-    transition: opacity var(--transition);
-  }
-
-  .banner-cta:hover { opacity: 0.7; }
-
-  .banner-close-btn {
-    position: absolute;
-    right: 40px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: rgba(255,255,255,0.3);
-    font-size: 20px;
-    line-height: 1;
-    padding: 4px 8px;
-    transition: color var(--transition);
-    font-family: var(--font-body);
-  }
-
-  .banner-close-btn:hover { color: rgba(255,255,255,0.75); }
-
-  @media (max-width: 900px) {
-    .banner-desc { white-space: normal; font-size: 12px; }
-    .banner-sep { display: none; }
-    .banner-close-btn { right: 16px; }
-    .banner-inner { padding: 10px 48px 10px 20px; }
-  }
-
-  @media (max-width: 768px) {
-    .atelier-banner { display: none; }
-  }
-
-  /* ===== ATELIER BOTTOM SHEET (mobile only) ===== */
-  .atelier-bottom-sheet {
-    display: none;
-  }
-
-  @media (max-width: 768px) {
-    .atelier-bottom-sheet {
-      display: block;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 200;
-      background: var(--color-dark-2);
-      border-top: 1px solid rgba(247,171,110,0.25);
-      border-radius: 16px 16px 0 0;
-      padding: 16px 48px 20px 18px;
-      box-shadow: 0 -8px 40px rgba(0,0,0,0.45);
-      animation: sheet-slide-up 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
-    }
-
-    .atelier-bottom-sheet.bottom-sheet-hiding {
-      animation: sheet-slide-down 0.28s cubic-bezier(0.55, 0, 1, 0.45) both;
-    }
-
-    @keyframes sheet-slide-up {
-      from { transform: translateY(100%); opacity: 0; }
-      to   { transform: translateY(0);    opacity: 1; }
-    }
-
-    @keyframes sheet-slide-down {
-      from { transform: translateY(0);    opacity: 1; }
-      to   { transform: translateY(100%); opacity: 0; }
-    }
-
-    .bottom-sheet-close {
-      position: absolute;
-      top: 12px;
-      right: 16px;
-      background: rgba(255,255,255,0.07);
-      border: none;
-      border-radius: 50%;
-      width: 28px;
-      height: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: rgba(255,255,255,0.5);
-      font-size: 16px;
-      line-height: 1;
-      transition: background var(--transition), color var(--transition);
-    }
-
-    .bottom-sheet-close:hover {
-      background: rgba(255,255,255,0.14);
-      color: rgba(255,255,255,0.9);
-    }
-
-    .bottom-sheet-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .bottom-sheet-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--color-accent);
-      flex-shrink: 0;
-      animation: banner-pulse 2.5s ease-in-out infinite;
-    }
-
-    .bottom-sheet-title {
-      font-family: var(--font-body);
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--color-accent);
-      letter-spacing: 0.02em;
-    }
-
-    .bottom-sheet-desc {
-      font-size: 13px;
-      line-height: 1.5;
-      color: rgba(255,255,255,0.55);
-      margin: 0 0 14px;
-    }
-
-    .bottom-sheet-cta {
-      display: block;
-      background: var(--color-accent);
-      color: var(--color-dark-1);
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 700;
-      text-decoration: none;
-      padding: 13px 22px;
-      border-radius: 30px;
-      transition: opacity var(--transition);
-      width: 100%;
-      text-align: center;
-      box-sizing: border-box;
-    }
-
-    .bottom-sheet-cta:hover { opacity: 0.85; }
-  }
-
   /* ===== NAV ===== */
   nav {
     height: var(--nav-height);
@@ -554,10 +117,6 @@ const logoHref = isEnglish ? '/en' : '/';
     color: #061717;
   }
 
-  nav.nav-light .nav-cta {
-    color: var(--color-accent-hover);
-  }
-
   nav.nav-light .nav-mobile {
     background: #F5F4EE;
     border-top-color: rgba(6,23,23,0.08);
@@ -581,7 +140,7 @@ const logoHref = isEnglish ? '/en' : '/';
     max-width: var(--container-max);
     margin: 0 auto;
     padding: 0 40px;
-    height: 100%;
+    height: var(--nav-height);
     display: flex;
     align-items: center;
     gap: 40px;
@@ -602,10 +161,6 @@ const logoHref = isEnglish ? '/en' : '/';
     flex: 1;
   }
 
-  .nav-links > li {
-    position: relative;
-  }
-
   .nav-links a {
     font-family: var(--font-body);
     font-size: 15px;
@@ -616,9 +171,6 @@ const logoHref = isEnglish ? '/en' : '/';
     border-radius: var(--radius-sm);
     transition: color var(--transition);
     white-space: nowrap;
-    display: flex;
-    align-items: center;
-    gap: 5px;
   }
 
   .nav-links a:hover,
@@ -630,274 +182,12 @@ const logoHref = isEnglish ? '/en' : '/';
     font-weight: 500;
   }
 
-  .chevron {
-    transition: transform 0.2s ease;
-    flex-shrink: 0;
-  }
-
-  .has-dropdown:hover .chevron,
-  .has-dropdown:focus-within .chevron {
-    transform: rotate(180deg);
-  }
-
-  /* ===== DROPDOWN PANEL ===== */
-  .dropdown-panel::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 0;
-    right: 0;
-    height: 8px;
-  }
-
-  .dropdown-panel {
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 50%;
-    transform: translateX(-42%) translateY(-6px);
-    width: 660px;
-    background: rgba(6, 18, 18, 0.97);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 16px;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.5);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.18s ease, visibility 0.18s ease, transform 0.18s ease;
-    z-index: 200;
-  }
-
-  .has-dropdown:hover .dropdown-panel,
-  .has-dropdown:focus-within .dropdown-panel {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: all;
-    transform: translateX(-42%) translateY(0);
-  }
-
-  .dropdown-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    padding: 20px;
-  }
-
-  /* Bootcamp col */
-  .dropdown-bootcamp {
-    background: rgba(247,171,110,0.04);
-    border: 1px solid rgba(247,171,110,0.15);
-    border-radius: 12px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .dropdown-bootcamp-tag {
-    display: inline-flex;
-    align-items: center;
-    padding: 3px 10px;
-    border-radius: 20px;
-    background: rgba(247,171,110,0.15);
-    border: 1px solid rgba(247,171,110,0.3);
-    color: var(--color-accent);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    width: fit-content;
-    font-family: var(--font-body);
-  }
-
-  .dropdown-bootcamp-title {
-    font-family: var(--font-display);
-    font-size: 17px;
-    font-weight: 700;
-    color: #ffffff;
-    line-height: 1.3;
-    letter-spacing: -0.01em;
-    margin: 0;
-  }
-
-  .dropdown-bootcamp-session {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    color: rgba(255,255,255,0.35);
-    font-family: var(--font-body);
-    margin: 0;
-  }
-
-  .dropdown-bootcamp-desc {
-    font-size: 13px;
-    color: rgba(255,255,255,0.45);
-    line-height: 1.6;
-    font-family: var(--font-body);
-    margin: 0;
-  }
-
-  .dropdown-bootcamp-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 6px;
-  }
-
-  .dropdown-btn-primary {
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    padding: 9px 16px !important;
-    background: var(--color-accent) !important;
-    color: var(--color-dark-1) !important;
-    border-radius: 30px;
-    font-size: 12px !important;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background var(--transition);
-    white-space: nowrap;
-    gap: 0 !important;
-  }
-
-  .dropdown-btn-primary:hover {
-    background: var(--color-accent-hover) !important;
-    color: var(--color-dark-1) !important;
-  }
-
-  .dropdown-text-link {
-    font-size: 13px !important;
-    font-weight: 500;
-    color: var(--color-accent) !important;
-    text-decoration: none;
-    padding: 0 !important;
-    gap: 0 !important;
-    display: inline !important;
-    transition: opacity var(--transition);
-  }
-
-  .dropdown-text-link:hover {
-    opacity: 0.75;
-    color: var(--color-accent) !important;
-  }
-
-  /* Formations col */
-  .dropdown-formations {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    padding: 8px 4px 8px 8px;
-  }
-
-  .dropdown-section-title {
-    font-family: var(--font-body);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-    margin: 0;
-  }
-
-  .dropdown-formation-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    margin: 0;
-    padding: 0;
-  }
-
-  .dropdown-formation-link {
-    display: flex !important;
-    align-items: center;
-    gap: 10px !important;
-    padding: 7px 10px !important;
-    border-radius: 8px;
-    font-size: 14px !important;
-    color: rgba(255,255,255,0.7) !important;
-    text-decoration: none;
-    transition: background var(--transition), color var(--transition);
-    font-family: var(--font-body);
-    font-weight: 400;
-  }
-
-  .dropdown-formation-link:hover,
-  .dropdown-formation-link[aria-current="page"] {
-    background: rgba(255,255,255,0.06);
-    color: #ffffff !important;
-  }
-
-  .dropdown-formation-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    background: rgba(247,171,110,0.1);
-    border: 1px solid rgba(247,171,110,0.15);
-    flex-shrink: 0;
-    color: var(--color-accent);
-  }
-
-  .dropdown-contact-block {
-    margin-top: 4px;
-    padding-top: 14px;
-    border-top: 1px solid rgba(255,255,255,0.07);
-  }
-
-  .dropdown-contact-block p {
-    font-size: 12px;
-    color: rgba(255,255,255,0.4);
-    margin: 0 0 4px;
-    font-family: var(--font-body);
-    line-height: 1.4;
-  }
-
-  /* Footer dropdown */
-  .dropdown-footer {
-    padding: 12px 28px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .dropdown-footer-link {
-    display: block !important;
-    font-size: 13px !important;
-    color: rgba(255,255,255,0.4) !important;
-    text-decoration: none;
-    padding: 0 !important;
-    gap: 0 !important;
-    font-family: var(--font-body);
-    transition: color var(--transition);
-  }
-
-  .dropdown-footer-link:hover {
-    color: rgba(255,255,255,0.75) !important;
-  }
-
   /* ===== NAV ACTIONS ===== */
   .nav-actions {
     display: flex;
     align-items: center;
     gap: 12px;
     margin-left: auto;
-  }
-
-  .nav-cta {
-    color: var(--color-accent);
-    font-family: var(--font-body);
-    font-size: 15px;
-    font-weight: 600;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: color var(--transition);
-  }
-
-  .nav-cta:hover {
-    color: var(--color-accent-hover);
   }
 
   .nav-hamburger {
@@ -937,103 +227,6 @@ const logoHref = isEnglish ? '/en' : '/';
   .nav-mobile a[aria-current="page"] {
     color: #ffffff;
     background: rgba(255,255,255,0.05);
-  }
-
-  .mobile-section-label {
-    display: block;
-    font-family: var(--font-body);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.25);
-    padding: 10px 12px 4px;
-  }
-
-  .mobile-sub-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 4px;
-  }
-
-  .mobile-sub-list a {
-    font-size: 14px;
-    padding: 8px 12px 8px 24px;
-  }
-
-  .nav-mobile .nav-cta {
-    color: var(--color-accent) !important;
-    font-weight: 600;
-  }
-
-  .nav-mobile .nav-cta:hover {
-    color: var(--color-accent-hover) !important;
-    background: transparent;
-  }
-
-  /* ===== LANGUAGE SWITCHER ===== */
-  .lang-switcher {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-family: var(--font-body);
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-  }
-
-  .lang-switcher span {
-    color: rgba(255,255,255,0.15);
-    line-height: 1;
-  }
-
-  .lang-btn {
-    color: rgba(255,255,255,0.4);
-    text-decoration: none;
-    transition: color var(--transition);
-    padding: 2px 0;
-    line-height: 1;
-  }
-
-  .lang-btn:hover {
-    color: rgba(255,255,255,0.8);
-  }
-
-  .lang-btn[aria-current="true"] {
-    color: var(--color-accent);
-    font-weight: 700;
-  }
-
-  nav.nav-light .lang-switcher span {
-    color: rgba(6,23,23,0.2);
-  }
-
-  nav.nav-light .lang-btn {
-    color: rgba(6,23,23,0.4);
-  }
-
-  nav.nav-light .lang-btn:hover {
-    color: rgba(6,23,23,0.8);
-  }
-
-  nav.nav-light .lang-btn[aria-current="true"] {
-    color: var(--color-accent);
-  }
-
-  .mobile-lang-item {
-    border-top: 1px solid rgba(255,255,255,0.07);
-    margin-top: 8px;
-    padding-top: 8px;
-  }
-
-  .mobile-lang-item .lang-switcher {
-    padding: 8px 12px;
-    gap: 8px;
-    font-size: 14px;
-  }
-
-  .mobile-lang-item .lang-btn {
-    padding: 2px 0;
   }
 
   /* ===== RESPONSIVE ===== */

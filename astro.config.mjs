@@ -2,18 +2,13 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
+import node from '@astrojs/node';
 import path from 'path';
 
 export default defineConfig({
+  adapter: node({ mode: 'standalone' }),
   site: 'https://lecercle.ai',
   trailingSlash: 'never',
-  i18n: {
-    defaultLocale: 'fr',
-    locales: ['fr', 'en'],
-    routing: {
-      prefixDefaultLocale: false,
-    },
-  },
   server: {
     port: 3000,
   },
