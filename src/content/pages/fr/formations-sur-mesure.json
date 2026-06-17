@@ -9,7 +9,7 @@
     "eyebrow": "Formation sur mesure",
     "title": "Vous souhaitez une formation IA",
     "titleAccent": "sur mesure ?",
-    "description": "Parlez-nous de vos objectifs, votre métier et votre contexte professionnel. Nous vous revenons sous 24 h ouvrables avec une proposition adaptée."
+    "description": "Parlez-nous de vos objectifs, votre métier et votre contexte professionnel. Nous vous revenons sous 48 à 72 h ouvrables avec une proposition adaptée."
   },
   "form": {
     "fields": {
@@ -45,7 +45,7 @@
     "submitLabel": "Recevoir ma proposition personnalisée"
   },
   "reassurances": [
-    "Réponse sous 24 h ouvrables",
+    "Réponse sous 48 à 72 h ouvrables",
     "Proposition 100 % sur mesure",
     "Sans engagement"
   ]

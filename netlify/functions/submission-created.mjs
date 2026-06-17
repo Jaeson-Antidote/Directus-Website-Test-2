@@ -4,7 +4,7 @@
  *
  * Env vars (set in Netlify dashboard):
  *   RESEND_API_KEY        — Resend API key
- *   CONTACT_FROM_EMAIL    — verified sender address (e.g. "Cercle IA <hello@cercle-ia.be>")
+ *   CONTACT_FROM_EMAIL    — verified sender address (e.g. "Cercle IA <hello@lecercle.ai>")
  */
 
 const RESEND_API = 'https://api.resend.com/emails';
@@ -45,7 +45,7 @@ function templateContact({ prenom, nom, organisation, message }) {
               <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
                 <tr><td style="padding:20px 0;">
                   <div align="center"><div style="max-width:280px;">
-                    <img src="https://cercle-ia.be/images/email/cercle-ia-logo.png" style="display:block;height:auto;border:0;width:100%;" width="280" alt="Cercle IA" height="auto">
+                    <img src="https://lecercle.ai/images/email/cercle-ia-logo.png" style="display:block;height:auto;border:0;width:100%;" width="280" alt="Cercle IA" height="auto">
                   </div></div>
                 </td></tr>
               </table>
@@ -112,7 +112,7 @@ ${fullName ? `Nom : ${fullName}\n` : ''}${organisation ? `Organisation : ${organ
 N'hésitez pas à nous contacter : +32 (2) 808 75 45, hello@lecercle.ai.
 
 Bien cordialement,
-L'équipe du Cercle IA · cercle-ia.be`;
+L'équipe du Cercle IA · lecercle.ai`;
 
   return {
     subject: `Votre message a bien été reçu — Cercle IA`,
@@ -157,7 +157,7 @@ function templateWaitlist({ prenom }) {
                 <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
                   <tr><td style="padding:20px 0;width:100%;">
                     <div align="center"><div style="max-width:280px;">
-                      <img src="https://cercle-ia.be/images/email/cercle-ia-logo.png" style="display:block;height:auto;border:0;width:100%;" width="280" alt="Cercle IA" height="auto">
+                      <img src="https://lecercle.ai/images/email/cercle-ia-logo.png" style="display:block;height:auto;border:0;width:100%;" width="280" alt="Cercle IA" height="auto">
                     </div></div>
                   </td></tr>
                 </table>
@@ -220,7 +220,7 @@ N'hésitez pas à nous contacter si vous avez la moindre question : +32 (2) 808 
 Nous avons hâte de démarrer cette aventure avec vous !
 
 Bien cordialement,
-L'équipe du Cercle IA · cercle-ia.be`;
+L'équipe du Cercle IA · lecercle.ai`;
 
   return {
     subject: `Votre inscription sur la liste d'attente — Bootcamp Cercle IA`,
@@ -265,7 +265,7 @@ function templateFormationSurMesure({ prenom, nom, metier, entreprise, taille, m
               <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
                 <tr><td style="padding:20px 0;">
                   <div align="center"><div style="max-width:280px;">
-                    <img src="https://cercle-ia.be/images/email/cercle-ia-logo.png" style="display:block;height:auto;border:0;width:100%;" width="280" alt="Cercle IA" height="auto">
+                    <img src="https://lecercle.ai/images/email/cercle-ia-logo.png" style="display:block;height:auto;border:0;width:100%;" width="280" alt="Cercle IA" height="auto">
                   </div></div>
                 </td></tr>
               </table>
@@ -336,7 +336,7 @@ ${fullName ? `Nom : ${fullName}\n` : ''}${metier ? `Métier : ${metier}\n` : ''}
 N'hésitez pas à nous contacter : +32 (2) 808 75 45, hello@lecercle.ai.
 
 Bien cordialement,
-L'équipe du Cercle IA · cercle-ia.be`;
+L'équipe du Cercle IA · lecercle.ai`;
 
   return {
     subject: `Votre demande de formation sur mesure — Cercle IA`,
@@ -381,7 +381,7 @@ function templateProgramme({ prenom, nom, entreprise, fonction }) {
                 <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
                   <tr><td style="padding:20px 0;width:100%;">
                     <div align="center"><div style="max-width:280px;">
-                      <img src="https://cercle-ia.be/images/email/cercle-ia-logo.png" style="display:block;height:auto;border:0;width:100%;" width="280" alt="Cercle IA" height="auto">
+                      <img src="https://lecercle.ai/images/email/cercle-ia-logo.png" style="display:block;height:auto;border:0;width:100%;" width="280" alt="Cercle IA" height="auto">
                     </div></div>
                   </td></tr>
                 </table>
@@ -484,7 +484,7 @@ https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia
 
 Des questions ? Répondez simplement à cet email, nous lisons et répondons personnellement à chaque message.
 
-L'équipe du Cercle IA · cercle-ia.be`;
+L'équipe du Cercle IA · lecercle.ai`;
 
   return {
     subject: `Votre programme Bootcamp IA — Cercle IA`,
@@ -529,7 +529,7 @@ function templateContactEN({ prenom, nom, organisation, message }) {
               <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
                 <tr><td style="padding:20px 0;">
                   <div align="center"><div style="max-width:280px;">
-                    <img src="https://cercle-ia.be/images/email/cercle-ia-logo.png" style="display:block;height:auto;border:0;width:100%;" width="280" alt="Cercle IA" height="auto">
+                    <img src="https://lecercle.ai/images/email/cercle-ia-logo.png" style="display:block;height:auto;border:0;width:100%;" width="280" alt="Cercle IA" height="auto">
                   </div></div>
                 </td></tr>
               </table>
@@ -596,7 +596,7 @@ ${fullName ? `Name: ${fullName}\n` : ''}${organisation ? `Organisation: ${organi
 Feel free to reach out: +32 (2) 808 75 45, hello@lecercle.ai.
 
 Kind regards,
-The Cercle IA team · cercle-ia.be`;
+The Cercle IA team · lecercle.ai`;
 
   return {
     subject: `Your message has been received — Cercle IA`,
@@ -640,7 +640,7 @@ function templateWaitlistEN({ prenom }) {
               <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
                 <tr><td style="padding:20px 0;">
                   <div align="center"><div style="max-width:280px;">
-                    <img src="https://cercle-ia.be/images/email/cercle-ia-logo.png" style="display:block;height:auto;border:0;width:100%;" width="280" alt="Cercle IA" height="auto">
+                    <img src="https://lecercle.ai/images/email/cercle-ia-logo.png" style="display:block;height:auto;border:0;width:100%;" width="280" alt="Cercle IA" height="auto">
                   </div></div>
                 </td></tr>
               </table>
@@ -702,7 +702,7 @@ Feel free to reach out if you have any questions: +32 (2) 808 75 45, hello@lecer
 We look forward to starting this journey with you!
 
 Kind regards,
-The Cercle IA team · cercle-ia.be`;
+The Cercle IA team · lecercle.ai`;
 
   return {
     subject: `You're on the waitlist — Cercle IA Bootcamp`,
@@ -747,7 +747,7 @@ function templateFormationSurMesureEN({ prenom, nom, metier, entreprise, taille,
               <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
                 <tr><td style="padding:20px 0;">
                   <div align="center"><div style="max-width:280px;">
-                    <img src="https://cercle-ia.be/images/email/cercle-ia-logo.png" style="display:block;height:auto;border:0;width:100%;" width="280" alt="Cercle IA" height="auto">
+                    <img src="https://lecercle.ai/images/email/cercle-ia-logo.png" style="display:block;height:auto;border:0;width:100%;" width="280" alt="Cercle IA" height="auto">
                   </div></div>
                 </td></tr>
               </table>
@@ -818,7 +818,7 @@ ${fullName ? `Name: ${fullName}\n` : ''}${metier ? `Job title: ${metier}\n` : ''
 Feel free to reach out: +32 (2) 808 75 45, hello@lecercle.ai.
 
 Kind regards,
-The Cercle IA team · cercle-ia.be`;
+The Cercle IA team · lecercle.ai`;
 
   return {
     subject: `Your custom training request — Cercle IA`,
@@ -862,7 +862,7 @@ function templateProgrammeEN({ prenom, nom, entreprise, fonction }) {
               <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
                 <tr><td style="padding:20px 0;">
                   <div align="center"><div style="max-width:280px;">
-                    <img src="https://cercle-ia.be/images/email/cercle-ia-logo.png" style="display:block;height:auto;border:0;width:100%;" width="280" alt="Cercle IA" height="auto">
+                    <img src="https://lecercle.ai/images/email/cercle-ia-logo.png" style="display:block;height:auto;border:0;width:100%;" width="280" alt="Cercle IA" height="auto">
                   </div></div>
                 </td></tr>
               </table>
@@ -964,7 +964,7 @@ https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia
 
 Any questions? Simply reply to this email — we read and personally respond to every message.
 
-The Cercle IA team · cercle-ia.be`;
+The Cercle IA team · lecercle.ai`;
 
   return {
     subject: `Your AI Bootcamp programme — Cercle IA`,
@@ -982,7 +982,7 @@ function emailFooter() {
       <tbody><tr><td style="vertical-align:top;">
         <table width="100%" border="0" cellpadding="10" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
           <tr><td><div align="left"><div style="max-width:70px;">
-            <img src="https://cercle-ia.be/images/email/cercle-ia-favicon.png" style="display:block;height:auto;border:0;width:100%;" width="70" alt="Cercle IA" height="auto">
+            <img src="https://lecercle.ai/images/email/cercle-ia-favicon.png" style="display:block;height:auto;border:0;width:100%;" width="70" alt="Cercle IA" height="auto">
           </div></div></td></tr>
         </table>
         <table width="100%" border="0" cellpadding="10" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;word-break:break-word;">
@@ -999,7 +999,7 @@ function emailFooter() {
                 <td style="padding:0 4px 0 0;"><a href="https://www.linkedin.com/company/cercle-ia/" target="_blank"><img src="https://app-rsrc.getbee.io/public/resources/social-networks-icon-sets/t-only-logo-white/linkedin@2x.png" width="32" height="auto" alt="LinkedIn" style="display:block;height:auto;border:0;"></a></td>
                 <td style="padding:0 4px 0 0;"><a href="https://www.facebook.com/cercleIA" target="_blank"><img src="https://app-rsrc.getbee.io/public/resources/social-networks-icon-sets/t-only-logo-white/facebook@2x.png" width="32" height="auto" alt="Facebook" style="display:block;height:auto;border:0;"></a></td>
                 <td style="padding:0 4px 0 0;"><a href="https://www.instagram.com/cercle.ia" target="_blank"><img src="https://app-rsrc.getbee.io/public/resources/social-networks-icon-sets/t-only-logo-white/instagram@2x.png" width="32" height="auto" alt="Instagram" style="display:block;height:auto;border:0;"></a></td>
-                <td style="padding:0 4px 0 0;"><a href="https://cercle-ia.be/" target="_blank"><img src="https://app-rsrc.getbee.io/public/resources/social-networks-icon-sets/t-only-logo-white/website@2x.png" width="32" height="auto" alt="Site web" style="display:block;height:auto;border:0;"></a></td>
+                <td style="padding:0 4px 0 0;"><a href="https://lecercle.ai/" target="_blank"><img src="https://app-rsrc.getbee.io/public/resources/social-networks-icon-sets/t-only-logo-white/website@2x.png" width="32" height="auto" alt="Site web" style="display:block;height:auto;border:0;"></a></td>
               </tr>
             </table>
           </div></td></tr>
