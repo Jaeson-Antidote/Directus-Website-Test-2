@@ -6,6 +6,15 @@ import content from '../content/pages/fr/index.json';
 const schema = homepageGraph();
 
 const { meta, hero, features, formationsSection, usps, trainer, testimonials, resources, ctaFinal } = content;
+
+const partnerLogos = [
+  { src: '/images/logos/uclouvain.png', alt: 'UCLouvain' },
+  { src: '/images/logos/ephec.png', alt: 'EPHEC' },
+  { src: '/images/logos/ihecs.png', alt: 'IHECS' },
+  { src: '/images/logos/akt-cci.png', alt: 'AKT CCI Liège' },
+  { src: '/images/logos/wallonia.png', alt: 'Wallonia.be' },
+  { src: '/images/logos/brussels-study-center.png', alt: 'Brussels Study Center' },
+];
 ---
 
 <BaseLayout
@@ -46,8 +55,8 @@ const { meta, hero, features, formationsSection, usps, trainer, testimonials, re
         </div>
 
         <!-- Visuel droit — diagramme flux formation -->
-        <div style="padding-top: 36px;">
-        <div style="position: relative; height: 440px;" aria-hidden="true">
+        <div class="hero-diagram-outer" style="padding-top: 36px;">
+        <div class="hero-diagram-inner" style="position: relative; height: 440px;" aria-hidden="true">
 
           <!-- Lignes de connexion SVG -->
           <svg style="position: absolute; inset: 0; width: 100%; height: 100%;" viewBox="0 0 340 440" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -268,19 +277,19 @@ const { meta, hero, features, formationsSection, usps, trainer, testimonials, re
       <!-- Logos partenaires (pleine largeur sous le grid) -->
       <div class="hero-logos">
         <span class="logos-label">{hero.logosLabel}</span>
-        <div class="logos-list">
-          {[
-            { src: '/images/logos/uclouvain.png', alt: 'UCLouvain' },
-            { src: '/images/logos/ephec.png', alt: 'EPHEC' },
-            { src: '/images/logos/ihecs.png', alt: 'IHECS' },
-            { src: '/images/logos/akt-cci.png', alt: 'AKT CCI Liège' },
-            { src: '/images/logos/wallonia.png', alt: 'Wallonia.be' },
-            { src: '/images/logos/brussels-study-center.png', alt: 'Brussels Study Center' },
-          ].map((logo) => (
-            <div class="logo-img-wrap">
-              <img src={logo.src} alt={logo.alt} width="120" height="32" loading="eager" decoding="async" />
-            </div>
-          ))}
+        <div class="logos-marquee">
+          <div class="logos-track">
+            {partnerLogos.map((logo) => (
+              <div class="logo-img-wrap">
+                <img src={logo.src} alt={logo.alt} width="120" height="32" loading="eager" decoding="async" />
+              </div>
+            ))}
+            {partnerLogos.map((logo) => (
+              <div class="logo-img-wrap" aria-hidden="true">
+                <img src={logo.src} alt="" width="120" height="32" loading="lazy" decoding="async" />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 

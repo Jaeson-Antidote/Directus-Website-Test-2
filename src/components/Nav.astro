@@ -200,10 +200,6 @@ const logoHref = isEnglish ? '/en' : '/';
 
     <!-- CTA + hamburger -->
     <div class="nav-actions">
-      <a href="https://app.lecercle.ai" class="nav-cta" target="_blank" rel="noopener noreferrer">
-        Plateforme
-      </a>
-
       <div class="lang-switcher" aria-label="Langue">
         <a href={frPath} aria-current={!isEnglish ? 'true' : undefined} class="lang-btn">FR</a>
         <span aria-hidden="true">|</span>
@@ -384,7 +380,7 @@ const logoHref = isEnglish ? '/en' : '/';
   .banner-close-btn:hover { color: rgba(255,255,255,0.75); }
 
   @media (max-width: 900px) {
-    .banner-desc { display: none; }
+    .banner-desc { white-space: normal; font-size: 12px; }
     .banner-sep { display: none; }
     .banner-close-btn { right: 16px; }
     .banner-inner { padding: 10px 48px 10px 20px; }
@@ -826,6 +822,16 @@ const logoHref = isEnglish ? '/en' : '/';
   .mobile-sub-list a {
     font-size: 14px;
     padding: 8px 12px 8px 24px;
+  }
+
+  .nav-mobile .nav-cta {
+    color: var(--color-accent) !important;
+    font-weight: 600;
+  }
+
+  .nav-mobile .nav-cta:hover {
+    color: var(--color-accent-hover) !important;
+    background: transparent;
   }
 
   /* ===== LANGUAGE SWITCHER ===== */
