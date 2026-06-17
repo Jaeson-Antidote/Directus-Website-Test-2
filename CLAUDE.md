@@ -64,7 +64,7 @@ Référence absolue : `./cercle-ia-design-system.md`
 
 - `<title>` : max 60 chars, mot-clé en tête
 - `<meta description>` : 120-160 chars, verbe d'action
-- `og:image` : 1280×720, dans `/public/og/`
+- `og:image` : 1200×630, dans `/public/og/`
 - Un seul `<h1>` par page
 - Format images : WebP (sauf OG = JPG)
 - `width` + `height` obligatoires sur toutes les `<img>`

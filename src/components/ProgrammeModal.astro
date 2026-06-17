@@ -1,71 +1,65 @@
 ---
 ---
 
-<!-- Modal liste d'attente Bootcamp IA -->
-<div id="waitlist-modal" hidden role="dialog" aria-modal="true" aria-labelledby="waitlist-modal-title">
-  <div class="modal-overlay" id="waitlist-modal-overlay">
+<!-- Modal réception du programme Bootcamp IA -->
+<div id="programme-modal" hidden role="dialog" aria-modal="true" aria-labelledby="programme-modal-title">
+  <div class="modal-overlay" id="programme-modal-overlay">
     <div class="modal-card">
 
       <!-- Fermer -->
-      <button class="modal-close" id="waitlist-modal-close" aria-label="Fermer">
+      <button class="modal-close" id="programme-modal-close" aria-label="Fermer">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
         </svg>
       </button>
 
       <!-- État initial : formulaire -->
-      <div id="waitlist-form-state">
+      <div id="programme-form-state">
         <div class="modal-header">
-          <span aria-hidden="true">🚀</span> Bootcamp IA
+          <span aria-hidden="true">📄</span> Bootcamp IA
         </div>
-        <h2 class="modal-title" id="waitlist-modal-title"></h2>
-        <p class="modal-subtitle" id="waitlist-modal-subtitle"></p>
+        <h2 class="modal-title" id="programme-modal-title"></h2>
+        <p class="modal-subtitle" id="programme-modal-subtitle"></p>
 
         <form
-          id="waitlist-form"
-          name="waitlist"
+          id="programme-form"
+          name="programme"
           method="POST"
           data-netlify="true"
           netlify-honeypot="bot-field"
           novalidate
         >
-          <input type="hidden" name="form-name" value="waitlist" />
+          <input type="hidden" name="form-name" value="programme" />
           <input type="hidden" name="bot-field" />
-          <input type="hidden" name="lang" id="waitlist-lang" value="fr" />
+          <input type="hidden" name="lang" id="programme-lang" value="fr" />
 
           <div class="form-grid">
-            <input type="text" id="waitlist-prenom" name="prenom" class="input-dark" required />
-            <input type="text" id="waitlist-nom" name="nom" class="input-dark" />
-            <input type="email" id="waitlist-email" name="email" class="input-dark" required />
-            <input type="tel" id="waitlist-telephone" name="telephone" class="input-dark" />
-            <input type="text" id="waitlist-entreprise" name="entreprise" class="input-dark" />
-            <input type="text" id="waitlist-fonction" name="fonction" class="input-dark" />
-            <textarea
-              id="waitlist-source"
-              name="source"
-              class="input-dark textarea-full"
-              rows="3"
-            ></textarea>
+            <input type="text" id="programme-prenom" name="prenom" class="input-dark" required />
+            <input type="text" id="programme-nom" name="nom" class="input-dark" />
+            <input type="email" id="programme-email" name="email" class="input-dark" required />
+            <input type="tel" id="programme-telephone" name="telephone" class="input-dark" />
+            <input type="text" id="programme-entreprise" name="entreprise" class="input-dark" />
+            <input type="text" id="programme-fonction" name="fonction" class="input-dark" />
           </div>
 
           <div class="form-gdpr">
-            <input type="checkbox" id="waitlist-gdpr" name="gdpr" required />
-            <label for="waitlist-gdpr" id="waitlist-gdpr-label"></label>
+            <input type="checkbox" id="programme-gdpr" name="gdpr" required />
+            <label for="programme-gdpr" id="programme-gdpr-label"></label>
           </div>
 
-          <p class="form-error" id="waitlist-error" hidden></p>
+          <p class="form-error" id="programme-error" hidden></p>
 
-          <button type="submit" class="modal-submit" id="waitlist-submit"></button>
+          <button type="submit" class="modal-submit" id="programme-submit"></button>
         </form>
       </div>
 
       <!-- État succès -->
-      <div id="waitlist-success-state" hidden>
+      <div id="programme-success-state" hidden>
         <div class="modal-success">
           <span class="modal-success-icon" aria-hidden="true">✓</span>
-          <h2 class="modal-title" id="waitlist-success-title"></h2>
-          <p class="modal-subtitle" id="waitlist-success-subtitle"></p>
-          <button class="modal-submit" id="waitlist-success-close"></button>
+          <h2 class="modal-title" id="programme-success-title"></h2>
+          <p class="modal-subtitle" id="programme-success-subtitle"></p>
+          <button class="modal-submit" id="programme-success-close"></button>
         </div>
       </div>
 
@@ -77,8 +71,10 @@
   const isEN = window.location.pathname.startsWith('/en');
 
   const tx = {
-    title:    isEN ? 'Join the waitlist\nfor the summer 2026 session' : 'Inscription à la liste d\'attente\npour la session d\'été 2026',
-    subtitle: isEN ? 'Sign up to receive information about upcoming sessions' : 'Inscrivez-vous pour recevoir des informations sur les prochaines sessions',
+    title:    isEN ? 'Receive the full programme' : 'Recevoir le programme complet',
+    subtitle: isEN
+      ? 'Receive the detailed Bootcamp IA programme directly by email.'
+      : 'Recevez le programme détaillé du Bootcamp IA directement par email.',
     fields: {
       prenom:    isEN ? 'First name' : 'Prénom',
       nom:       isEN ? 'Last name' : 'Nom',
@@ -86,18 +82,17 @@
       telephone: isEN ? 'Phone' : 'Téléphone',
       entreprise: isEN ? 'Company' : 'Entreprise',
       fonction:  isEN ? 'Job title' : 'Fonction',
-      source:    isEN ? 'How did you hear about the programme?' : 'Comment avez-vous entendu parlé du programme ?',
     },
     gdpr: isEN
-      ? 'By submitting this form, you agree to the processing of your data in accordance with our <a href="/en/privacy-policy" style="color:rgba(255,255,255,0.6);text-decoration:underline;">privacy policy</a>.'
+      ? 'By submitting this form, you agree to the processing of your data in accordance with our <a href="/en/politique-confidentialite" style="color:rgba(255,255,255,0.6);text-decoration:underline;">privacy policy</a>.'
       : 'En introduisant vos coordonnées dans ce formulaire, vous acceptez le traitement de vos données conformément à notre <a href="/politique-confidentialite" style="color:rgba(255,255,255,0.6);text-decoration:underline;">politique de confidentialité</a>.',
     error:   isEN ? 'An error occurred. Please try again.' : 'Une erreur est survenue. Veuillez réessayer.',
-    submit:  isEN ? 'Join the waitlist' : 'S\'inscrire',
+    submit:  isEN ? 'Receive the programme' : 'Recevoir le programme',
     sending: isEN ? 'Sending…' : 'Envoi en cours…',
-    successTitle:    isEN ? 'You\'re on the list!' : 'Vous êtes sur la liste !',
+    successTitle:    isEN ? 'Programme sent!' : 'Programme envoyé !',
     successSubtitle: isEN
-      ? 'We\'ll contact you with priority when registrations open for the summer 2026 session.'
-      : 'Nous vous contacterons en priorité à l\'ouverture des inscriptions pour la session d\'été 2026.',
+      ? 'You\'ll receive the full Bootcamp IA programme in your inbox.'
+      : 'Vous allez recevoir le programme complet du Bootcamp IA dans votre boîte mail.',
     close: isEN ? 'Close' : 'Fermer',
   };
 
@@ -115,41 +110,39 @@
   }
 
   // Populate text
-  const titleEl = document.getElementById('waitlist-modal-title');
-  if (titleEl) titleEl.innerHTML = tx.title.replace('\n', '<br />');
-  setText('waitlist-modal-subtitle', tx.subtitle);
-  setPlaceholder('waitlist-prenom', tx.fields.prenom);
-  setPlaceholder('waitlist-nom', tx.fields.nom);
-  setPlaceholder('waitlist-email', tx.fields.email);
-  setPlaceholder('waitlist-telephone', tx.fields.telephone);
-  setPlaceholder('waitlist-entreprise', tx.fields.entreprise);
-  setPlaceholder('waitlist-fonction', tx.fields.fonction);
-  setPlaceholder('waitlist-source', tx.fields.source);
-  setHTML('waitlist-gdpr-label', tx.gdpr);
-  setText('waitlist-error', tx.error);
-  setText('waitlist-submit', tx.submit);
-  setText('waitlist-success-title', tx.successTitle);
-  setText('waitlist-success-subtitle', tx.successSubtitle);
-  setText('waitlist-success-close', tx.close);
+  setText('programme-modal-title', tx.title);
+  setText('programme-modal-subtitle', tx.subtitle);
+  setPlaceholder('programme-prenom', tx.fields.prenom);
+  setPlaceholder('programme-nom', tx.fields.nom);
+  setPlaceholder('programme-email', tx.fields.email);
+  setPlaceholder('programme-telephone', tx.fields.telephone);
+  setPlaceholder('programme-entreprise', tx.fields.entreprise);
+  setPlaceholder('programme-fonction', tx.fields.fonction);
+  setHTML('programme-gdpr-label', tx.gdpr);
+  setText('programme-error', tx.error);
+  setText('programme-submit', tx.submit);
+  setText('programme-success-title', tx.successTitle);
+  setText('programme-success-subtitle', tx.successSubtitle);
+  setText('programme-success-close', tx.close);
 
   // Set lang field
-  const langInput = document.getElementById('waitlist-lang') as HTMLInputElement | null;
+  const langInput = document.getElementById('programme-lang') as HTMLInputElement | null;
   if (langInput) langInput.value = isEN ? 'en' : 'fr';
 
   // Update aria-label on close button
-  const closeBtn = document.getElementById('waitlist-modal-close');
+  const closeBtn = document.getElementById('programme-modal-close');
   if (closeBtn) closeBtn.setAttribute('aria-label', isEN ? 'Close' : 'Fermer');
 
   // ── Modal logic ──────────────────────────────────────────────────────────────
 
-  const modal = document.getElementById('waitlist-modal');
-  const overlay = document.getElementById('waitlist-modal-overlay');
-  const form = document.getElementById('waitlist-form') as HTMLFormElement | null;
-  const errorMsg = document.getElementById('waitlist-error');
-  const submitBtn = document.getElementById('waitlist-submit');
-  const formState = document.getElementById('waitlist-form-state');
-  const successState = document.getElementById('waitlist-success-state');
-  const successClose = document.getElementById('waitlist-success-close');
+  const modal = document.getElementById('programme-modal');
+  const overlay = document.getElementById('programme-modal-overlay');
+  const form = document.getElementById('programme-form') as HTMLFormElement | null;
+  const errorMsg = document.getElementById('programme-error');
+  const submitBtn = document.getElementById('programme-submit');
+  const formState = document.getElementById('programme-form-state');
+  const successState = document.getElementById('programme-success-state');
+  const successClose = document.getElementById('programme-success-close');
 
   function openModal() {
     modal?.removeAttribute('hidden');
@@ -162,7 +155,7 @@
     document.body.style.overflow = '';
   }
 
-  document.querySelectorAll('[data-open-modal="waitlist"]').forEach((el) => {
+  document.querySelectorAll('[data-open-modal="programme"]').forEach((el) => {
     el.addEventListener('click', (e) => {
       e.preventDefault();
       openModal();
@@ -215,7 +208,7 @@
 </script>
 
 <style>
-  #waitlist-modal {
+  #programme-modal {
     position: fixed;
     inset: 0;
     z-index: 1000;
@@ -303,11 +296,6 @@
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     margin-bottom: 16px;
-  }
-
-  .textarea-full {
-    grid-column: span 2;
-    resize: vertical;
   }
 
   .form-gdpr {
@@ -401,9 +389,6 @@
     }
     .form-grid {
       grid-template-columns: 1fr;
-    }
-    .textarea-full {
-      grid-column: span 1;
     }
   }
 </style>

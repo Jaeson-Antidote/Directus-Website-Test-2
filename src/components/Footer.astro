@@ -1,15 +1,22 @@
 ---
 const currentPath = Astro.url.pathname;
 const isEnglish = currentPath === '/en' || currentPath.startsWith('/en/');
-const noEnEquivalent = ['/conditions-generales', '/politique-confidentialite', '/politique-ia'];
-const frPath = isEnglish ? (currentPath === '/en' ? '/' : currentPath.slice(3)) : currentPath;
+const legalFrToEn: Record<string, string> = {
+  '/conditions-generales': '/en/terms-and-conditions',
+  '/politique-confidentialite': '/en/privacy-policy',
+  '/politique-ia': '/en/ai-policy',
+};
+const legalEnToFr: Record<string, string> = {
+  '/en/terms-and-conditions': '/conditions-generales',
+  '/en/privacy-policy': '/politique-confidentialite',
+  '/en/ai-policy': '/politique-ia',
+};
+const frPath = isEnglish
+  ? (legalEnToFr[currentPath] ?? (currentPath === '/en' ? '/' : currentPath.slice(3)))
+  : currentPath;
 const enPath = isEnglish
   ? currentPath
-  : noEnEquivalent.includes(currentPath)
-    ? '/en'
-    : currentPath === '/'
-      ? '/en'
-      : '/en' + currentPath;
+  : (legalFrToEn[currentPath] ?? (currentPath === '/' ? '/en' : '/en' + currentPath));
 
 const formations = [
   { href: '/bootcamp', label: 'Bootcamp IA' },
@@ -122,9 +129,14 @@ const ressources = [
           <a href={enPath} aria-current={isEnglish ? 'true' : undefined} class="lang-btn">EN</a>
         </div>
         <nav aria-label="Liens légaux" class="footer-legal">
-          <a href="/politique-ia">Politique IA</a>
-          <a href="/politique-confidentialite">Confidentialité</a>
-          <a href="/conditions-generales">Conditions générales</a>
+          <a href={isEnglish ? '/en/ai-policy' : '/politique-ia'}>{isEnglish ? 'AI policy' : 'Politique IA'}</a>
+          <a href={isEnglish ? '/en/privacy-policy' : '/politique-confidentialite'}>{isEnglish ? 'Privacy policy' : 'Confidentialité'}</a>
+          <a href={isEnglish ? '/en/terms-and-conditions' : '/conditions-generales'}>{isEnglish ? 'Terms and conditions' : 'Conditions générales'}</a>
+          <button
+            class="footer-cookie-btn"
+            type="button"
+            onclick="window.dispatchEvent(new CustomEvent('cercleia:open-cookie-settings'))"
+          >Gérer les cookies</button>
         </nav>
       </div>
     </div>
@@ -304,6 +316,21 @@ const ressources = [
   }
 
   .footer-legal a:hover {
+    color: rgba(255,255,255,0.6);
+  }
+
+  .footer-cookie-btn {
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    cursor: pointer;
+    padding: 0;
+    transition: color var(--transition);
+  }
+
+  .footer-cookie-btn:hover {
     color: rgba(255,255,255,0.6);
   }
 

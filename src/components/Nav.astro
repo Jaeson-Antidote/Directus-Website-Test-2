@@ -9,15 +9,23 @@ const currentPath = Astro.url.pathname;
 const isLight = variant === 'light';
 
 const isEnglish = currentPath === '/en' || currentPath.startsWith('/en/');
-const noEnEquivalent = ['/conditions-generales', '/politique-confidentialite', '/politique-ia'];
-const frPath = isEnglish ? (currentPath === '/en' ? '/' : currentPath.slice(3)) : currentPath;
+const noEnEquivalent: string[] = [];
+const legalFrToEn: Record<string, string> = {
+  '/conditions-generales': '/en/terms-and-conditions',
+  '/politique-confidentialite': '/en/privacy-policy',
+  '/politique-ia': '/en/ai-policy',
+};
+const legalEnToFr: Record<string, string> = {
+  '/en/terms-and-conditions': '/conditions-generales',
+  '/en/privacy-policy': '/politique-confidentialite',
+  '/en/ai-policy': '/politique-ia',
+};
+const frPath = isEnglish
+  ? (legalEnToFr[currentPath] ?? (currentPath === '/en' ? '/' : currentPath.slice(3)))
+  : currentPath;
 const enPath = isEnglish
   ? currentPath
-  : noEnEquivalent.includes(currentPath)
-    ? '/en'
-    : currentPath === '/'
-      ? '/en'
-      : '/en' + currentPath;
+  : (legalFrToEn[currentPath] ?? (currentPath === '/' ? '/en' : '/en' + currentPath));
 
 const base = isEnglish ? '/en' : '';
 
@@ -59,6 +67,24 @@ const simpleNavLinks = [
 
 const logoHref = isEnglish ? '/en' : '/';
 ---
+
+{!isEnglish && (
+<div id="atelier-banner" class="atelier-banner">
+  <div class="banner-inner">
+    <div class="banner-body">
+      <span class="banner-dot" aria-hidden="true"></span>
+      <strong class="banner-title">Atelier IA</strong>
+      <span class="banner-sep" aria-hidden="true">&middot;</span>
+      <span class="banner-desc">Chaque mardi à midi en ligne &middot; 1h pour poser vos questions et choisir les bons outils.</span>
+      <a href="/atelier-ia" class="banner-cta">Participer à la prochaine session gratuite &rarr;</a>
+    </div>
+    <button type="button" id="banner-close" class="banner-close-btn" aria-label="Fermer le bandeau">&times;</button>
+  </div>
+</div>
+)}
+<script is:inline>
+(function(){try{var d=localStorage.getItem('atelier_banner_dismissed');if(d&&(Date.now()-+d)/864e5<5){var b=document.getElementById('atelier-banner');if(b)b.style.display='none';}}catch(e){}})();
+</script>
 
 <nav aria-label="Navigation principale" class={isLight ? 'nav-light' : 'nav-dark'}>
   <div class="nav-inner">
@@ -260,9 +286,115 @@ const logoHref = isEnglish ? '/en' : '/';
     btn.setAttribute('aria-expanded', String(!expanded));
     if (menu) menu.hidden = expanded;
   });
+
+  document.getElementById('banner-close')?.addEventListener('click', () => {
+    localStorage.setItem('atelier_banner_dismissed', String(Date.now()));
+    const banner = document.getElementById('atelier-banner');
+    if (banner) banner.style.display = 'none';
+  });
 </script>
 
 <style>
+  /* ===== ATELIER BANNER ===== */
+  .atelier-banner {
+    background: var(--color-dark-2);
+    border-bottom: 1px solid rgba(247,171,110,0.18);
+  }
+
+  .banner-inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 10px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .banner-body {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .banner-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    flex-shrink: 0;
+    animation: banner-pulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes banner-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .banner-title {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  .banner-sep {
+    color: rgba(255,255,255,0.2);
+    font-size: 14px;
+  }
+
+  .banner-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    white-space: nowrap;
+  }
+
+  .banner-cta {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity var(--transition);
+  }
+
+  .banner-cta:hover { opacity: 0.7; }
+
+  .banner-close-btn {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgba(255,255,255,0.3);
+    font-size: 20px;
+    line-height: 1;
+    padding: 4px 8px;
+    transition: color var(--transition);
+    font-family: var(--font-body);
+  }
+
+  .banner-close-btn:hover { color: rgba(255,255,255,0.75); }
+
+  @media (max-width: 900px) {
+    .banner-desc { display: none; }
+    .banner-sep { display: none; }
+    .banner-close-btn { right: 16px; }
+    .banner-inner { padding: 10px 48px 10px 20px; }
+  }
+
+  @media (max-width: 500px) {
+    .banner-cta { display: none; }
+  }
+
+  /* ===== NAV ===== */
   nav {
     height: var(--nav-height);
     position: sticky;

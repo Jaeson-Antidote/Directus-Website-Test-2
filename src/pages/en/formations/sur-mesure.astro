@@ -61,6 +61,7 @@ const schema = {
         >
           <input type="hidden" name="form-name" value="formation-sur-mesure" />
           <input type="hidden" name="bot-field" />
+          <input type="hidden" name="lang" value="en" />
 
           <!-- Prénom / Nom -->
           <div class="grid-2" style="gap: 16px;">
@@ -180,7 +181,7 @@ const schema = {
     errorMsg?.setAttribute('hidden', '');
 
     try {
-      const res = await fetch('/', {
+      const res = await fetch(window.location.pathname, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(new FormData(form) as unknown as Record<string, string>).toString(),

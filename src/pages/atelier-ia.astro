@@ -1,0 +1,340 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { breadcrumb } from '../lib/schema';
+
+const bc = breadcrumb([{ name: 'Atelier IA', href: '/atelier-ia' }]);
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [bc],
+};
+---
+
+<BaseLayout
+  title="Atelier IA avec Tarik Hennen — Chaque mardi en live"
+  description="L'Atelier IA, c'est 1 heure en live, chaque mardi pour répondre à toutes vos questions sur l'IA. 100% gratuit avec Tarik Hennen."
+  schema={schema}
+  hreflangAlternate={false}
+>
+
+  <!-- HERO -->
+  <section class="hero-gradient grain-bg" style="padding: 72px 0 56px; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 600px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(247,171,110,0.05) 0%, transparent 70%); pointer-events: none;" aria-hidden="true"></div>
+
+    <div class="container" style="text-align: center; max-width: 700px;">
+      <nav aria-label="Fil d'Ariane" style="margin-bottom: 36px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px;">
+        <a href="/" class="breadcrumb-link">Accueil</a>
+        <span style="color: rgba(255,255,255,0.2);" aria-hidden="true">/</span>
+        <span style="color: rgba(255,255,255,0.5);">Atelier IA</span>
+      </nav>
+
+      <div class="eyebrow-badge" style="display: inline-flex; margin-bottom: 24px;">
+        <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
+        Chaque mardi &middot; 100% gratuit
+      </div>
+
+      <h1 style="font-family: var(--font-display); font-size: clamp(30px, 4.5vw, 52px); font-weight: 700; color: #ffffff; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px;">
+        Atelier IA avec Tarik Hennen
+      </h1>
+
+      <p style="font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.75; max-width: 540px; margin: 0 auto 10px;">
+        L'IA avance vite, trouvez lui une place dans votre agenda.
+      </p>
+      <p style="font-size: 16px; color: rgba(255,255,255,0.38); line-height: 1.7; max-width: 520px; margin: 0 auto;">
+        L'Atelier IA, c'est 1 heure en live, chaque mardi pour répondre à toutes vos questions sur l'IA. 100% gratuit.
+      </p>
+    </div>
+  </section>
+
+  <!-- CALENDAR SECTION -->
+  <section style="background: var(--color-dark-1); padding: 72px 0 96px;">
+    <div class="container" style="max-width: 820px;">
+
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 36px; flex-wrap: wrap; gap: 16px;">
+        <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: #ffffff; margin: 0;">Prochains ateliers</h2>
+        <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--color-accent); opacity: 0.85; flex-shrink: 0;"></div>
+            <span style="font-size: 12px; color: rgba(255,255,255,0.4);">Lien LinkedIn disponible</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.15); flex-shrink: 0;"></div>
+            <span style="font-size: 12px; color: rgba(255,255,255,0.4);">Atelier à venir</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation mois -->
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; gap: 16px;">
+        <button id="cal-prev" type="button" aria-label="Mois précédent" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius-pill); padding: 8px 18px; color: rgba(255,255,255,0.65); font-family: var(--font-body); font-size: 13px; cursor: pointer; transition: background 0.2s, opacity 0.2s; white-space: nowrap;">
+          &larr; Précédent
+        </button>
+        <h3 id="cal-month-title" style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: #ffffff; margin: 0; text-align: center; min-width: 200px;"></h3>
+        <button id="cal-next" type="button" aria-label="Mois suivant" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius-pill); padding: 8px 18px; color: rgba(255,255,255,0.65); font-family: var(--font-body); font-size: 13px; cursor: pointer; transition: background 0.2s; white-space: nowrap;">
+          Suivant &rarr;
+        </button>
+      </div>
+
+      <!-- En-têtes jours -->
+      <div id="cal-day-headers" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 6px;"></div>
+
+      <!-- Grille calendrier -->
+      <div id="cal-grid" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px;"></div>
+
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section style="background: var(--color-dark-2); padding: 64px 0; border-top: 1px solid var(--color-dark-border);">
+    <div class="container" style="text-align: center; max-width: 560px;">
+      <p style="font-size: 15px; color: rgba(255,255,255,0.38); margin-bottom: 10px;">Vous avez une question entre deux ateliers ?</p>
+      <h2 style="font-family: var(--font-display); font-size: 28px; font-weight: 700; color: #ffffff; line-height: 1.2; margin-bottom: 24px;">Prenez rendez-vous directement avec Tarik</h2>
+      <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        Réserver un appel &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- MODAL -->
+  <div
+    id="event-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+    style="display: none; position: fixed; inset: 0; z-index: 500; align-items: center; justify-content: center; padding: 20px;"
+  >
+    <!-- Overlay -->
+    <button
+      id="modal-overlay"
+      type="button"
+      aria-label="Fermer"
+      style="position: absolute; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border: none; cursor: pointer; width: 100%; height: 100%;"
+    ></button>
+
+    <!-- Card -->
+    <div style="position: relative; z-index: 1; max-width: 420px; width: 100%; background: rgba(9,39,39,0.95); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-xl); padding: 40px 36px; text-align: center; box-shadow: 0 24px 64px rgba(0,0,0,0.6);">
+
+      <button
+        id="modal-close"
+        type="button"
+        aria-label="Fermer"
+        style="position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; width: 32px; height: 32px; cursor: pointer; color: rgba(255,255,255,0.55); font-size: 18px; display: flex; align-items: center; justify-content: center; transition: background 0.2s; line-height: 1; font-family: var(--font-body);"
+      >&times;</button>
+
+      <div class="eyebrow-badge" style="display: inline-flex; margin-bottom: 20px;">
+        <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
+        Atelier IA
+      </div>
+
+      <h2 id="modal-title" style="font-family: var(--font-display); font-size: 24px; font-weight: 700; color: #ffffff; line-height: 1.2; margin-bottom: 8px;"></h2>
+      <p style="font-size: 14px; color: rgba(255,255,255,0.38); margin-bottom: 16px; font-style: italic;">avec Tarik Hennen</p>
+      <p style="font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.65; margin-bottom: 28px;">
+        1 heure en live pour répondre à toutes vos questions sur l'IA. 100% gratuit.
+      </p>
+
+      <div id="modal-cta" style="display: flex; flex-direction: column; gap: 12px; align-items: center;"></div>
+    </div>
+  </div>
+
+  <script>
+    const EVENTS: Record<string, string> = {
+      '2026-06-16': 'https://www.linkedin.com/events/7470475165542469633/?viewAsMember=true',
+    };
+
+    const MONTHS = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+    const DAY_LABELS = ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
+
+    let monthOffset = 0;
+
+    function getToday(): Date {
+      const d = new Date();
+      d.setHours(0, 0, 0, 0);
+      return d;
+    }
+
+    function dateKey(year: number, month: number, day: number): string {
+      return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    }
+
+    function renderCalendar() {
+      const today = getToday();
+      const base = new Date(today.getFullYear(), today.getMonth() + monthOffset, 1);
+      const year = base.getFullYear();
+      const month = base.getMonth();
+
+      const titleEl = document.getElementById('cal-month-title');
+      if (titleEl) titleEl.textContent = `${MONTHS[month]} ${year}`;
+
+      const prevBtn = document.getElementById('cal-prev') as HTMLButtonElement;
+      if (prevBtn) {
+        const atMin = monthOffset <= 0;
+        prevBtn.disabled = atMin;
+        prevBtn.style.opacity = atMin ? '0.3' : '1';
+        prevBtn.style.cursor = atMin ? 'not-allowed' : 'pointer';
+      }
+
+      // Day headers
+      const headersEl = document.getElementById('cal-day-headers');
+      if (headersEl) {
+        headersEl.innerHTML = DAY_LABELS.map(d =>
+          `<div style="text-align: center; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.22); letter-spacing: 0.07em; text-transform: uppercase; padding: 4px 0;">${d}</div>`
+        ).join('');
+      }
+
+      // Grid
+      const grid = document.getElementById('cal-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      const firstDow = new Date(year, month, 1).getDay();
+      const emptyBefore = firstDow === 0 ? 6 : firstDow - 1;
+      const lastDate = new Date(year, month + 1, 0).getDate();
+
+      for (let i = 0; i < emptyBefore; i++) {
+        const el = document.createElement('div');
+        el.style.cssText = 'aspect-ratio: 1;';
+        grid.appendChild(el);
+      }
+
+      for (let d = 1; d <= lastDate; d++) {
+        const date = new Date(year, month, d);
+        const isTuesday = date.getDay() === 2;
+        const dk = dateKey(year, month, d);
+        const hasLinkedIn = dk in EVENTS;
+        const isPast = date < today;
+        const isToday = date.toDateString() === today.toDateString();
+
+        if (isTuesday) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+
+          let bg: string, border: string, numColor: string, labelColor: string;
+
+          if (hasLinkedIn && !isPast) {
+            bg = 'rgba(247,171,110,0.1)';
+            border = 'rgba(247,171,110,0.38)';
+            numColor = '#ffffff';
+            labelColor = 'var(--color-accent)';
+          } else if (hasLinkedIn && isPast) {
+            bg = 'rgba(255,255,255,0.03)';
+            border = 'rgba(255,255,255,0.07)';
+            numColor = 'rgba(255,255,255,0.3)';
+            labelColor = 'rgba(247,171,110,0.3)';
+          } else if (!isPast) {
+            bg = 'rgba(255,255,255,0.04)';
+            border = 'rgba(255,255,255,0.08)';
+            numColor = 'rgba(255,255,255,0.6)';
+            labelColor = 'rgba(255,255,255,0.22)';
+          } else {
+            bg = 'rgba(255,255,255,0.02)';
+            border = 'rgba(255,255,255,0.05)';
+            numColor = 'rgba(255,255,255,0.2)';
+            labelColor = 'rgba(255,255,255,0.1)';
+          }
+
+          const todayGlow = isToday ? '; box-shadow: 0 0 0 2px rgba(247,171,110,0.5)' : '';
+
+          btn.style.cssText = `aspect-ratio: 1; border-radius: 10px; background: ${bg}; border: 1px solid ${border}; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 4px; cursor: pointer; transition: background 0.2s, transform 0.15s; width: 100%; font-family: var(--font-body)${todayGlow};`;
+
+          btn.innerHTML = `<span style="font-size: clamp(11px, 2.2vw, 17px); font-weight: 600; color: ${numColor}; line-height: 1;">${d}</span><span style="font-size: clamp(6px, 1vw, 9px); font-weight: 700; color: ${labelColor}; letter-spacing: 0.06em; text-transform: uppercase; line-height: 1.2;">Atelier</span>`;
+
+          btn.dataset.date = dk;
+          btn.dataset.url = EVENTS[dk] ?? '';
+          btn.dataset.past = isPast ? '1' : '0';
+          btn.dataset.day = String(d);
+          btn.dataset.month = String(month);
+          btn.dataset.year = String(year);
+          btn.setAttribute('aria-label', `Atelier IA du ${d} ${MONTHS[month]} ${year}${isPast ? ' (passé)' : ''}`);
+
+          const bgOrig = bg;
+          const bgHover = hasLinkedIn && !isPast ? 'rgba(247,171,110,0.18)' : 'rgba(255,255,255,0.07)';
+
+          btn.addEventListener('mouseenter', () => {
+            btn.style.background = bgHover;
+            btn.style.transform = 'translateY(-1px)';
+          });
+          btn.addEventListener('mouseleave', () => {
+            btn.style.background = bgOrig;
+            btn.style.transform = '';
+          });
+          btn.addEventListener('click', () => openModal(btn));
+
+          grid.appendChild(btn);
+        } else {
+          const el = document.createElement('div');
+          const numColor = isPast ? 'rgba(255,255,255,0.18)' : 'rgba(255,255,255,0.38)';
+          const todayStyle = isToday ? 'background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);' : '';
+          el.style.cssText = `aspect-ratio: 1; border-radius: 8px; display: flex; align-items: center; justify-content: center; ${todayStyle}`;
+          el.innerHTML = `<span style="font-size: clamp(11px, 1.8vw, 14px); color: ${numColor};">${d}</span>`;
+          grid.appendChild(el);
+        }
+      }
+    }
+
+    function openModal(btn: HTMLButtonElement) {
+      const url = btn.dataset.url ?? '';
+      const isPast = btn.dataset.past === '1';
+      const day = btn.dataset.day ?? '';
+      const month = parseInt(btn.dataset.month ?? '0');
+      const year = btn.dataset.year ?? '';
+
+      const titleEl = document.getElementById('modal-title');
+      if (titleEl) titleEl.textContent = `Mardi ${day} ${MONTHS[month].toLowerCase()} ${year}`;
+
+      const ctaDiv = document.getElementById('modal-cta');
+      if (!ctaDiv) return;
+
+      if (isPast) {
+        ctaDiv.innerHTML = `
+          <p style="font-size: 13px; color: rgba(255,255,255,0.35); margin-bottom: 8px;">Cet atelier est terminé.</p>
+          ${url ? `<a href="${url}" target="_blank" rel="noopener noreferrer" class="btn-outline" style="font-size: 14px; padding: 11px 24px;">L'event est passé, voir sur LinkedIn &rarr;</a>` : ''}
+          <button type="button" class="btn-ghost modal-close-inner" style="margin-top: 4px; font-size: 13px; color: rgba(255,255,255,0.3);">Fermer</button>
+        `;
+      } else if (url) {
+        ctaDiv.innerHTML = `
+          <a href="${url}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="justify-content: center; width: 100%;">Voir l'event sur LinkedIn &rarr;</a>
+          <button type="button" class="btn-ghost modal-close-inner" style="font-size: 13px; color: rgba(255,255,255,0.3);">Fermer</button>
+        `;
+      } else {
+        ctaDiv.innerHTML = `
+          <p style="font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 8px;">Le lien LinkedIn sera disponible prochainement.</p>
+          <button type="button" class="btn-ghost modal-close-inner" style="font-size: 13px; color: rgba(255,255,255,0.3);">Fermer</button>
+        `;
+      }
+
+      ctaDiv.querySelectorAll('.modal-close-inner').forEach(el =>
+        el.addEventListener('click', closeModal)
+      );
+
+      const modal = document.getElementById('event-modal');
+      if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('event-modal');
+      if (modal) modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('cal-prev')?.addEventListener('click', () => {
+      if (monthOffset > 0) { monthOffset--; renderCalendar(); }
+    });
+
+    document.getElementById('cal-next')?.addEventListener('click', () => {
+      monthOffset++;
+      renderCalendar();
+    });
+
+    document.getElementById('modal-close')?.addEventListener('click', closeModal);
+    document.getElementById('modal-overlay')?.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    renderCalendar();
+  </script>
+
+</BaseLayout>

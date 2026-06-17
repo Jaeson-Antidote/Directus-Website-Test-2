@@ -1,0 +1,596 @@
+---
+---
+
+<!-- ================================================================
+     Bannière de consentement cookies — RGPD
+     Stockage : localStorage("cercleia_consent")
+     Événement : window.dispatchEvent(new CustomEvent("cercleia:consent", { detail }))
+     Réouverture : window.dispatchEvent(new CustomEvent("cercleia:open-cookie-settings"))
+     ================================================================ -->
+
+<div id="cb" role="region" aria-labelledby="cb-title" hidden>
+  <div class="cb-inner">
+    <div class="cb-text">
+      <strong class="cb-title" id="cb-title"></strong>
+      <span class="cb-desc"></span>
+    </div>
+    <div class="cb-actions">
+      <button class="cb-btn-text" id="cb-customize" type="button"></button>
+      <button class="cb-btn-outline" id="cb-decline" type="button"></button>
+      <button class="cb-btn-primary" id="cb-accept" type="button"></button>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
+     Modal de préférences détaillées
+     ================================================================ -->
+
+<div id="cp" hidden role="dialog" aria-modal="true" aria-labelledby="cp-heading">
+  <div class="cp-overlay" id="cp-overlay">
+    <div class="cp-card">
+
+      <button class="cp-close" id="cp-close" type="button" aria-label="Fermer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+
+      <h2 class="cp-heading" id="cp-heading"></h2>
+      <p class="cp-intro"></p>
+
+      <ul class="cp-cats" role="list">
+
+        <li class="cp-cat">
+          <div class="cp-cat-info">
+            <strong class="cp-cat-name" id="cp-name-necessary"></strong>
+            <p class="cp-cat-desc" id="cp-desc-necessary"></p>
+          </div>
+          <span class="cp-always" id="cp-always-label"></span>
+        </li>
+
+        <li class="cp-cat">
+          <div class="cp-cat-info">
+            <strong class="cp-cat-name" id="cp-name-analytics"></strong>
+            <p class="cp-cat-desc" id="cp-desc-analytics"></p>
+          </div>
+          <label class="cp-toggle">
+            <input type="checkbox" id="cp-toggle-analytics" />
+            <span class="cp-track"><span class="cp-thumb"></span></span>
+          </label>
+        </li>
+
+        <li class="cp-cat">
+          <div class="cp-cat-info">
+            <strong class="cp-cat-name" id="cp-name-marketing"></strong>
+            <p class="cp-cat-desc" id="cp-desc-marketing"></p>
+          </div>
+          <label class="cp-toggle">
+            <input type="checkbox" id="cp-toggle-marketing" />
+            <span class="cp-track"><span class="cp-thumb"></span></span>
+          </label>
+        </li>
+
+      </ul>
+
+      <div class="cp-footer">
+        <a class="cp-policy-link" id="cp-policy-link" href="/politique-confidentialite"></a>
+        <button class="cp-save" id="cp-save" type="button"></button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  const CONSENT_KEY = 'cercleia_consent';
+  const isEN = window.location.pathname.startsWith('/en');
+
+  const tx = {
+    banner: {
+      title:     isEN ? 'This site uses cookies' : 'Ce site utilise des cookies',
+      desc:      isEN
+        ? 'We use cookies to analyze traffic and improve your experience. Only strictly necessary cookies are active by default.'
+        : 'Nous utilisons des cookies pour analyser notre trafic et améliorer votre expérience. Seuls les cookies strictement nécessaires sont actifs par défaut.',
+      customize: isEN ? 'Customize' : 'Personnaliser',
+      decline:   isEN ? 'Decline all' : 'Refuser tout',
+      accept:    isEN ? 'Accept all' : 'Tout accepter',
+    },
+    prefs: {
+      heading: isEN ? 'Cookie preferences' : 'Préférences cookies',
+      intro:   isEN
+        ? 'Choose which cookies you allow us to use.'
+        : 'Choisissez les cookies que vous nous autorisez à utiliser.',
+      always:  isEN ? 'Always active' : 'Toujours actifs',
+      policy:  isEN ? 'Privacy policy' : 'Politique de confidentialité',
+      save:    isEN ? 'Save preferences' : 'Enregistrer mes choix',
+      necessary: {
+        name: isEN ? 'Necessary' : 'Nécessaires',
+        desc: isEN
+          ? 'Required for the site to function properly. Cannot be disabled.'
+          : 'Indispensables au bon fonctionnement du site. Ne peuvent pas être désactivés.',
+      },
+      analytics: {
+        name: isEN ? 'Analytics' : 'Analytiques',
+        desc: isEN
+          ? 'Help us understand how visitors use the site (page views, traffic sources).'
+          : 'Nous aident à comprendre comment les visiteurs utilisent le site (pages vues, sources de trafic).',
+      },
+      marketing: {
+        name: isEN ? 'Marketing' : 'Marketing',
+        desc: isEN
+          ? 'Used to show relevant advertising and measure campaign performance.'
+          : 'Utilisés pour afficher des publicités pertinentes et mesurer les performances des campagnes.',
+      },
+    },
+  };
+
+  /* ---- Helpers ---- */
+
+  interface Consent {
+    v: number;
+    date: string;
+    necessary: boolean;
+    analytics: boolean;
+    marketing: boolean;
+  }
+
+  function getConsent(): Consent | null {
+    try { return JSON.parse(localStorage.getItem(CONSENT_KEY) || 'null'); } catch { return null; }
+  }
+
+  function saveConsent(analytics: boolean, marketing: boolean) {
+    const c: Consent = {
+      v: 1,
+      date: new Date().toISOString(),
+      necessary: true,
+      analytics,
+      marketing,
+    };
+    localStorage.setItem(CONSENT_KEY, JSON.stringify(c));
+    window.dispatchEvent(new CustomEvent('cercleia:consent', { detail: c }));
+  }
+
+  function setText(id: string, val: string) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = val;
+  }
+
+  /* ---- Populate text ---- */
+
+  setText('cb-title',          tx.banner.title);
+  setText('cb-customize',      tx.banner.customize);
+  setText('cb-decline',        tx.banner.decline);
+  setText('cb-accept',         tx.banner.accept);
+  setText('cp-heading',        tx.prefs.heading);
+  setText('cp-always-label',   tx.prefs.always);
+  setText('cp-name-necessary', tx.prefs.necessary.name);
+  setText('cp-desc-necessary', tx.prefs.necessary.desc);
+  setText('cp-name-analytics', tx.prefs.analytics.name);
+  setText('cp-desc-analytics', tx.prefs.analytics.desc);
+  setText('cp-name-marketing', tx.prefs.marketing.name);
+  setText('cp-desc-marketing', tx.prefs.marketing.desc);
+  setText('cp-save',           tx.prefs.save);
+  setText('cp-policy-link',    tx.prefs.policy);
+  const policyLink = document.getElementById('cp-policy-link') as HTMLAnchorElement | null;
+  if (policyLink) policyLink.href = isEN ? '/en/privacy-policy' : '/politique-confidentialite';
+
+  const banner = document.getElementById('cb');
+  const prefsModal = document.getElementById('cp');
+
+  const descEl = banner?.querySelector('.cb-desc');
+  if (descEl) descEl.textContent = tx.banner.desc;
+
+  const introEl = prefsModal?.querySelector('.cp-intro');
+  if (introEl) introEl.textContent = tx.prefs.intro;
+
+  /* ---- Banner show/hide ---- */
+
+  function showBanner() {
+    if (!banner) return;
+    banner.removeAttribute('hidden');
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => banner.classList.add('cb-visible'));
+    });
+  }
+
+  function hideBanner() {
+    if (!banner) return;
+    banner.classList.remove('cb-visible');
+    banner.addEventListener('transitionend', () => {
+      banner.setAttribute('hidden', '');
+    }, { once: true });
+  }
+
+  /* ---- Preferences modal ---- */
+
+  function openPrefs() {
+    if (!prefsModal) return;
+    const consent = getConsent();
+    const analyticsToggle = document.getElementById('cp-toggle-analytics') as HTMLInputElement | null;
+    const marketingToggle = document.getElementById('cp-toggle-marketing') as HTMLInputElement | null;
+    if (analyticsToggle) analyticsToggle.checked = consent?.analytics ?? false;
+    if (marketingToggle) marketingToggle.checked = consent?.marketing ?? false;
+    prefsModal.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('cp-close')?.focus();
+  }
+
+  function closePrefs() {
+    prefsModal?.setAttribute('hidden', '');
+    document.body.style.overflow = '';
+  }
+
+  /* ---- Event listeners ---- */
+
+  document.getElementById('cb-accept')?.addEventListener('click', () => {
+    saveConsent(true, true);
+    hideBanner();
+  });
+
+  document.getElementById('cb-decline')?.addEventListener('click', () => {
+    saveConsent(false, false);
+    hideBanner();
+  });
+
+  document.getElementById('cb-customize')?.addEventListener('click', openPrefs);
+
+  document.getElementById('cp-close')?.addEventListener('click', closePrefs);
+
+  document.getElementById('cp-overlay')?.addEventListener('click', (e) => {
+    if (e.target === document.getElementById('cp-overlay')) closePrefs();
+  });
+
+  document.getElementById('cp-save')?.addEventListener('click', () => {
+    const a = (document.getElementById('cp-toggle-analytics') as HTMLInputElement | null)?.checked ?? false;
+    const m = (document.getElementById('cp-toggle-marketing') as HTMLInputElement | null)?.checked ?? false;
+    saveConsent(a, m);
+    closePrefs();
+    hideBanner();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && prefsModal && !prefsModal.hasAttribute('hidden')) closePrefs();
+  });
+
+  // Permet à n'importe quel élément de rouvrir les préférences
+  window.addEventListener('cercleia:open-cookie-settings', openPrefs);
+
+  /* ---- Init ---- */
+  if (!getConsent()) {
+    setTimeout(showBanner, 400);
+  }
+</script>
+
+<style>
+  /* ================================================================
+     Bannière (barre fixe en bas)
+     ================================================================ */
+
+  #cb {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    padding: 18px 24px;
+    background: rgba(6, 23, 23, 0.94);
+    border-top: 1px solid rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transform: translateY(110%);
+    transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: transform;
+  }
+
+  #cb.cb-visible {
+    transform: translateY(0);
+  }
+
+  .cb-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .cb-text {
+    flex: 1;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .cb-title {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .cb-desc {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.48);
+    line-height: 1.5;
+  }
+
+  .cb-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+
+  .cb-btn-text {
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+    padding: 4px 2px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.15s;
+  }
+
+  .cb-btn-text:hover { color: rgba(255, 255, 255, 0.75); }
+
+  .cb-btn-outline {
+    padding: 8px 18px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 30px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    white-space: nowrap;
+  }
+
+  .cb-btn-outline:hover {
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(255, 255, 255, 0.28);
+  }
+
+  .cb-btn-primary {
+    padding: 8px 20px;
+    background: var(--color-accent);
+    border: none;
+    border-radius: 30px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-dark-1);
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+
+  .cb-btn-primary:hover { background: var(--color-accent-hover); }
+
+  /* ================================================================
+     Modal de préférences
+     ================================================================ */
+
+  #cp {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+  }
+
+  .cp-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    overflow-y: auto;
+  }
+
+  .cp-card {
+    position: relative;
+    background: #0b1e1e;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 20px;
+    padding: 40px 36px 36px;
+    width: 100%;
+    max-width: 540px;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
+  }
+
+  .cp-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.35);
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s;
+  }
+
+  .cp-close:hover { color: rgba(255, 255, 255, 0.8); }
+
+  .cp-heading {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 8px;
+  }
+
+  .cp-intro {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.6;
+    margin: 0 0 24px;
+  }
+
+  .cp-cats {
+    list-style: none;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .cp-cat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .cp-cat:last-child { border-bottom: none; }
+
+  .cp-cat-info { flex: 1; min-width: 0; }
+
+  .cp-cat-name {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 2px;
+  }
+
+  .cp-cat-desc {
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.35);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .cp-always {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-accent);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Toggle switch */
+  .cp-toggle {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .cp-toggle input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .cp-track {
+    position: relative;
+    display: block;
+    width: 40px;
+    height: 22px;
+    background: rgba(255, 255, 255, 0.10);
+    border-radius: 11px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .cp-thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 14px;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 50%;
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  .cp-toggle input:checked + .cp-track {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  .cp-toggle input:checked + .cp-track .cp-thumb {
+    transform: translateX(18px);
+    background: var(--color-dark-1);
+  }
+
+  .cp-toggle input:focus-visible + .cp-track {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  .cp-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .cp-policy-link {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.3);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.15s;
+  }
+
+  .cp-policy-link:hover { color: rgba(255, 255, 255, 0.6); }
+
+  .cp-save {
+    padding: 10px 24px;
+    background: var(--color-accent);
+    border: none;
+    border-radius: 30px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-dark-1);
+    cursor: pointer;
+    transition: background 0.15s;
+    margin-left: auto;
+  }
+
+  .cp-save:hover { background: var(--color-accent-hover); }
+
+  /* ================================================================
+     Mobile
+     ================================================================ */
+
+  @media (max-width: 640px) {
+    #cb { padding: 14px 16px 20px; }
+
+    .cb-inner { flex-direction: column; align-items: flex-start; gap: 14px; }
+
+    .cb-actions { width: 100%; justify-content: flex-end; }
+
+    .cp-card { padding: 32px 20px 24px; }
+
+    .cp-heading { font-size: 18px; }
+  }
+</style>
