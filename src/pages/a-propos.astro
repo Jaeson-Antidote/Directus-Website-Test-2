@@ -53,7 +53,7 @@ const schema = {
             <a href="/formations" class="btn-primary">{content.hero.ctaPrimary} &rarr;</a>
           </div>
 
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.06);">
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.06);">
             {content.hero.stats.map((s) => (
               <div>
                 <span class="stat-number">{s.value}</span>
@@ -121,6 +121,59 @@ const schema = {
     </div>
   </section>
 
+  <!-- SECTION: Les formations -->
+  <section style="background: var(--color-light-1); padding: 96px 0;">
+    <div class="container">
+      <div style="max-width: 720px; margin-bottom: 56px;">
+        <span class="section-eyebrow">Les formations</span>
+        <h2 class="section-title" style="color: var(--color-text-on-light);">Un seul principe : partir de votre réalité.</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;">
+
+        <!-- Sessions ouvertes -->
+        <div class="card-white" style="padding: 40px; display: flex; flex-direction: column; height: 100%;">
+          <div style="display: inline-block; background: rgba(247,171,110,0.1); border: 1px solid rgba(247,171,110,0.3); border-radius: 30px; padding: 6px 14px; font-size: 12px; font-weight: 600; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 20px; align-self: flex-start;">Sessions ouvertes</div>
+          <p style="font-size: 14px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 12px;">Rejoindre une formation existante</p>
+          <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.75; margin-bottom: 28px;">Des sessions conçues pour des professionnels aux contraintes similaires. Vous intégrez un groupe, vous repartez avec une méthode.</p>
+          <div style="display: flex; flex-direction: column; gap: 0; flex: 1;">
+            <div style="border-top: 1px solid rgba(0,0,0,0.06); padding: 18px 0;">
+              <p style="font-size: 14px; font-weight: 700; color: var(--color-text-on-light); margin-bottom: 6px;">Bootcamp IA</p>
+              <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.7;">Plusieurs sessions intensives. Un travail en profondeur sur vos cas d'usage, avec le temps d'expérimenter et de corriger. Pour ceux qui veulent une autonomie réelle, pas une initiation.</p>
+            </div>
+            <div style="border-top: 1px solid rgba(0,0,0,0.06); padding: 18px 0 0;">
+              <p style="font-size: 14px; font-weight: 700; color: var(--color-text-on-light); margin-bottom: 6px;">Formations métiers</p>
+              <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.7;">Conçues pour des contextes précis : avocats, médecins, équipes RH, directions. Les contraintes du métier ne sont pas évoquées en introduction : elles structurent chaque exercice.</p>
+            </div>
+          </div>
+          <div style="margin-top: 32px;">
+            <a href="/formations" class="btn-outline-dark">Voir les prochaines sessions &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Sur mesure -->
+        <div class="card-white" style="padding: 40px; display: flex; flex-direction: column; height: 100%;">
+          <div style="display: inline-block; background: rgba(247,171,110,0.1); border: 1px solid rgba(247,171,110,0.3); border-radius: 30px; padding: 6px 14px; font-size: 12px; font-weight: 600; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 20px; align-self: flex-start;">Sur mesure</div>
+          <p style="font-size: 14px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 12px;">Un accompagnement construit pour vous</p>
+          <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.75; margin-bottom: 28px;">Quand un programme standard ne correspond pas à votre situation. Conçu à partir de vos cas d'usage réels, de vos outils, de vos contraintes.</p>
+          <div style="display: flex; flex-direction: column; gap: 0; flex: 1;">
+            <div style="border-top: 1px solid rgba(0,0,0,0.06); padding: 18px 0;">
+              <p style="font-size: 14px; font-weight: 700; color: var(--color-text-on-light); margin-bottom: 6px;">Formation entreprise</p>
+              <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.7;">Construite pour une équipe ou une organisation. Pas un programme standard repackagé avec votre logo en couverture : une formation conçue à partir de vos processus réels.</p>
+            </div>
+            <div style="border-top: 1px solid rgba(0,0,0,0.06); padding: 18px 0 0;">
+              <p style="font-size: 14px; font-weight: 700; color: var(--color-text-on-light); margin-bottom: 6px;">Coaching individuel</p>
+              <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.7;">Un accompagnement 1-to-1 centré sur votre pratique, votre métier, vos questions. Le rythme et le contenu s'adaptent à votre progression.</p>
+            </div>
+          </div>
+          <div style="margin-top: 32px;">
+            <a href="/contact" class="btn-outline-dark">Discutons de votre situation &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- SECTION: Témoignages -->
   <section style="background: var(--color-dark-2); padding: 96px 0;">
     <div class="container">
@@ -162,7 +215,7 @@ const schema = {
 
         <div style="display: flex; flex-direction: column; gap: 10px;">
           {[
-            { number: '2021', label: 'Praticien IA depuis' },
+            { number: '2024', label: 'Formateur en IA depuis' },
             { number: '250+', label: 'Professionnels formés' },
             { number: '15 ans', label: "D'expérience terrain" },
           ].map((s) => (

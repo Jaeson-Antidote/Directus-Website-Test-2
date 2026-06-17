@@ -13,8 +13,7 @@
     "ctaPrimary": "Découvrir les formations",
     "stats": [
       { "value": "250+", "label": "Professionnels formés" },
-      { "value": "2021", "label": "Début de pratique" },
-      { "value": "3", "label": "Formats disponibles" }
+      { "value": "2024", "label": "Formateur en IA depuis" }
     ]
   },
   "probleme": {

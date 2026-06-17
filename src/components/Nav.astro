@@ -69,6 +69,7 @@ const logoHref = isEnglish ? '/en' : '/';
 ---
 
 {!isEnglish && (
+<>
 <div id="atelier-banner" class="atelier-banner">
   <div class="banner-inner">
     <div class="banner-body">
@@ -81,9 +82,27 @@ const logoHref = isEnglish ? '/en' : '/';
     <button type="button" id="banner-close" class="banner-close-btn" aria-label="Fermer le bandeau">&times;</button>
   </div>
 </div>
+
+<div id="atelier-bottom-sheet" class="atelier-bottom-sheet" role="complementary" aria-label="Atelier IA">
+  <button type="button" id="bottom-sheet-close" class="bottom-sheet-close" aria-label="Fermer">&times;</button>
+  <div class="bottom-sheet-dot" aria-hidden="true"></div>
+  <p class="bottom-sheet-label">Événement gratuit</p>
+  <h2 class="bottom-sheet-title">Atelier IA</h2>
+  <p class="bottom-sheet-desc">Chaque mardi à midi en ligne — 1h pour poser vos questions et choisir les bons outils IA.</p>
+  <a href="/atelier-ia" class="bottom-sheet-cta">Participer à la prochaine session &rarr;</a>
+</div>
+</>
 )}
 <script is:inline>
-(function(){try{var d=localStorage.getItem('atelier_banner_dismissed');if(d&&(Date.now()-+d)/864e5<5){var b=document.getElementById('atelier-banner');if(b)b.style.display='none';}}catch(e){}})();
+(function(){
+  try{
+    var d=localStorage.getItem('atelier_banner_dismissed');
+    var dismissed=d&&(Date.now()-+d)/864e5<7;
+    var b=document.getElementById('atelier-banner');
+    var s=document.getElementById('atelier-bottom-sheet');
+    if(dismissed){if(b)b.style.display='none';if(s)s.style.display='none';}
+  }catch(e){}
+})();
 </script>
 
 <nav aria-label="Navigation principale" class={isLight ? 'nav-light' : 'nav-dark'}>
@@ -283,11 +302,19 @@ const logoHref = isEnglish ? '/en' : '/';
     if (menu) menu.hidden = expanded;
   });
 
-  document.getElementById('banner-close')?.addEventListener('click', () => {
+  function dismissAtelier() {
     localStorage.setItem('atelier_banner_dismissed', String(Date.now()));
     const banner = document.getElementById('atelier-banner');
     if (banner) banner.style.display = 'none';
-  });
+    const sheet = document.getElementById('atelier-bottom-sheet');
+    if (sheet) {
+      sheet.classList.add('bottom-sheet-hiding');
+      sheet.addEventListener('animationend', () => { sheet.style.display = 'none'; }, { once: true });
+    }
+  }
+
+  document.getElementById('banner-close')?.addEventListener('click', dismissAtelier);
+  document.getElementById('bottom-sheet-close')?.addEventListener('click', dismissAtelier);
 </script>
 
 <style>
@@ -386,8 +413,120 @@ const logoHref = isEnglish ? '/en' : '/';
     .banner-inner { padding: 10px 48px 10px 20px; }
   }
 
-  @media (max-width: 500px) {
-    .banner-cta { display: none; }
+  @media (max-width: 768px) {
+    .atelier-banner { display: none; }
+  }
+
+  /* ===== ATELIER BOTTOM SHEET (mobile only) ===== */
+  .atelier-bottom-sheet {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .atelier-bottom-sheet {
+      display: block;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: var(--color-dark-2);
+      border-top: 1px solid rgba(247,171,110,0.25);
+      border-radius: 20px 20px 0 0;
+      padding: 28px 24px 36px;
+      box-shadow: 0 -8px 40px rgba(0,0,0,0.45);
+      animation: sheet-slide-up 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .atelier-bottom-sheet.bottom-sheet-hiding {
+      animation: sheet-slide-down 0.28s cubic-bezier(0.55, 0, 1, 0.45) both;
+    }
+
+    @keyframes sheet-slide-up {
+      from { transform: translateY(100%); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+
+    @keyframes sheet-slide-down {
+      from { transform: translateY(0);    opacity: 1; }
+      to   { transform: translateY(100%); opacity: 0; }
+    }
+
+    .bottom-sheet-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: rgba(255,255,255,0.07);
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: rgba(255,255,255,0.5);
+      font-size: 18px;
+      line-height: 1;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .bottom-sheet-close:hover {
+      background: rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.9);
+    }
+
+    .bottom-sheet-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      margin-bottom: 12px;
+      animation: banner-pulse 2.5s ease-in-out infinite;
+    }
+
+    .bottom-sheet-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin: 0 0 8px;
+    }
+
+    .bottom-sheet-title {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 10px;
+      line-height: 1.2;
+    }
+
+    .bottom-sheet-desc {
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.55);
+      margin: 0 0 22px;
+    }
+
+    .bottom-sheet-cta {
+      display: inline-block;
+      background: var(--color-accent);
+      color: var(--color-dark-1);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 13px 22px;
+      border-radius: 30px;
+      transition: opacity var(--transition);
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .bottom-sheet-cta:hover { opacity: 0.85; }
   }
 
   /* ===== NAV ===== */
