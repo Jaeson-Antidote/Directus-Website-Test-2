@@ -874,10 +874,10 @@ section { scroll-margin-top: var(--nav-height); }
 
 @media (max-width: 480px) {
   .hero-diagram-outer {
-    height: 264px;
+    height: 322px;
   }
   .hero-diagram-inner {
-    transform: scale(0.9);
+    transform: scale(0.73);
   }
 }
 
