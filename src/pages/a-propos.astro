@@ -1,14 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { personSchema, breadcrumb, faqSchema } from '../lib/schema';
-import content from '../content/pages/fr/a-propos.json';
+import { getPageAbout, getTestimonials, getFaqs } from '../lib/directus';
 
 const bc = breadcrumb([{ name: 'À propos', href: '/a-propos' }]);
 const person = personSchema();
 
-const faq = faqSchema(
-  content.faq.items.map((item) => ({ question: item.question, answer: item.answer }))
-);
+const content = await getPageAbout();
+if (!content) throw new Error('page_about introuvable dans Directus — vérifiez DIRECTUS_URL');
+
+const testimonials = await getTestimonials('about');
+const faqs = await getFaqs('about');
+
+const faq = faqSchema(faqs.map((item) => ({ question: item.question, answer: item.answer })));
 
 const schema = {
   '@context': 'https://schema.org',
@@ -17,10 +21,10 @@ const schema = {
 ---
 
 <BaseLayout
-  title={content.meta.title}
-  description={content.meta.description}
-  ogImage={content.meta.ogImage}
-  ogImageAlt={content.meta.ogImageAlt}
+  title={content.seo_title}
+  description={content.seo_description}
+  ogImage="/og/a-propos.jpg"
+  ogImageAlt={content.og_image_alt}
   schema={schema}
 >
 
@@ -34,27 +38,27 @@ const schema = {
         <div>
           <div class="eyebrow-badge" style="margin-bottom: 28px; display: inline-flex;">
             <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
-            {content.hero.eyebrow}
+            {content.hero_eyebrow}
           </div>
 
           <h1 class="hero-title" style="font-size: clamp(28px, 3.2vw, 44px) !important; line-height: 1.2;">
-            {content.hero.title}
+            {content.hero_title}
           </h1>
 
           <p style="font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.8; max-width: 560px; margin-bottom: 16px;">
-            {content.hero.description}
+            {content.hero_description}
           </p>
 
           <p style="font-size: 17px; color: rgba(255,255,255,0.75); line-height: 1.8; max-width: 560px; margin-bottom: 36px; font-style: italic;">
-            {content.hero.italic}
+            {content.hero_italic}
           </p>
 
           <div style="margin-bottom: 48px;">
-            <a href="/formations" class="btn-primary">{content.hero.ctaPrimary} &rarr;</a>
+            <a href="/formations" class="btn-primary">{content.hero_cta_primary} &rarr;</a>
           </div>
 
           <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.06);">
-            {content.hero.stats.map((s) => (
+            {content.hero_stats.map((s) => (
               <div>
                 <span class="stat-number">{s.value}</span>
                 <p class="stat-label">{s.label}</p>
@@ -88,11 +92,11 @@ const schema = {
   <section style="background: var(--color-light-1); padding: 96px 0;">
     <div class="container">
       <div style="max-width: 720px; margin-bottom: 56px;">
-        <span class="section-eyebrow">{content.pourQui.eyebrow}</span>
-        <h2 class="section-title" style="color: var(--color-text-on-light);">{content.pourQui.title}</h2>
+        <span class="section-eyebrow">{content.pour_qui_eyebrow}</span>
+        <h2 class="section-title" style="color: var(--color-text-on-light);">{content.pour_qui_title}</h2>
       </div>
       <div class="grid-3" style="gap: 20px;">
-        {content.pourQui.cards.map((card) => (
+        {content.pour_qui_cards.map((card) => (
           <div class="card-white">
             <h3 style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--color-text-on-light); margin-bottom: 12px;">{card.title}</h3>
             <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.7;">{card.desc}</p>
@@ -106,11 +110,11 @@ const schema = {
   <section style="background: var(--color-dark-1); padding: 96px 0;">
     <div class="container">
       <div style="max-width: 720px; margin-bottom: 56px;">
-        <span class="section-eyebrow">{content.approche.eyebrow}</span>
-        <h2 class="section-title">{content.approche.title}</h2>
+        <span class="section-eyebrow">{content.approche_eyebrow}</span>
+        <h2 class="section-title">{content.approche_title}</h2>
       </div>
       <div class="grid-2" style="gap: 20px;">
-        {content.approche.items.map((item) => (
+        {content.approche_items.map((item) => (
           <div class="glass-card" style="display: flex; flex-direction: column; gap: 14px;">
             <span class="usp-number">{item.num}</span>
             <h3 class="usp-title">{item.title}</h3>
@@ -125,8 +129,8 @@ const schema = {
   <section style="background: var(--color-light-1); padding: 96px 0;">
     <div class="container">
       <div style="max-width: 720px; margin-bottom: 56px;">
-        <span class="section-eyebrow">Les formations</span>
-        <h2 class="section-title" style="color: var(--color-text-on-light);">Un seul principe : partir de votre réalité.</h2>
+        <span class="section-eyebrow">{content.formations_eyebrow}</span>
+        <h2 class="section-title" style="color: var(--color-text-on-light);">{content.formations_title}</h2>
       </div>
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;">
 
@@ -178,11 +182,11 @@ const schema = {
   <section style="background: var(--color-dark-2); padding: 96px 0;">
     <div class="container">
       <div style="max-width: 720px; margin-bottom: 56px;">
-        <span class="section-eyebrow">{content.testimonials.eyebrow}</span>
-        <h2 class="section-title">{content.testimonials.title}</h2>
+        <span class="section-eyebrow">{content.testimonials_eyebrow}</span>
+        <h2 class="section-title">{content.testimonials_title}</h2>
       </div>
       <div class="grid-2" style="gap: 20px;">
-        {content.testimonials.items.map((t) => (
+        {testimonials.map((t) => (
           <div class="glass-card" style="display: flex; flex-direction: column; gap: 16px;">
             <p style="font-size: 16px; font-weight: 600; color: #ffffff; line-height: 1.5; font-style: italic;">"{t.pull}"</p>
             {t.body && <p style="font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7;">{t.body}</p>}
@@ -205,8 +209,8 @@ const schema = {
       <div class="grid-2" style="gap: 80px; align-items: start;">
 
         <div>
-          <span class="section-eyebrow">{content.formateur.eyebrow}</span>
-          <h2 style="font-family: var(--font-display); font-size: clamp(40px, 5vw, 64px); font-weight: 700; color: #ffffff; line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 24px; margin-top: 4px;">{content.formateur.title}</h2>
+          <span class="section-eyebrow">{content.formateur_eyebrow}</span>
+          <h2 style="font-family: var(--font-display); font-size: clamp(40px, 5vw, 64px); font-weight: 700; color: #ffffff; line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 24px; margin-top: 4px;">{content.formateur_title}</h2>
           <div style="width: 36px; height: 2px; background: var(--color-accent); margin-bottom: 24px;"></div>
           <p style="font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 16px; max-width: 420px;">Ancien avocat, consultant en stratégie digitale, enseignant à l'IHECS, formateur IA à l'EPHEC et l'UCLouvain. Praticien IA depuis 2021 — dans des contextes où l'erreur coûte.</p>
           <p style="font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; max-width: 420px; margin-bottom: 32px;">"Le point de départ n'est pas l'outil. C'est le travail."</p>
@@ -233,10 +237,10 @@ const schema = {
   <!-- CTA FINAL -->
   <section style="background: var(--color-dark-1); padding: 96px 0;">
     <div class="container" style="text-align: center; max-width: 680px;">
-      <span class="section-eyebrow">{content.ctaFinal.eyebrow}</span>
-      <h2 class="section-title">{content.ctaFinal.title}</h2>
+      <span class="section-eyebrow">{content.cta_eyebrow}</span>
+      <h2 class="section-title">{content.cta_title}</h2>
       <div style="margin-top: 32px;">
-        <a href={content.ctaFinal.ctaPrimaryHref} class="btn-primary">{content.ctaFinal.ctaPrimary} &rarr;</a>
+        <a href={content.cta_primary_href} class="btn-primary">{content.cta_primary} &rarr;</a>
       </div>
     </div>
   </section>

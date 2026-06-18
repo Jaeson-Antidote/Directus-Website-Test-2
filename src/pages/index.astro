@@ -1,11 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { homepageGraph } from '../lib/schema';
-import content from '../content/pages/fr/index.json';
+import { getPageHome, getTestimonials } from '../lib/directus';
 
 const schema = homepageGraph();
 
-const { meta, hero, features, usps, trainer, testimonials, resources, ctaFinal } = content;
+const content = await getPageHome();
+if (!content) throw new Error('page_home introuvable dans Directus — vérifiez DIRECTUS_URL');
+
+const testimonials = await getTestimonials('home');
 
 const partnerLogos = [
   { src: '/images/logos/uclouvain.png', alt: 'UCLouvain' },
@@ -18,10 +21,10 @@ const partnerLogos = [
 ---
 
 <BaseLayout
-  title={meta.title}
-  description={meta.description}
-  ogImage={meta.ogImage}
-  ogImageAlt={meta.ogImageAlt}
+  title={content.seo_title}
+  description={content.seo_description}
+  ogImage="/og/homepage.jpg"
+  ogImageAlt={content.og_image_alt}
   schema={schema}
 >
 
@@ -36,21 +39,21 @@ const partnerLogos = [
         <div>
           <div class="eyebrow-badge" style="margin-bottom: 28px; display: inline-flex;">
             <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
-            {hero.eyebrow}
+            {content.hero_eyebrow}
           </div>
 
           <h1 class="hero-title">
-            {hero.title}<br />
-            <span style="color: rgba(255,255,255,0.55);">{hero.titleMuted}</span>
+            {content.hero_title}<br />
+            <span style="color: rgba(255,255,255,0.55);">{content.hero_title_muted}</span>
           </h1>
 
           <p style="font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.75; max-width: 560px; margin-bottom: 36px;">
-            {hero.description}
+            {content.hero_description}
           </p>
 
           <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-            <a href={hero.ctaPrimaryHref} class="btn-primary">{hero.ctaPrimary}</a>
-            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">{hero.ctaSecondary}</a>
+            <a href={content.hero_cta_primary_href} class="btn-primary">{content.hero_cta_primary}</a>
+            <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" class="btn-outline">{content.hero_cta_secondary}</a>
           </div>
         </div>
 
@@ -152,7 +155,7 @@ const partnerLogos = [
                   <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
                 </svg>
               </div>
-              <p style="font-size: 8px; font-weight: 500; color: rgba(255,255,255,0.4); font-family: var(--font-body);">{hero.diagram.professions[0]}</p>
+              <p style="font-size: 8px; font-weight: 500; color: rgba(255,255,255,0.4); font-family: var(--font-body);">{content.hero_diagram.professions[0]}</p>
             </div>
             <!-- Médecin -->
             <div style="display: flex; flex-direction: column; align-items: center; gap: 3px;">
@@ -162,7 +165,7 @@ const partnerLogos = [
                   <path d="M12 8v4m0 4h.01"/>
                 </svg>
               </div>
-              <p style="font-size: 8px; font-weight: 500; color: rgba(255,255,255,0.4); font-family: var(--font-body);">{hero.diagram.professions[1]}</p>
+              <p style="font-size: 8px; font-weight: 500; color: rgba(255,255,255,0.4); font-family: var(--font-body);">{content.hero_diagram.professions[1]}</p>
             </div>
             <!-- Dirigeant -->
             <div style="display: flex; flex-direction: column; align-items: center; gap: 3px;">
@@ -172,7 +175,7 @@ const partnerLogos = [
                   <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                 </svg>
               </div>
-              <p style="font-size: 8px; font-weight: 500; color: rgba(255,255,255,0.4); font-family: var(--font-body);">{hero.diagram.professions[2]}</p>
+              <p style="font-size: 8px; font-weight: 500; color: rgba(255,255,255,0.4); font-family: var(--font-body);">{content.hero_diagram.professions[2]}</p>
             </div>
             <!-- Consultant -->
             <div style="display: flex; flex-direction: column; align-items: center; gap: 3px;">
@@ -183,7 +186,7 @@ const partnerLogos = [
                   <line x1="6" y1="20" x2="6" y2="14"/>
                 </svg>
               </div>
-              <p style="font-size: 8px; font-weight: 500; color: rgba(255,255,255,0.4); font-family: var(--font-body);">{hero.diagram.professions[3]}</p>
+              <p style="font-size: 8px; font-weight: 500; color: rgba(255,255,255,0.4); font-family: var(--font-body);">{content.hero_diagram.professions[3]}</p>
             </div>
             <!-- RH -->
             <div style="display: flex; flex-direction: column; align-items: center; gap: 3px;">
@@ -195,7 +198,7 @@ const partnerLogos = [
                   <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                 </svg>
               </div>
-              <p style="font-size: 8px; font-weight: 500; color: rgba(255,255,255,0.4); font-family: var(--font-body);">{hero.diagram.professions[4]}</p>
+              <p style="font-size: 8px; font-weight: 500; color: rgba(255,255,255,0.4); font-family: var(--font-body);">{content.hero_diagram.professions[4]}</p>
             </div>
           </div>
 
@@ -208,7 +211,7 @@ const partnerLogos = [
                 <path d="M6 12v5c3 3 9 3 12 0v-5"/>
               </svg>
             </div>
-            <p style="font-size: 9px; font-weight: 600; color: rgba(247,171,110,0.6); font-family: var(--font-body); letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap;">{hero.diagram.centralLabel}</p>
+            <p style="font-size: 9px; font-weight: 600; color: rgba(247,171,110,0.6); font-family: var(--font-body); letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap;">{content.hero_diagram.centralLabel}</p>
           </div>
 
           <!-- Nœud sortie 1 — Outils (bleu) -->
@@ -220,7 +223,7 @@ const partnerLogos = [
                 <polyline points="2 12 12 17 22 12"/>
               </svg>
             </div>
-            <p style="font-size: 9px; font-weight: 500; color: rgba(255,255,255,0.35); font-family: var(--font-body);">{hero.diagram.outputs[0]}</p>
+            <p style="font-size: 9px; font-weight: 500; color: rgba(255,255,255,0.35); font-family: var(--font-body);">{content.hero_diagram.outputs[0]}</p>
           </div>
 
           <!-- Nœud sortie 2 — Prompts (orange) -->
@@ -231,7 +234,7 @@ const partnerLogos = [
                 <line x1="12" y1="19" x2="20" y2="19"/>
               </svg>
             </div>
-            <p style="font-size: 9px; font-weight: 500; color: rgba(255,255,255,0.35); font-family: var(--font-body);">{hero.diagram.outputs[1]}</p>
+            <p style="font-size: 9px; font-weight: 500; color: rgba(255,255,255,0.35); font-family: var(--font-body);">{content.hero_diagram.outputs[1]}</p>
           </div>
 
           <!-- Nœud sortie 3 — Méthodes (vert) -->
@@ -244,7 +247,7 @@ const partnerLogos = [
                 <rect x="3" y="14" width="7" height="7" rx="1"/>
               </svg>
             </div>
-            <p style="font-size: 9px; font-weight: 500; color: rgba(255,255,255,0.35); font-family: var(--font-body);">{hero.diagram.outputs[2]}</p>
+            <p style="font-size: 9px; font-weight: 500; color: rgba(255,255,255,0.35); font-family: var(--font-body);">{content.hero_diagram.outputs[2]}</p>
           </div>
 
           <!-- Nœud sortie 4 — Éthique (teal) -->
@@ -255,7 +258,7 @@ const partnerLogos = [
                 <circle cx="12" cy="12" r="3"/>
               </svg>
             </div>
-            <p style="font-size: 9px; font-weight: 500; color: rgba(255,255,255,0.35); font-family: var(--font-body);">{hero.diagram.outputs[3]}</p>
+            <p style="font-size: 9px; font-weight: 500; color: rgba(255,255,255,0.35); font-family: var(--font-body);">{content.hero_diagram.outputs[3]}</p>
           </div>
 
           <!-- Nœud sortie 5 — Confiance (violet) -->
@@ -266,7 +269,7 @@ const partnerLogos = [
                 <polyline points="9 12 11 14 15 10"/>
               </svg>
             </div>
-            <p style="font-size: 9px; font-weight: 500; color: rgba(255,255,255,0.35); font-family: var(--font-body);">{hero.diagram.outputs[4]}</p>
+            <p style="font-size: 9px; font-weight: 500; color: rgba(255,255,255,0.35); font-family: var(--font-body);">{content.hero_diagram.outputs[4]}</p>
           </div>
 
         </div>
@@ -276,7 +279,7 @@ const partnerLogos = [
 
       <!-- Logos partenaires (pleine largeur sous le grid) -->
       <div class="hero-logos">
-        <span class="logos-label">{hero.logosLabel}</span>
+        <span class="logos-label">{content.hero_logos_label}</span>
         <div class="logos-marquee">
           <div class="logos-track">
             {partnerLogos.map((logo) => (
@@ -301,12 +304,12 @@ const partnerLogos = [
     <div class="container">
       <div class="section-header">
         <div>
-          <span class="section-eyebrow">{features.eyebrow}</span>
-          <h2 class="section-title" style="color: var(--color-text-on-light);">{features.title}</h2>
+          <span class="section-eyebrow">{content.features_eyebrow}</span>
+          <h2 class="section-title" style="color: var(--color-text-on-light);">{content.features_title}</h2>
         </div>
       </div>
       <div class="grid-3">
-        {features.cards.map((f) => (
+        {content.features_cards.map((f) => (
           <div class="card-white" style="display: flex; flex-direction: column;">
             <div class="icon-circle-glass" style="margin-bottom: 20px;">
               <span style="font-size: 18px; color: var(--color-accent);">{f.icon}</span>
@@ -322,9 +325,9 @@ const partnerLogos = [
   <!-- ========== POURQUOI ========== -->
   <section id="pourquoi" style="background: var(--color-dark-2); padding: 96px 0;">
     <div class="container">
-      <span class="section-eyebrow" style="display: block; margin-bottom: 40px;">{usps.eyebrow}</span>
+      <span class="section-eyebrow" style="display: block; margin-bottom: 40px;">{content.usps_eyebrow}</span>
       <div class="usps-grid">
-        {usps.items.map((u) => (
+        {content.usps_items.map((u) => (
           <div class="glass-card" style="display: flex; flex-direction: column;">
             <span class="usp-number">{u.n}</span>
             <h3 class="usp-title">{u.title}</h3>
@@ -340,15 +343,15 @@ const partnerLogos = [
     <div class="container">
       <div class="grid-2" style="gap: 80px; align-items: start;">
         <div>
-          <span class="section-eyebrow">{trainer.eyebrow}</span>
-          <h2 style="font-family: var(--font-display); font-size: clamp(40px, 5vw, 64px); font-weight: 700; color: #ffffff; line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 24px; margin-top: 4px;">{trainer.name}</h2>
+          <span class="section-eyebrow">{content.trainer_eyebrow}</span>
+          <h2 style="font-family: var(--font-display); font-size: clamp(40px, 5vw, 64px); font-weight: 700; color: #ffffff; line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 24px; margin-top: 4px;">{content.trainer_name}</h2>
           <div style="width: 36px; height: 2px; background: var(--color-accent); margin-bottom: 24px;"></div>
-          <p style="font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 16px; max-width: 420px;">{trainer.bio}</p>
-          <p style="font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; max-width: 420px; margin-bottom: 32px;">{trainer.quote}</p>
-          <a href={trainer.ctaHref} class="btn-text-link">{trainer.cta} &rarr;</a>
+          <p style="font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 16px; max-width: 420px;">{content.trainer_bio}</p>
+          <p style="font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; max-width: 420px; margin-bottom: 32px;">{content.trainer_quote}</p>
+          <a href={content.trainer_cta_href} class="btn-text-link">{content.trainer_cta} &rarr;</a>
         </div>
         <div style="display: flex; flex-direction: column; gap: 10px;">
-          {trainer.stats.map((s) => (
+          {content.trainer_stats.map((s) => (
             <div class="glass-card" style="padding: 20px 24px; display: flex; align-items: center; gap: 20px;">
               <span class="stat-number" style="flex-shrink: 0;">{s.number}</span>
               <p class="stat-label" style="margin-top: 0;">{s.label}</p>
@@ -364,12 +367,12 @@ const partnerLogos = [
     <div class="container">
       <div class="section-header">
         <div>
-          <span class="section-eyebrow">{testimonials.eyebrow}</span>
-          <h2 class="section-title">{testimonials.title}</h2>
+          <span class="section-eyebrow">{content.testimonials_eyebrow}</span>
+          <h2 class="section-title">{content.testimonials_title}</h2>
         </div>
       </div>
       <div class="grid-3" style="gap: 16px; align-items: start;">
-        {testimonials.items.map((t) => (
+        {testimonials.map((t) => (
           <div class="glass-card" style="display: flex; flex-direction: column; padding: 28px 28px 24px;">
             <!-- Guillemet décoratif -->
             <span style="font-family: var(--font-display); font-size: 48px; line-height: 1; color: var(--color-accent); opacity: 0.7; margin-bottom: 8px; display: block;">&ldquo;</span>
@@ -398,12 +401,12 @@ const partnerLogos = [
     <div class="container">
       <div class="section-header">
         <div>
-          <span class="section-eyebrow">{resources.eyebrow}</span>
-          <h2 class="section-title" style="color: var(--color-text-on-light);">{resources.title}</h2>
+          <span class="section-eyebrow">{content.resources_eyebrow}</span>
+          <h2 class="section-title" style="color: var(--color-text-on-light);">{content.resources_title}</h2>
         </div>
       </div>
       <div class="grid-3">
-        {resources.items.map((r) => (
+        {content.resources_items.map((r) => (
           <div class="card-white" style="display: flex; flex-direction: column; gap: 12px; min-height: 200px;">
             <h3 class="ressource-title">{r.title}</h3>
             <p class="ressource-desc">{r.desc}</p>
@@ -419,17 +422,17 @@ const partnerLogos = [
     <div class="container" style="text-align: center; max-width: 680px;">
       <div class="eyebrow-badge" style="margin-bottom: 28px; display: inline-flex;">
         <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
-        {ctaFinal.badge}
+        {content.cta_badge}
       </div>
       <h2 style="font-family: var(--font-display); font-size: clamp(28px, 4vw, 44px); font-weight: 500; color: #ffffff; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px;">
-        {ctaFinal.title}
+        {content.cta_title}
       </h2>
       <p style="font-size: 16px; color: rgba(255,255,255,0.4); line-height: 1.7; margin-bottom: 36px;">
-        {ctaFinal.description}
+        {content.cta_description}
       </p>
       <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <a href={ctaFinal.ctaPrimaryHref} class="btn-primary">{ctaFinal.ctaPrimary}</a>
-        <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" target="_blank" rel="noopener noreferrer" class="btn-outline">{ctaFinal.ctaSecondary}</a>
+        <a href={content.cta_primary_href} class="btn-primary">{content.cta_primary}</a>
+        <a href="https://bookme.name/tarikhennen/lite/rdv-le-cercle-ia" target="_blank" rel="noopener noreferrer" class="btn-outline">{content.cta_secondary}</a>
       </div>
     </div>
   </section>
