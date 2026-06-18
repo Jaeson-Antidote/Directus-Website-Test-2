@@ -1,0 +1,41 @@
+---
+export const prerender = false;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { personSchema, breadcrumb, faqSchema } from '../../lib/schema';
+import { getPageAbout, getTestimonials, getFaqs } from '../../lib/directus';
+import AboutContent from '../../components/pages/AboutContent.astro';
+
+const token = Astro.url.searchParams.get('token');
+if (!token || token !== import.meta.env.PREVIEW_SECRET) {
+  return new Response('Unauthorized', { status: 401 });
+}
+
+Astro.response.headers.set('X-Frame-Options', 'ALLOWALL');
+Astro.response.headers.set('Content-Security-Policy', "frame-ancestors *");
+
+const content = await getPageAbout();
+if (!content) return new Response('page_about introuvable', { status: 404 });
+
+const testimonials = await getTestimonials('about');
+const faqs = await getFaqs('about');
+
+const faq = faqSchema(faqs.map((item) => ({ question: item.question, answer: item.answer })));
+const bc = breadcrumb([{ name: 'À propos', href: '/a-propos' }]);
+const person = personSchema();
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [person, bc, faq],
+};
+---
+
+<BaseLayout
+  title={content.seo_title}
+  description={content.seo_description}
+  ogImage="/og/a-propos.jpg"
+  ogImageAlt={content.og_image_alt}
+  schema={schema}
+>
+  <AboutContent {content} {testimonials} />
+</BaseLayout>

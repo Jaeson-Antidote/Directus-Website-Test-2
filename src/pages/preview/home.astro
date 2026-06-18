@@ -1,0 +1,32 @@
+---
+export const prerender = false;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { homepageGraph } from '../../lib/schema';
+import { getPageHome, getTestimonials } from '../../lib/directus';
+import HomeContent from '../../components/pages/HomeContent.astro';
+
+const token = Astro.url.searchParams.get('token');
+if (!token || token !== import.meta.env.PREVIEW_SECRET) {
+  return new Response('Unauthorized', { status: 401 });
+}
+
+Astro.response.headers.set('X-Frame-Options', 'ALLOWALL');
+Astro.response.headers.set('Content-Security-Policy', "frame-ancestors *");
+
+const content = await getPageHome();
+if (!content) return new Response('page_home introuvable', { status: 404 });
+
+const testimonials = await getTestimonials('home');
+const schema = homepageGraph();
+---
+
+<BaseLayout
+  title={content.seo_title}
+  description={content.seo_description}
+  ogImage="/og/homepage.jpg"
+  ogImageAlt={content.og_image_alt}
+  schema={schema}
+>
+  <HomeContent {content} {testimonials} />
+</BaseLayout>

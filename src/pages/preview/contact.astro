@@ -1,0 +1,36 @@
+---
+export const prerender = false;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { breadcrumb } from '../../lib/schema';
+import { getPageContact } from '../../lib/directus';
+import ContactContent from '../../components/pages/ContactContent.astro';
+
+const token = Astro.url.searchParams.get('token');
+if (!token || token !== import.meta.env.PREVIEW_SECRET) {
+  return new Response('Unauthorized', { status: 401 });
+}
+
+Astro.response.headers.set('X-Frame-Options', 'ALLOWALL');
+Astro.response.headers.set('Content-Security-Policy', "frame-ancestors *");
+
+const content = await getPageContact();
+if (!content) return new Response('page_contact introuvable', { status: 404 });
+
+const bc = breadcrumb([{ name: 'Contact', href: '/contact' }]);
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [bc],
+};
+---
+
+<BaseLayout
+  title={content.seo_title}
+  description={content.seo_description}
+  ogImage="/og/contact.jpg"
+  ogImageAlt={content.og_image_alt}
+  schema={schema}
+>
+  <ContactContent {content} />
+</BaseLayout>

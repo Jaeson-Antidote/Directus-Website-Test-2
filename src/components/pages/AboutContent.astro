@@ -1,0 +1,225 @@
+---
+import type { DirectusPageAbout, DirectusTestimonial } from '~/lib/directus';
+
+interface Props {
+  content: DirectusPageAbout;
+  testimonials: DirectusTestimonial[];
+}
+
+const { content, testimonials } = Astro.props;
+---
+
+<!-- HERO -->
+<section class="hero-gradient grain-bg" style="padding: 96px 0 112px; position: relative; overflow: hidden;">
+  <div style="position: absolute; top: -120px; right: -80px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(247,171,110,0.06) 0%, transparent 70%); pointer-events: none;" aria-hidden="true"></div>
+
+  <div class="container">
+    <div style="display: grid; grid-template-columns: 1fr 380px; gap: 48px; align-items: center;">
+
+      <div>
+        <div class="eyebrow-badge" style="margin-bottom: 28px; display: inline-flex;">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; display: inline-block;"></span>
+          {content.hero_eyebrow}
+        </div>
+
+        <h1 class="hero-title" style="font-size: clamp(28px, 3.2vw, 44px) !important; line-height: 1.2;">
+          {content.hero_title}
+        </h1>
+
+        <p style="font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.8; max-width: 560px; margin-bottom: 16px;">
+          {content.hero_description}
+        </p>
+
+        <p style="font-size: 17px; color: rgba(255,255,255,0.75); line-height: 1.8; max-width: 560px; margin-bottom: 36px; font-style: italic;">
+          {content.hero_italic}
+        </p>
+
+        <div style="margin-bottom: 48px;">
+          <a href="/formations" class="btn-primary">{content.hero_cta_primary} &rarr;</a>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.06);">
+          {content.hero_stats.map((s) => (
+            <div>
+              <span class="stat-number">{s.value}</span>
+              <p class="stat-label">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="hero-photo-col" style="position: relative;">
+        <div style="border-radius: var(--radius-xl); overflow: hidden; border: 1px solid rgba(255,255,255,0.08);">
+          <img
+            src="/images/tarik-hennen-formation.png"
+            alt="Tarik Hennen, formateur IA — Cercle IA"
+            width="802"
+            height="1000"
+            loading="eager"
+            style="width: 100%; height: auto; display: block;"
+          />
+        </div>
+        <div style="position: absolute; bottom: -16px; left: -16px; background: var(--color-dark-2); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-lg); padding: 14px 18px; backdrop-filter: blur(16px);">
+          <p style="font-size: 12px; font-weight: 600; color: #ffffff; line-height: 1.3;">Tarik Hennen</p>
+          <p style="font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px;">Fondateur, Cercle IA</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: Pour qui -->
+<section style="background: var(--color-light-1); padding: 96px 0;">
+  <div class="container">
+    <div style="max-width: 720px; margin-bottom: 56px;">
+      <span class="section-eyebrow">{content.pour_qui_eyebrow}</span>
+      <h2 class="section-title" style="color: var(--color-text-on-light);">{content.pour_qui_title}</h2>
+    </div>
+    <div class="grid-3" style="gap: 20px;">
+      {content.pour_qui_cards.map((card) => (
+        <div class="card-white">
+          <h3 style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--color-text-on-light); margin-bottom: 12px;">{card.title}</h3>
+          <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.7;">{card.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: Notre approche -->
+<section style="background: var(--color-dark-1); padding: 96px 0;">
+  <div class="container">
+    <div style="max-width: 720px; margin-bottom: 56px;">
+      <span class="section-eyebrow">{content.approche_eyebrow}</span>
+      <h2 class="section-title">{content.approche_title}</h2>
+    </div>
+    <div class="grid-2" style="gap: 20px;">
+      {content.approche_items.map((item) => (
+        <div class="glass-card" style="display: flex; flex-direction: column; gap: 14px;">
+          <span class="usp-number">{item.num}</span>
+          <h3 class="usp-title">{item.title}</h3>
+          <p style="font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.75;">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: Les formations -->
+<section style="background: var(--color-light-1); padding: 96px 0;">
+  <div class="container">
+    <div style="max-width: 720px; margin-bottom: 56px;">
+      <span class="section-eyebrow">{content.formations_eyebrow}</span>
+      <h2 class="section-title" style="color: var(--color-text-on-light);">{content.formations_title}</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;">
+
+      <div class="card-white" style="padding: 40px; display: flex; flex-direction: column; height: 100%;">
+        <div style="display: inline-block; background: rgba(247,171,110,0.1); border: 1px solid rgba(247,171,110,0.3); border-radius: 30px; padding: 6px 14px; font-size: 12px; font-weight: 600; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 20px; align-self: flex-start;">Sessions ouvertes</div>
+        <p style="font-size: 14px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 12px;">Rejoindre une formation existante</p>
+        <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.75; margin-bottom: 28px;">Des sessions conçues pour des professionnels aux contraintes similaires. Vous intégrez un groupe, vous repartez avec une méthode.</p>
+        <div style="display: flex; flex-direction: column; gap: 0; flex: 1;">
+          <div style="border-top: 1px solid rgba(0,0,0,0.06); padding: 18px 0;">
+            <p style="font-size: 14px; font-weight: 700; color: var(--color-text-on-light); margin-bottom: 6px;">Bootcamp IA</p>
+            <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.7;">Plusieurs sessions intensives. Un travail en profondeur sur vos cas d'usage, avec le temps d'expérimenter et de corriger. Pour ceux qui veulent une autonomie réelle, pas une initiation.</p>
+          </div>
+          <div style="border-top: 1px solid rgba(0,0,0,0.06); padding: 18px 0 0;">
+            <p style="font-size: 14px; font-weight: 700; color: var(--color-text-on-light); margin-bottom: 6px;">Formations métiers</p>
+            <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.7;">Conçues pour des contextes précis : avocats, médecins, équipes RH, directions. Les contraintes du métier ne sont pas évoquées en introduction : elles structurent chaque exercice.</p>
+          </div>
+        </div>
+        <div style="margin-top: 32px;">
+          <a href="/formations" class="btn-outline-dark">Voir les prochaines sessions &rarr;</a>
+        </div>
+      </div>
+
+      <div class="card-white" style="padding: 40px; display: flex; flex-direction: column; height: 100%;">
+        <div style="display: inline-block; background: rgba(247,171,110,0.1); border: 1px solid rgba(247,171,110,0.3); border-radius: 30px; padding: 6px 14px; font-size: 12px; font-weight: 600; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 20px; align-self: flex-start;">Sur mesure</div>
+        <p style="font-size: 14px; font-weight: 600; color: var(--color-text-on-light); margin-bottom: 12px;">Un accompagnement construit pour vous</p>
+        <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.75; margin-bottom: 28px;">Quand un programme standard ne correspond pas à votre situation. Conçu à partir de vos cas d'usage réels, de vos outils, de vos contraintes.</p>
+        <div style="display: flex; flex-direction: column; gap: 0; flex: 1;">
+          <div style="border-top: 1px solid rgba(0,0,0,0.06); padding: 18px 0;">
+            <p style="font-size: 14px; font-weight: 700; color: var(--color-text-on-light); margin-bottom: 6px;">Formation entreprise</p>
+            <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.7;">Construite pour une équipe ou une organisation. Pas un programme standard repackagé avec votre logo en couverture : une formation conçue à partir de vos processus réels.</p>
+          </div>
+          <div style="border-top: 1px solid rgba(0,0,0,0.06); padding: 18px 0 0;">
+            <p style="font-size: 14px; font-weight: 700; color: var(--color-text-on-light); margin-bottom: 6px;">Coaching individuel</p>
+            <p style="font-size: 14px; color: var(--color-text-subtle); line-height: 1.7;">Un accompagnement 1-to-1 centré sur votre pratique, votre métier, vos questions. Le rythme et le contenu s'adaptent à votre progression.</p>
+          </div>
+        </div>
+        <div style="margin-top: 32px;">
+          <a href="/contact" class="btn-outline-dark">Discutons de votre situation &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: Témoignages -->
+<section style="background: var(--color-dark-2); padding: 96px 0;">
+  <div class="container">
+    <div style="max-width: 720px; margin-bottom: 56px;">
+      <span class="section-eyebrow">{content.testimonials_eyebrow}</span>
+      <h2 class="section-title">{content.testimonials_title}</h2>
+    </div>
+    <div class="grid-2" style="gap: 20px;">
+      {testimonials.map((t) => (
+        <div class="glass-card" style="display: flex; flex-direction: column; gap: 16px;">
+          <p style="font-size: 16px; font-weight: 600; color: #ffffff; line-height: 1.5; font-style: italic;">"{t.pull}"</p>
+          {t.body && <p style="font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7;">{t.body}</p>}
+          <div style="display: flex; gap: 12px; align-items: center; margin-top: auto; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.07);">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: rgba(247,171,110,0.15); border: 1px solid rgba(247,171,110,0.3); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--color-accent); flex-shrink: 0;">{t.initials}</div>
+            <div>
+              <div style="font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.8);">{t.name}</div>
+              {(t.role || t.org) && <div style="font-size: 12px; color: rgba(255,255,255,0.4);">{t.role}{t.role && t.org ? ', ' : ''}{t.org}</div>}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: Le formateur -->
+<section style="background: var(--color-dark-1); padding: 96px 0;">
+  <div class="container">
+    <div class="grid-2" style="gap: 80px; align-items: start;">
+
+      <div>
+        <span class="section-eyebrow">{content.formateur_eyebrow}</span>
+        <h2 style="font-family: var(--font-display); font-size: clamp(40px, 5vw, 64px); font-weight: 700; color: #ffffff; line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 24px; margin-top: 4px;">{content.formateur_title}</h2>
+        <div style="width: 36px; height: 2px; background: var(--color-accent); margin-bottom: 24px;"></div>
+        <p style="font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 16px; max-width: 420px;">Ancien avocat, consultant en stratégie digitale, enseignant à l'IHECS, formateur IA à l'EPHEC et l'UCLouvain. Praticien IA depuis 2021 — dans des contextes où l'erreur coûte.</p>
+        <p style="font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; max-width: 420px; margin-bottom: 32px;">"Le point de départ n'est pas l'outil. C'est le travail."</p>
+        <a href="/tarik-hennen" class="btn-text-link">Voir le profil complet &rarr;</a>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        {[
+          { number: '2024', label: 'Formateur en IA depuis' },
+          { number: '250+', label: 'Professionnels formés' },
+          { number: '15 ans', label: "D'expérience terrain" },
+        ].map((s) => (
+          <div class="glass-card" style="padding: 20px 24px; display: flex; align-items: center; gap: 20px;">
+            <span class="stat-number" style="flex-shrink: 0;">{s.number}</span>
+            <p class="stat-label" style="margin-top: 0;">{s.label}</p>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section style="background: var(--color-dark-1); padding: 96px 0;">
+  <div class="container" style="text-align: center; max-width: 680px;">
+    <span class="section-eyebrow">{content.cta_eyebrow}</span>
+    <h2 class="section-title">{content.cta_title}</h2>
+    <div style="margin-top: 32px;">
+      <a href={content.cta_primary_href} class="btn-primary">{content.cta_primary} &rarr;</a>
+    </div>
+  </div>
+</section>
