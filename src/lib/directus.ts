@@ -189,6 +189,7 @@ function toArray<T>(data: any): T[] {
 
 function toSingleton<T>(data: any): T | null {
   if (!data || Array.isArray(data)) return null;
+  if (typeof data === 'object' && Object.keys(data).length === 0) return null;
   return data as T;
 }
 
