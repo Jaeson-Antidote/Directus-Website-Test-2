@@ -1,5 +1,6 @@
 export const DIRECTUS_URL = import.meta.env.DIRECTUS_URL ?? '';
 const DIRECTUS_TOKEN = import.meta.env.DIRECTUS_TOKEN ?? '';
+const PREFIX = import.meta.env.COLLECTION_PREFIX ?? '';
 
 // ─── Articles ──────────────────────────────────────────────────────────────
 
@@ -195,14 +196,14 @@ function toSingleton<T>(data: any): T | null {
 
 export async function getArticles(): Promise<DirectusArticle[]> {
   const res = await directusFetch(
-    `/items/articles?filter[status][_eq]=published&sort=-pub_date&fields=${ARTICLE_FIELDS}`,
+    `/items/${PREFIX}articles?filter[status][_eq]=published&sort=-pub_date&fields=${ARTICLE_FIELDS}`,
   );
   return toArray<DirectusArticle>(res.data);
 }
 
 export async function getArticleBySlug(slug: string): Promise<DirectusArticle | null> {
   const res = await directusFetch(
-    `/items/articles?filter[slug][_eq]=${encodeURIComponent(slug)}&filter[status][_eq]=published&limit=1&fields=*`,
+    `/items/${PREFIX}articles?filter[slug][_eq]=${encodeURIComponent(slug)}&filter[status][_eq]=published&limit=1&fields=*`,
   );
   return toArray<DirectusArticle>(res.data)[0] ?? null;
 }
@@ -212,7 +213,7 @@ export async function getDraftBySlug(
   previewToken: string,
 ): Promise<DirectusArticle | null> {
   const res = await directusFetch(
-    `/items/articles?filter[slug][_eq]=${encodeURIComponent(slug)}&limit=1&fields=*`,
+    `/items/${PREFIX}articles?filter[slug][_eq]=${encodeURIComponent(slug)}&limit=1&fields=*`,
     previewToken,
   );
   return toArray<DirectusArticle>(res.data)[0] ?? null;
@@ -236,7 +237,7 @@ export function articleImageUrl(
 
 export async function getTestimonials(page: string): Promise<DirectusTestimonial[]> {
   const res = await directusFetch(
-    `/items/testimonials?filter[status][_eq]=published&sort=sort`,
+    `/items/${PREFIX}testimonials?filter[status][_eq]=published&sort=sort`,
   );
   return toArray<DirectusTestimonial>(res.data).filter(
     (t) => t.pages?.includes(page) ?? false,
@@ -245,14 +246,14 @@ export async function getTestimonials(page: string): Promise<DirectusTestimonial
 
 export async function getFaqs(page: string): Promise<DirectusFaq[]> {
   const res = await directusFetch(
-    `/items/faqs?filter[status][_eq]=published&filter[page][_eq]=${encodeURIComponent(page)}&sort=sort`,
+    `/items/${PREFIX}faqs?filter[status][_eq]=published&filter[page][_eq]=${encodeURIComponent(page)}&sort=sort`,
   );
   return toArray<DirectusFaq>(res.data);
 }
 
 export async function getFormations(): Promise<DirectusFormation[]> {
   const res = await directusFetch(
-    `/items/formations?filter[status][_eq]=published&sort=sort`,
+    `/items/${PREFIX}formations?filter[status][_eq]=published&sort=sort`,
   );
   return toArray<DirectusFormation>(res.data);
 }
@@ -260,16 +261,16 @@ export async function getFormations(): Promise<DirectusFormation[]> {
 // ─── Singletons ────────────────────────────────────────────────────────────
 
 export async function getPageHome(): Promise<DirectusPageHome | null> {
-  const res = await directusFetch('/items/page_home');
+  const res = await directusFetch(`/items/${PREFIX}page_home`);
   return toSingleton<DirectusPageHome>(res.data);
 }
 
 export async function getPageAbout(): Promise<DirectusPageAbout | null> {
-  const res = await directusFetch('/items/page_about');
+  const res = await directusFetch(`/items/${PREFIX}page_about`);
   return toSingleton<DirectusPageAbout>(res.data);
 }
 
 export async function getPageContact(): Promise<DirectusPageContact | null> {
-  const res = await directusFetch('/items/page_contact');
+  const res = await directusFetch(`/items/${PREFIX}page_contact`);
   return toSingleton<DirectusPageContact>(res.data);
 }
